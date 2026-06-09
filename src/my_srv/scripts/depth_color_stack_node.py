@@ -334,7 +334,7 @@ class DepthColorStackNode(Node):
 
         self.stack_active = True
         # 初始位置 (与排序版一致)
-        self.move_x, self.move_y, self.move_z = 0, 118, 95
+        self.move_x, self.move_y, self.move_z = 0, 105, 150
         kinematics_move(self.move_x, self.move_y, self.move_z, 1000, alpha_hint=-82)
         time.sleep(2.0)  # 等待稳定
         self.move_status = 0
@@ -607,9 +607,9 @@ class DepthColorStackNode(Node):
         self.move_x, self.move_y = 0, 120
         self.block_cnt += 1
         self.block_cx = self.block_cy = 0
-        if not kinematics_move(self.move_x, self.move_y, 95, 1000, alpha_hint=-82):
+        if not kinematics_move(self.move_x, self.move_y, 150, 1000, alpha_hint=-82):
             self.get_logger().error(f'[st7] 归位 IK 无解')
-            kinematics_move(0, 118, 95, 1000, alpha_hint=-82)
+            kinematics_move(0, 105, 150, 1000, alpha_hint=-82)
         time.sleep(2)
 
         if self.block_cnt >= 3:
@@ -629,7 +629,7 @@ class DepthColorStackNode(Node):
     def _st8(self):
         """错误恢复"""
         self.move_x, self.move_y = 0, 120
-        kinematics_move(0, 118, 95, 1000, alpha_hint=-82)
+        kinematics_move(0, 105, 150, 1000, alpha_hint=-82)
         time.sleep(2)
         self.color_read_succed = 0
         self.move_status = 0
@@ -667,7 +667,7 @@ class DepthColorStackNode(Node):
                 time.sleep(1)
                 # 重置状态
                 self.move_status = 0
-                self.move_x, self.move_y, self.move_z = 0, 118, 95
+                self.move_x, self.move_y, self.move_z = 0, 105, 150
                 self.block_cx, self.block_cy = 320, 240
                 self.color_read_succed = 0
                 self.success_cnt = 0

@@ -219,8 +219,8 @@ class DepthNumStackNode(Node):
             return
 
         self.stack_active = True
-        self.move_x, self.move_y = 0, 118
-        kinematics_move(self.move_x, self.move_y, 95, 1000, alpha_hint=-82)
+        self.move_x, self.move_y = 0, 105
+        kinematics_move(self.move_x, self.move_y, 150, 1000, alpha_hint=-82)
         time.sleep(2.0)
         self.move_status = 0
         self.current_num_index = 0
@@ -426,7 +426,7 @@ class DepthNumStackNode(Node):
 
     def _st8(self):
         self.move_x, self.move_y = 0, 120
-        kinematics_move(0, 118, 95, 1000, alpha_hint=-82)
+        kinematics_move(0, 105, 150, 1000, alpha_hint=-82)
         time.sleep(2)
         self.color_read_succed = 0
         self.move_status = 0
@@ -447,7 +447,7 @@ class DepthNumStackNode(Node):
                 time.sleep(1)
                 # 重置状态
                 self.move_status = 0
-                self.move_x, self.move_y, self.move_z = 0, 118, 95
+                self.move_x, self.move_y, self.move_z = 0, 105, 150
                 self.block_cx, self.block_cy = 320, 240
                 self.color_read_succed = 0
                 self.success_cnt = 0
