@@ -244,7 +244,7 @@ class DepthLabelSortingNode(Node):
             self.get_logger().error('无同步帧'); return
 
         self.sorting_active = True
-        self.move_x, self.move_y, self.move_z = 0, 118, 95
+        self.move_x, self.move_y, self.move_z = 0, 118, 155
         kinematics_move(self.move_x, self.move_y, self.move_z, 1000, alpha_hint=-82)
         time.sleep(2.0)
         self.move_status = 0
@@ -384,7 +384,7 @@ class DepthLabelSortingNode(Node):
         time.sleep(1)
 
     def _st5(self):
-        self.move_x, self.move_y = -130, 30
+        self.move_x, self.move_y = -130, 60
         kinematics_move(self.move_x, self.move_y, 150, 1000)
         time.sleep(1)
         uart_send_str("#004P1500T1500!")
@@ -449,7 +449,7 @@ class DepthLabelSortingNode(Node):
         # 归位
         self.move_x, self.move_y = 0, 120
         self.block_cx = self.block_cy = 0
-        kinematics_move(self.move_x, self.move_y, 90, 1000, alpha_hint=-82)
+        kinematics_move(self.move_x, self.move_y, 155, 1000, alpha_hint=-82)
         time.sleep(2)
 
         self.current_id_index += 1
@@ -477,7 +477,7 @@ class DepthLabelSortingNode(Node):
                 time.sleep(1)
                 # 重置状态
                 self.move_status = 0
-                self.move_x, self.move_y, self.move_z = 0, 118, 95
+                self.move_x, self.move_y, self.move_z = 0, 118, 155
                 self.block_cx, self.block_cy = 320, 240
                 self.color_read_succed = 0
                 self.success_cnt = 0

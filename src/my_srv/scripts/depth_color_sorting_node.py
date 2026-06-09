@@ -213,7 +213,7 @@ class DepthColorSortingNode(Node):
                 time.sleep(1)
                 # 重置状态机
                 self.move_status = 0
-                self.move_x, self.move_y, self.move_z = 0, 118, 95
+                self.move_x, self.move_y, self.move_z = 0, 105, 150
                 self.block_cx, self.block_cy = self.TARGET_CX, self.TARGET_CY
                 self.color_read_succed = 0
                 self.success_cnt = 0
@@ -293,7 +293,7 @@ class DepthColorSortingNode(Node):
         self.sorting_active = True
         # 🔧 初始位置: FK 反算自手动标定 PWM [1500,1432,1871,666] → (0,118,83)
         #    传入 alpha_hint=-82 确保 kinematics_move 选择与手动 PWM 一致的 alpha
-        self.move_x, self.move_y, self.move_z = 0, 118, 95
+        self.move_x, self.move_y, self.move_z = 0, 105, 150
         kinematics_move(self.move_x, self.move_y, self.move_z, 1000, alpha_hint=-82)
         time.sleep(2.5)
         self.move_status = 0
@@ -599,7 +599,7 @@ class DepthColorSortingNode(Node):
     # ── stage 5: 旋转到分拣区 ────────────────────────────────────────────────
     def _st5(self):
         self.block_cx = self.block_cy = 0
-        self.move_x, self.move_y = -130, 30
+        self.move_x, self.move_y = -130, 60
         kinematics_move(self.move_x, self.move_y, 150, 1000)
         time.sleep(1); uart_send_str("#004P1500T1500!"); time.sleep(0.5)
         kinematics_move(self.move_x, self.move_y, 60, 1000)
@@ -648,9 +648,9 @@ class DepthColorSortingNode(Node):
     def _st9(self):
         self.move_x, self.move_y = 0, 120
         self.block_cx = self.block_cy = 0
-        if not kinematics_move(self.move_x, self.move_y, 95, 1000, alpha_hint=-82):
+        if not kinematics_move(self.move_x, self.move_y, 150, 1000, alpha_hint=-82):
             self.get_logger().error(f'[st9] 归位 IK 无解，尝试默认初始位姿')
-            kinematics_move(0, 118, 95, 1000, alpha_hint=-82)
+            kinematics_move(0, 105, 150, 1000, alpha_hint=-82)
         time.sleep(2)
         if self.target_colors:
             self.current_color_index = (self.current_color_index + 1) % len(self.target_colors)

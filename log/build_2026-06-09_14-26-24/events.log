@@ -1,0 +1,262 @@
+[0.000000] (-) TimerEvent: {}
+[0.000139] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000302] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000326] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000395] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000607] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000632] (deptrum-ros-driver-aurora930) JobQueued: {'identifier': 'deptrum-ros-driver-aurora930', 'dependencies': OrderedDict()}
+[0.000786] (deptrum-ros-driver-aurora930) JobStarted: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.013435] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'cmake'}
+[0.017026] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '/home/webotpi/ros2_ws/src/deptrum-ros-driver', '-DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 57680 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '244', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 57680 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.058463] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.099696] (-) TimerEvent: {}
+[0.199902] (-) TimerEvent: {}
+[0.300133] (-) TimerEvent: {}
+[0.400394] (-) TimerEvent: {}
+[0.414417] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.451367] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.500520] (-) TimerEvent: {}
+[0.527891] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.549338] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.580076] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.600616] (-) TimerEvent: {}
+[0.613162] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.700733] (-) TimerEvent: {}
+[0.751953] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.756700] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.800834] (-) TimerEvent: {}
+[0.887330] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.900935] (-) TimerEvent: {}
+[1.001141] (-) TimerEvent: {}
+[1.030517] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- STREAM_SDK_TYPE: AURORA930\n'}
+[1.030824] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- SYSTEM_PLATFORM: -\n'}
+[1.031655] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[1.053145] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[1.101250] (-) TimerEvent: {}
+[1.107810] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)\n'}
+[1.128777] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)\n'}
+[1.136422] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[1.201370] (-) TimerEvent: {}
+[1.294111] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[1.301459] (-) TimerEvent: {}
+[1.301811] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[1.303736] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.305979] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found angles: 1.16.1 (/opt/ros/jazzy/share/angles/cmake)\n'}
+[1.310523] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- GLog library status:\n'}
+[1.310663] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include\n'}
+[1.310849] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/lib-static\n'}
+[1.310952] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     libraries: glog\n'}
+[1.311040] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- GFlags library status:\n'}
+[1.311210] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include\n'}
+[1.311311] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/lib-static\n'}
+[1.311398] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     libraries: gflags\n'}
+[1.311481] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[1.401555] (-) TimerEvent: {}
+[1.472365] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'CMake Deprecation Warning at subscribe_node/CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[1.472670] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  Compatibility with CMake < 3.5 will be removed from a future version of\n'}
+[1.472793] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  CMake.\n'}
+[1.472884] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.472970] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  Update the VERSION argument <min> value or use a ...<max> suffix to tell\n'}
+[1.473053] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  CMake that the project does not need compatibility with older versions.\n'}
+[1.473134] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.473212] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.498616] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.501619] (-) TimerEvent: {}
+[1.521960] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.522573] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/webotpi/ros2_ws/src/deptrum-ros-driver/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/deptrum-stream-aurora900-linux-aarch64-v1.1.19-18.04/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include\n'}
+[1.522710] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.545292] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.545486] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.548599] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.548729] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[1.554586] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.557802] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.581015] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.581156] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.584259] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.586752] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configuring done (1.6s)\n'}
+[1.601704] (-) TimerEvent: {}
+[1.656727] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[1.677776] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Build files have been written to: /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930\n'}
+[1.697603] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[1.698340] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'build'}
+[1.699228] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 57680 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '244', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 57680 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[1.701785] (-) TimerEvent: {}
+[1.803381] (-) TimerEvent: {}
+[1.814026] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 22%] Built target sub_node\n'}
+[1.819534] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 44%] Built target sub_node_ci\n'}
+[1.834273] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 55%] Building CXX object CMakeFiles/aurora930_node.dir/src/ros2_device.cc.o\n'}
+[1.903523] (-) TimerEvent: {}
+[2.003786] (-) TimerEvent: {}
+[2.104004] (-) TimerEvent: {}
+[2.204213] (-) TimerEvent: {}
+[2.304443] (-) TimerEvent: {}
+[2.404671] (-) TimerEvent: {}
+[2.490364] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,\n'}
+[2.490653] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_device.cc:5:\n'}
+[2.490771] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]\n'}
+[2.490894] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'   47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE\n'}
+[2.490984] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'      |      ^~~~~~~\n'}
+[2.504759] (-) TimerEvent: {}
+[2.604958] (-) TimerEvent: {}
+[2.705179] (-) TimerEvent: {}
+[2.805386] (-) TimerEvent: {}
+[2.905682] (-) TimerEvent: {}
+[3.005939] (-) TimerEvent: {}
+[3.106151] (-) TimerEvent: {}
+[3.206359] (-) TimerEvent: {}
+[3.306577] (-) TimerEvent: {}
+[3.406803] (-) TimerEvent: {}
+[3.507023] (-) TimerEvent: {}
+[3.607241] (-) TimerEvent: {}
+[3.707470] (-) TimerEvent: {}
+[3.807709] (-) TimerEvent: {}
+[3.907934] (-) TimerEvent: {}
+[4.008151] (-) TimerEvent: {}
+[4.108376] (-) TimerEvent: {}
+[4.208589] (-) TimerEvent: {}
+[4.308812] (-) TimerEvent: {}
+[4.409021] (-) TimerEvent: {}
+[4.509235] (-) TimerEvent: {}
+[4.609458] (-) TimerEvent: {}
+[4.709699] (-) TimerEvent: {}
+[4.809908] (-) TimerEvent: {}
+[4.910128] (-) TimerEvent: {}
+[5.010338] (-) TimerEvent: {}
+[5.110558] (-) TimerEvent: {}
+[5.210791] (-) TimerEvent: {}
+[5.311007] (-) TimerEvent: {}
+[5.411229] (-) TimerEvent: {}
+[5.511443] (-) TimerEvent: {}
+[5.611659] (-) TimerEvent: {}
+[5.711876] (-) TimerEvent: {}
+[5.812112] (-) TimerEvent: {}
+[5.912362] (-) TimerEvent: {}
+[6.012580] (-) TimerEvent: {}
+[6.112802] (-) TimerEvent: {}
+[6.213015] (-) TimerEvent: {}
+[6.313235] (-) TimerEvent: {}
+[6.413449] (-) TimerEvent: {}
+[6.513681] (-) TimerEvent: {}
+[6.613889] (-) TimerEvent: {}
+[6.714107] (-) TimerEvent: {}
+[6.814326] (-) TimerEvent: {}
+[6.914544] (-) TimerEvent: {}
+[7.014757] (-) TimerEvent: {}
+[7.114970] (-) TimerEvent: {}
+[7.215187] (-) TimerEvent: {}
+[7.315408] (-) TimerEvent: {}
+[7.415634] (-) TimerEvent: {}
+[7.515862] (-) TimerEvent: {}
+[7.616084] (-) TimerEvent: {}
+[7.716322] (-) TimerEvent: {}
+[7.816549] (-) TimerEvent: {}
+[7.916788] (-) TimerEvent: {}
+[8.017006] (-) TimerEvent: {}
+[8.117224] (-) TimerEvent: {}
+[8.217441] (-) TimerEvent: {}
+[8.317672] (-) TimerEvent: {}
+[8.417890] (-) TimerEvent: {}
+[8.518110] (-) TimerEvent: {}
+[8.618327] (-) TimerEvent: {}
+[8.718551] (-) TimerEvent: {}
+[8.818805] (-) TimerEvent: {}
+[8.919024] (-) TimerEvent: {}
+[9.019248] (-) TimerEvent: {}
+[9.119481] (-) TimerEvent: {}
+[9.219701] (-) TimerEvent: {}
+[9.319923] (-) TimerEvent: {}
+[9.420181] (-) TimerEvent: {}
+[9.520392] (-) TimerEvent: {}
+[9.620627] (-) TimerEvent: {}
+[9.720899] (-) TimerEvent: {}
+[9.821108] (-) TimerEvent: {}
+[9.921323] (-) TimerEvent: {}
+[10.021542] (-) TimerEvent: {}
+[10.121760] (-) TimerEvent: {}
+[10.221982] (-) TimerEvent: {}
+[10.322191] (-) TimerEvent: {}
+[10.422400] (-) TimerEvent: {}
+[10.522608] (-) TimerEvent: {}
+[10.622826] (-) TimerEvent: {}
+[10.723032] (-) TimerEvent: {}
+[10.823239] (-) TimerEvent: {}
+[10.923447] (-) TimerEvent: {}
+[11.023668] (-) TimerEvent: {}
+[11.123882] (-) TimerEvent: {}
+[11.224126] (-) TimerEvent: {}
+[11.324337] (-) TimerEvent: {}
+[11.424542] (-) TimerEvent: {}
+[11.524745] (-) TimerEvent: {}
+[11.624948] (-) TimerEvent: {}
+[11.725156] (-) TimerEvent: {}
+[11.825357] (-) TimerEvent: {}
+[11.925598] (-) TimerEvent: {}
+[12.025853] (-) TimerEvent: {}
+[12.126072] (-) TimerEvent: {}
+[12.226293] (-) TimerEvent: {}
+[12.326520] (-) TimerEvent: {}
+[12.426739] (-) TimerEvent: {}
+[12.526960] (-) TimerEvent: {}
+[12.563818] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 66%] Linking CXX executable aurora930_node\n'}
+[12.627127] (-) TimerEvent: {}
+[12.727448] (-) TimerEvent: {}
+[12.827821] (-) TimerEvent: {}
+[12.928249] (-) TimerEvent: {}
+[13.028553] (-) TimerEvent: {}
+[13.128958] (-) TimerEvent: {}
+[13.229474] (-) TimerEvent: {}
+[13.329906] (-) TimerEvent: {}
+[13.430164] (-) TimerEvent: {}
+[13.530477] (-) TimerEvent: {}
+[13.630956] (-) TimerEvent: {}
+[13.731284] (-) TimerEvent: {}
+[13.831518] (-) TimerEvent: {}
+[13.931732] (-) TimerEvent: {}
+[14.031956] (-) TimerEvent: {}
+[14.132174] (-) TimerEvent: {}
+[14.232403] (-) TimerEvent: {}
+[14.332635] (-) TimerEvent: {}
+[14.432853] (-) TimerEvent: {}
+[14.451653] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[100%] Built target aurora930_node\n'}
+[14.471614] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[14.472506] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'install'}
+[14.488451] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 57680 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '244', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 57680 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[14.503027] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[14.503790] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[14.504207] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.sh\n'}
+[14.504484] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.dsv\n'}
+[14.504949] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node\n'}
+[14.505271] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node\n'}
+[14.505644] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node\n'}
+[14.505934] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node_ci\n'}
+[14.506218] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/99-deptrum-libusb.rules\n'}
+[14.506482] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/libdeptrum_stream_aurora900.so.1.1.19\n'}
+[14.506752] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/usage_aurora930.md\n'}
+[14.509874] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/RELEASE_AURORA930.md\n'}
+[14.510050] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/rviz/aurora930-ros2.rviz\n'}
+[14.510149] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/package_run_dependencies/deptrum-ros-driver-aurora930\n'}
+[14.510250] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/parent_prefix_path/deptrum-ros-driver-aurora930\n'}
+[14.510339] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.sh\n'}
+[14.510453] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.dsv\n'}
+[14.510559] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.sh\n'}
+[14.510665] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.dsv\n'}
+[14.510800] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.bash\n'}
+[14.510903] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.sh\n'}
+[14.511014] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.zsh\n'}
+[14.511133] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.dsv\n'}
+[14.511243] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.dsv\n'}
+[14.527061] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/packages/deptrum-ros-driver-aurora930\n'}
+[14.527455] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[14.527835] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config.cmake\n'}
+[14.528806] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config-version.cmake\n'}
+[14.528991] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.xml\n'}
+[14.529105] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch\n'}
+[14.529237] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/viewer930_launch.py\n'}
+[14.529348] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_multi_launch.py\n'}
+[14.529446] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/sub_node_ci_aurora930_launch.py\n'}
+[14.529542] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_launch.py\n'}
+[14.531891] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[14.533407] (-) TimerEvent: {}
+[14.562610] (deptrum-ros-driver-aurora930) JobEnded: {'identifier': 'deptrum-ros-driver-aurora930', 'rc': 0}
+[14.563617] (-) EventReactorShutdown: {}

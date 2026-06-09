@@ -1,0 +1,23 @@
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- STREAM_SDK_TYPE: STELLAR400
+-- SYSTEM_PLATFORM: -
+-- Download deptrum-stream-stellar400---v1.1.2-18.04.tar.gz from http://192.168.104.3/data/ci_release/deptrum-stream/stellar400/release/-/deptrum-stream-stellar400---v1.1.2-18.04.tar.gz
+CMake Error at cmake/Download.cmake:29 (message):
+  
+  http://192.168.104.3/data/ci_release/deptrum-stream/stellar400/release/-/deptrum-stream-stellar400---v1.1.2-18.04.tar.gz
+  doesn't exist.
+Call Stack (most recent call first):
+  cmake/Download.cmake:71 (download)
+  CMakeLists.txt:119 (download_sdk)
+
+
+-- Configuring incomplete, errors occurred!

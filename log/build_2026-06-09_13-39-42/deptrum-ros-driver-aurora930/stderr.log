@@ -1,0 +1,24 @@
+CMake Deprecation Warning at subscribe_node/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,
+                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_device.cc:5:
+/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]
+   47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE
+      |      ^~~~~~~
+In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,
+                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_node.cc:6:
+/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]
+   47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE
+      |      ^~~~~~~
+In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,
+                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/aurora900_ros2_device.h:4,
+                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/aurora900_ros2_device.cc:2:
+/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]
+   47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE
+      |      ^~~~~~~
