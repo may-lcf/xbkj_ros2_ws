@@ -1,0 +1,1 @@
+/home/webotpi/ros2_ws/src/my_srv/scripts/diagnose_hand_eye.py

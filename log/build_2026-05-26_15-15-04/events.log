@@ -1,0 +1,180 @@
+[0.000000] (-) TimerEvent: {}
+[0.000315] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000413] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000650] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000671] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000826] (my_srv) JobQueued: {'identifier': 'my_srv', 'dependencies': OrderedDict()}
+[0.000850] (my_srv) JobStarted: {'identifier': 'my_srv'}
+[0.010124] (my_srv) JobProgress: {'identifier': 'my_srv', 'progress': 'cmake'}
+[0.011079] (my_srv) JobProgress: {'identifier': 'my_srv', 'progress': 'build'}
+[0.011957] (my_srv) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/my_srv', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/my_srv', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 55762 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '100', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/my_srv', 'SSH_CONNECTION': '192.168.0.111 55762 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.101200] (-) TimerEvent: {}
+[0.112649] (my_srv) StdoutLine: {'line': b'[  2%] Built target my_srv__rs\n'}
+[0.116786] (my_srv) StdoutLine: {'line': b'[  5%] Built target my_srv__rosidl_generator_type_description\n'}
+[0.131181] (my_srv) StdoutLine: {'line': b'[  5%] Built target ament_cmake_python_symlink_my_srv\n'}
+[0.154953] (my_srv) StdoutLine: {'line': b'[ 11%] Built target my_srv__cpp\n'}
+[0.155534] (my_srv) StdoutLine: {'line': b'[ 22%] Built target my_srv__rosidl_generator_c\n'}
+[0.201497] (-) TimerEvent: {}
+[0.215141] (my_srv) StdoutLine: {'line': b'[ 31%] Built target my_srv__rosidl_typesupport_introspection_c\n'}
+[0.222192] (my_srv) StdoutLine: {'line': b'[ 48%] Built target my_srv__rosidl_typesupport_fastrtps_cpp\n'}
+[0.222552] (my_srv) StdoutLine: {'line': b'[ 48%] Built target my_srv__rosidl_typesupport_fastrtps_c\n'}
+[0.270127] (my_srv) StdoutLine: {'line': b'[ 57%] Built target my_srv__rosidl_typesupport_c\n'}
+[0.280080] (my_srv) StdoutLine: {'line': b'[ 65%] Built target my_srv__rosidl_typesupport_introspection_cpp\n'}
+[0.280522] (my_srv) StdoutLine: {'line': b'[ 74%] Built target my_srv__rosidl_typesupport_cpp\n'}
+[0.301588] (-) TimerEvent: {}
+[0.317276] (my_srv) StdoutLine: {'line': b'[ 74%] Built target my_srv\n'}
+[0.360716] (my_srv) StdoutLine: {'line': b'[ 77%] Built target my_srv__py\n'}
+[0.399400] (my_srv) StdoutLine: {'line': b'[ 82%] Built target my_srv__rosidl_generator_py\n'}
+[0.401698] (-) TimerEvent: {}
+[0.453264] (my_srv) StdoutLine: {'line': b'[ 88%] Built target my_srv_s__rosidl_typesupport_introspection_c\n'}
+[0.457395] (my_srv) StdoutLine: {'line': b'[ 94%] Built target my_srv_s__rosidl_typesupport_c\n'}
+[0.460360] (my_srv) StdoutLine: {'line': b'[100%] Built target my_srv_s__rosidl_typesupport_fastrtps_c\n'}
+[0.501792] (-) TimerEvent: {}
+[0.529386] (my_srv) StdoutLine: {'line': b'running egg_info\n'}
+[0.554722] (my_srv) StdoutLine: {'line': b'writing my_srv.egg-info/PKG-INFO\n'}
+[0.555174] (my_srv) StdoutLine: {'line': b'writing dependency_links to my_srv.egg-info/dependency_links.txt\n'}
+[0.558033] (my_srv) StdoutLine: {'line': b'writing top-level names to my_srv.egg-info/top_level.txt\n'}
+[0.601892] (-) TimerEvent: {}
+[0.636301] (my_srv) StdoutLine: {'line': b"reading manifest file 'my_srv.egg-info/SOURCES.txt'\n"}
+[0.637051] (my_srv) StdoutLine: {'line': b"writing manifest file 'my_srv.egg-info/SOURCES.txt'\n"}
+[0.702003] (-) TimerEvent: {}
+[0.712699] (my_srv) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_my_srv_egg\n'}
+[0.734469] (my_srv) CommandEnded: {'returncode': 0}
+[0.735316] (my_srv) JobProgress: {'identifier': 'my_srv', 'progress': 'install'}
+[0.756244] (my_srv) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/my_srv'], 'cwd': '/home/webotpi/ros2_ws/build/my_srv', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 55762 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '100', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/my_srv', 'SSH_CONNECTION': '192.168.0.111 55762 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.770223] (my_srv) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.771011] (my_srv) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.771374] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/rosidl_interfaces/my_srv\n'}
+[0.771616] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.json\n'}
+[0.772258] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.772470] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/add.h\n'}
+[0.772686] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__functions.h\n'}
+[0.772890] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__struct.h\n'}
+[0.772993] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.h\n'}
+[0.773188] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/library_path.sh\n'}
+[0.773391] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/library_path.dsv\n'}
+[0.773954] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[0.774177] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_fastrtps_c.h\n'}
+[0.774602] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[0.774792] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/add.hpp\n'}
+[0.775085] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__builder.hpp\n'}
+[0.775281] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__struct.hpp\n'}
+[0.775380] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__traits.hpp\n'}
+[0.776720] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.hpp\n'}
+[0.776866] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[0.776962] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.777152] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[0.778200] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_introspection_c.h\n'}
+[0.778321] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.778416] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/pythonpath.sh\n'}
+[0.778502] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/pythonpath.dsv\n'}
+[0.778663] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[0.778834] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[0.781230] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[0.781351] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[0.781510] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/__init__.py\n'}
+[0.781605] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_c.c\n'}
+[0.781690] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[0.781845] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[0.781931] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_c.so\n'}
+[0.782030] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so\n'}
+[0.782127] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so\n'}
+[0.782222] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/__init__.py\n'}
+[0.782302] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add.py\n'}
+[0.782382] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add_s.c\n'}
+[0.782460] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so\n'}
+[0.782614] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so\n'}
+[0.782865] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_c.so\n'}
+[0.782984] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/rust_packages/my_srv\n'}
+[0.783075] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/Cargo.toml\n'}
+[0.783306] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/build.rs\n'}
+[0.783451] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/lib.rs\n'}
+[0.783620] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/srv.rs\n'}
+[0.783765] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/srv/rmw.rs\n'}
+[0.783853] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.idl\n'}
+[0.784008] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.srv\n'}
+[0.784198] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_fk.py\n'}
+[0.785263] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_rviz_bridge.py\n'}
+[0.785452] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_teach.py\n'}
+[0.785545] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/asr_node.py\n'}
+[0.785733] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_set_node.py\n'}
+[0.785818] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_sorting_node.py\n'}
+[0.785899] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_stack_node.py\n'}
+[0.785975] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_track_node.py\n'}
+[0.786053] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_arm.launch.py\n'}
+[0.786147] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_color_sorting_node.py\n'}
+[0.786236] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_distance_node.py\n'}
+[0.786347] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_utils.py\n'}
+[0.787228] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/eye_in_hand_calib_node.py\n'}
+[0.787341] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/face_track_node.py\n'}
+[0.787472] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/glove_node.py\n'}
+[0.787561] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/hand_gesture_arm_node.py\n'}
+[0.787809] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/joy_arm_node.py\n'}
+[0.787918] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/lab_tuner.py\n'}
+[0.788008] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_sorting_node.py\n'}
+[0.788216] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_stack_node.py\n'}
+[0.788313] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_track_node.py\n'}
+[0.788401] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_sorting_node.py\n'}
+[0.788493] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_stack_node.py\n'}
+[0.788575] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_track_node.py\n'}
+[0.788653] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/servo_node.py\n'}
+[0.788731] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/test.py\n'}
+[0.788810] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/z_move.py\n'}
+[0.788888] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/z_uart.py\n'}
+[0.789092] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/function.launch.py\n'}
+[0.789237] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/slave.launch.py\n'}
+[0.789336] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/web/index.html\n'}
+[0.789428] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/package_run_dependencies/my_srv\n'}
+[0.789610] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/parent_prefix_path/my_srv\n'}
+[0.789799] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/ament_prefix_path.sh\n'}
+[0.789894] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/ament_prefix_path.dsv\n'}
+[0.790053] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/path.sh\n'}
+[0.790234] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/path.dsv\n'}
+[0.790395] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.bash\n'}
+[0.790558] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.sh\n'}
+[0.790746] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.zsh\n'}
+[0.790949] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.dsv\n'}
+[0.791151] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.dsv\n'}
+[0.802092] (-) TimerEvent: {}
+[0.807508] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/packages/my_srv\n'}
+[0.807888] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake-extras.cmake\n'}
+[0.808008] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.808211] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.808448] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.808657] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[0.808772] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[0.808979] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[0.809202] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srvConfig.cmake\n'}
+[0.809370] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srvConfig-version.cmake\n'}
+[0.809542] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.xml\n'}
+[0.809872] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_c.so\n'}
+[0.810362] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_c.so\n'}
+[0.810801] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_cpp.so\n'}
+[0.811242] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_c.so\n'}
+[0.811646] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_c.so\n'}
+[0.812048] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_cpp.so\n'}
+[0.812502] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_cpp.so\n'}
+[0.866836] (my_srv) StdoutLine: {'line': b"Listing '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv'...\n"}
+[0.867183] (my_srv) StdoutLine: {'line': b"Listing '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv'...\n"}
+[0.878699] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_py.so\n'}
+[0.879084] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cExport.cmake\n'}
+[0.879431] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cExport-noconfig.cmake\n'}
+[0.879540] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[0.879825] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[0.880021] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cppExport.cmake\n'}
+[0.880251] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[0.880485] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[0.880580] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cExport.cmake\n'}
+[0.880669] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[0.880750] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cExport.cmake\n'}
+[0.880829] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[0.880936] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[0.881052] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[0.881178] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cppExport.cmake\n'}
+[0.881280] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[0.881519] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_pyExport.cmake\n'}
+[0.881658] (my_srv) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_pyExport-noconfig.cmake\n'}
+[0.883796] (my_srv) CommandEnded: {'returncode': 0}
+[0.902589] (-) TimerEvent: {}
+[0.932521] (my_srv) JobEnded: {'identifier': 'my_srv', 'rc': 0}
+[0.933347] (-) EventReactorShutdown: {}

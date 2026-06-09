@@ -1,0 +1,1 @@
+/home/webotpi/ros2_ws/src/my_srv/scripts/hand_gesture_arm_node.py

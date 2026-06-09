@@ -1,0 +1,400 @@
+[0.000000] (-) TimerEvent: {}
+[0.000374] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000661] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000688] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000845] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000865] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.001056] (my_srv) JobQueued: {'identifier': 'my_srv', 'dependencies': OrderedDict()}
+[0.001082] (my_srv) JobStarted: {'identifier': 'my_srv'}
+[0.010746] (my_srv) JobProgress: {'identifier': 'my_srv', 'progress': 'cmake'}
+[0.011447] (my_srv) Command: {'cmd': ['/usr/bin/cmake', '/home/webotpi/ros2_ws/src/my_srv', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/my_srv'], 'cwd': '/home/webotpi/ros2_ws/build/my_srv', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 53636 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/webotpi/ros2_ws/install/my_srv/lib:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/webotpi/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '4', 'PATH': '/home/webotpi/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/webotpi/fastdds_config.xml', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '42', 'AMENT_PREFIX_PATH': '/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/my_launch_pkg:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/my_srv', 'SSH_CONNECTION': '192.168.0.111 53636 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/webotpi/OpenCV', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy'}), 'shell': False}
+[0.099714] (-) TimerEvent: {}
+[0.111099] (my_srv) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.199837] (-) TimerEvent: {}
+[0.207074] (my_srv) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.235847] (my_srv) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299959] (-) TimerEvent: {}
+[0.388987] (my_srv) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.400074] (-) TimerEvent: {}
+[0.404905] (my_srv) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.405241] (my_srv) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.405820] (my_srv) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.421071] (my_srv) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.500188] (-) TimerEvent: {}
+[0.590497] (my_srv) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.600256] (-) TimerEvent: {}
+[0.605794] (my_srv) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.606259] (my_srv) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.607022] (my_srv) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.611035] (my_srv) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.700391] (-) TimerEvent: {}
+[0.800718] (-) TimerEvent: {}
+[0.831420] (my_srv) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.900836] (-) TimerEvent: {}
+[0.953180] (my_srv) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[1.000944] (-) TimerEvent: {}
+[1.001517] (my_srv) StdoutLine: {'line': b'-- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)\n'}
+[1.071992] (my_srv) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[1.092263] (my_srv) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[1.101004] (-) TimerEvent: {}
+[1.115826] (my_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.142949] (my_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.201126] (-) TimerEvent: {}
+[1.301471] (-) TimerEvent: {}
+[1.330315] (my_srv) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[1.334808] (my_srv) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.401583] (-) TimerEvent: {}
+[1.472450] (my_srv) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[1.499525] (my_srv) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[1.501647] (-) TimerEvent: {}
+[1.534104] (my_srv) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.601765] (-) TimerEvent: {}
+[1.631395] (my_srv) StdoutLine: {'line': b'-- Found rosbridge_suite: 2.6.0 (/opt/ros/jazzy/share/rosbridge_suite/cmake)\n'}
+[1.634038] (my_srv) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[1.662162] (my_srv) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[1.701875] (-) TimerEvent: {}
+[1.802255] (-) TimerEvent: {}
+[1.902612] (-) TimerEvent: {}
+[2.002942] (-) TimerEvent: {}
+[2.103313] (-) TimerEvent: {}
+[2.203760] (-) TimerEvent: {}
+[2.304116] (-) TimerEvent: {}
+[2.404517] (-) TimerEvent: {}
+[2.504855] (-) TimerEvent: {}
+[2.559758] (my_srv) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[2.604962] (-) TimerEvent: {}
+[2.705267] (-) TimerEvent: {}
+[2.805614] (-) TimerEvent: {}
+[2.905966] (-) TimerEvent: {}
+[3.006359] (-) TimerEvent: {}
+[3.106714] (-) TimerEvent: {}
+[3.207055] (-) TimerEvent: {}
+[3.307415] (-) TimerEvent: {}
+[3.407808] (-) TimerEvent: {}
+[3.508142] (-) TimerEvent: {}
+[3.608486] (-) TimerEvent: {}
+[3.659315] (my_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.708609] (-) TimerEvent: {}
+[3.808969] (-) TimerEvent: {}
+[3.909340] (-) TimerEvent: {}
+[4.009660] (-) TimerEvent: {}
+[4.089344] (my_srv) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.094071] (my_srv) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[4.109749] (-) TimerEvent: {}
+[4.210077] (-) TimerEvent: {}
+[4.305967] (my_srv) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[4.310152] (-) TimerEvent: {}
+[4.410433] (-) TimerEvent: {}
+[4.510793] (-) TimerEvent: {}
+[4.611185] (-) TimerEvent: {}
+[4.711550] (-) TimerEvent: {}
+[4.811895] (-) TimerEvent: {}
+[4.912269] (-) TimerEvent: {}
+[5.001910] (my_srv) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[5.012395] (-) TimerEvent: {}
+[5.103869] (my_srv) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[5.110733] (my_srv) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[5.112461] (-) TimerEvent: {}
+[5.147990] (my_srv) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[5.148210] (my_srv) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[5.149629] (my_srv) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[5.150861] (my_srv) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[5.155199] (my_srv) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[5.161119] (my_srv) StdoutLine: {'line': b'-- Configuring done (5.1s)\n'}
+[5.212567] (-) TimerEvent: {}
+[5.213784] (my_srv) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[5.231718] (my_srv) StdoutLine: {'line': b'-- Build files have been written to: /home/webotpi/ros2_ws/build/my_srv\n'}
+[5.259019] (my_srv) CommandEnded: {'returncode': 0}
+[5.259781] (my_srv) JobProgress: {'identifier': 'my_srv', 'progress': 'build'}
+[5.260536] (my_srv) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/my_srv', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/my_srv', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 53636 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/webotpi/ros2_ws/install/my_srv/lib:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/webotpi/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '4', 'PATH': '/home/webotpi/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/webotpi/fastdds_config.xml', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '42', 'AMENT_PREFIX_PATH': '/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/my_launch_pkg:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/my_srv', 'SSH_CONNECTION': '192.168.0.111 53636 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/webotpi/OpenCV', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy'}), 'shell': False}
+[5.312685] (-) TimerEvent: {}
+[5.353946] (my_srv) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[5.354778] (my_srv) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating Rust code for ROS interfaces\x1b[0m\n'}
+[5.372395] (my_srv) StdoutLine: {'line': b'[  5%] Built target ament_cmake_python_symlink_my_srv\n'}
+[5.412813] (-) TimerEvent: {}
+[5.513189] (-) TimerEvent: {}
+[5.613586] (-) TimerEvent: {}
+[5.713934] (-) TimerEvent: {}
+[5.719502] (my_srv) StdoutLine: {'line': b'[  5%] Built target my_srv__rosidl_generator_type_description\n'}
+[5.740269] (my_srv) StdoutLine: {'line': b'[  8%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[5.763354] (my_srv) StdoutLine: {'line': b'[ 11%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[5.781189] (my_srv) StdoutLine: {'line': b'running egg_info\n'}
+[5.782661] (my_srv) StdoutLine: {'line': b'creating my_srv.egg-info\n'}
+[5.814071] (-) TimerEvent: {}
+[5.815589] (my_srv) StdoutLine: {'line': b'[ 11%] Built target my_srv__rs\n'}
+[5.823380] (my_srv) StdoutLine: {'line': b'writing my_srv.egg-info/PKG-INFO\n'}
+[5.824102] (my_srv) StdoutLine: {'line': b'writing dependency_links to my_srv.egg-info/dependency_links.txt\n'}
+[5.824684] (my_srv) StdoutLine: {'line': b'writing top-level names to my_srv.egg-info/top_level.txt\n'}
+[5.825173] (my_srv) StdoutLine: {'line': b"writing manifest file 'my_srv.egg-info/SOURCES.txt'\n"}
+[5.913675] (my_srv) StdoutLine: {'line': b"reading manifest file 'my_srv.egg-info/SOURCES.txt'\n"}
+[5.914140] (-) TimerEvent: {}
+[5.914723] (my_srv) StdoutLine: {'line': b"writing manifest file 'my_srv.egg-info/SOURCES.txt'\n"}
+[5.994818] (my_srv) StdoutLine: {'line': b'[ 11%] Built target ament_cmake_python_build_my_srv_egg\n'}
+[6.014254] (-) TimerEvent: {}
+[6.114617] (-) TimerEvent: {}
+[6.215938] (-) TimerEvent: {}
+[6.265252] (my_srv) StdoutLine: {'line': b'[ 11%] Built target my_srv__cpp\n'}
+[6.286049] (my_srv) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/my_srv__rosidl_generator_c.dir/rosidl_generator_c/my_srv/srv/detail/add__description.c.o\x1b[0m\n'}
+[6.286395] (my_srv) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/my_srv__rosidl_generator_c.dir/rosidl_generator_c/my_srv/srv/detail/add__type_support.c.o\x1b[0m\n'}
+[6.286579] (my_srv) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/my_srv__rosidl_generator_c.dir/rosidl_generator_c/my_srv/srv/detail/add__functions.c.o\x1b[0m\n'}
+[6.316049] (-) TimerEvent: {}
+[6.412930] (my_srv) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libmy_srv__rosidl_generator_c.so\x1b[0m\n'}
+[6.416156] (-) TimerEvent: {}
+[6.489170] (my_srv) StdoutLine: {'line': b'[ 22%] Built target my_srv__rosidl_generator_c\n'}
+[6.512574] (my_srv) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[6.512911] (my_srv) StdoutLine: {'line': b'[ 34%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[6.513032] (my_srv) StdoutLine: {'line': b'[ 34%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[6.513165] (my_srv) StdoutLine: {'line': b'[ 34%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[6.516359] (-) TimerEvent: {}
+[6.616951] (-) TimerEvent: {}
+[6.719655] (-) TimerEvent: {}
+[6.820052] (-) TimerEvent: {}
+[6.920426] (-) TimerEvent: {}
+[6.965465] (my_srv) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/my_srv__rosidl_typesupport_c.dir/rosidl_typesupport_c/my_srv/srv/add__type_support.cpp.o\x1b[0m\n'}
+[7.022442] (-) TimerEvent: {}
+[7.042805] (my_srv) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding C object CMakeFiles/my_srv__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/my_srv/srv/detail/add__type_support.c.o\x1b[0m\n'}
+[7.083509] (my_srv) StdoutLine: {'line': b'[ 42%] \x1b[32m\x1b[1mLinking CXX shared library libmy_srv__rosidl_typesupport_c.so\x1b[0m\n'}
+[7.122574] (-) TimerEvent: {}
+[7.124571] (my_srv) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/my_srv__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/my_srv/srv/detail/add__type_support_c.cpp.o\x1b[0m\n'}
+[7.139782] (my_srv) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/my_srv__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/my_srv/srv/detail/dds_fastrtps/add__type_support.cpp.o\x1b[0m\n'}
+[7.154342] (my_srv) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking C shared library libmy_srv__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[7.186468] (my_srv) StdoutLine: {'line': b'[ 51%] Built target my_srv__rosidl_typesupport_c\n'}
+[7.203021] (my_srv) StdoutLine: {'line': b'[ 54%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[7.222713] (-) TimerEvent: {}
+[7.235320] (my_srv) StdoutLine: {'line': b'[ 54%] Built target my_srv__rosidl_typesupport_introspection_c\n'}
+[7.262298] (my_srv) StdoutLine: {'line': b'[ 57%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[7.322832] (-) TimerEvent: {}
+[7.425425] (-) TimerEvent: {}
+[7.526020] (-) TimerEvent: {}
+[7.626413] (-) TimerEvent: {}
+[7.727101] (-) TimerEvent: {}
+[7.795510] (my_srv) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/my_srv__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/my_srv/srv/detail/add__type_support.cpp.o\x1b[0m\n'}
+[7.824552] (my_srv) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/my_srv__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/my_srv/srv/add__type_support.cpp.o\x1b[0m\n'}
+[7.828437] (-) TimerEvent: {}
+[7.929069] (-) TimerEvent: {}
+[8.031643] (-) TimerEvent: {}
+[8.132468] (-) TimerEvent: {}
+[8.233257] (-) TimerEvent: {}
+[8.272591] (my_srv) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking CXX shared library libmy_srv__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[8.333341] (-) TimerEvent: {}
+[8.434093] (-) TimerEvent: {}
+[8.492807] (my_srv) StdoutLine: {'line': b'[ 65%] Built target my_srv__rosidl_typesupport_fastrtps_c\n'}
+[8.534236] (-) TimerEvent: {}
+[8.612685] (my_srv) StdoutLine: {'line': b'[ 68%] \x1b[32m\x1b[1mLinking CXX shared library libmy_srv__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[8.634425] (-) TimerEvent: {}
+[8.735293] (-) TimerEvent: {}
+[8.800527] (my_srv) StdoutLine: {'line': b'[ 71%] \x1b[32m\x1b[1mLinking CXX shared library libmy_srv__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[8.802806] (my_srv) StdoutLine: {'line': b'[ 71%] Built target my_srv__rosidl_typesupport_fastrtps_cpp\n'}
+[8.834581] (my_srv) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library libmy_srv__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[8.835380] (-) TimerEvent: {}
+[8.936135] (-) TimerEvent: {}
+[8.980506] (my_srv) StdoutLine: {'line': b'[ 74%] Built target my_srv__rosidl_typesupport_cpp\n'}
+[9.009017] (my_srv) StdoutLine: {'line': b'[ 74%] Built target my_srv__rosidl_typesupport_introspection_cpp\n'}
+[9.036243] (-) TimerEvent: {}
+[9.047200] (my_srv) StdoutLine: {'line': b'[ 74%] Built target my_srv\n'}
+[9.083145] (my_srv) StdoutLine: {'line': b'[ 77%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[9.136357] (-) TimerEvent: {}
+[9.236678] (-) TimerEvent: {}
+[9.336994] (-) TimerEvent: {}
+[9.437287] (-) TimerEvent: {}
+[9.537607] (-) TimerEvent: {}
+[9.632533] (my_srv) StdoutLine: {'line': b'[ 77%] Built target my_srv__py\n'}
+[9.637710] (-) TimerEvent: {}
+[9.668374] (my_srv) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding C object CMakeFiles/my_srv__rosidl_generator_py.dir/rosidl_generator_py/my_srv/srv/_add_s.c.o\x1b[0m\n'}
+[9.737834] (-) TimerEvent: {}
+[9.838210] (-) TimerEvent: {}
+[9.903455] (my_srv) StdoutLine: {'line': b'[ 82%] \x1b[32m\x1b[1mLinking C shared library libmy_srv__rosidl_generator_py.so\x1b[0m\n'}
+[9.938351] (-) TimerEvent: {}
+[9.983793] (my_srv) StdoutLine: {'line': b'[ 82%] Built target my_srv__rosidl_generator_py\n'}
+[10.023144] (my_srv) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/my_srv_s__rosidl_typesupport_c.dir/rosidl_generator_py/my_srv/_my_srv_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[10.023528] (my_srv) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/my_srv_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/my_srv/_my_srv_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[10.023684] (my_srv) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/my_srv_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/my_srv/_my_srv_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[10.039443] (-) TimerEvent: {}
+[10.141438] (-) TimerEvent: {}
+[10.210824] (my_srv) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/my_srv/my_srv_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[10.211187] (my_srv) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[10.219754] (my_srv) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[10.241595] (-) TimerEvent: {}
+[10.265718] (my_srv) StdoutLine: {'line': b'[100%] Built target my_srv_s__rosidl_typesupport_introspection_c\n'}
+[10.270755] (my_srv) StdoutLine: {'line': b'[100%] Built target my_srv_s__rosidl_typesupport_c\n'}
+[10.284260] (my_srv) StdoutLine: {'line': b'[100%] Built target my_srv_s__rosidl_typesupport_fastrtps_c\n'}
+[10.306090] (my_srv) CommandEnded: {'returncode': 0}
+[10.306898] (my_srv) JobProgress: {'identifier': 'my_srv', 'progress': 'install'}
+[10.323944] (my_srv) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/my_srv'], 'cwd': '/home/webotpi/ros2_ws/build/my_srv', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 53636 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/webotpi/ros2_ws/install/my_srv/lib:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/webotpi/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '4', 'PATH': '/home/webotpi/.local/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/webotpi/fastdds_config.xml', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '42', 'AMENT_PREFIX_PATH': '/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/my_launch_pkg:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/my_srv', 'SSH_CONNECTION': '192.168.0.111 53636 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/webotpi/OpenCV', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy'}), 'shell': False}
+[10.337970] (my_srv) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[10.338881] (my_srv) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[10.339401] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/rosidl_interfaces/my_srv\n'}
+[10.341644] (-) TimerEvent: {}
+[10.356705] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.json\n'}
+[10.373725] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_generator_c__visibility_control.h\n'}
+[10.390299] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/add.h\n'}
+[10.407592] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__functions.h\n'}
+[10.424272] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__struct.h\n'}
+[10.440768] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.h\n'}
+[10.441715] (-) TimerEvent: {}
+[10.457062] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/library_path.sh\n'}
+[10.472745] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/library_path.dsv\n'}
+[10.489929] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[10.506798] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_fastrtps_c.h\n'}
+[10.523730] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[10.540378] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/add.hpp\n'}
+[10.541788] (-) TimerEvent: {}
+[10.556824] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__builder.hpp\n'}
+[10.573353] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__struct.hpp\n'}
+[10.589267] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__traits.hpp\n'}
+[10.605119] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.hpp\n'}
+[10.623212] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[10.639601] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[10.641871] (-) TimerEvent: {}
+[10.656215] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[10.672561] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_introspection_c.h\n'}
+[10.689030] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_introspection_cpp.hpp\n'}
+[10.706302] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/pythonpath.sh\n'}
+[10.722689] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/pythonpath.dsv\n'}
+[10.741187] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[10.741940] (-) TimerEvent: {}
+[10.757637] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[10.773236] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[10.790020] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[10.807691] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/__init__.py\n'}
+[10.823792] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_c.c\n'}
+[10.841231] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[10.842012] (-) TimerEvent: {}
+[10.857787] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[10.873525] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_c.so\n'}
+[10.889859] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so\n'}
+[10.905748] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so\n'}
+[10.922954] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/__init__.py\n'}
+[10.939645] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add.py\n'}
+[10.942092] (-) TimerEvent: {}
+[10.955837] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add_s.c\n'}
+[10.973805] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so\n'}
+[10.974136] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so\n'}
+[10.974488] (my_srv) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_c.so\n'}
+[10.974823] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/rust_packages/my_srv\n'}
+[10.991263] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/Cargo.toml\n'}
+[11.007765] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/build.rs\n'}
+[11.024405] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/lib.rs\n'}
+[11.040407] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/srv.rs\n'}
+[11.042170] (-) TimerEvent: {}
+[11.058225] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/srv/rmw.rs\n'}
+[11.074764] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.idl\n'}
+[11.090882] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.srv\n'}
+[11.107439] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_fk.py\n'}
+[11.123505] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_rviz_bridge.py\n'}
+[11.139785] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_teach.py\n'}
+[11.142249] (-) TimerEvent: {}
+[11.155246] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/asr_node.py\n'}
+[11.171483] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_set_node.py\n'}
+[11.188499] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_sorting_node.py\n'}
+[11.204775] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_stack_node.py\n'}
+[11.222226] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_track_node.py\n'}
+[11.238618] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_arm.launch.py\n'}
+[11.242383] (-) TimerEvent: {}
+[11.255811] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_color_sorting_node.py\n'}
+[11.272012] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_color_stack_node.py\n'}
+[11.288361] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_color_track_node.py\n'}
+[11.305421] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_distance_node.py\n'}
+[11.321887] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_label_sorting_node.py\n'}
+[11.338179] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_label_stack_node.py\n'}
+[11.342454] (-) TimerEvent: {}
+[11.354387] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_label_track_node.py\n'}
+[11.370596] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_num_sorting_node.py\n'}
+[11.387154] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_num_stack_node.py\n'}
+[11.403155] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_num_track_node.py\n'}
+[11.419601] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_utils.py\n'}
+[11.436392] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/diagnose_hand_eye.py\n'}
+[11.442560] (-) TimerEvent: {}
+[11.452696] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/eye_in_hand_calib_node.py\n'}
+[11.469274] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/face_track_node.py\n'}
+[11.542679] (-) TimerEvent: {}
+[11.641279] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/glove_node.py\n'}
+[11.642752] (-) TimerEvent: {}
+[11.660420] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/hand_gesture_arm_node.py\n'}
+[11.677654] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/joy_arm_node.py\n'}
+[11.694592] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/lab_tuner.py\n'}
+[11.711205] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_sorting_node.py\n'}
+[11.728428] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_stack_node.py\n'}
+[11.742866] (-) TimerEvent: {}
+[11.744396] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_track_node.py\n'}
+[11.761397] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_sorting_node.py\n'}
+[11.777659] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_stack_node.py\n'}
+[11.794545] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_track_node.py\n'}
+[11.810830] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/servo_node.py\n'}
+[11.826485] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/test.py\n'}
+[11.842972] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/z_move.py\n'}
+[11.843259] (-) TimerEvent: {}
+[11.859179] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/z_uart.py\n'}
+[11.876009] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/depth_arm.launch.py\n'}
+[11.892139] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/function.launch.py\n'}
+[11.908621] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/slave.launch.py\n'}
+[11.925297] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/web/index.html\n'}
+[11.942400] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/package_run_dependencies/my_srv\n'}
+[11.943342] (-) TimerEvent: {}
+[11.960131] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/parent_prefix_path/my_srv\n'}
+[11.976028] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/ament_prefix_path.sh\n'}
+[11.992976] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/ament_prefix_path.dsv\n'}
+[12.009812] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/path.sh\n'}
+[12.025992] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/path.dsv\n'}
+[12.042407] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.bash\n'}
+[12.043418] (-) TimerEvent: {}
+[12.058365] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.sh\n'}
+[12.075162] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.zsh\n'}
+[12.091291] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.dsv\n'}
+[12.108166] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.dsv\n'}
+[12.125688] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/packages/my_srv\n'}
+[12.141670] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake-extras.cmake\n'}
+[12.143505] (-) TimerEvent: {}
+[12.158446] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[12.174512] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[12.191453] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[12.208255] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[12.224942] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[12.242395] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[12.243578] (-) TimerEvent: {}
+[12.258633] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srvConfig.cmake\n'}
+[12.274409] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srvConfig-version.cmake\n'}
+[12.290810] (my_srv) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.xml\n'}
+[12.306831] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_c.so\n'}
+[12.307698] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_c.so" to ""\n'}
+[12.307902] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_c.so\n'}
+[12.308574] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[12.308780] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_cpp.so\n'}
+[12.309615] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[12.309787] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_c.so\n'}
+[12.310420] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_c.so" to ""\n'}
+[12.310599] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_c.so\n'}
+[12.311169] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_c.so" to ""\n'}
+[12.311339] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_cpp.so\n'}
+[12.312069] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[12.312256] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_cpp.so\n'}
+[12.312890] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_cpp.so" to ""\n'}
+[12.343663] (-) TimerEvent: {}
+[12.374178] (my_srv) StdoutLine: {'line': b"Listing '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv'...\n"}
+[12.374518] (my_srv) StdoutLine: {'line': b"Compiling '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/__init__.py'...\n"}
+[12.374632] (my_srv) StdoutLine: {'line': b"Listing '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv'...\n"}
+[12.374740] (my_srv) StdoutLine: {'line': b"Compiling '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/__init__.py'...\n"}
+[12.374854] (my_srv) StdoutLine: {'line': b"Compiling '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add.py'...\n"}
+[12.386349] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_py.so\n'}
+[12.387147] (my_srv) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_py.so" to ""\n'}
+[12.387308] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cExport.cmake\n'}
+[12.387534] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cExport-noconfig.cmake\n'}
+[12.387759] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[12.387971] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[12.388194] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cppExport.cmake\n'}
+[12.388468] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[12.388691] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[12.388930] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cExport.cmake\n'}
+[12.389139] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[12.389368] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cExport.cmake\n'}
+[12.389586] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[12.389806] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[12.390016] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[12.390233] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cppExport.cmake\n'}
+[12.390457] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[12.390716] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_pyExport.cmake\n'}
+[12.390928] (my_srv) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_pyExport-noconfig.cmake\n'}
+[12.394627] (my_srv) CommandEnded: {'returncode': 0}
+[12.443754] (-) TimerEvent: {}
+[12.449210] (my_srv) JobEnded: {'identifier': 'my_srv', 'rc': 0}
+[12.450049] (-) EventReactorShutdown: {}

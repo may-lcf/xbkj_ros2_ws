@@ -1,0 +1,24 @@
+# voice_interaction 参数配置
+# Pi5 USB声卡: card 2 UACDemoV1.0
+
+voice_recognition_node:
+  ros__parameters:
+    asr_model: "paraformer-realtime-v2"
+    audio_device: "default"
+    record_rate: 48000
+    asr_rate: 16000
+    api_key: "sk-dde3560e94834b3fb16602e38ee34a74"
+
+intent_parser_node:
+  ros__parameters:
+    model: "qwen-plus"
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    api_key: "sk-dde3560e94834b3fb16602e38ee34a74"
+    max_history: 10  # 多轮对话上下文轮数
+
+voice_synthesis_node:
+  ros__parameters:
+    # qwen-tts 音色: Cherry / Ethan / Serena / Chelsie
+    voice: "Cherry"
+    audio_device: "default"
+    api_key: "sk-dde3560e94834b3fb16602e38ee34a74"

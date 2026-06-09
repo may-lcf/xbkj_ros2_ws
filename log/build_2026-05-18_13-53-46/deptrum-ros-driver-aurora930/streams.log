@@ -1,0 +1,140 @@
+[0.010s] Invoking command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/deptrum-ros-driver -DSTREAM_SDK_TYPE=AURORA930 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930
+[0.110s] -- The C compiler identification is GNU 13.3.0
+[0.208s] -- The CXX compiler identification is GNU 13.3.0
+[0.235s] -- Detecting C compiler ABI info
+[0.392s] -- Detecting C compiler ABI info - done
+[0.408s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.408s] -- Detecting C compile features
+[0.409s] -- Detecting C compile features - done
+[0.423s] -- Detecting CXX compiler ABI info
+[0.647s] -- Detecting CXX compiler ABI info - done
+[0.664s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.664s] -- Detecting CXX compile features
+[0.665s] -- Detecting CXX compile features - done
+[0.668s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.885s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.005s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.045s] -- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)
+[1.094s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.113s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.134s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.159s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.259s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.263s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.392s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.419s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.453s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.545s] -- STREAM_SDK_TYPE: AURORA930
+[1.546s] -- SYSTEM_PLATFORM: -
+[1.548s] -- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.568s] -- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.619s] -- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)
+[1.638s] -- Found OpenCV: /usr (found version "4.6.0") found components: core highgui imgproc videoio 
+[1.641s] -- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)
+[1.648s] -- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[1.806s] -- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[1.823s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[1.824s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[1.824s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.828s] -- Found angles: 1.16.1 (/opt/ros/jazzy/share/angles/cmake)
+[1.831s] -- GLog library status:
+[1.831s] --     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include
+[1.831s] --     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/lib-static
+[1.831s] --     libraries: glog
+[1.831s] -- GFlags library status:
+[1.831s] --     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include
+[1.831s] --     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/lib-static
+[1.831s] --     libraries: gflags
+[1.833s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[2.016s] CMake Deprecation Warning at subscribe_node/CMakeLists.txt:1 (cmake_minimum_required):
+[2.016s]   Compatibility with CMake < 3.5 will be removed from a future version of
+[2.016s]   CMake.
+[2.016s] 
+[2.017s]   Update the VERSION argument <min> value or use a ...<max> suffix to tell
+[2.017s]   CMake that the project does not need compatibility with older versions.
+[2.017s] 
+[2.017s] 
+[2.041s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem 
+[2.053s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.076s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.077s] -- Configured cppcheck include dirs: /home/webotpi/ros2_ws/src/deptrum-ros-driver/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/deptrum-stream-aurora900-linux-aarch64-v1.1.19-18.04/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include
+[2.077s] -- Configured cppcheck exclude dirs and/or files: 
+[2.100s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.100s] -- Configured cpplint exclude dirs and/or files: 
+[2.103s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.103s] -- Configured 'flake8' exclude dirs and/or files: 
+[2.109s] -- Added test 'lint_cmake' to check CMake code style
+[2.113s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.135s] -- Added test 'uncrustify' to check C / C++ code style
+[2.135s] -- Configured uncrustify additional arguments: 
+[2.139s] -- Added test 'xmllint' to check XML markup files
+[2.142s] -- Configuring done (2.1s)
+[2.183s] -- Generating done (0.0s)
+[2.195s] -- Build files have been written to: /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930
+[2.223s] Invoked command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/deptrum-ros-driver -DSTREAM_SDK_TYPE=AURORA930 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930
+[2.225s] Invoking command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930 -- -j4 -l4
+[2.319s] [ 44%] Building CXX object subscribe_node/CMakeFiles/sub_node.dir/src/sub_node.cc.o
+[2.319s] [ 44%] Building CXX object CMakeFiles/aurora930_node.dir/src/ros2_device.cc.o
+[2.320s] [ 44%] Building CXX object subscribe_node/CMakeFiles/sub_node_ci.dir/src/sub_node_ci.cc.o
+[2.320s] [ 44%] Building CXX object CMakeFiles/aurora930_node.dir/src/ros2_node.cc.o
+[3.267s] In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,
+[3.267s]                  from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_node.cc:6:
+[3.267s] /opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]
+[3.267s]    47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE
+[3.267s]       |      ^~~~~~~
+[3.268s] In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,
+[3.268s]                  from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_device.cc:5:
+[3.268s] /opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]
+[3.268s]    47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE
+[3.268s]       |      ^~~~~~~
+[14.947s] [ 55%] Building CXX object CMakeFiles/aurora930_node.dir/src/aurora900_ros2_device.cc.o
+[16.063s] In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,
+[16.063s]                  from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/aurora900_ros2_device.h:4,
+[16.063s]                  from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/aurora900_ros2_device.cc:2:
+[16.063s] /opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]
+[16.063s]    47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE
+[16.064s]       |      ^~~~~~~
+[19.893s] [ 66%] Building CXX object CMakeFiles/aurora930_node.dir/src/camera_parameters.cc.o
+[31.694s] [ 77%] Linking CXX executable sub_node
+[33.143s] [ 88%] Linking CXX executable aurora930_node
+[33.454s] [100%] Linking CXX executable sub_node_ci
+[36.593s] [100%] Built target sub_node
+[36.749s] [100%] Built target sub_node_ci
+[36.937s] [100%] Built target aurora930_node
+[36.958s] Invoked command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930 -- -j4 -l4
+[36.979s] Invoking command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930
+[36.995s] -- Install configuration: ""
+[36.995s] -- Execute custom install script
+[36.996s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.sh
+[37.012s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.dsv
+[37.029s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node
+[37.046s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node
+[37.063s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node
+[37.063s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node_ci
+[37.080s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/99-deptrum-libusb.rules
+[37.097s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/libdeptrum_stream_aurora900.so.1.1.19
+[37.114s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/usage_aurora930.md
+[37.131s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/RELEASE_AURORA930.md
+[37.147s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/rviz/aurora930-ros2.rviz
+[37.164s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/package_run_dependencies/deptrum-ros-driver-aurora930
+[37.181s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/parent_prefix_path/deptrum-ros-driver-aurora930
+[37.197s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.sh
+[37.214s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.dsv
+[37.230s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.sh
+[37.247s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.dsv
+[37.264s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.bash
+[37.280s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.sh
+[37.298s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.zsh
+[37.314s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.dsv
+[37.332s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.dsv
+[37.348s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/packages/deptrum-ros-driver-aurora930
+[37.365s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/ament_cmake_export_libraries-extras.cmake
+[37.382s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config.cmake
+[37.398s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config-version.cmake
+[37.416s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.xml
+[37.435s] -- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch
+[37.435s] -- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/viewer930_launch.py
+[37.435s] -- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_multi_launch.py
+[37.436s] -- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/sub_node_ci_aurora930_launch.py
+[37.436s] -- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_launch.py
+[37.440s] Invoked command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930

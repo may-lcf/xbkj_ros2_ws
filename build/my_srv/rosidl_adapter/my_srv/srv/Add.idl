@@ -1,0 +1,29 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from my_srv/srv/Add.srv
+// generated code does not contain a copyright notice
+
+
+module my_srv {
+  module srv {
+    struct Add_Request {
+      string color;
+
+      int32 low_h;
+
+      int32 low_s;
+
+      int32 low_v;
+
+      int32 high_h;
+
+      int32 high_s;
+
+      int32 high_v;
+    };
+    struct Add_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ROS2 USB 摄像头网页流</title>
+    <!-- 引入 roslib.js（rosbridge 客户端库） -->
+    <script src="https://cdn.jsdelivr.net/npm/@rosbridge/client@0.11.0/build/roslib.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 20px; }
+        #camera-feed { max-width: 80%; margin: 0 auto; border: 1px solid #ccc; }
+        .status { color: #28a745; margin: 10px 0; }
+        .error { color: #dc3545; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>USB 摄像头实时画面</h1>
+    <div class="status" id="conn-status">正在连接 rosbridge...</div>
+    <img id="camera-feed" src="" alt="摄像头画面加载中">
+
+    <script>
+        // -------------------------- 1. 连接到 rosbridge --------------------------
+        const ros = new ROSLIB.Ros({
+            url: `ws://localhost:${window.location.port || 9090}`  // 匹配 launch 中的 rosbridge 端口
+        });
+
+        // 连接状态回调
+        ros.on('connection', () => {
+            document.getElementById('conn-status').textContent = '已连接到 rosbridge！';
+            document.getElementById('conn-status').className = 'status';
+        });
+        ros.on('error', (err) => {
+            document.getElementById('conn-status').textContent = `连接错误: ${err}`;
+            document.getElementById('conn-status').className = 'error';
+        });
+        ros.on('close', () => {
+            document.getElementById('conn-status').textContent = 'rosbridge 连接已关闭';
+            document.getElementById('conn-status').className = 'error';
+        });
+
+        // -------------------------- 2. 订阅摄像头话题 --------------------------
+        const imageTopic = new ROSLIB.Topic({
+            ros: ros,
+            name: '/image_raw',  // 与 usb_cam 发布的话题一致
+            messageType: 'sensor_msgs/Image'
+        });
+
+        const cameraImg = document.getElementById('camera-feed');
+
+        // 接收图像消息的回调函数
+        imageTopic.subscribe((message) => {
+            // 将 ROS Image 消息的 base64 数据转换为图像 URL
+            const base64Data = arrayBufferToBase64(message.data);
+            cameraImg.src = `data:image/raw_mjpeg;base64,${base64Data}`;
+        });
+
+        // -------------------------- 3. 辅助函数：ArrayBuffer 转 Base64 --------------------------
+        function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            for (let i = 0; i < bytes.byteLength; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+    </script>
+</body>
+</html>

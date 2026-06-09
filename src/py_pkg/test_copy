@@ -1,0 +1,307 @@
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Imu
+from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Quaternion
+from geometry_msgs.msg import TransformStamped, Quaternion
+from nav_msgs.msg import Odometry
+from tf_transformations import quaternion_from_euler
+from tf2_ros import TransformBroadcaster, StaticTransformBroadcaster
+from std_msgs.msg import String
+import math 
+import serial
+import threading
+import time
+
+
+class DataSubscriber(Node):
+    def __init__(self, name, port = '/dev/ttyUSB0', baudrate = 115200, ticks_per_meter = 180, base_width = 0.17):
+        super().__init__(name)
+        self.Cmd_Vel_Sub = self.create_subscription(Twist, '/cmd_vel', self.Cmd_Vel_Callback, 10) 
+        self.Odometry_Pub = self.create_publisher(Odometry, '/odom', 10)
+        self.Odometry_Broadcaster = TransformBroadcaster(self)
+        
+        self.cmd_flag = False
+        
+        # TF广播器
+        self.odom_broadcaster = TransformBroadcaster(self)  # 删除未使用的广播器
+        self.static_tf_broadcaster = StaticTransformBroadcaster(self)
+        self.create_timer(0.1, self.Publish_Odom)  
+        self.gyroz = 0.0      
+        self.output_gyroz = 0.0   
+        self.output_speed = 0.0  
+        self.target_gyroz = 0.0
+        self.target_speed = 0.0
+        self.left_encoder = 0
+        self.right_encoder = 0
+        self.distanceX = 0.0
+        self.distanceY = 0.0
+        self.pos_x = 0.0
+        self.pos_y = 0.0
+        self.angle = 0.0
+        self.last_angle = 0.0
+        self.v_x = 0.0
+        self.v_z = 0.0
+        self.current_time = 0.0
+        self.last_time = self.get_clock().now()
+        self.basefootframe_id = 'base_footprint'
+        self.baseframe_id = 'base_footprint'
+        self.odomframe_id = 'odom'
+        # 将激光坐标统一为 URDF 中的 lidar_link，避免同时存在 laser 与 lidar_link 两个帧导致混淆
+        self.laserframe_id = 'lidar_link'
+        self.mapframe_id = 'map'
+        # 是否发布静态 map→odom（用于无 SLAM 时让 RViz 识别 map 帧）。
+        # 注意：运行 SLAM 时请改回 False，避免与动态 map→odom 冲突。
+        self.enable_static_map_to_odom = True
+        # 记录激光消息实际的 frame_id，用于自动适配 TF
+        self.scan_frame_id = None
+        # 订阅激光话题以获取其 frame_id（只在首次收到时用于补充静态 TF）
+        self.laser_sub = self.create_subscription(LaserScan, '/scan', self.Laser_Callback, 10)
+        # 串口数据可用性标记与时间戳
+        self.serial_active = False
+        self.last_serial_time = self.get_clock().now()
+        self.ticks_per_meter = ticks_per_meter
+        self.base_width = base_width
+        try:
+            self.serial_port = serial.Serial(port, baudrate, timeout=0.001)
+            self.get_logger().info('串口已打开: {}'.format(port))
+        except:
+            self.get_logger().error('串口打开失败: {}'.format(port))
+            self.serial_port = None
+         # 发布静态TF (base_link → laser)
+        self.publish_static_tf()
+        self.car_control_thread = threading.Thread(target=self.Car_Control)
+        self.car_control_thread.start()      
+        
+    def publish_static_tf(self):
+        """发布 base_link → laser 的静态变换"""
+        base_to_footprint = TransformStamped()
+        base_to_footprint.header.stamp = self.get_clock().now().to_msg()
+        base_to_footprint.header.frame_id = self.basefootframe_id
+        base_to_footprint.child_frame_id = self.baseframe_id
+        base_to_footprint.transform.translation.x = 0.0
+        base_to_footprint.transform.translation.y = 0.0
+        base_to_footprint.transform.translation.z = 0.043
+        base_to_footprint.transform.rotation = Quaternion(x=0.0, y=0.0, z=0.0, w=1.0)
+        
+        static_transform = TransformStamped() 
+        # 设置header
+        static_transform.header.stamp = self.get_clock().now().to_msg()
+        static_transform.header.frame_id = self.baseframe_id  # 父坐标系
+        static_transform.child_frame_id = self.laserframe_id  # 子坐标系（统一为 lidar_link）
+        # 设置平移 (根据实际安装位置调整)
+        static_transform.transform.translation.x = 0.057
+        static_transform.transform.translation.y = 0.0  
+        static_transform.transform.translation.z = 0.14
+        # 设置旋转 (无旋转)
+        q = quaternion_from_euler(0, 0, 0)  # roll, pitch, yaw
+        static_transform.transform.rotation = Quaternion(
+            x=q[0], y=q[1], z=q[2], w=q[3]
+        )
+
+        # 增加 map -> odom 的静态单位变换，确保 RViz 以 map 为 Fixed Frame 时也能看到移动（调试用）
+        if self.enable_static_map_to_odom:
+            map_to_odom = TransformStamped()
+            map_to_odom.header.stamp = self.get_clock().now().to_msg()
+            map_to_odom.header.frame_id = self.mapframe_id
+            map_to_odom.child_frame_id = self.odomframe_id
+            map_to_odom.transform.translation.x = 0.0
+            map_to_odom.transform.translation.y = 0.0
+            map_to_odom.transform.translation.z = 0.0
+            # 使用分量赋值，避免未导入 Quaternion 导致 NameError
+            map_to_odom.transform.rotation.x = 0.0
+            map_to_odom.transform.rotation.y = 0.0
+            map_to_odom.transform.rotation.z = 0.0
+            map_to_odom.transform.rotation.w = 1.0
+
+        # 发布静态变换
+        # self.static_tf_broadcaster.sendTransform(base_to_footprint)
+        # self.static_tf_broadcaster.sendTransform(static_transform)
+        # if self.enable_static_map_to_odom:
+        #     self.static_tf_broadcaster.sendTransform(map_to_odom)
+        #     self.get_logger().info('已发布静态TF: base_footprint → base_link → ' + self.laserframe_id + ', 以及 map → odom (单位变换)')
+        # else:
+        #     self.get_logger().info('已发布静态TF: base_footprint → base_link → ' + self.laserframe_id)
+    
+    def Imu_Callback(self, msg):
+        if msg.orientation_covariance[0] < 0:
+            return 
+        self.gyroz = msg.angular_velocity.z    
+    
+    def Key_Control_Callback(self, msg):
+        self.target_speed = msg.linear.x
+        self.target_gyroz = msg.angular.z  
+
+        self.get_logger().info('target_speed= %.2f, target_gyroz= %.2f' % (self.target_speed, self.target_gyroz))
+        
+    def Cmd_Vel_Callback(self, msg):
+        self.target_speed = msg.linear.x
+        self.target_gyroz = msg.angular.z 
+    
+    def Car_Control(self):
+        while rclpy.ok(): 
+            self.output_gyroz = (self.target_gyroz - self.gyroz) * 2200 
+            self.output_speed = self.target_speed * 27
+            
+            if self.output_speed > 0:
+                if self.output_speed > 5: 
+                    self.output_speed = 5
+                elif self.output_speed < 2:
+                    self.output_speed = 2
+            elif self.output_speed < 0:
+                if self.output_speed < -5:
+                    self.output_speed = -5
+                elif  self.output_speed > -2:
+                    self.output_speed = -2
+            else:
+                self.output_speed = 0
+            
+            if self.output_gyroz > 0:
+                if self.output_gyroz < 25:
+                    self.output_gyroz = 25
+            elif self.output_gyroz < 0:
+                if self.output_gyroz > -25:
+                    self.output_gyroz = -25
+            else:
+                self.output_gyroz = 0
+            
+            if self.serial_port:
+                # message = '[3,0]'
+                message = '[{},{}]'.format(self.output_speed,self.output_gyroz)
+                self.serial_port.write(message.encode('utf-8'))
+                # self.get_logger().info(message.encode('utf-8'),throttle_duration_sec=0.7)
+                time.sleep(0.005)
+                
+            if self.serial_port.in_waiting > 0:
+                raw_data = self.serial_port.readline().decode('utf-8',errors='replace').strip()
+                
+                # 检查数据是否被括号包裹且包含逗号分隔
+                if raw_data.startswith('(') and raw_data.endswith(')') and ',' in raw_data:
+                    try:
+                        # 提取括号内的内容并分割成两个数字
+                        content = raw_data[1:-1]  # 去掉首尾括号
+                        left_str, right_str ,last_str= content.split(',')  # 只分割第一个逗号
+                        
+                        # 转换为int并存储（更高效且符合数据特性）
+                        self.distanceX = float(left_str)/100
+                        self.distanceY = float(right_str)/100
+                        self.angle = float(last_str)*math.pi/180
+                        # 更新串口数据状态
+                        self.serial_active = True
+                        self.last_serial_time = self.get_clock().now()
+                        # 调试用（正式使用时可以注释掉）
+                        # self.get_logger().info(
+                        #     f"数据 - dis: {self.distanceX}, ang: {self.distanceY}",
+                        #     throttle_duration_sec=0.5  # 每0.5秒最多打印一次
+                        # )
+                        
+                    except ValueError as e:
+                        self.get_logger().error(f"整数转换错误: {raw_data} - {e}")
+                    except Exception as e:
+                        self.get_logger().error(f"数据处理异常: {raw_data} - {e}")
+    
+    def Publish_Odom(self):
+        self.current_time = self.get_clock().now()
+        dt = (self.current_time - self.last_time).nanoseconds * 1e-9
+        # 判断串口数据是否近期有效（0.5秒内更新）
+        use_serial = (
+            self.serial_port is not None and 
+            self.serial_active and 
+            ((self.current_time - self.last_serial_time).nanoseconds * 1e-9) <= 0.5
+        )
+
+        if use_serial:
+            # 串口给的是绝对位移，速度用增量计算
+            dx_inc = self.distanceX - getattr(self, 'last_distanceX', 0.0)
+            dy_inc = self.distanceY - getattr(self, 'last_distanceY', 0.0)
+            self.v_x = dx_inc / dt if dt > 0 else 0.0
+            self.v_z = (self.angle - self.last_angle) / dt if dt > 0 else 0.0
+            self.pos_x += dx_inc * math.cos(self.angle)
+            self.pos_y += dx_inc * math.sin(self.angle)
+        # else:
+        #     # 无串口数据时，使用 /cmd_vel 做里程计积分（让模型在 RViz 中跟随移动）
+        #     v = float(self.target_speed)
+        #     w = float(self.target_gyroz)
+        #     # 姿态积分
+        #     self.angle += w * dt
+        #     self.angle = math.atan2(math.sin(self.angle), math.cos(self.angle))
+        #     # 位置积分（在世界坐标系下）
+        #     self.pos_x += v * dt * math.cos(self.angle)
+        #     self.pos_y += v * dt * math.sin(self.angle)
+        #     # 速度报告
+        #     self.v_x = v
+        #     self.v_z = w
+
+        # 记录时间与上次量
+        self.last_time = self.current_time
+        self.last_angle = self.angle
+        self.last_distanceX = self.distanceX
+        self.last_distanceY = self.distanceY
+        
+        # self.get_logger().info(f"Odometry - X: {self.pos_x:.3f} m, Y: {self.pos_y:.3f} m, Angle: {self.angle:.3f} rad",throttle_duration_sec=0.5)   
+          
+        # 创建并发布里程计消息
+        odom = Odometry()
+        odom.header.stamp = self.get_clock().now().to_msg()
+        odom.header.frame_id = self.odomframe_id
+        odom.child_frame_id = self.basefootframe_id       
+        
+        quaternion = quaternion_from_euler(0, 0, self.angle)  # 四元数 
+        odom.pose.pose.position.x = float(self.pos_x)
+        odom.pose.pose.position.y = float(self.pos_y)
+        odom.pose.pose.position.z = 0.0
+        odom.pose.pose.orientation.x = quaternion[0]
+        odom.pose.pose.orientation.y = quaternion[1]
+        odom.pose.pose.orientation.z = quaternion[2]
+        odom.pose.pose.orientation.w = quaternion[3]
+        
+        odom.twist.twist.linear.x = float(self.v_x)
+        odom.twist.twist.linear.y = 0.0
+        odom.twist.twist.angular.z = float(self.v_z)
+
+        self.get_logger().info(f"Odometry - X: {self.pos_x:.3f} m, Y: {self.pos_y:.3f} m, Angle: {self.angle:.3f} rad",throttle_duration_sec=0.5) 
+        
+        self.Odometry_Pub.publish(odom)  
+         
+        # 发布TF变换
+        transform = TransformStamped()
+        transform.header.stamp = odom.header.stamp
+        transform.header.frame_id = self.odomframe_id
+        transform.child_frame_id = self.basefootframe_id
+        transform.transform.translation.x = self.pos_x
+        transform.transform.translation.y = self.pos_y
+        transform.transform.translation.z = 0.0
+        transform.transform.rotation = Quaternion(
+            x=quaternion[0],
+            y=quaternion[1],
+            z=quaternion[2],
+            w=quaternion[3]
+        ) 
+        self.Odometry_Broadcaster.sendTransform(transform)       
+    
+    def Laser_Callback(self, msg):
+        # 首次收到激光消息时，若其帧名与当前设置不一致，则自动发布 base_link → 该帧 的静态 TF
+        if self.scan_frame_id is None:
+            self.scan_frame_id = msg.header.frame_id if msg.header.frame_id else self.laserframe_id
+            if self.scan_frame_id != self.laserframe_id:
+                static_transform = TransformStamped()
+                static_transform.header.stamp = self.get_clock().now().to_msg()
+                static_transform.header.frame_id = self.baseframe_id
+                static_transform.child_frame_id = self.scan_frame_id
+                static_transform.transform.translation.x = 0.057
+                static_transform.transform.translation.y = 0.0
+                static_transform.transform.translation.z = 0.14
+                q = quaternion_from_euler(0, 0, 0)
+                static_transform.transform.rotation = Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
+                self.static_tf_broadcaster.sendTransform(static_transform)
+                self.get_logger().info(f'根据激光消息帧自动发布静态TF: base_link → {self.scan_frame_id}')
+    
+def main(args=None):
+    rclpy.init(args=args)
+    node = DataSubscriber('carnode')
+    rclpy.spin(node)
+    node.car_control_thread.join() 
+    node.destroy_node()
+    rclpy.shutdown()
+    

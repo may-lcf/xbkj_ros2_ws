@@ -1,0 +1,440 @@
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Imu
+from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Quaternion
+from geometry_msgs.msg import TransformStamped, Quaternion
+from nav_msgs.msg import Odometry
+from tf_transformations import quaternion_from_euler
+from tf2_ros import TransformBroadcaster, StaticTransformBroadcaster
+from std_msgs.msg import String
+from std_msgs.msg import Int32
+import math 
+import serial
+import threading
+import time
+
+
+class DataSubscriber(Node):
+    def __init__(self, name, port = '/dev/usb_port2', baudrate = 115200, ticks_per_meter = 180, base_width = 0.17):
+        super().__init__(name)
+        self.Cmd_Vel_Sub = self.create_subscription(Twist, '/cmd_vel', self.Cmd_Vel_Callback, 10) 
+        self.Odometry_Pub = self.create_publisher(Odometry, '/odom', 10)
+        self.num_Sub = self.create_subscription(Int32, '/num_cmd', self.num_cmd_Callback, 10) 
+        self.aim_Sub = self.create_subscription(Int32, '/aim_cmd', self.aim_cmd_Callback, 10) 
+
+        #控制命令
+        self.numsub = 0
+        #机械臂选择：0表示左臂，1表示右臂
+        self.LR_aim=0
+
+        self.message =None
+        self.last_message = None
+
+        #动作组命令
+        self.cmd = '$DGT:0-12,1!'
+   
+        self.output_gyroz = 0.0   
+        self.output_speedX = 0.0  
+        self.target_gyroz = 0.0
+        self.target_speedX = 0.0
+        self.output_speedY = 0.0  
+        self.target_speedY = 0.0
+
+        self.Odometry_Broadcaster = TransformBroadcaster(self)
+        # TF广播器
+        self.static_tf_broadcaster = StaticTransformBroadcaster(self)
+        self.create_timer(0.1, self.Publish_Odom)  
+        self.gyroz = 0.0      
+        self.distanceX = 0.0
+        self.distanceY = 0.0
+        self.pos_x = 0.0
+        self.pos_y = 0.0
+        self.angle = 0.0
+        self.last_angle = 0.0
+        self.v_x = 0.0
+        self.v_z = 0.0
+        self.current_time = 0.0
+        self.last_time = self.get_clock().now()
+        self.basefootframe_id = 'base_footprint'
+        self.baseframe_id = 'base_footprint'
+        self.odomframe_id = 'odom'
+        self.laserframe_id = 'laser'
+        self.mapframe_id = 'map'
+        self.enable_static_map_to_odom = True
+        # 记录激光消息实际的 frame_id，用于自动适配 TF
+        self.scan_frame_id = None
+        # 订阅激光话题以获取其 frame_id（只在首次收到时用于补充静态 TF）
+        self.laser_sub = self.create_subscription(LaserScan, '/scan', self.Laser_Callback, 10)
+        # 串口数据可用性标记与时间戳
+        self.serial_active = False
+        self.last_serial_time = self.get_clock().now()
+        self.ticks_per_meter = ticks_per_meter
+        self.base_width = base_width
+        try:
+            self.serial_port = serial.Serial(port, baudrate, timeout=0.001)
+            self.get_logger().info('串口已打开: {}'.format(port))
+            self.serial_port.write('(init?'.encode('utf-8'))
+        except:
+            self.get_logger().error('串口打开失败: {}'.format(port))
+            self.serial_port = None
+         # 发布静态TF (base_link → laser)
+        self.publish_static_tf()
+        self.car_control_thread = threading.Thread(target=self.Car_Control)
+        self.car_control_thread.start()      
+        
+    def publish_static_tf(self):
+        """发布 base_link → laser 的静态变换"""
+        base_to_footprint = TransformStamped()
+        base_to_footprint.header.stamp = self.get_clock().now().to_msg()
+        base_to_footprint.header.frame_id = self.basefootframe_id
+        base_to_footprint.child_frame_id = self.baseframe_id
+        base_to_footprint.transform.translation.x = 0.0
+        base_to_footprint.transform.translation.y = 0.0
+        base_to_footprint.transform.translation.z = 0.043
+        base_to_footprint.transform.rotation = Quaternion(x=0.0, y=0.0, z=0.0, w=1.0)
+        
+        static_transform = TransformStamped() 
+        # 设置header
+        static_transform.header.stamp = self.get_clock().now().to_msg()
+        static_transform.header.frame_id = self.baseframe_id  # 父坐标系
+        static_transform.child_frame_id = self.laserframe_id  # 子坐标系
+        # 设置平移 (根据实际安装位置调整)
+        static_transform.transform.translation.x = 0.057
+        static_transform.transform.translation.y = 0.0  
+        static_transform.transform.translation.z = 0.14
+        # 设置旋转 (无旋转)
+        q = quaternion_from_euler(0, 0, 0)  # roll, pitch, yaw
+        static_transform.transform.rotation = Quaternion(
+            x=q[0], y=q[1], z=q[2], w=q[3]
+        )
+
+        # 增加 map -> odom 的静态单位变换，确保 RViz 以 map 为 Fixed Frame 时也能看到移动（调试用）
+        if self.enable_static_map_to_odom:
+            map_to_odom = TransformStamped()
+            map_to_odom.header.stamp = self.get_clock().now().to_msg()
+            map_to_odom.header.frame_id = self.mapframe_id
+            map_to_odom.child_frame_id = self.odomframe_id
+            map_to_odom.transform.translation.x = 0.0
+            map_to_odom.transform.translation.y = 0.0
+            map_to_odom.transform.translation.z = 0.0
+            # 使用分量赋值，避免未导入 Quaternion 导致 NameError
+            map_to_odom.transform.rotation.x = 0.0
+            map_to_odom.transform.rotation.y = 0.0
+            map_to_odom.transform.rotation.z = 0.0
+            map_to_odom.transform.rotation.w = 1.0
+
+        # 发布静态变换
+        self.static_tf_broadcaster.sendTransform(base_to_footprint)
+        self.static_tf_broadcaster.sendTransform(static_transform)
+        if self.enable_static_map_to_odom:
+            self.static_tf_broadcaster.sendTransform(map_to_odom)
+            self.get_logger().info('已发布静态TF: base_footprint → base_link → ' + self.laserframe_id + ', 以及 map → odom (单位变换)')
+        else:
+            self.get_logger().info('已发布静态TF: base_footprint → base_link → ' + self.laserframe_id)
+        
+    def Cmd_Vel_Callback(self, msg):
+        self.target_speedX = msg.linear.x
+        self.target_speedY = msg.linear.y
+        self.target_gyroz = msg.angular.z 
+
+    def num_cmd_Callback(self, msg):
+        self.numsub = msg.data
+
+    def aim_cmd_Callback(self, msg):
+        self.LR_aim=msg.data
+        
+    def Car_Control(self):
+        while rclpy.ok(): 
+            self.output_gyroz = self.target_gyroz* 30
+            self.output_speedX = self.target_speedX * 10
+            self.output_speedY = self.target_speedY * 10
+            
+            if self.output_speedX > 0:
+                if self.output_speedX > 5: 
+                    self.output_speedX = 5
+                elif self.output_speedX < 2:
+                    self.output_speedX = 2
+            elif self.output_speedX < 0:
+                if self.output_speedX < -5:
+                    self.output_speedX = -5
+                elif  self.output_speedX > -2:
+                    self.output_speedX = -2
+            else:
+                self.output_speedX = 0
+            if self.output_speedY > 0:
+                if self.output_speedY > 5: 
+                    self.output_speedY = 5
+                elif self.output_speedY < 2:
+                    self.output_speedY = 2
+            elif self.output_speedY < 0:
+                if self.output_speedY < -5:
+                    self.output_speedY = -5
+                elif  self.output_speedY > -2:
+                    self.output_speedY = -2
+            else:
+                self.output_speedY = 0
+            if self.output_gyroz > 0:
+                if self.output_gyroz > 15:
+                    self.output_gyroz = 15
+                elif self.output_gyroz <3:
+                    self.output_gyroz = 3
+            elif self.output_gyroz < 0:
+                if self.output_gyroz < -15:
+                    self.output_gyroz = -15
+                elif self.output_gyroz >-3:
+                    self.output_gyroz = -3
+            else:
+                self.output_gyroz = 0
+            
+            if self.LR_aim == 1:
+                #RD 
+                if self.numsub ==1 :
+                    self.message = '#002P0600T2000!'
+                elif self.numsub ==2 :
+                    self.message = '#002PDST!'
+                #RU
+                elif self.numsub ==3 :
+                    self.message = '#002P2400T2000!'
+                elif self.numsub ==4 :
+                    self.message = '#002PDST!'
+                #RR
+                elif self.numsub ==5 :
+                    self.message = '#003P2400T2000!'
+                elif self.numsub ==6 :
+                    self.message = '#003PDST!'
+                #RL
+                elif self.numsub ==7 :
+                    self.message = '#003P0600T2000!'
+                elif self.numsub ==8 :
+                    self.message = '#003PDST!'
+                #L1
+                elif self.numsub ==9 :
+                    self.message = '#004P2400T2000!'
+                elif self.numsub ==10 :
+                    self.message = '#004PDST!'
+                #R1
+                elif self.numsub ==11:
+                    self.message = '#004P0600T2000!'
+                elif self.numsub ==12 :
+                    self.message = '#004PDST!'
+                #L2
+                elif self.numsub ==13 :
+                    self.message = '#005P0600T2000!'
+                elif self.numsub ==14 :
+                    self.message = '#005PDST!'  
+                #R2
+                elif self.numsub ==15 :
+                    self.message = '#005P2400T2000!'
+                elif self.numsub ==16 :
+                    self.message = '#005PDST!'    
+                #LR
+                elif self.numsub ==17 :
+                    self.message = '#000P2400T2000!'
+                #LL
+                elif self.numsub ==18 :
+                    self.message = '#000P0600T2000!'
+                elif self.numsub ==19 :
+                    self.message = '#000PDST!'
+                #LD
+                elif self.numsub ==20 :
+                    self.message = '#001P2400T2000!'
+                #LU
+                elif self.numsub ==21 :
+                    self.message = '#001P0600T2000!'
+                elif self.numsub ==22 :
+                    self.message = '#001PDST!'
+                #Select : Data Init
+                elif self.numsub ==23 :
+                    self.message = '(init?'
+                #Start : Action
+                elif self.numsub ==25 :
+                    self.message = self.cmd   
+                else:
+                    self.message = '[{},{},{}]'.format(self.output_speedX,self.output_speedY,self.output_gyroz)
+            else:
+                #RD 
+                if self.numsub ==1 :
+                    self.message = '#008P0600T2000!'
+                elif self.numsub ==2 :
+                    self.message = '#008PDST!'
+                #RU
+                elif self.numsub ==3 :
+                    self.message = '#008P2400T2000!'
+                elif self.numsub ==4 :
+                    self.message = '#008PDST!'
+                #RR
+                elif self.numsub ==5 :
+                    self.message = '#009P2400T2000!'
+                elif self.numsub ==6 :
+                    self.message = '#009PDST!'
+                #RL
+                elif self.numsub ==7 :
+                    self.message = '#009P0600T2000!'
+                elif self.numsub ==8 :
+                    self.message = '#009PDST!'
+                #L1
+                elif self.numsub ==9 :
+                    self.message = '#010P2400T2000!'
+                elif self.numsub ==10 :
+                    self.message = '#010PDST!'
+                #R1
+                elif self.numsub ==11:
+                    self.message = '#010P0600T2000!'
+                elif self.numsub ==12 :
+                    self.message = '#010PDST!'
+                #L2
+                elif self.numsub ==13 :
+                    self.message = '#011P0600T2000!'
+                elif self.numsub ==14 :
+                    self.message = '#011PDST!'  
+                #R2
+                elif self.numsub ==15 :
+                    self.message = '#011P2400T2000!'
+                elif self.numsub ==16 :
+                    self.message = '#011PDST!'    
+                #LR
+                elif self.numsub ==17 :
+                    self.message = '#006P2400T2000!'
+                #LL
+                elif self.numsub ==18 :
+                    self.message = '#006P0600T2000!'
+                elif self.numsub ==19 :
+                    self.message = '#006PDST!'
+                #LD
+                elif self.numsub ==20 :
+                    self.message = '#007P2400T2000!'
+                #LU
+                elif self.numsub ==21 :
+                    self.message = '#007P0600T2000!'
+                elif self.numsub ==22 :
+                    self.message = '#007PDST!'
+                #Select : Data Init
+                elif self.numsub ==23 :
+                    self.message = '(init?'
+                #Start : Action
+                elif self.numsub ==25 :
+                    self.message = self.cmd  
+                else:
+                    self.message = '[{},{},{}]'.format(self.output_speedX,self.output_speedY,self.output_gyroz)
+                    
+            if self.message != self.last_message or self.output_gyroz!=0:
+                self.serial_port.write(self.message.encode('utf-8'))
+            self.last_message = self.message
+            
+            # self.get_logger().info(self.message.encode('utf-8'),throttle_duration_sec=1)
+            time.sleep(0.02)
+ 
+                
+            if self.serial_port.in_waiting > 0:
+                raw_data = self.serial_port.readline().decode('utf-8',errors='replace').strip()
+                
+                # 检查数据是否被括号包裹且包含逗号分隔
+                if raw_data.startswith('(') and raw_data.endswith(')') and ',' in raw_data:
+                    try:
+                        # 提取括号内的内容并分割成两个数字
+                        content = raw_data[1:-1]  # 去掉首尾括号
+                        left_str, right_str ,last_str= content.split(',')  # 只分割第一个逗号
+                        
+                        # 转换为int并存储（更高效且符合数据特性）
+                        self.distanceX = float(left_str)/100
+                        self.distanceY = float(right_str)/100
+                        self.angle = -float(last_str)*math.pi/180
+                        # 更新串口数据状态
+                        self.serial_active = True
+                        self.last_serial_time = self.get_clock().now()
+                    except ValueError as e:
+                        self.get_logger().error(f"整数转换错误: {raw_data} - {e}")
+                    except Exception as e:
+                        self.get_logger().error(f"数据处理异常: {raw_data} - {e}")
+    
+    def Publish_Odom(self):
+        self.current_time = self.get_clock().now()
+        dt = (self.current_time - self.last_time).nanoseconds * 1e-9
+        # 判断串口数据是否近期有效（0.5秒内更新）
+        use_serial = (
+            self.serial_port is not None and 
+            self.serial_active and 
+            ((self.current_time - self.last_serial_time).nanoseconds * 1e-9) <= 0.5
+        )
+        if use_serial:
+            # 串口给的是绝对位移，速度用增量计算
+            dx_inc = self.distanceX - getattr(self, 'last_distanceX', 0.0)
+            dy_inc = self.distanceY - getattr(self, 'last_distanceY', 0.0)
+            self.v_x = dx_inc / dt if dt > 0 else 0.0
+            self.v_z = (self.angle - self.last_angle) / dt if dt > 0 else 0.0
+            self.pos_x += dx_inc * math.cos(self.angle) -dy_inc * math.sin(self.angle)
+            self.pos_y += dx_inc * math.sin(self.angle) +dy_inc * math.cos(self.angle)
+        # 记录时间与上次量
+        self.last_time = self.current_time
+        self.last_angle = self.angle
+        self.last_distanceX = self.distanceX
+        self.last_distanceY = self.distanceY
+        
+        self.get_logger().info(f"Odometry - X: {self.pos_x:.3f} m, Y: {self.pos_y:.3f} m, Angle: {self.angle:.3f} rad",throttle_duration_sec=0.5)   
+          
+        # 创建并发布里程计消息
+        odom = Odometry()
+        odom.header.stamp = self.get_clock().now().to_msg()
+        odom.header.frame_id = self.odomframe_id
+        odom.child_frame_id = self.basefootframe_id       
+        
+        quaternion = quaternion_from_euler(0, 0, self.angle)  # 四元数 
+        odom.pose.pose.position.x = float(self.pos_x)
+        odom.pose.pose.position.y = float(self.pos_y)
+        odom.pose.pose.position.z = 0.0
+        odom.pose.pose.orientation.x = quaternion[0]
+        odom.pose.pose.orientation.y = quaternion[1]
+        odom.pose.pose.orientation.z = quaternion[2]
+        odom.pose.pose.orientation.w = quaternion[3]
+        
+        odom.twist.twist.linear.x = float(self.v_x)
+        odom.twist.twist.linear.y = 0.0
+        odom.twist.twist.angular.z = float(self.v_z)
+
+        # self.get_logger().info(f"Odometry - X: {self.pos_x:.3f} m, Y: {self.pos_y:.3f} m, Angle: {self.angle:.3f} rad",throttle_duration_sec=0.5) 
+        
+        self.Odometry_Pub.publish(odom)  
+         
+        # 发布TF变换
+        transform = TransformStamped()
+        transform.header.stamp = odom.header.stamp
+        transform.header.frame_id = self.odomframe_id
+        transform.child_frame_id = self.basefootframe_id
+        transform.transform.translation.x = self.pos_x
+        transform.transform.translation.y = self.pos_y
+        transform.transform.translation.z = 0.0
+        transform.transform.rotation = Quaternion(
+            x=quaternion[0],
+            y=quaternion[1],
+            z=quaternion[2],
+            w=quaternion[3]
+        ) 
+        self.Odometry_Broadcaster.sendTransform(transform)       
+    
+    def Laser_Callback(self, msg):
+        # 首次收到激光消息时，若其帧名与当前设置不一致，则自动发布 base_link → 该帧 的静态 TF
+        if self.scan_frame_id is None:
+            self.scan_frame_id = msg.header.frame_id if msg.header.frame_id else self.laserframe_id
+            if self.scan_frame_id != self.laserframe_id:
+                static_transform = TransformStamped()
+                static_transform.header.stamp = self.get_clock().now().to_msg()
+                static_transform.header.frame_id = self.baseframe_id
+                static_transform.child_frame_id = self.scan_frame_id
+                static_transform.transform.translation.x = 0.057
+                static_transform.transform.translation.y = 0.0
+                static_transform.transform.translation.z = 0.14
+                q = quaternion_from_euler(0, 0, 0)
+                static_transform.transform.rotation = Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
+                self.static_tf_broadcaster.sendTransform(static_transform)
+                self.get_logger().info(f'根据激光消息帧自动发布静态TF: base_link → {self.scan_frame_id}')
+    
+def main(args=None):
+    rclpy.init(args=args)
+    node = DataSubscriber('usbcar')
+    rclpy.spin(node)
+    node.car_control_thread.join() 
+    node.destroy_node()
+    rclpy.shutdown()
+    

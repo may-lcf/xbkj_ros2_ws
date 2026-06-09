@@ -1,0 +1,41 @@
+[0.016s] Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/webotpi/ros2_ws/src/my_srv -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/my_srv
+[0.058s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.258s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.302s] -- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)
+[0.392s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.413s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.443s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.475s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.727s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.733s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.863s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.007s] -- Found rosbridge_suite: 2.6.0 (/opt/ros/jazzy/share/rosbridge_suite/cmake)
+[1.008s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[1.036s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.474s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[1.746s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.848s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.855s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[2.302s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[2.378s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[2.385s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[2.435s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.435s] -- Configured 'flake8' exclude dirs and/or files: 
+[2.437s] -- Added test 'lint_cmake' to check CMake code style
+[2.438s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.444s] -- Added test 'xmllint' to check XML markup files
+[2.453s] -- Configuring done (2.4s)
+[2.639s] -- Generating done (0.2s)
+[2.730s] -- Build files have been written to: /home/webotpi/ros2_ws/build/my_srv
+[2.753s] Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/webotpi/ros2_ws/src/my_srv -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/my_srv
+[2.756s] Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/webotpi/ros2_ws/build/my_srv -- -j4 -l4
+[2.848s] failed to create symbolic link '/home/webotpi/ros2_ws/build/my_srv/ament_cmake_python/my_srv/my_srv' because existing path cannot be removed: Is a directory
+[2.849s] [  2%] Built target my_srv__rs
+[2.850s] [  5%] Built target my_srv__rosidl_generator_type_description
+[2.854s] gmake[2]: *** [CMakeFiles/ament_cmake_python_symlink_my_srv.dir/build.make:70：CMakeFiles/ament_cmake_python_symlink_my_srv] 错误 1
+[2.855s] gmake[1]: *** [CMakeFiles/Makefile2:471：CMakeFiles/ament_cmake_python_symlink_my_srv.dir/all] 错误 2
+[2.855s] gmake[1]: *** 正在等待未完成的任务....
+[2.891s] [  8%] Built target my_srv__cpp
+[2.897s] [ 22%] Built target my_srv__rosidl_generator_c
+[2.900s] gmake: *** [Makefile:146：all] 错误 2
+[2.903s] Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/webotpi/ros2_ws/build/my_srv -- -j4 -l4

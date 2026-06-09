@@ -1,0 +1,66 @@
+[0.038s] Invoking command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930 -- -j4 -l4
+[0.490s] [ 11%] [32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/ros2_node.cc.o[0m
+[0.490s] [ 22%] [32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/ros2_device.cc.o[0m
+[0.644s] [ 33%] [32mBuilding CXX object subscribe_node/CMakeFiles/sub_node.dir/src/sub_node.cc.o[0m
+[0.645s] [ 44%] [32mBuilding CXX object subscribe_node/CMakeFiles/sub_node_ci.dir/src/sub_node_ci.cc.o[0m
+[2.841s] In file included from [01m[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20[m[K,
+[2.841s]                  from [01m[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_node.cc:6[m[K:
+[2.843s] [01m[K/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6:[m[K [01;35m[Kwarning: [m[K#warning POINT_CLOUD_DEPRECATION_MESSAGE [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp-Wcpp]8;;[m[K]
+[2.844s]    47 | #    [01;35m[Kwarning[m[K POINT_CLOUD_DEPRECATION_MESSAGE
+[2.848s]       |      [01;35m[K^~~~~~~[m[K
+[2.903s] In file included from [01m[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20[m[K,
+[2.903s]                  from [01m[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_device.cc:5[m[K:
+[2.904s] [01m[K/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6:[m[K [01;35m[Kwarning: [m[K#warning POINT_CLOUD_DEPRECATION_MESSAGE [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp-Wcpp]8;;[m[K]
+[2.904s]    47 | #    [01;35m[Kwarning[m[K POINT_CLOUD_DEPRECATION_MESSAGE
+[2.906s]       |      [01;35m[K^~~~~~~[m[K
+[36.300s] [ 55%] [32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/aurora900_ros2_device.cc.o[0m
+[38.106s] In file included from [01m[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20[m[K,
+[38.107s]                  from [01m[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/aurora900_ros2_device.h:4[m[K,
+[38.108s]                  from [01m[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/src/aurora900_ros2_device.cc:2[m[K:
+[38.108s] [01m[K/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6:[m[K [01;35m[Kwarning: [m[K#warning POINT_CLOUD_DEPRECATION_MESSAGE [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp-Wcpp]8;;[m[K]
+[38.108s]    47 | #    [01;35m[Kwarning[m[K POINT_CLOUD_DEPRECATION_MESSAGE
+[38.108s]       |      [01;35m[K^~~~~~~[m[K
+[56.356s] [ 66%] [32m[1mLinking CXX executable sub_node_ci[0m
+[58.719s] [ 77%] [32m[1mLinking CXX executable sub_node[0m
+[59.388s] [ 88%] [32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/camera_parameters.cc.o[0m
+[60.719s] [ 88%] Built target sub_node_ci
+[61.221s] [ 88%] Built target sub_node
+[65.043s] [100%] [32m[1mLinking CXX executable aurora930_node[0m
+[67.121s] [100%] Built target aurora930_node
+[67.144s] Invoked command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930 -- -j4 -l4
+[67.149s] Invoking command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930
+[67.167s] -- Install configuration: ""
+[67.168s] -- Execute custom install script
+[67.168s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.sh
+[67.168s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.dsv
+[67.169s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node
+[67.170s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node
+[67.170s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node
+[67.170s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node_ci
+[67.171s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/99-deptrum-libusb.rules
+[67.171s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/libdeptrum_stream_aurora900.so.1.1.19
+[67.171s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/usage_aurora930.md
+[67.171s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/RELEASE_AURORA930.md
+[67.172s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/rviz/aurora930-ros2.rviz
+[67.172s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/package_run_dependencies/deptrum-ros-driver-aurora930
+[67.172s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/parent_prefix_path/deptrum-ros-driver-aurora930
+[67.172s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.sh
+[67.173s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.dsv
+[67.173s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.sh
+[67.173s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.dsv
+[67.173s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.bash
+[67.174s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.sh
+[67.174s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.zsh
+[67.174s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.dsv
+[67.174s] -- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.dsv
+[67.193s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/packages/deptrum-ros-driver-aurora930
+[67.193s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/ament_cmake_export_libraries-extras.cmake
+[67.193s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config.cmake
+[67.193s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config-version.cmake
+[67.194s] -- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.xml
+[67.194s] -- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch
+[67.194s] -- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/viewer930_launch.py
+[67.194s] -- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_multi_launch.py
+[67.194s] -- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/sub_node_ci_aurora930_launch.py
+[67.194s] -- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_launch.py
+[67.200s] Invoked command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930

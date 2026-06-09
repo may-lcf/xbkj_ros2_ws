@@ -1,0 +1,48 @@
+[2.580s] Invoking command in '/home/webotpi/ros2_ws/build/py_pkg': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/webotpi/ros2_ws/build/py_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/webotpi/ros2_ws/build/py_pkg/build
+[3.275s] running develop
+[3.902s] Removing /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py-pkg.egg-link (link to .)
+[4.101s] Invoked command in '/home/webotpi/ros2_ws/build/py_pkg' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/webotpi/ros2_ws/build/py_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/webotpi/ros2_ws/build/py_pkg/build
+[4.109s] Invoking command in '/home/webotpi/ros2_ws/src/py_pkg': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/webotpi/ros2_ws/build/py_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pkg build --build-base /home/webotpi/ros2_ws/build/py_pkg/build install --record /home/webotpi/ros2_ws/build/py_pkg/install.log --single-version-externally-managed install_data --force
+[4.658s] running egg_info
+[4.699s] writing ../../build/py_pkg/py_pkg.egg-info/PKG-INFO
+[4.707s] writing dependency_links to ../../build/py_pkg/py_pkg.egg-info/dependency_links.txt
+[4.707s] writing entry points to ../../build/py_pkg/py_pkg.egg-info/entry_points.txt
+[4.712s] writing requirements to ../../build/py_pkg/py_pkg.egg-info/requires.txt
+[4.713s] writing top-level names to ../../build/py_pkg/py_pkg.egg-info/top_level.txt
+[4.798s] reading manifest file '../../build/py_pkg/py_pkg.egg-info/SOURCES.txt'
+[4.804s] writing manifest file '../../build/py_pkg/py_pkg.egg-info/SOURCES.txt'
+[4.804s] running build
+[4.804s] running build_py
+[4.805s] creating /home/webotpi/ros2_ws/build/py_pkg/build
+[4.807s] creating /home/webotpi/ros2_ws/build/py_pkg/build/lib
+[4.807s] creating /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg
+[4.808s] copying py_pkg/usbcar.py -> /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg
+[4.811s] copying py_pkg/__init__.py -> /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg
+[4.811s] copying py_pkg/serial_bridge.py -> /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg
+[4.812s] copying py_pkg/carnode.py -> /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg
+[4.812s] copying py_pkg/teleop_control_node.py -> /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg
+[4.812s] running install
+[4.818s] running install_lib
+[4.844s] creating /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg
+[4.845s] copying /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg/usbcar.py -> /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg
+[4.845s] copying /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg/__init__.py -> /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg
+[4.845s] copying /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg/serial_bridge.py -> /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg
+[4.846s] copying /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg/carnode.py -> /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg
+[4.846s] copying /home/webotpi/ros2_ws/build/py_pkg/build/lib/py_pkg/teleop_control_node.py -> /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg
+[4.847s] byte-compiling /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg/usbcar.py to usbcar.cpython-312.pyc
+[4.852s] byte-compiling /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg/__init__.py to __init__.cpython-312.pyc
+[4.852s] byte-compiling /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg/serial_bridge.py to serial_bridge.cpython-312.pyc
+[4.855s] byte-compiling /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg/carnode.py to carnode.cpython-312.pyc
+[4.861s] byte-compiling /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg/teleop_control_node.py to teleop_control_node.cpython-312.pyc
+[4.862s] running install_data
+[4.862s] copying resource/py_pkg -> /home/webotpi/ros2_ws/install/py_pkg/share/ament_index/resource_index/packages
+[4.862s] copying package.xml -> /home/webotpi/ros2_ws/install/py_pkg/share/py_pkg
+[4.862s] running install_egg_info
+[4.894s] Copying ../../build/py_pkg/py_pkg.egg-info to /home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages/py_pkg-0.0.0-py3.12.egg-info
+[4.898s] running install_scripts
+[5.090s] Installing carnode script to /home/webotpi/ros2_ws/install/py_pkg/lib/py_pkg
+[5.090s] Installing serial_bridge script to /home/webotpi/ros2_ws/install/py_pkg/lib/py_pkg
+[5.095s] Installing teleop_control_node script to /home/webotpi/ros2_ws/install/py_pkg/lib/py_pkg
+[5.097s] Installing usbcar script to /home/webotpi/ros2_ws/install/py_pkg/lib/py_pkg
+[5.099s] writing list of installed files to '/home/webotpi/ros2_ws/build/py_pkg/install.log'
+[5.185s] Invoked command in '/home/webotpi/ros2_ws/src/py_pkg' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/webotpi/ros2_ws/build/py_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pkg build --build-base /home/webotpi/ros2_ws/build/py_pkg/build install --record /home/webotpi/ros2_ws/build/py_pkg/install.log --single-version-externally-managed install_data --force

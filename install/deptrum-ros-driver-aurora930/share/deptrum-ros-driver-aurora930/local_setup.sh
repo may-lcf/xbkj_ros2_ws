@@ -1,0 +1,1 @@
+/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930/ament_cmake_environment_hooks/local_setup.sh

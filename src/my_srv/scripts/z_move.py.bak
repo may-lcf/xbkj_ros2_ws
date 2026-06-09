@@ -1,0 +1,263 @@
+from math import *
+import z_uart as myUart
+import time
+import sys
+
+# 圆周率Π
+pi = 3.1415926
+
+# 全局变量
+servo_angle = [0, 0, 0, 0]  # 记录角度
+servo_pwm = [0, 0, 0, 0]    # 记录PWM值
+l0, l1, l2, l3 = 1110, 1050, 880, 1780  # 机械臂长度参数
+
+def setup_kinematics(L0, L1, L2, L3):
+    """设置四个关节的长度（单位：mm）"""
+    global l0, l1, l2, l3
+    # 转换为0.1mm单位（内部计算使用）
+    l0 = L0 * 10
+    l1 = L1 * 10
+    l2 = L2 * 10
+    l3 = L3 * 10
+    print(f"[运动学] 机械臂参数设置: L0={L0}mm, L1={L1}mm, L2={L2}mm, L3={L3}mm")
+
+def kinematics_analysis(x, y, z, Alpha):
+    """
+    逆运动学分析
+    x,y,z: 末端执行器坐标（mm）
+    Alpha: 末端执行器与水平面的夹角（度）
+    返回值: 0表示成功，其他值为错误码
+    """
+    global pi, l0, l1, l2, l3, servo_angle, servo_pwm
+
+    # print(f"[运动学] 计算位置: x={x}, y={y}, z={z}, Alpha={Alpha}")
+
+    # 转换为0.1mm单位（内部计算使用）
+    x *= 10
+    y *= 10
+    z *= 10
+
+    # 计算云台旋转角度（theta6）
+    if x == 0:
+        theta6 = 0.0
+    elif x > 0 and y < 0:
+        theta6 = atan(x / y)
+        theta6 = 180 + (theta6 * 180.0/pi)
+    else:
+        if y==0:
+            y=-5
+            theta6 = atan(x / y)
+            theta6 = theta6 * 180.0 / pi
+            theta6=theta6-180.0
+        elif y>0:
+            theta6 = atan(x / y)
+            theta6 = theta6 * 180.0 / pi
+        else :
+            theta6 = atan(x / y)
+            theta6 = theta6 * 180.0 / pi
+            theta6=theta6-180.0
+
+    # print(f"[运动学] theta6 (云台旋转角度) = {theta6:.2f}°")
+
+    # 计算y和z分量
+    y_proj = sqrt(x*x + y*y)  # x-y平面投影长度
+    y_adj = y_proj - l3 * cos((Alpha*pi/180))  # 调整后的y分量
+    z_adj = z - l0 - l3 * sin((Alpha*pi/180))  # 调整后的z分量
+
+    # print(f"[运动学] 投影长度: {y_proj/10:.2f}mm, 调整后Y: {y_adj/10:.2f}mm, 调整后Z: {z_adj/10:.2f}mm")
+
+    # 边界检查
+    if z_adj < -l0:
+        # print(f"[错误] z值过低: {z_adj/10:.2f}mm < {-l0/10}mm")
+        return 1  # z值过低错误
+
+    distance = sqrt(y_adj*y_adj + z_adj*z_adj)
+    max_reach = l1 + l2
+    if distance > max_reach:
+        # print(f"[错误] 超出工作空间: {distance/10:.2f}mm > {max_reach/10:.2f}mm")
+        return 2  # 超出工作空间错误
+
+    # 计算theta5（关节1角度）
+    
+    ccc = acos(y_adj / distance)
+    bbb = (y_adj*y_adj + z_adj*z_adj + l1*l1 - l2*l2) / (2*l1*distance)
+
+    if abs(bbb) > 1:
+        # print(f"[错误] 数学域错误 (bbb={bbb:.4f})")
+        return 3  # 数学域错误
+
+    zf_flag = -1 if z_adj < 0 else 1
+    theta5 = degrees(ccc * zf_flag + acos(bbb))
+
+    if not (0 <= theta5 <= 180):
+        # print(f"[错误] theta5范围错误: {theta5:.2f}°")
+        return 4  # theta5范围错误
+
+    # 计算theta4（关节2角度）
+    aaa = -(y_adj*y_adj + z_adj*z_adj - l1*l1 - l2*l2) / (2*l1*l2)
+
+    if abs(aaa) > 1:
+        # print(f"[错误] 数学域错误 (aaa={aaa:.4f})")
+        return 5  # 数学域错误
+
+    theta4 = 180.0 - degrees(acos(aaa))
+
+    if not (-135 <= theta4 <= 135):
+        # print(f"[错误] theta4范围错误: {theta4:.2f}°")
+        return 6  # theta4范围错误
+
+    # 计算theta3（关节3角度）
+    theta3 = Alpha - theta5 + theta4
+
+    if not (-90 <= theta3 <= 90):
+        # print(f"[错误] theta3范围错误: {theta3:.2f}°")
+        return 7  # theta3范围错误
+
+    # 存储计算结果
+    servo_angle[0] = theta6
+    servo_angle[1] = theta5 - 90  # 转换为舵机坐标系
+    servo_angle[2] = theta4
+    servo_angle[3] = theta3
+
+    # print(f"[运动学] 关节角度: "
+    #       f"theta6={theta6:.2f}°, "
+    #       f"theta5={theta5:.2f}° (舵机: {servo_angle[1]:.2f}°), "
+    #       f"theta4={theta4:.2f}°, "
+    #       f"theta3={theta3:.2f}°")
+
+    # 转换为PWM值（假设舵机范围270度）
+    servo_pwm[0] = int(1500 - 2000.0 * servo_angle[0] / 270.0)
+    servo_pwm[1] = int(1500 + 2000.0 * servo_angle[1] / 270.0)
+    servo_pwm[2] = int(1500 + 2000.0 * servo_angle[2] / 270.0)
+    servo_pwm[3] = int(1500 - 2000.0 * servo_angle[3] / 270.0)
+    servo_pwm[3]=3000-servo_pwm[3]
+    # print(f"[运动学] PWM值: "
+    #       f"舵机0={servo_pwm[0]}, "
+    #       f"舵机1={servo_pwm[1]}, "
+    #       f"舵机2={servo_pwm[2]}, "
+    #       f"舵机3={servo_pwm[3]}")
+
+    return 0
+
+def kinematics_move(x, y, z, mytime):
+    """
+    移动到指定位置
+    x,y,z: 目标位置坐标（mm）
+    mytime: 移动时间（ms）
+    """
+    global servo_angle, servo_pwm
+    # print(f"\n[运动控制] 尝试移动到: x={x}, y={y}, z={z}, 时间={mytime}ms")
+
+    if y < -80:
+        print("[错误] y坐标不能为负")
+        return False
+
+    # 寻找最佳Alpha角度
+    best_alpha = 0
+    error_codes = []
+    flag = 0
+
+    # 测试范围：-65°到-25°，步长为5°
+    for alpha in range(0, -136, -1):
+        result = kinematics_analysis(x, y, z, alpha)
+        if result == 0:
+            if alpha < best_alpha:
+                best_alpha = alpha
+                # print(f"[运动控制] 找到有效解: Alpha={alpha}°")
+            # break
+        # else:
+        #     error_codes.append(result)
+        #     print(f"[运动控制] Alpha={alpha}°时计算失败 (错误码: {result})")
+
+    if best_alpha is None:
+        # print(f"[错误] 无法找到有效解 (尝试了{len(error_codes)}个角度)")
+        # print(f"[错误] 错误码统计: {set(error_codes)}")
+        return False
+
+    # 使用找到的最佳Alpha值
+    kinematics_analysis(x, y, z, best_alpha)
+
+    # 构建舵机控制命令
+    cmd_str = '{'
+    for i in range(4):
+        # 确保PWM值在安全范围内（500-2500）
+        pwm_val = max(500, min(2500, servo_pwm[i]))
+        cmd_str += f"#{i}P{pwm_val:04d}T{mytime:04d}!"
+    cmd_str += '}'
+
+    # print(f"[串口] 准备发送命令: {cmd_str}")
+
+    # 发送命令
+    if myUart.uart_send_str(cmd_str):
+        # print("[串口] 命令发送成功")
+        return True
+    else:
+        # print("[错误] 串口发送失败")
+        return False
+
+def off():
+    """将机械臂移动到安全位置"""
+    print("[安全] 移动到安全位置")
+    kinematics_move(0, 200, 100, 2000)
+
+if __name__ == "__main__":
+    print("=== 机械臂控制系统启动 ===")
+
+    # 初始化串口
+    if not myUart.setup_uart(115200):
+        print("[严重错误] 串口初始化失败，程序退出")
+        sys.exit(1)
+    else:
+        print("[串口] 初始化成功")
+
+    print("系统初始化完成")
+
+    # 发送初始位置命令
+    print("[串口] 发送初始位置命令")
+    myUart.uart_send_str("#255P1500T1000!")
+    time.sleep(2)
+
+    # 设置机械臂参数（单位：mm）
+    setup_kinematics(100, 90, 75, 200)
+
+    try:
+        # 测试简单位置
+        print("\n=== 测试简单位置 ===")
+        test_positions = [
+            (0, 200, 100),  # 安全位置
+            (0, 300, 100),  # 向前伸展
+            (100, 200, 100), # 向右移动
+            (0, 200, 200)   # 向上移动
+        ]
+
+        for i, (x, y, z) in enumerate(test_positions):
+            print(f"\n测试位置 {i+1}/{len(test_positions)}: ({x}, {y}, {z})")
+            if kinematics_move(x, y, z, 2000):
+                print("移动命令已发送")
+                time.sleep(3)
+            else:
+                print("移动失败，跳过此位置")
+
+        # 测试目标位置
+        print("\n=== 测试目标位置 (200, 200, 200) ===")
+        if kinematics_move(200, 200, 200, 1000):
+            print("目标位置移动命令已发送")
+            time.sleep(3)
+        else:
+            print("无法到达目标位置")
+
+        print("\n测试完成")
+
+        # 保持运行
+        while True:
+            time.sleep(1)
+
+    except KeyboardInterrupt:
+        print("\n程序被中断")
+        off()  # 安全关闭
+        # 确保串口关闭
+        if hasattr(myUart, 'cleanup'):
+            myUart.cleanup()
+        print("程序退出")
+
+

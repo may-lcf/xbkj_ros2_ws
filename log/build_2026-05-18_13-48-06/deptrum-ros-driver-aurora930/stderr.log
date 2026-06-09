@@ -1,0 +1,47 @@
+CMake Deprecation Warning at subscribe_node/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+/home/webotpi/ros2_ws/src/deptrum-ros-driver/subscribe_node/src/sub_node_ci.cc:1:10: fatal error: cv_bridge/cv_bridge.h: 没有那个文件或目录
+    1 | #include <cv_bridge/cv_bridge.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+/home/webotpi/ros2_ws/src/deptrum-ros-driver/subscribe_node/src/sub_node.cc:1:10: fatal error: cv_bridge/cv_bridge.h: 没有那个文件或目录
+    1 | #include <cv_bridge/cv_bridge.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [subscribe_node/CMakeFiles/sub_node_ci.dir/build.make:76：subscribe_node/CMakeFiles/sub_node_ci.dir/src/sub_node_ci.cc.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:208：subscribe_node/CMakeFiles/sub_node_ci.dir/all] 错误 2
+gmake[1]: *** 正在等待未完成的任务....
+gmake[2]: *** [subscribe_node/CMakeFiles/sub_node.dir/build.make:76：subscribe_node/CMakeFiles/sub_node.dir/src/sub_node.cc.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:182：subscribe_node/CMakeFiles/sub_node.dir/all] 错误 2
+In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/aurora900_ros2_device.cc:2:
+/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/aurora900_ros2_device.h:3:10: fatal error: deptrum/aurora900_series.h: 没有那个文件或目录
+    3 | #include "deptrum/aurora900_series.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/aurora930_node.dir/build.make:104：CMakeFiles/aurora930_node.dir/src/aurora900_ros2_device.cc.o] 错误 1
+gmake[2]: *** 正在等待未完成的任务....
+/home/webotpi/ros2_ws/src/deptrum-ros-driver/src/camera_parameters.cc:4:10: fatal error: tf2_geometry_msgs/tf2_geometry_msgs.h: 没有那个文件或目录
+    4 | #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/aurora930_node.dir/build.make:118：CMakeFiles/aurora930_node.dir/src/camera_parameters.cc.o] 错误 1
+In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_node.cc:6:
+/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:6:10: fatal error: deptrum/common_types.h: 没有那个文件或目录
+    6 | #include "deptrum/common_types.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/aurora930_node.dir/build.make:76：CMakeFiles/aurora930_node.dir/src/ros2_node.cc.o] 错误 1
+In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_device.cc:4:
+/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/camera_parameters.h:14:10: fatal error: deptrum/device.h: 没有那个文件或目录
+   14 | #include "deptrum/device.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/aurora930_node.dir/build.make:90：CMakeFiles/aurora930_node.dir/src/ros2_device.cc.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:156：CMakeFiles/aurora930_node.dir/all] 错误 2
+gmake: *** [Makefile:146：all] 错误 2
