@@ -1,0 +1,1 @@
+/home/webotpi/ros2_ws/src/my_srv/scripts/yolo_detect_node.py

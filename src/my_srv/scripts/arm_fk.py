@@ -48,7 +48,7 @@ if _OPENVC_DIR not in sys.path:
     sys.path.insert(0, _OPENVC_DIR)
 
 # ── 机械臂默认参数（0.1mm单位，与 z_move.py 完全相同）────────────────────────
-_L0_01mm = 1110
+_L0_01mm = 1350
 _L1_01mm = 1050
 _L2_01mm = 880
 _L3_01mm = 1780

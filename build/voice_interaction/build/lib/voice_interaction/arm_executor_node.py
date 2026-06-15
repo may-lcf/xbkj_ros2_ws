@@ -39,6 +39,8 @@ class ArmExecutorNode(Node):
         self.pub_num = self.create_publisher(String, '/num', 10)
         # 关节控制
         self.pub_joint = self.create_publisher(String, 'joint_commands', 10)
+        # YOLO 抓取
+        self.pub_yolo_pick = self.create_publisher(String, '/yolo/pick_cmd', 10)
 
         self.sub_cmd = self.create_subscription(
             String, 'voice_command', self.cmd_callback, 10)
@@ -110,6 +112,16 @@ class ArmExecutorNode(Node):
             msg = String()
             msg.data = json.dumps({'action': func}, ensure_ascii=False)
             self.pub_joint.publish(msg)
+
+        # ── YOLO 物体抓取 ──
+        elif func == 'yolo_pick':
+            msg = String()
+            msg.data = json.dumps({
+                'shape': params.get('shape', ''),
+                'color': params.get('color', ''),
+            }, ensure_ascii=False)
+            self.pub_yolo_pick.publish(msg)
+            self.get_logger().info(f'YOLO抓取指令已发布: {msg.data}')
 
         else:
             self.get_logger().warn(f'未知功能: {func}')
