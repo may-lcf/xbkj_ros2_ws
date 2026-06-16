@@ -1,1 +1,12 @@
-/home/webotpi/ros2_ws/build/my_srv/rosidl_generator_rs/my_srv/rust/src/lib.rs
+#![allow(non_camel_case_types)]
+#![allow(clippy::derive_partial_eq_without_eq)]
+#![allow(clippy::upper_case_acronyms)]
+
+
+#[path = "srv.rs"]
+mod srv_idiomatic;
+pub mod srv {
+    pub use super::srv_idiomatic::*;
+    pub mod rmw;
+}
+

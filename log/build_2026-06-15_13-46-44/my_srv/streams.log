@@ -1,0 +1,304 @@
+[0.020s] Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/my_srv -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/my_srv
+[0.195s] -- The C compiler identification is GNU 13.3.0
+[0.357s] -- The CXX compiler identification is GNU 13.3.0
+[0.418s] -- Detecting C compiler ABI info
+[0.689s] -- Detecting C compiler ABI info - done
+[0.714s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.716s] -- Detecting C compile features
+[0.716s] -- Detecting C compile features - done
+[0.736s] -- Detecting CXX compiler ABI info
+[1.056s] -- Detecting CXX compiler ABI info - done
+[1.079s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.080s] -- Detecting CXX compile features
+[1.080s] -- Detecting CXX compile features - done
+[1.087s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.525s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.867s] -- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)
+[1.971s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.999s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[2.043s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.095s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.430s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[2.436s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[2.665s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[2.727s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[2.791s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.938s] -- Found rosbridge_suite: 2.6.0 (/opt/ros/jazzy/share/rosbridge_suite/cmake)
+[2.942s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[2.979s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[4.762s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[6.851s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[7.739s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[7.747s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[8.123s] -- Found PythonExtra: /usr/bin/python3  
+[9.484s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[9.699s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[9.704s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[9.752s] -- Added test 'flake8' to check Python code syntax and style conventions
+[9.753s] -- Configured 'flake8' exclude dirs and/or files: 
+[9.755s] -- Added test 'lint_cmake' to check CMake code style
+[9.759s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[9.768s] -- Added test 'xmllint' to check XML markup files
+[9.776s] -- Configuring done (9.7s)
+[9.908s] -- Generating done (0.1s)
+[9.941s] -- Build files have been written to: /home/webotpi/ros2_ws/build/my_srv
+[9.988s] Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/my_srv -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/my_srv
+[9.991s] Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/my_srv -- -j4 -l4
+[10.175s] [  2%] Generating Rust code for ROS interfaces
+[10.845s] [  2%] Built target my_srv__rs
+[10.927s] [  2%] Built target ament_cmake_python_copy_my_srv
+[10.991s] [  5%] Generating type hashes for ROS interfaces
+[11.552s] [  5%] Built target my_srv__rosidl_generator_type_description
+[12.157s] running egg_info
+[12.159s] creating my_srv.egg-info
+[12.220s] writing my_srv.egg-info/PKG-INFO
+[12.220s] writing dependency_links to my_srv.egg-info/dependency_links.txt
+[12.220s] writing top-level names to my_srv.egg-info/top_level.txt
+[12.220s] writing manifest file 'my_srv.egg-info/SOURCES.txt'
+[12.360s] reading manifest file 'my_srv.egg-info/SOURCES.txt'
+[12.361s] writing manifest file 'my_srv.egg-info/SOURCES.txt'
+[12.531s] [  5%] Built target ament_cmake_python_build_my_srv_egg
+[12.579s] [  8%] Generating C++ code for ROS interfaces
+[13.516s] [  8%] Built target my_srv__cpp
+[13.544s] [ 11%] Generating C code for ROS interfaces
+[14.557s] [ 14%] Building C object CMakeFiles/my_srv__rosidl_generator_c.dir/rosidl_generator_c/my_srv/srv/detail/add__description.c.o
+[14.679s] [ 17%] Building C object CMakeFiles/my_srv__rosidl_generator_c.dir/rosidl_generator_c/my_srv/srv/detail/add__type_support.c.o
+[14.846s] [ 20%] Building C object CMakeFiles/my_srv__rosidl_generator_c.dir/rosidl_generator_c/my_srv/srv/detail/add__functions.c.o
+[15.061s] [ 22%] Linking C shared library libmy_srv__rosidl_generator_c.so
+[15.182s] [ 22%] Built target my_srv__rosidl_generator_c
+[15.222s] [ 25%] Generating C type support for eProsima Fast-RTPS
+[16.066s] [ 28%] Building CXX object CMakeFiles/my_srv__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/my_srv/srv/detail/add__type_support_c.cpp.o
+[17.574s] [ 31%] Linking CXX shared library libmy_srv__rosidl_typesupport_fastrtps_c.so
+[17.851s] [ 31%] Built target my_srv__rosidl_typesupport_fastrtps_c
+[17.879s] [ 34%] Generating C type support dispatch for ROS interfaces
+[18.490s] [ 37%] Building CXX object CMakeFiles/my_srv__rosidl_typesupport_c.dir/rosidl_typesupport_c/my_srv/srv/add__type_support.cpp.o
+[18.649s] [ 40%] Linking CXX shared library libmy_srv__rosidl_typesupport_c.so
+[18.765s] [ 40%] Built target my_srv__rosidl_typesupport_c
+[18.809s] [ 42%] Generating C++ introspection for ROS interfaces
+[19.652s] [ 45%] Building CXX object CMakeFiles/my_srv__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/my_srv/srv/detail/add__type_support.cpp.o
+[20.943s] [ 48%] Linking CXX shared library libmy_srv__rosidl_typesupport_introspection_cpp.so
+[21.228s] [ 48%] Built target my_srv__rosidl_typesupport_introspection_cpp
+[21.261s] [ 51%] Generating C++ type support dispatch for ROS interfaces
+[21.853s] [ 54%] Building CXX object CMakeFiles/my_srv__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/my_srv/srv/add__type_support.cpp.o
+[23.044s] [ 57%] Linking CXX shared library libmy_srv__rosidl_typesupport_cpp.so
+[23.353s] [ 57%] Built target my_srv__rosidl_typesupport_cpp
+[23.376s] [ 60%] Generating C introspection for ROS interfaces
+[24.114s] [ 62%] Building C object CMakeFiles/my_srv__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/my_srv/srv/detail/add__type_support.c.o
+[24.286s] [ 65%] Linking C shared library libmy_srv__rosidl_typesupport_introspection_c.so
+[24.378s] [ 65%] Built target my_srv__rosidl_typesupport_introspection_c
+[24.405s] [ 68%] Generating C++ type support for eProsima Fast-RTPS
+[25.221s] [ 71%] Building CXX object CMakeFiles/my_srv__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/my_srv/srv/detail/dds_fastrtps/add__type_support.cpp.o
+[27.098s] [ 74%] Linking CXX shared library libmy_srv__rosidl_typesupport_fastrtps_cpp.so
+[27.405s] [ 74%] Built target my_srv__rosidl_typesupport_fastrtps_cpp
+[27.469s] [ 74%] Built target my_srv
+[27.530s] [ 77%] Generating Python code for ROS interfaces
+[28.669s] [ 77%] Built target my_srv__py
+[28.721s] [ 80%] Building C object CMakeFiles/my_srv__rosidl_generator_py.dir/rosidl_generator_py/my_srv/srv/_add_s.c.o
+[29.165s] [ 82%] Linking C shared library libmy_srv__rosidl_generator_py.so
+[29.314s] [ 82%] Built target my_srv__rosidl_generator_py
+[29.387s] [ 85%] Building C object CMakeFiles/my_srv_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/my_srv/_my_srv_s.ep.rosidl_typesupport_fastrtps_c.c.o
+[29.714s] [ 88%] Linking C shared module rosidl_generator_py/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so
+[29.810s] [ 88%] Built target my_srv_s__rosidl_typesupport_fastrtps_c
+[29.900s] [ 91%] Building C object CMakeFiles/my_srv_s__rosidl_typesupport_c.dir/rosidl_generator_py/my_srv/_my_srv_s.ep.rosidl_typesupport_c.c.o
+[30.195s] [ 94%] Linking C shared module rosidl_generator_py/my_srv/my_srv_s__rosidl_typesupport_c.so
+[30.280s] [ 94%] Built target my_srv_s__rosidl_typesupport_c
+[30.373s] [ 97%] Building C object CMakeFiles/my_srv_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/my_srv/_my_srv_s.ep.rosidl_typesupport_introspection_c.c.o
+[30.668s] [100%] Linking C shared module rosidl_generator_py/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so
+[30.791s] [100%] Built target my_srv_s__rosidl_typesupport_introspection_c
+[30.838s] Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/my_srv -- -j4 -l4
+[30.869s] Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/my_srv
+[30.890s] -- Install configuration: ""
+[30.891s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/rosidl_interfaces/my_srv
+[30.894s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.json
+[30.896s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv
+[30.896s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg
+[30.899s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_generator_c__visibility_control.h
+[30.899s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv
+[30.901s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/add.h
+[30.902s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail
+[30.902s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__functions.c
+[30.902s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.h
+[30.902s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.c
+[30.903s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__struct.h
+[30.903s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__functions.h
+[30.903s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__description.c
+[30.903s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/library_path.sh
+[30.904s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/library_path.dsv
+[30.905s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_c.so
+[30.906s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_c.so" to ""
+[30.908s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv
+[30.909s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg
+[30.909s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[30.909s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv
+[30.909s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail
+[30.909s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_fastrtps_c.h
+[30.909s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_c.so
+[30.910s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_c.so" to ""
+[30.911s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv
+[30.912s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg
+[30.914s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_generator_cpp__visibility_control.hpp
+[30.915s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv
+[30.916s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/add.hpp
+[30.916s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail
+[30.916s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.hpp
+[30.916s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__struct.hpp
+[30.916s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__traits.hpp
+[30.916s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__builder.hpp
+[30.916s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv
+[30.916s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg
+[30.917s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[30.917s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv
+[30.917s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail
+[30.917s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_fastrtps_cpp.hpp
+[30.920s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/dds_fastrtps
+[30.923s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_cpp.so
+[30.926s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_fastrtps_cpp.so" to ""
+[30.930s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv
+[30.930s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg
+[30.931s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[30.931s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv
+[30.931s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail
+[30.931s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.c
+[30.931s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_introspection_c.h
+[30.931s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_c.so
+[30.931s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_c.so" to ""
+[30.932s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_c.so
+[30.932s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_c.so" to ""
+[30.935s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv
+[30.937s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv
+[30.940s] -- Up-to-date: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail
+[30.941s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__type_support.cpp
+[30.941s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/include/my_srv/my_srv/srv/detail/add__rosidl_typesupport_introspection_cpp.hpp
+[30.941s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_cpp.so
+[30.941s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_introspection_cpp.so" to ""
+[30.942s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_cpp.so
+[30.942s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_typesupport_cpp.so" to ""
+[30.942s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/pythonpath.sh
+[30.946s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/pythonpath.dsv
+[30.947s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info
+[30.947s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/top_level.txt
+[30.948s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/PKG-INFO
+[30.949s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/SOURCES.txt
+[30.949s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv-0.0.0-py3.12.egg-info/dependency_links.txt
+[30.950s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv
+[30.951s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_c.c
+[30.951s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_introspection_c.c
+[30.952s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_c.so
+[30.952s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/__init__.py
+[30.952s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv
+[30.952s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/__init__.py
+[30.953s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add.py
+[30.953s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add_s.c
+[30.953s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/_my_srv_s.ep.rosidl_typesupport_fastrtps_c.c
+[30.954s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so
+[30.954s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so
+[31.062s] Listing '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv'...
+[31.063s] Compiling '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/__init__.py'...
+[31.064s] Listing '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv'...
+[31.065s] Compiling '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/__init__.py'...
+[31.065s] Compiling '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/srv/_add.py'...
+[31.091s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so
+[31.091s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_fastrtps_c.so" to ""
+[31.091s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so
+[31.091s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_introspection_c.so" to ""
+[31.091s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_c.so
+[31.092s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages/my_srv/my_srv_s__rosidl_typesupport_c.so" to ""
+[31.093s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_py.so
+[31.094s] -- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/my_srv/lib/libmy_srv__rosidl_generator_py.so" to ""
+[31.094s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/rust_packages/my_srv
+[31.094s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust
+[31.095s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/build.rs
+[31.096s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src
+[31.096s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/lib.rs
+[31.096s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/srv
+[31.096s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/srv/rmw.rs
+[31.096s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/src/srv.rs
+[31.097s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/rust/Cargo.toml
+[31.097s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.idl
+[31.097s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/srv/Add.srv
+[31.099s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_fk.py
+[31.099s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_rviz_bridge.py
+[31.100s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/arm_teach.py
+[31.101s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/asr_node.py
+[31.101s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_set_node.py
+[31.102s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_sorting_node.py
+[31.102s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_stack_node.py
+[31.102s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/color_track_node.py
+[31.102s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_arm.launch.py
+[31.102s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_color_sorting_node.py
+[31.103s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_color_stack_node.py
+[31.115s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_color_track_node.py
+[31.116s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_distance_node.py
+[31.116s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_label_sorting_node.py
+[31.128s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_label_stack_node.py
+[31.133s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_label_track_node.py
+[31.133s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_num_sorting_node.py
+[31.137s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_num_stack_node.py
+[31.144s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_num_track_node.py
+[31.145s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/depth_utils.py
+[31.145s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/diagnose_hand_eye.py
+[31.145s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/eye_in_hand_calib_node.py
+[31.145s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/face_track_node.py
+[31.145s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/glove_node.py
+[31.146s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/hand_gesture_arm_node.py
+[31.149s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/joy_arm_node.py
+[31.149s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/lab_tuner.py
+[31.149s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_sorting_node.py
+[31.149s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_stack_node.py
+[31.150s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/label_track_node.py
+[31.150s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_sorting_node.py
+[31.150s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_stack_node.py
+[31.150s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/num_track_node.py
+[31.154s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/servo_node.py
+[31.154s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/test.py
+[31.154s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/yolo_detect_node.py
+[31.154s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/yolo_pick_node.py
+[31.155s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/yolo_shape_announce.py
+[31.155s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/z_move.py
+[31.157s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/lib/my_srv/z_uart.py
+[31.159s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch
+[31.159s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/slave.launch.py
+[31.162s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/function.launch.py
+[31.163s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/launch/depth_arm.launch.py
+[31.163s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/web
+[31.165s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/web/index.html
+[31.165s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/package_run_dependencies/my_srv
+[31.168s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/parent_prefix_path/my_srv
+[31.168s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/ament_prefix_path.sh
+[31.169s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/ament_prefix_path.dsv
+[31.169s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/path.sh
+[31.169s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/environment/path.dsv
+[31.171s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.bash
+[31.171s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.sh
+[31.173s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.zsh
+[31.175s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/local_setup.dsv
+[31.175s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.dsv
+[31.176s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/ament_index/resource_index/packages/my_srv
+[31.176s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cExport.cmake
+[31.176s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cExport-noconfig.cmake
+[31.180s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cExport.cmake
+[31.181s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[31.181s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_cppExport.cmake
+[31.181s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cppExport.cmake
+[31.181s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[31.182s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cExport.cmake
+[31.182s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[31.182s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cExport.cmake
+[31.182s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cExport-noconfig.cmake
+[31.182s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cppExport.cmake
+[31.182s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[31.182s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cppExport.cmake
+[31.183s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srv__rosidl_typesupport_cppExport-noconfig.cmake
+[31.183s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_pyExport.cmake
+[31.183s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/export_my_srv__rosidl_generator_pyExport-noconfig.cmake
+[31.188s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake-extras.cmake
+[31.188s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_dependencies-extras.cmake
+[31.188s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_include_directories-extras.cmake
+[31.190s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_libraries-extras.cmake
+[31.192s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/ament_cmake_export_targets-extras.cmake
+[31.192s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[31.193s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[31.194s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srvConfig.cmake
+[31.194s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/cmake/my_srvConfig-version.cmake
+[31.194s] -- Installing: /home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.xml
+[31.195s] Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/my_srv

@@ -273,7 +273,7 @@ class YoloPickNode(Node):
             time.sleep(0.3)
 
         # 回到观察位置
-        kinematics_move(0, 105, 165, 1000, alpha_hint=-82)
+        kinematics_move(0, 120, 130, 1000, alpha_hint=-82)
         time.sleep(1.5)
         return True
 
@@ -299,7 +299,7 @@ class YoloPickNode(Node):
                 return
 
             # 初始位姿
-            kinematics_move(0, 105, 165, 1000, alpha_hint=-82)
+            kinematics_move(0, 120, 130, 1000, alpha_hint=-82)
             time.sleep(1.5)
 
             # 2. 等待检测结果

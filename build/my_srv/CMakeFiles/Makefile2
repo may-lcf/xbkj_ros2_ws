@@ -98,7 +98,7 @@ clean: CMakeFiles/my_srv__rosidl_typesupport_introspection_c.dir/clean
 clean: CMakeFiles/my_srv__rosidl_typesupport_c.dir/clean
 clean: CMakeFiles/my_srv__rosidl_typesupport_introspection_cpp.dir/clean
 clean: CMakeFiles/my_srv__rosidl_typesupport_cpp.dir/clean
-clean: CMakeFiles/ament_cmake_python_symlink_my_srv.dir/clean
+clean: CMakeFiles/ament_cmake_python_copy_my_srv.dir/clean
 clean: CMakeFiles/ament_cmake_python_build_my_srv_egg.dir/clean
 clean: CMakeFiles/my_srv__rosidl_generator_py.dir/clean
 clean: CMakeFiles/my_srv_s__rosidl_typesupport_fastrtps_c.dir/clean
@@ -463,36 +463,36 @@ CMakeFiles/my_srv__rosidl_typesupport_cpp.dir/clean:
 .PHONY : CMakeFiles/my_srv__rosidl_typesupport_cpp.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/ament_cmake_python_symlink_my_srv.dir
+# Target rules for target CMakeFiles/ament_cmake_python_copy_my_srv.dir
 
 # All Build rule for target.
-CMakeFiles/ament_cmake_python_symlink_my_srv.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_my_srv.dir/build.make CMakeFiles/ament_cmake_python_symlink_my_srv.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_my_srv.dir/build.make CMakeFiles/ament_cmake_python_symlink_my_srv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/webotpi/ros2_ws/build/my_srv/CMakeFiles --progress-num= "Built target ament_cmake_python_symlink_my_srv"
-.PHONY : CMakeFiles/ament_cmake_python_symlink_my_srv.dir/all
+CMakeFiles/ament_cmake_python_copy_my_srv.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_my_srv.dir/build.make CMakeFiles/ament_cmake_python_copy_my_srv.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_my_srv.dir/build.make CMakeFiles/ament_cmake_python_copy_my_srv.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/webotpi/ros2_ws/build/my_srv/CMakeFiles --progress-num= "Built target ament_cmake_python_copy_my_srv"
+.PHONY : CMakeFiles/ament_cmake_python_copy_my_srv.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ament_cmake_python_symlink_my_srv.dir/rule: cmake_check_build_system
+CMakeFiles/ament_cmake_python_copy_my_srv.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/webotpi/ros2_ws/build/my_srv/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ament_cmake_python_symlink_my_srv.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ament_cmake_python_copy_my_srv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/webotpi/ros2_ws/build/my_srv/CMakeFiles 0
-.PHONY : CMakeFiles/ament_cmake_python_symlink_my_srv.dir/rule
+.PHONY : CMakeFiles/ament_cmake_python_copy_my_srv.dir/rule
 
 # Convenience name for target.
-ament_cmake_python_symlink_my_srv: CMakeFiles/ament_cmake_python_symlink_my_srv.dir/rule
-.PHONY : ament_cmake_python_symlink_my_srv
+ament_cmake_python_copy_my_srv: CMakeFiles/ament_cmake_python_copy_my_srv.dir/rule
+.PHONY : ament_cmake_python_copy_my_srv
 
 # clean rule for target.
-CMakeFiles/ament_cmake_python_symlink_my_srv.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_my_srv.dir/build.make CMakeFiles/ament_cmake_python_symlink_my_srv.dir/clean
-.PHONY : CMakeFiles/ament_cmake_python_symlink_my_srv.dir/clean
+CMakeFiles/ament_cmake_python_copy_my_srv.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_my_srv.dir/build.make CMakeFiles/ament_cmake_python_copy_my_srv.dir/clean
+.PHONY : CMakeFiles/ament_cmake_python_copy_my_srv.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ament_cmake_python_build_my_srv_egg.dir
 
 # All Build rule for target.
-CMakeFiles/ament_cmake_python_build_my_srv_egg.dir/all: CMakeFiles/ament_cmake_python_symlink_my_srv.dir/all
+CMakeFiles/ament_cmake_python_build_my_srv_egg.dir/all: CMakeFiles/ament_cmake_python_copy_my_srv.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_build_my_srv_egg.dir/build.make CMakeFiles/ament_cmake_python_build_my_srv_egg.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_build_my_srv_egg.dir/build.make CMakeFiles/ament_cmake_python_build_my_srv_egg.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/webotpi/ros2_ws/build/my_srv/CMakeFiles --progress-num= "Built target ament_cmake_python_build_my_srv_egg"

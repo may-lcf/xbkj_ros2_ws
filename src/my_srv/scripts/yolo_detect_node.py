@@ -14,7 +14,7 @@ yolo_detect_node.py — YOLO 目标检测节点
   发布: /yolo/detections (JSON), /yolo/image_result (调试画面)
 """
 
-import os, sys, json, threading
+import os, sys, json, threading, time
 import numpy as np, cv2
 
 import rclpy
@@ -201,10 +201,18 @@ class YoloDetectNode(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = YoloDetectNode()
+    frame_count = 0
     try:
         while rclpy.ok():
-            rclpy.spin_once(node, timeout_sec=0.05)
-            node.detect()
+            rclpy.spin_once(node, timeout_sec=0.1)
+            if node.latest_rgb is None:
+                time.sleep(0.5)
+                continue
+            dets = node.detect()
+            frame_count += 1
+            if frame_count % 30 == 0:
+                node.get_logger().info(f'已处理 {frame_count} 帧，检测到 {len(dets)} 个物体')
+            time.sleep(0.05)
     except KeyboardInterrupt:
         pass
     finally:

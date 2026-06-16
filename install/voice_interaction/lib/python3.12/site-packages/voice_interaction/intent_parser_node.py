@@ -105,6 +105,14 @@ SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手。用户将向
 {"message": "好的，我来拿螺丝刀"}
 {"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "螺丝刀"}}}
 
+用户: "请抓取红色正方体"
+{"message": "好的，我来抓取红色正方体"}
+{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "正方体", "color": "红色"}}}
+
+用户: "帮我夹取那个长方体"
+{"message": "好的，我来夹取长方体"}
+{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "长方体"}}}
+
 用户: "把圆柱体拿给我"
 {"message": "好的，我来拿圆柱体"}
 {"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "圆柱体"}}}
