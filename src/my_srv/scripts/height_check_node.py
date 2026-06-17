@@ -126,7 +126,7 @@ class HeightCheckNode(Node):
                 response.success = False
                 response.message = '串口初始化失败'
                 return response
-            kinematics_move(0, 110, 130, 1000, alpha_hint=-82)
+            kinematics_move(0, 120, 120, 1000, alpha_hint=-82)
             time.sleep(1.5)
             self.get_logger().info('[HeightCheck] 观察位就绪，等待稳定...')
             time.sleep(1.0)
@@ -256,20 +256,13 @@ class HeightCheckNode(Node):
         self.get_logger().info(f'世界坐标: ({tx:.0f}, {ty:.0f}, {tz:.0f})mm')
 
         try:
-            # 飞到目标上方
-            self._publish_status('picking', f'移动到 {label} 上方...')
-            hover_z = max(int(tz) + 80, 60)
-            if not kinematics_move(int(tx), int(ty), hover_z, 1500, alpha_hint=-82):
-                self.get_logger().warn(f'IK无解：{label} 超出工作空间，跳过')
-                return False
-            time.sleep(1.6)
-
             # 打开夹爪
             for _ in range(3):
                 uart_send_str("#005P1000T500!")
                 time.sleep(0.3)
 
-            # 下降抓取
+            # 直接飞向目标抓取
+            self._publish_status('picking', f'飞向 {label}...')
             grab_z = max(int(tz) - 5, 5)
             if not kinematics_move(int(tx), int(ty), grab_z, 1200, alpha_hint=-82):
                 self.get_logger().warn(f'IK无解：下降位置超出工作空间，跳过')
@@ -297,7 +290,7 @@ class HeightCheckNode(Node):
                 time.sleep(0.3)
 
             # 回到观察位置
-            kinematics_move(0, 110, 130, 1000, alpha_hint=-82)
+            kinematics_move(0, 120, 120, 1000, alpha_hint=-82)
             time.sleep(1.5)
             self.get_logger().info('[HeightCheck] 回到观察位，等待稳定...')
             time.sleep(1.0)
@@ -347,14 +340,21 @@ class HeightCheckNode(Node):
             # 按深度排序（最浅在前 = 最高的物体）
             valid.sort(key=lambda d: d['depth_mm'])
 
-            # 基线 = 最浅物体的深度（可能是正常物体，也可能是叠放的）
-            shallowest = valid[0]['depth_mm']
             depths = [d['depth_mm'] for d in valid]
             median_depth = float(np.median(depths))
 
-            # 建立基线（用中位数，更稳健）
+            # 建立基线：采集 10 帧取中位数，避免启动时深度不稳定
             if self.baseline_depth is None:
-                self.baseline_depth = median_depth
+                if not hasattr(self, '_baseline_buf'):
+                    self._baseline_buf = []
+                self._baseline_buf.append(median_depth)
+                if len(self._baseline_buf) < 6:
+                    self.get_logger().info(
+                        f'[HeightCheck] 采集基线中... ({len(self._baseline_buf)}/6)')
+                    time.sleep(0.5)
+                    continue
+                self.baseline_depth = float(np.median(self._baseline_buf))
+                del self._baseline_buf
                 self.get_logger().info(
                     f'[HeightCheck] 基线建立: {self.baseline_depth:.0f}mm '
                     f'(共 {len(valid)} 个物体)')
@@ -383,7 +383,7 @@ class HeightCheckNode(Node):
                     success = self._pick_one(anomaly, label)
                     if success:
                         self._publish_status('done', f'{label} 已抓取到放置区')
-                        # 重置基线（物体被移走后重新建立）
+                        # 重置基线（物体被移走后重新采集）
                         self.baseline_depth = None
                     else:
                         self._publish_status('error', f'{label} 抓取失败')

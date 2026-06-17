@@ -3,16 +3,42 @@
 订阅 voice_text (ASR结果)，发布 voice_command (JSON动作) 和 speak_text (TTS文本)。
 支持多轮对话上下文记忆。
 LLM 流式输出：message 提取后立刻给 TTS (并行)，step 提取后给执行器。
+
+唤醒机制：
+  - 沉睡状态：只听唤醒词，其他语音忽略
+  - 唤醒状态：正常处理指令，15秒无指令自动回到沉睡
+  - 说"退下"手动回到沉睡
 """
 
 import os
 import json
 import threading
+import time
 
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 from openai import OpenAI
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  唤醒词配置（可自定义修改）
+# ═══════════════════════════════════════════════════════════════════════════════
+
+WAKE_WORDS = ['小星小星', '小心小心', '小新小新', '小星星', '小新新']
+DISMISS_WORD = '退下'
+TIMEOUT_SEC = 15.0
+
+WAKE_REPLY = '我在'
+DISMISS_REPLY = '小星退下了，有需要再唤醒我'
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  状态
+# ═══════════════════════════════════════════════════════════════════════════════
+
+STATE_SLEEP = 0
+STATE_AWAKE = 1
 
 
 SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手。用户将向你发出自然语言指令，
@@ -67,39 +93,13 @@ SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手。用户将向
 {"step": {"order": 1, "function": "color_track", "parameters": {"action": "enter"}}}
 {"step": {"order": 2, "function": "color_track", "parameters": {"action": "track", "color": "blue"}}}
 
-用户: "开启标签分拣"
-{"message": "好的，开启标签分拣"}
-{"step": {"order": 1, "function": "label_sorting", "parameters": {"action": "enter"}}}
-
 用户: "停"
 {"message": "好的，已停止"}
 {"step": {"order": 1, "function": "stop", "parameters": {}}}
 
-用户: "结束数字分拣"
-{"message": "好的，已停止数字分拣"}
-{"step": {"order": 1, "function": "num_sorting", "parameters": {"action": "exit"}}}
-
-用户: "关闭颜色追踪"
-{"message": "好的，已关闭颜色追踪"}
-{"step": {"order": 1, "function": "color_track", "parameters": {"action": "exit"}}}
-
-用户: "今天天气怎么样"
-{"message": "我专注于机械臂控制，无法查询天气。"}
-
-规则：
-- 涉及机械臂/视觉控制的指令：必须同时输出 message 和 step
-- 闲聊或无关问题：只输出 message，不输出 step
-- "开始/开启/启动" → action: "enter"
-- "结束/关闭/停止/退出" → action: "exit"
-
-
 用户: "帮我拿红色长方体"
 {"message": "好的，我来拿红色长方体"}
 {"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "长方体", "color": "红色"}}}
-
-用户: "把正方体都拿走"
-{"message": "好的，我来把正方体都拿走"}
-{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "正方体"}}}
 
 用户: "拿螺丝刀"
 {"message": "好的，我来拿螺丝刀"}
@@ -117,13 +117,14 @@ SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手。用户将向
 {"message": "好的，我来拿圆柱体"}
 {"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "圆柱体"}}}
 
-用户: "帮我拿个球"
-{"message": "好的，我来拿球体"}
-{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "球体"}}}
+用户: "今天天气怎么样"
+{"message": "我专注于机械臂控制，无法查询天气。"}
 
-用户: "给我拿绿色的正方体"
-{"message": "好的，我来拿绿色正方体"}
-{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "正方体", "color": "绿色"}}}
+规则：
+- 涉及机械臂/视觉控制的指令：必须同时输出 message 和 step
+- 闲聊或无关问题：只输出 message，不输出 step
+- "开始/开启/启动" → action: "enter"
+- "结束/关闭/停止/退出" → action: "exit"
 不要输出任何解释或说明，每个JSON对象必须独立且完整，一次一个。
 """
 
@@ -151,9 +152,14 @@ class IntentParserNode(Node):
 
         self.client = OpenAI(base_url=base_url, api_key=api_key)
 
-        # 对话上下文：system prompt + 滚动历史
+        # 对话上下文
         self.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
         self._history_lock = threading.Lock()
+
+        # ── 唤醒状态机 ──
+        self.state = STATE_SLEEP
+        self._timer_lock = threading.Lock()
+        self._timeout_timer = None
 
         self.sub_text = self.create_subscription(
             String, 'voice_text', self.text_callback, 10)
@@ -161,17 +167,106 @@ class IntentParserNode(Node):
         self.pub_speak = self.create_publisher(String, 'speak_text', 10)
 
         self.get_logger().info(
-            f'意图解析节点已启动 (模型: {self.model}, 上下文轮数: {self.max_history})')
+            f'意图解析节点已启动 (模型: {self.model}, 状态: 沉睡)')
+
+    # ══════════════════════════════════════════════════════════════════════════
+    #  唤醒词检测
+    # ══════════════════════════════════════════════════════════════════════════
+
+    def _is_wake_word(self, text):
+        """检查文本是否包含唤醒词"""
+        clean = text.replace(' ', '').replace('，', '').replace('。', '')
+        for w in WAKE_WORDS:
+            if w in clean:
+                return True
+        return False
+
+    def _is_dismiss(self, text):
+        """检查是否为退下指令"""
+        clean = text.replace(' ', '').replace('，', '').replace('。', '')
+        return DISMISS_WORD in clean
+
+    # ══════════════════════════════════════════════════════════════════════════
+    #  状态切换
+    # ══════════════════════════════════════════════════════════════════════════
+
+    def _enter_awake(self):
+        """进入唤醒状态"""
+        self.state = STATE_AWAKE
+        self._speak(WAKE_REPLY)
+        self._reset_timeout()
+        self.get_logger().info('🔔 已唤醒')
+
+    def _enter_sleep(self):
+        """进入沉睡状态"""
+        self.state = STATE_SLEEP
+        self._cancel_timeout()
+        self._speak(DISMISS_REPLY)
+        self.get_logger().info('💤 已沉睡')
+
+    def _reset_timeout(self):
+        """重置15秒超时计时器"""
+        with self._timer_lock:
+            if self._timeout_timer:
+                self._timeout_timer.cancel()
+            self._timeout_timer = threading.Timer(
+                TIMEOUT_SEC, self._on_timeout)
+            self._timeout_timer.daemon = True
+            self._timeout_timer.start()
+
+    def _cancel_timeout(self):
+        """取消超时计时器"""
+        with self._timer_lock:
+            if self._timeout_timer:
+                self._timeout_timer.cancel()
+                self._timeout_timer = None
+
+    def _on_timeout(self):
+        """超时回调：自动回到沉睡"""
+        self.get_logger().info(f'⏰ {TIMEOUT_SEC}秒无指令，自动沉睡')
+        self._enter_sleep()
+
+    def _speak(self, text):
+        """发送TTS"""
+        msg = String()
+        msg.data = text
+        self.pub_speak.publish(msg)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    #  语音文本回调
+    # ══════════════════════════════════════════════════════════════════════════
 
     def text_callback(self, msg):
         text = msg.data
         self.get_logger().info(f'收到文本: {text}')
+
+        # ── 沉睡状态 ──
+        if self.state == STATE_SLEEP:
+            if self._is_wake_word(text):
+                self._enter_awake()
+            else:
+                self.get_logger().info('💤 沉睡中，忽略')
+            return
+
+        # ── 唤醒状态 ──
+        # 检查退下指令
+        if self._is_dismiss(text):
+            self._enter_sleep()
+            return
+
+        # 重置超时计时器
+        self._reset_timeout()
+
+        # 正常处理：传给LLM
         threading.Thread(
             target=self._parse_async, args=(text,), daemon=True).start()
 
+    # ══════════════════════════════════════════════════════════════════════════
+    #  LLM 解析
+    # ══════════════════════════════════════════════════════════════════════════
+
     def _parse_async(self, text):
         try:
-            # 构建带上下文的 messages
             with self._history_lock:
                 messages = list(self.messages)
                 messages.append({"role": "user", "content": text})
@@ -196,7 +291,6 @@ class IntentParserNode(Node):
                 buffer += content
                 assistant_reply += content
 
-                # 实时提取 message → 立刻给 TTS (与 LLM 流式并行)
                 if not message_text:
                     idx = buffer.find('"message"')
                     if idx != -1:
@@ -209,15 +303,12 @@ class IntentParserNode(Node):
                             speak_msg.data = message_text
                             self.pub_speak.publish(speak_msg)
 
-                # 提取 step JSON → 给执行器
                 buffer = self._extract_steps(buffer)
 
-            # 存入上下文历史
             if assistant_reply:
                 with self._history_lock:
                     self.messages.append({"role": "user", "content": text})
                     self.messages.append({"role": "assistant", "content": assistant_reply})
-                    # 保留 system + 最近 max_history*2 条 (每轮=user+assistant)
                     max_msgs = 1 + self.max_history * 2
                     if len(self.messages) > max_msgs:
                         self.messages = [self.messages[0]] + self.messages[-(max_msgs - 1):]
@@ -226,7 +317,6 @@ class IntentParserNode(Node):
             self.get_logger().error(f'LLM调用失败: {e}')
 
     def _extract_steps(self, buffer):
-        """从缓冲区提取并发布 step JSON，返回剩余buffer"""
         while True:
             start = buffer.find('{')
             if start == -1:
