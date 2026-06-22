@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "my_srv/srv/detail/add__type_support.h"
-#include "my_srv/srv/detail/add__functions.h"
-#include "my_srv/srv/detail/add__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "my_srv/srv/detail/add__functions.h"
+#include "my_srv/srv/detail/add__type_support.h"
+#include "my_srv/srv/detail/add__struct.h"
 
 #ifdef __cplusplus
 extern "C"

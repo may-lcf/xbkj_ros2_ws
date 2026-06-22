@@ -97,6 +97,16 @@ class ASRNode(Node):
         self.nsort_pub = self.create_publisher(String, '/num_sorting/command', 10)
         self.joint_control_publisher = self.create_publisher(String, 'joint_commands', 10)
 
+        # 订阅 /joint_commands，转发到串口（供手势控制等节点使用）
+        from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
+        _joint_qos = QoSProfile(
+            depth=1,
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            history=HistoryPolicy.KEEP_LAST,
+        )
+        self.joint_control_subscriber = self.create_subscription(
+            String, 'joint_commands', self._joint_commands_callback, _joint_qos)
+
         # 启动接收线程
         self.running = True
         self.receive_thread = threading.Thread(target=self.receive_loop)
@@ -475,6 +485,10 @@ class ASRNode(Node):
     def send_callback(self, msg):
         """发送话题回调函数"""
         self.send_data(msg.data + '\n')  # 添加换行符作为结束符
+
+    def _joint_commands_callback(self, msg):
+        """将 /joint_commands 转发到串口"""
+        self.send_data(msg.data)
 
     def send_string_service(self, request, response):
         """发送字符串服务回调函数"""

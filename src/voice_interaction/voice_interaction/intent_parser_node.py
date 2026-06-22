@@ -27,7 +27,7 @@ from openai import OpenAI
 
 WAKE_WORDS = ['小星小星', '小心小心', '小新小新']
 DISMISS_WORD = '退下'
-TIMEOUT_SEC = 15.0
+TIMEOUT_SEC = 25.0
 
 WAKE_REPLY = '我在'
 DISMISS_REPLY = '小星退下了，有需要再唤醒我'
@@ -74,6 +74,16 @@ SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手小星。用户
   支持形状: 正方体、长方体、圆柱、球体、螺丝刀
   支持颜色: 红色、绿色、蓝色（可选，不指定则按像素面积从大到小依次抓取该形状的所有物体）
 
+【垃圾分类】(YOLO识别+机械臂抓取+分类投放)
+- garbage_sorting: "garbage_sorting", {"garbage_type": "<垃圾类型>"}
+  支持的垃圾类型: 可回收垃圾、有害垃圾、厨余垃圾、其他垃圾
+  分类规则:
+    可回收垃圾: 塑料瓶、报纸
+    有害垃圾: 电池
+    厨余垃圾: 香蕉皮
+    其他垃圾: 卫生纸
+  用户可能说"丢掉/清理/扔掉/处理+物体名"，你需要判断该物体属于哪种垃圾。
+
 【机械臂控制】
 - 关节控制: "joint", {"id": 1-6, "angle": 角度}
 - 固定动作: "routine", {"action": "夹爪开"|"夹爪关"|"恢复初始状态"|"比个耶"|"摇摇头"|"点点头"}
@@ -116,6 +126,38 @@ SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手小星。用户
 用户: "把圆柱体拿给我"
 {"message": "好的，我来拿圆柱体"}
 {"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "圆柱体"}}}
+
+用户: "把可回收垃圾丢掉"
+{"message": "让我来清理可回收垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "可回收垃圾"}}}
+
+用户: "丢掉香蕉皮"
+{"message": "香蕉皮是厨余垃圾，要扔进厨余垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "厨余垃圾"}}}
+
+用户: "清理电池"
+{"message": "电池是有害垃圾，要扔进有害垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "有害垃圾"}}}
+
+用户: "把卫生纸扔掉"
+{"message": "卫生纸是其他垃圾，要扔进其他垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "其他垃圾"}}}
+
+用户: "处理一下塑料瓶"
+{"message": "塑料瓶是可回收垃圾，要扔进可回收垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "可回收垃圾"}}}
+
+用户: "有害垃圾丢掉"
+{"message": "让我来清理有害垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "有害垃圾"}}}
+
+用户: "把有害垃圾扔掉"
+{"message": "让我来清理有害垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "有害垃圾"}}}
+
+用户: "把厨余垃圾清理掉"
+{"message": "让我来清理厨余垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "厨余垃圾"}}}
 
 用户: "今天天气怎么样"
 {"message": "我专注于机械臂控制，无法查询天气。"}
@@ -305,7 +347,12 @@ class IntentParserNode(Node):
 
                 buffer = self._extract_steps(buffer)
 
+            # 循环结束后，对剩余buffer再提取一次（最后的step可能还在buffer里）
+            self.get_logger().info(f'[_parse] 流式结束, 最终buffer({len(buffer)}字节): {buffer!r}')
+            self._extract_steps(buffer)
+
             if assistant_reply:
+                self.get_logger().info(f'LLM完整回复: {assistant_reply}')
                 with self._history_lock:
                     self.messages.append({"role": "user", "content": text})
                     self.messages.append({"role": "assistant", "content": assistant_reply})
@@ -332,6 +379,7 @@ class IntentParserNode(Node):
                         end = i
                         break
             if end == -1:
+                # 有 `{` 但没有匹配的 `}`，JSON 不完整，保留给下次调用
                 break
             json_str = buffer[start:end + 1]
             try:
@@ -346,9 +394,6 @@ class IntentParserNode(Node):
                 pass
             buffer = buffer[end + 1:]
 
-        last_brace = buffer.rfind('}')
-        if last_brace != -1:
-            return buffer[last_brace + 1:]
         return buffer
 
 

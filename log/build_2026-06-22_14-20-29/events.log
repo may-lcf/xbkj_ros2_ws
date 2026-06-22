@@ -1,0 +1,71 @@
+[0.000000] (-) TimerEvent: {}
+[0.000357] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000512] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000591] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000640] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000685] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000732] (voice_interaction) JobQueued: {'identifier': 'voice_interaction', 'dependencies': OrderedDict()}
+[0.004561] (voice_interaction) JobStarted: {'identifier': 'voice_interaction'}
+[0.099973] (-) TimerEvent: {}
+[0.200733] (-) TimerEvent: {}
+[0.301455] (-) TimerEvent: {}
+[0.402828] (-) TimerEvent: {}
+[0.503180] (-) TimerEvent: {}
+[0.604045] (-) TimerEvent: {}
+[0.704894] (-) TimerEvent: {}
+[0.805407] (-) TimerEvent: {}
+[0.906543] (-) TimerEvent: {}
+[1.007132] (-) TimerEvent: {}
+[1.107976] (-) TimerEvent: {}
+[1.208294] (-) TimerEvent: {}
+[1.308766] (-) TimerEvent: {}
+[1.410006] (-) TimerEvent: {}
+[1.511039] (-) TimerEvent: {}
+[1.612611] (-) TimerEvent: {}
+[1.712863] (-) TimerEvent: {}
+[1.813461] (-) TimerEvent: {}
+[1.913979] (-) TimerEvent: {}
+[2.014490] (-) TimerEvent: {}
+[2.111697] (voice_interaction) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/voice_interaction', 'build', '--build-base', '/home/webotpi/ros2_ws/build/voice_interaction/build', 'install', '--record', '/home/webotpi/ros2_ws/build/voice_interaction/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/webotpi/ros2_ws/src/voice_interaction', 'env': {'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 33382 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '107', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/voice_interaction', 'SSH_CONNECTION': '192.168.0.111 33382 192.168.0.119 22', 'PYTHONPATH': '/home/webotpi/ros2_ws/build/voice_interaction/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[2.115550] (-) TimerEvent: {}
+[2.215876] (-) TimerEvent: {}
+[2.319133] (-) TimerEvent: {}
+[2.419440] (-) TimerEvent: {}
+[2.519657] (-) TimerEvent: {}
+[2.619874] (-) TimerEvent: {}
+[2.703320] (voice_interaction) StdoutLine: {'line': b'running egg_info\n'}
+[2.720019] (-) TimerEvent: {}
+[2.737387] (voice_interaction) StdoutLine: {'line': b'writing ../../build/voice_interaction/voice_interaction.egg-info/PKG-INFO\n'}
+[2.737869] (voice_interaction) StdoutLine: {'line': b'writing dependency_links to ../../build/voice_interaction/voice_interaction.egg-info/dependency_links.txt\n'}
+[2.740886] (voice_interaction) StdoutLine: {'line': b'writing entry points to ../../build/voice_interaction/voice_interaction.egg-info/entry_points.txt\n'}
+[2.741357] (voice_interaction) StdoutLine: {'line': b'writing requirements to ../../build/voice_interaction/voice_interaction.egg-info/requires.txt\n'}
+[2.742109] (voice_interaction) StdoutLine: {'line': b'writing top-level names to ../../build/voice_interaction/voice_interaction.egg-info/top_level.txt\n'}
+[2.820775] (-) TimerEvent: {}
+[2.871966] (voice_interaction) StdoutLine: {'line': b"reading manifest file '../../build/voice_interaction/voice_interaction.egg-info/SOURCES.txt'\n"}
+[2.873217] (voice_interaction) StdoutLine: {'line': b"writing manifest file '../../build/voice_interaction/voice_interaction.egg-info/SOURCES.txt'\n"}
+[2.873845] (voice_interaction) StdoutLine: {'line': b'running build\n'}
+[2.874520] (voice_interaction) StdoutLine: {'line': b'running build_py\n'}
+[2.874741] (voice_interaction) StdoutLine: {'line': b'copying voice_interaction/intent_parser_node.py -> /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction\n'}
+[2.874904] (voice_interaction) StdoutLine: {'line': b'running install\n'}
+[2.888710] (voice_interaction) StdoutLine: {'line': b'running install_lib\n'}
+[2.920996] (-) TimerEvent: {}
+[2.932431] (voice_interaction) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction/intent_parser_node.py -> /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction\n'}
+[2.934365] (voice_interaction) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction/intent_parser_node.py to intent_parser_node.cpython-312.pyc\n'}
+[2.939258] (voice_interaction) StdoutLine: {'line': b'running install_data\n'}
+[2.940200] (voice_interaction) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.978599] (voice_interaction) StdoutLine: {'line': b"removing '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction-0.1.0-py3.12.egg-info' (and everything under it)\n"}
+[2.979328] (voice_interaction) StdoutLine: {'line': b'Copying ../../build/voice_interaction/voice_interaction.egg-info to /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction-0.1.0-py3.12.egg-info\n'}
+[2.981699] (voice_interaction) StdoutLine: {'line': b'running install_scripts\n'}
+[3.022272] (-) TimerEvent: {}
+[3.122594] (-) TimerEvent: {}
+[3.222813] (-) TimerEvent: {}
+[3.268128] (voice_interaction) StdoutLine: {'line': b'Installing arm_executor_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction\n'}
+[3.269029] (voice_interaction) StdoutLine: {'line': b'Installing intent_parser_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction\n'}
+[3.271522] (voice_interaction) StdoutLine: {'line': b'Installing voice_recognition_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction\n'}
+[3.272082] (voice_interaction) StdoutLine: {'line': b'Installing voice_synthesis_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction\n'}
+[3.273200] (voice_interaction) StdoutLine: {'line': b"writing list of installed files to '/home/webotpi/ros2_ws/build/voice_interaction/install.log'\n"}
+[3.323296] (-) TimerEvent: {}
+[3.424953] (-) TimerEvent: {}
+[3.442201] (voice_interaction) CommandEnded: {'returncode': 0}
+[3.463900] (voice_interaction) JobEnded: {'identifier': 'voice_interaction', 'rc': 0}
+[3.465433] (-) EventReactorShutdown: {}

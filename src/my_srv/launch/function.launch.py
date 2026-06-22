@@ -27,6 +27,12 @@ def generate_launch_description():
              name='asr_node', output='screen'),
         Node(package='my_srv', executable='face_track_node.py',
              name='face_track_node', output='screen'),
+        Node(package='my_srv', executable='hand_gesture_arm_node.py',
+             name='hand_gesture_arm_node', output='screen'),
+        Node(package='my_srv', executable='servo_node.py',
+             name='servo_node', output='screen'),
+        Node(package='my_srv', executable='pinch_arm_control.py',
+             name='pinch_arm_control', output='screen'),
 
         # ── 2D 视觉节点 ──
         Node(package='my_srv', executable='color_sorting_node.py',

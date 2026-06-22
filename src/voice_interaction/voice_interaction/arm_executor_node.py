@@ -41,6 +41,8 @@ class ArmExecutorNode(Node):
         self.pub_joint = self.create_publisher(String, 'joint_commands', 10)
         # YOLO 抓取
         self.pub_yolo_pick = self.create_publisher(String, '/yolo/pick_cmd', 10)
+        # 垃圾分类
+        self.pub_garbage = self.create_publisher(String, '/garbage_sort/cmd', 10)
 
         self.sub_cmd = self.create_subscription(
             String, 'voice_command', self.cmd_callback, 10)
@@ -122,6 +124,15 @@ class ArmExecutorNode(Node):
             }, ensure_ascii=False)
             self.pub_yolo_pick.publish(msg)
             self.get_logger().info(f'YOLO抓取指令已发布: {msg.data}')
+
+        # ── 垃圾分类 ──
+        elif func == 'garbage_sorting':
+            msg = String()
+            msg.data = json.dumps({
+                'garbage_type': params.get('garbage_type', ''),
+            }, ensure_ascii=False)
+            self.pub_garbage.publish(msg)
+            self.get_logger().info(f'垃圾分类指令已发布: {msg.data}')
 
         else:
             self.get_logger().warn(f'未知功能: {func}')

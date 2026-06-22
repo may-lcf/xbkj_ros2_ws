@@ -32,6 +32,7 @@ import queue
 import threading
 import os
 import sys
+import subprocess
 
 import rclpy
 from rclpy.node import Node
@@ -61,6 +62,18 @@ except ImportError:
 
 # ── 机械臂初始姿态 (来自 joy_arm_node.py) ────────────────────────────────────
 INIT_CMD = '{#000P1500T1000!#001P1666T1000!#002P1750T1000!#003P0905T1000!#004P1500T1000!#005P1500T1000!}'
+
+# ── 相机类型检测 ───────────────────────────────────────────────────────────
+def detect_camera() -> str:
+    """检测USB相机类型，返回 'depth' 或 'mono'"""
+    try:
+        result = subprocess.run(['lsusb'], capture_output=True, text=True, timeout=3)
+        if '3251:1930' in result.stdout:
+            return 'depth'
+    except Exception:
+        pass
+    return 'mono'
+
 
 # ── MediaPipe 模型路径候选 ───────────────────────────────────────────────────
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -156,17 +169,25 @@ class HandGestureArmNode(Node):
         self.get_logger().info(f'手势模型: {model_path}')
 
         # ── 参数 ──────────────────────────────────────────────────────────────
+        self.declare_parameter('camera_topic',   '/aurora/rgb/image_raw')
         self.declare_parameter('camera_index',   0)
         self.declare_parameter('debounce_count', 5)    # 连续N帧才触发，防误触
         self.declare_parameter('image_width',    640)
         self.declare_parameter('image_height',   480)
         self.declare_parameter('fps',            15)
 
+        self.camera_topic   = self.get_parameter('camera_topic').value
         self.camera_index   = self.get_parameter('camera_index').value
         self.debounce_count = self.get_parameter('debounce_count').value
         self.img_w          = self.get_parameter('image_width').value
         self.img_h          = self.get_parameter('image_height').value
         self.fps            = self.get_parameter('fps').value
+
+        # 自动检测相机类型
+        self.camera_type = detect_camera()
+        self.get_logger().info(f'相机检测: {self.camera_type}')
+
+        self._ros_sub = None  # ROS 话题订阅（深度相机模式）
 
         # ── MediaPipe 检测器（只检测1只手，节省算力）───────────────────────────
         base_opts = mp_python.BaseOptions(model_asset_path=model_path)
@@ -215,13 +236,23 @@ class HandGestureArmNode(Node):
         self.get_logger().info('收到 Enter 服务，启动手势臂控制...')
         if not self.active:
             try:
-                self.cap = cv2.VideoCapture(self.camera_index, cv2.CAP_V4L2)
-                if not self.cap.isOpened():
-                    raise RuntimeError(f'摄像头 {self.camera_index} 无法打开')
-                self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,  self.img_w)
-                self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.img_h)
-                self.cap.set(cv2.CAP_PROP_FPS,          self.fps)
-                self.camera_open = True
+                if self.camera_type == 'depth':
+                    # 深度相机模式：订阅 ROS 话题
+                    _qos = QoSProfile(depth=2, reliability=ReliabilityPolicy.BEST_EFFORT,
+                                      history=HistoryPolicy.KEEP_LAST)
+                    self._ros_sub = self.create_subscription(
+                        Image, self.camera_topic, self._ros_image_cb, _qos)
+                    self.get_logger().info(f'深度相机模式: {self.camera_topic}')
+                else:
+                    # USB 单目相机模式
+                    self.cap = cv2.VideoCapture(self.camera_index, cv2.CAP_V4L2)
+                    if not self.cap.isOpened():
+                        raise RuntimeError(f'摄像头 {self.camera_index} 无法打开')
+                    self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,  self.img_w)
+                    self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.img_h)
+                    self.cap.set(cv2.CAP_PROP_FPS,          self.fps)
+                    self.camera_open = True
+                    self.get_logger().info(f'USB 相机模式: /dev/video{self.camera_index}')
 
                 # 机械臂复位到初始姿态
                 self._send(INIT_CMD)
@@ -233,7 +264,8 @@ class HandGestureArmNode(Node):
                 self.no_finger_ts = time.time()
                 self.active       = True
 
-                threading.Thread(target=self._capture_loop, daemon=True).start()
+                if self.camera_type != 'depth':
+                    threading.Thread(target=self._capture_loop, daemon=True).start()
                 self.get_logger().info('✅ 手势臂控制已启动，举起手掌开始识别')
 
             except Exception as e:
@@ -257,6 +289,9 @@ class HandGestureArmNode(Node):
             self.cap.release()
             self.cap = None
             self.camera_open = False
+        if self._ros_sub:
+            self.destroy_subscription(self._ros_sub)
+            self._ros_sub = None
         self._send(INIT_CMD)   # 复位机械臂
         response.success = True
         response.message = '手势臂控制已停止'
@@ -352,7 +387,7 @@ class HandGestureArmNode(Node):
             self.last_gesture = 'none'
             self.state        = State.NULL
 
-    # ── 摄像头读取线程 ────────────────────────────────────────────────────────
+    # ── 摄像头读取线程（USB 相机）──────────────────────────────────────────
     def _capture_loop(self):
         """持续读取摄像头帧，放入 image_queue（满了丢旧帧）"""
         while self.active and self.camera_open:
@@ -370,6 +405,23 @@ class HandGestureArmNode(Node):
                 except queue.Empty:
                     pass
             self.image_queue.put(frame)
+
+    # ── ROS 话题回调（深度相机）────────────────────────────────────────────
+    def _ros_image_cb(self, msg: Image):
+        """接收深度相机的 RGB 图像，放入 image_queue"""
+        if not self.active:
+            return
+        try:
+            frame = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
+            frame = cv2.flip(frame, 1)
+            if self.image_queue.full():
+                try:
+                    self.image_queue.get_nowait()
+                except queue.Empty:
+                    pass
+            self.image_queue.put(frame)
+        except Exception:
+            pass
 
     # ── 图像处理线程（常驻）──────────────────────────────────────────────────
     def _proc_loop(self):
@@ -428,6 +480,7 @@ class HandGestureArmNode(Node):
                             threading.Thread(
                                 target=self._do_act, args=(gesture,), daemon=True
                             ).start()
+
                     self.last_gesture = gesture
 
                 else:
@@ -460,6 +513,9 @@ class HandGestureArmNode(Node):
         self.active  = False
         if self.camera_open and self.cap:
             self.cap.release()
+        if self._ros_sub:
+            self.destroy_subscription(self._ros_sub)
+            self._ros_sub = None
         self._send(INIT_CMD)
         super().destroy_node()
 
