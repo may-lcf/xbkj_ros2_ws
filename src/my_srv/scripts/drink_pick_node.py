@@ -46,12 +46,21 @@ DRINK_MAP = {
     '草莓酸奶': 'strawberry_yogurt', '酸奶': 'strawberry_yogurt',
 }
 
+# ── 饮品夹取参数: (下降偏移mm, 推进mm) ──
+GRAB_PARAMS = {
+    'coffee':           (7, 18),
+    'jelly':            (13, 15),
+    'milk':             (30, 22),
+    'strawberry_yogurt': (23, 16),
+}
+GRAB_DEFAULT = (35, 16)  # 冰红茶/牛奶/草莓酸奶
+
 # ── 连续检测确认帧数 ──
-CONFIRM_FRAMES = 3
+CONFIRM_FRAMES = 2
 
 # ── 末端角度 ──
 ALPHA_OBS = -55    # 观察扫描：俯视桌面
-ALPHA_GRASP = -20  # 夹取：近水平侧夹
+ALPHA_GRASP = -5  # 夹取：近水平侧夹
 
 
 class DrinkPickNode(Node):
@@ -68,7 +77,7 @@ class DrinkPickNode(Node):
         self.fx = self.fy = self.cx_c = self.cy_c = None
 
         # 导轨电机
-        self.motor = StepperMotor('/dev/ttyUSB0', addr=0x01)
+        self.motor = StepperMotor('/dev/ch340', addr=0x01)
 
         # 订阅
         self.create_subscription(String, '/drink_pick/cmd', self._cmd_cb, 10)
@@ -85,12 +94,20 @@ class DrinkPickNode(Node):
         # 发布
         self.pub_status = self.create_publisher(String, '/drink_pick/status', 10)
         self.pub_speak = self.create_publisher(String, '/voice_speak', 10)
+        self.pub_cmd = self.create_publisher(String, '/drink_pick/cmd', 10)
 
         # 更新运动学参数: L0=200mm (导轨安装, 135+65)
         import arm_fk
         arm_fk._L0_01mm = 2000
         arm_fk.L0 = 200.0
         setup_kinematics(200, 105, 88, 178)
+
+        # 打印夹取参数
+        print('\n=== 夹取参数 (下降mm, 推进mm) ===')
+        for name, (drop, push) in GRAB_PARAMS.items():
+            print(f'  {name:20s}: drop={drop}mm, push={push}mm')
+        print(f'  {"default":20s}: drop={GRAB_DEFAULT[0]}mm, push={GRAB_DEFAULT[1]}mm')
+        print()
 
         self.get_logger().info('饮品抓取节点已启动')
 
@@ -368,9 +385,11 @@ class DrinkPickNode(Node):
                 z_uart.uart_send_str('#005P1000T500!')
                 time.sleep(0.3)
 
-            # ── Step 7: 下降 ──
-            grab_z = max(int(tz) - 5, 5)
-            kinematics_move(int(tx), int(ty), grab_z, 1200, alpha_hint=ALPHA_GRASP)
+            # ── Step 7: 下降 + 向目标推进（饮品专属参数） ──
+            drop, push = GRAB_PARAMS.get(drink_yolo, GRAB_DEFAULT)
+            grab_z = max(int(tz) - drop, 5)
+            grab_y = int(ty) + push
+            kinematics_move(int(tx), grab_y, grab_z, 1200, alpha_hint=ALPHA_GRASP)
             time.sleep(1.3)
 
             # ── Step 8: 关闭夹爪 ──
@@ -399,8 +418,8 @@ class DrinkPickNode(Node):
             # ── Step 12: 移到放置区 ──
             self._publish_status('placing', '移到放置区...')
             z_uart.uart_send_str(
-                '#000P1122T2000!#001P1026T2000!#002P1786T2000!'
-                '#003P1217T2000!#004P1500T2000!'
+                '#000P1126T2000!#001P935T2000!#002P2175T2000!'
+                '#003P2010T2000!#004P1500T2000!'
             )
             time.sleep(2.5)
 
@@ -410,7 +429,7 @@ class DrinkPickNode(Node):
                 time.sleep(0.3)
 
             # ── Step 14: 回观察位置 ──
-            kinematics_move(0, 120, 170, 1000, alpha_hint=ALPHA_OBS)
+            kinematics_move(0, 120, 170, 2000, alpha_hint=ALPHA_OBS)
             time.sleep(1)
 
             self._publish_status('done', f'{drink_cn}抓取完成')
@@ -432,6 +451,28 @@ class DrinkPickNode(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = DrinkPickNode()
+
+    # 命令行交互线程
+    def cli_loop():
+        import sys
+        while rclpy.ok():
+            try:
+                sys.stdout.write('\n请输入饮品名 (咖啡/冰红茶/果冻/牛奶/草莓酸奶): ')
+                sys.stdout.flush()
+                line = sys.stdin.readline().strip()
+                if not line:
+                    continue
+                msg = String()
+                msg.data = json.dumps({'drink': line}, ensure_ascii=False)
+                node.pub_cmd.publish(msg)
+                node.get_logger().info(f'CLI 发送: {msg.data}')
+            except (EOFError, KeyboardInterrupt):
+                break
+
+    import threading
+    cli_thread = threading.Thread(target=cli_loop, daemon=True)
+    cli_thread.start()
+
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
