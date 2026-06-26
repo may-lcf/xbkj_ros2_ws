@@ -41,6 +41,8 @@ class ArmExecutorNode(Node):
         self.pub_joint = self.create_publisher(String, 'joint_commands', 10)
         # YOLO 抓取
         self.pub_yolo_pick = self.create_publisher(String, '/yolo/pick_cmd', 10)
+        # 饮品抓取
+        self.pub_drink_pick = self.create_publisher(String, '/drink_pick/cmd', 10)
         # 垃圾分类
         self.pub_garbage = self.create_publisher(String, '/garbage_sort/cmd', 10)
 
@@ -124,6 +126,15 @@ class ArmExecutorNode(Node):
             }, ensure_ascii=False)
             self.pub_yolo_pick.publish(msg)
             self.get_logger().info(f'YOLO抓取指令已发布: {msg.data}')
+
+        # ── 饮品抓取 ──
+        elif func == 'drink_pick':
+            msg = String()
+            msg.data = json.dumps({
+                'drink': params.get('drink', ''),
+            }, ensure_ascii=False)
+            self.pub_drink_pick.publish(msg)
+            self.get_logger().info(f'饮品抓取指令已发布: {msg.data}')
 
         # ── 垃圾分类 ──
         elif func == 'garbage_sorting':

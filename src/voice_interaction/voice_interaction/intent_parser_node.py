@@ -74,6 +74,11 @@ SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手小星。用户
   支持形状: 正方体、长方体、圆柱、球体、螺丝刀
   支持颜色: 红色、绿色、蓝色（可选，不指定则按像素面积从大到小依次抓取该形状的所有物体）
 
+【饮品抓取】(导轨+YOLO+机械臂，语音控制抓取饮品)
+- drink_pick: "drink_pick", {"drink": "<饮品名>"}
+  支持饮品: 咖啡、冰红茶、果冻、牛奶、草莓酸奶
+  用户说"把咖啡拿给我"/"请把冰红茶递给我"/"帮我拿牛奶"等
+
 【垃圾分类】(YOLO识别+机械臂抓取+分类投放)
 - garbage_sorting: "garbage_sorting", {"garbage_type": "<垃圾类型>"}
   支持的垃圾类型: 可回收垃圾、有害垃圾、厨余垃圾、其他垃圾
@@ -126,6 +131,18 @@ SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手小星。用户
 用户: "把圆柱体拿给我"
 {"message": "好的，我来拿圆柱体"}
 {"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "圆柱体"}}}
+
+用户: "把咖啡拿给我"
+{"message": "好的，我来拿咖啡"}
+{"step": {"order": 1, "function": "drink_pick", "parameters": {"drink": "咖啡"}}}
+
+用户: "请把冰红茶递给我"
+{"message": "好的，我来拿冰红茶"}
+{"step": {"order": 1, "function": "drink_pick", "parameters": {"drink": "冰红茶"}}}
+
+用户: "帮我拿牛奶"
+{"message": "好的，我来拿牛奶"}
+{"step": {"order": 1, "function": "drink_pick", "parameters": {"drink": "牛奶"}}}
 
 用户: "把可回收垃圾丢掉"
 {"message": "让我来清理可回收垃圾"}
