@@ -23,7 +23,7 @@ class VoiceSynthesisNode(Node):
     def __init__(self):
         super().__init__('voice_synthesis_node')
         self.declare_parameter('api_key', '')
-        self.declare_parameter('voice', 'Cherry')
+        self.declare_parameter('voice', 'Ethan')
         self.declare_parameter('audio_device', 'default')
 
         api_key = self.get_parameter('api_key').value
@@ -45,9 +45,18 @@ class VoiceSynthesisNode(Node):
 
         self.subscription = self.create_subscription(
             String, 'speak_text', self.speak_callback, 10)
+        self.create_subscription(
+            String, 'voice_switch', self._on_voice_switch, 10)
 
         self.get_logger().info(
             f'语音合成节点已启动 (模型: qwen-tts 流式, 音色: {self.voice})')
+
+    def _on_voice_switch(self, msg):
+        """运行时切换音色"""
+        new_voice = msg.data.strip()
+        if new_voice:
+            self.voice = new_voice
+            self.get_logger().info(f'🎤 音色已切换为: {new_voice}')
 
     def speak_callback(self, msg):
         text = msg.data

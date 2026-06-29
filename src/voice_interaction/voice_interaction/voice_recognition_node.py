@@ -1,7 +1,7 @@
 """语音识别节点 - 阿里云 Paraformer-realtime-v2 流式 ASR
 
-音频采集: arecord 48kHz -> 降采样 16kHz -> 云端流式识别。
-优化: 回调直接发布(消除100ms轮询延迟)。
+音频采集: arecord 48kHz -> 降采样 16kHz -> VAD门控 -> 云端流式识别。
+优化: 回调直接发布(消除100ms轮询)，webrtcvad本地VAD(静音不发送云端)。
 """
 
 import os
@@ -10,12 +10,19 @@ import threading
 import time
 
 import numpy as np
+import webrtcvad
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 
 import dashscope
 from dashscope.audio.asr import Recognition, RecognitionCallback
+
+# VAD 每帧 20ms @ 16kHz = 320 samples = 640 bytes
+_VAD_FRAME_SAMPLES = 320
+_VAD_FRAME_BYTES = _VAD_FRAME_SAMPLES * 2
+# 语音结束后额外发送的帧数 (20ms * 15 = 300ms)，防止句尾被截断
+_HANGOVER_FRAMES = 15
 
 
 class ASRCallback(RecognitionCallback):
@@ -59,6 +66,7 @@ class VoiceRecognitionNode(Node):
         self.declare_parameter('audio_device', 'plughw:2,0')
         self.declare_parameter('record_rate', 48000)
         self.declare_parameter('asr_rate', 16000)
+        self.declare_parameter('vad_aggressiveness', 2)
 
         api_key = self.get_parameter('api_key').value
         if not api_key:
@@ -72,8 +80,9 @@ class VoiceRecognitionNode(Node):
         self.audio_device = self.get_parameter('audio_device').value
         self.record_rate = self.get_parameter('record_rate').value
         self.asr_rate = self.get_parameter('asr_rate').value
+        self.vad_agg = self.get_parameter('vad_aggressiveness').value
 
-        # 直接发布，不经过 queue/timer (消除 100ms 轮询延迟)
+        # 直接发布，不经过 queue/timer
         self.publisher_ = self.create_publisher(String, 'voice_text', 10)
         self.callback = ASRCallback(self.publisher_, self.get_logger())
 
@@ -82,12 +91,15 @@ class VoiceRecognitionNode(Node):
         self._thread.start()
 
         self.get_logger().info(
-            f'语音识别节点已启动 (模型: {self.model}, 设备: {self.audio_device})')
+            f'语音识别节点已启动 (模型: {self.model}, 设备: {self.audio_device}, '
+            f'VAD: {self.vad_agg})')
 
     def _listen_loop(self):
         RECORD_CHUNK = 9600
-        chunk_bytes = RECORD_CHUNK * 2  # 16bit = 2 bytes/sample
-        resample_ratio = self.record_rate // self.asr_rate  # 3
+        chunk_bytes = RECORD_CHUNK * 2
+        ratio = self.record_rate // self.asr_rate  # 3
+
+        vad = webrtcvad.Vad(self.vad_agg)
 
         while self._running:
             proc = None
@@ -121,6 +133,9 @@ class VoiceRecognitionNode(Node):
                     language_hints=['zh', 'en'])
                 recognition.start()
 
+                sending = False
+                silence_count = 0
+
                 while self._running:
                     data = proc.stdout.read(chunk_bytes)
                     if not data:
@@ -129,8 +144,30 @@ class VoiceRecognitionNode(Node):
                             self.get_logger().warn(f'arecord退出: {stderr}')
                         break
                     samples = np.frombuffer(data, dtype=np.int16)
-                    resampled = samples[::resample_ratio].tobytes()
-                    recognition.send_audio_frame(resampled)
+                    resampled = samples[::ratio]
+                    pcm_bytes = resampled.tobytes()
+
+                    # VAD: 逐帧检测 (每帧 20ms = 320 samples)
+                    has_speech = False
+                    for offset in range(0, len(pcm_bytes) - _VAD_FRAME_BYTES + 1,
+                                        _VAD_FRAME_BYTES):
+                        frame = pcm_bytes[offset:offset + _VAD_FRAME_BYTES]
+                        if len(frame) == _VAD_FRAME_BYTES and vad.is_speech(
+                                frame, self.asr_rate):
+                            has_speech = True
+                            break
+
+                    if has_speech:
+                        sending = True
+                        silence_count = 0
+                    elif sending:
+                        silence_count += 1
+                        if silence_count > _HANGOVER_FRAMES:
+                            sending = False
+                            silence_count = 0
+
+                    if sending:
+                        recognition.send_audio_frame(pcm_bytes)
 
             except subprocess.TimeoutExpired:
                 self.get_logger().warn('麦克风检测超时')

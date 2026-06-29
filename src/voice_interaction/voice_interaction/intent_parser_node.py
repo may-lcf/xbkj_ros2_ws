@@ -36,6 +36,10 @@ TIMEOUT_SEC = 25.0
 WAKE_REPLY = '我在'
 DISMISS_REPLY = '小星退下了，有需要再唤醒我'
 
+# 音色切换列表 (循环切换)
+VOICE_CYCLE = ['Cherry', 'Ethan', 'Serena', 'Chelsie']
+VOICE_NAMES = {'Cherry': '樱桃', 'Ethan': '伊森', 'Serena': '瑟琳娜', 'Chelsie': '切尔西'}
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  状态
@@ -84,14 +88,21 @@ _FAST_COMMANDS = {
     '点点头': {'step': {'order': 1, 'function': 'routine',
                        'parameters': {'action': '点点头'}},
               'message': '好的，点点头'},
+    # 音色切换 (特殊标记，由 text_callback 单独处理)
+    '切换音色': {'__voice_switch__': True},
+    '换一个声音': {'__voice_switch__': True},
+    '换个音色': {'__voice_switch__': True},
 }
 
 
 def _match_fast_command(text):
-    """尝试匹配本地快速指令，返回 (step_dict, message) 或 None"""
+    """尝试匹配本地快速指令，返回 (step, message) 或特殊标记 dict 或 None"""
     clean = text.strip().replace(' ', '').replace('，', '').replace('。', '')
     if clean in _FAST_COMMANDS:
         entry = _FAST_COMMANDS[clean]
+        # 特殊指令 (如音色切换) 直接返回 dict
+        if '__voice_switch__' in entry:
+            return entry
         return entry['step'], entry['message']
     return None
 
@@ -176,6 +187,10 @@ class IntentParserNode(Node):
             String, 'voice_text', self.text_callback, 10)
         self.pub_intent = self.create_publisher(String, 'voice_command', 10)
         self.pub_speak = self.create_publisher(String, 'speak_text', 10)
+        self.pub_voice_switch = self.create_publisher(String, 'voice_switch', 10)
+
+        # 当前音色索引 (与 voice_params.yaml 中的默认音色一致)
+        self._voice_idx = 0
 
         self.get_logger().info(
             f'意图解析节点已启动 (模型: {self.model}, 状态: 沉睡)')
@@ -243,6 +258,21 @@ class IntentParserNode(Node):
         msg.data = text
         self.pub_speak.publish(msg)
 
+    def _handle_voice_switch(self):
+        """切换音色: 循环 VOICE_CYCLE，通知 TTS 节点并播报"""
+        self._voice_idx = (self._voice_idx + 1) % len(VOICE_CYCLE)
+        new_voice = VOICE_CYCLE[self._voice_idx]
+        name = VOICE_NAMES.get(new_voice, new_voice)
+
+        # 先通知 TTS 节点切换音色
+        switch_msg = String()
+        switch_msg.data = new_voice
+        self.pub_voice_switch.publish(switch_msg)
+
+        self.get_logger().info(f'🎤 切换音色: {new_voice} ({name})')
+        # 播报新音色名 (此时 TTS 已切换)
+        self._speak(f'已切换为{name}')
+
     # ══════════════════════════════════════════════════════════════════════════
     #  语音文本回调
     # ══════════════════════════════════════════════════════════════════════════
@@ -271,6 +301,10 @@ class IntentParserNode(Node):
         # ── 快速指令通道 (不走LLM) ──
         fast = _match_fast_command(text)
         if fast is not None:
+            # 特殊处理: 音色切换
+            if isinstance(fast, dict) and fast.get('__voice_switch__'):
+                self._handle_voice_switch()
+                return
             step, message = fast
             self.get_logger().info(f'⚡ 快速指令: {text}')
             self._speak(message)
