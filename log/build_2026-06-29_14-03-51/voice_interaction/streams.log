@@ -1,0 +1,34 @@
+[2.492s] Invoking command in '/home/webotpi/ros2_ws/src/voice_interaction': PYTHONPATH=/home/webotpi/ros2_ws/build/voice_interaction/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/voice_interaction build --build-base /home/webotpi/ros2_ws/build/voice_interaction/build install --record /home/webotpi/ros2_ws/build/voice_interaction/install.log --single-version-externally-managed install_data
+[2.852s] running egg_info
+[2.879s] writing ../../build/voice_interaction/voice_interaction.egg-info/PKG-INFO
+[2.915s] writing dependency_links to ../../build/voice_interaction/voice_interaction.egg-info/dependency_links.txt
+[2.919s] writing entry points to ../../build/voice_interaction/voice_interaction.egg-info/entry_points.txt
+[2.920s] writing requirements to ../../build/voice_interaction/voice_interaction.egg-info/requires.txt
+[2.920s] writing top-level names to ../../build/voice_interaction/voice_interaction.egg-info/top_level.txt
+[2.989s] reading manifest file '../../build/voice_interaction/voice_interaction.egg-info/SOURCES.txt'
+[2.992s] writing manifest file '../../build/voice_interaction/voice_interaction.egg-info/SOURCES.txt'
+[2.993s] running build
+[2.993s] running build_py
+[2.998s] copying voice_interaction/voice_recognition_node.py -> /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction
+[2.999s] copying voice_interaction/voice_synthesis_node.py -> /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction
+[3.000s] copying voice_interaction/intent_parser_node.py -> /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction
+[3.000s] running install
+[3.011s] running install_lib
+[3.040s] copying /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction/voice_recognition_node.py -> /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction
+[3.041s] copying /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction/voice_synthesis_node.py -> /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction
+[3.041s] copying /home/webotpi/ros2_ws/build/voice_interaction/build/lib/voice_interaction/intent_parser_node.py -> /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction
+[3.042s] byte-compiling /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction/voice_recognition_node.py to voice_recognition_node.cpython-312.pyc
+[3.045s] byte-compiling /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction/voice_synthesis_node.py to voice_synthesis_node.cpython-312.pyc
+[3.049s] byte-compiling /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction/intent_parser_node.py to intent_parser_node.cpython-312.pyc
+[3.053s] running install_data
+[3.058s] copying config/voice_params.yaml -> /home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/config
+[3.058s] running install_egg_info
+[3.089s] removing '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction-0.1.0-py3.12.egg-info' (and everything under it)
+[3.089s] Copying ../../build/voice_interaction/voice_interaction.egg-info to /home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages/voice_interaction-0.1.0-py3.12.egg-info
+[3.093s] running install_scripts
+[3.274s] Installing arm_executor_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction
+[3.277s] Installing intent_parser_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction
+[3.280s] Installing voice_recognition_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction
+[3.282s] Installing voice_synthesis_node script to /home/webotpi/ros2_ws/install/voice_interaction/lib/voice_interaction
+[3.285s] writing list of installed files to '/home/webotpi/ros2_ws/build/voice_interaction/install.log'
+[3.379s] Invoked command in '/home/webotpi/ros2_ws/src/voice_interaction' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/voice_interaction/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/voice_interaction build --build-base /home/webotpi/ros2_ws/build/voice_interaction/build install --record /home/webotpi/ros2_ws/build/voice_interaction/install.log --single-version-externally-managed install_data

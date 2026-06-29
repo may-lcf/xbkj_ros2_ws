@@ -1,4 +1,4 @@
-"""意图解析节点 - 通义千问 qwen-flash 解析自然语言为结构化指令
+"""意图解析节点 - 通义千问 qwen-plus 解析自然语言为结构化指令
 
 订阅 voice_text (ASR结果)，发布 voice_command (JSON动作) 和 speak_text (TTS文本)。
 支持多轮对话上下文记忆。
@@ -6,12 +6,8 @@ LLM 流式输出：message 提取后立刻给 TTS (并行)，step 提取后给�
 
 唤醒机制：
   - 沉睡状态：只听唤醒词，其他语音忽略
-  - 唤醒状态：正常处理指令，25秒无指令自动回到沉睡
+  - 唤醒状态：正常处理指令，15秒无指令自动回到沉睡
   - 说"退下"手动回到沉睡
-
-优化：
-  - 常用指令本地快速通道 (不走LLM)
-  - 精简 system prompt (减少 token 传输)
 """
 
 import os
@@ -45,98 +41,150 @@ STATE_SLEEP = 0
 STATE_AWAKE = 1
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  本地快速指令表 (命中后直接执行，不经过 LLM)
-# ═══════════════════════════════════════════════════════════════════════════════
+SYSTEM_PROMPT = """你是一个机械臂+视觉系统语音助手小星。用户将向你发出自然语言指令，
+你的任务是提取并返回结构化信息。系统会自动根据相机类型选择2D或深度节点，你不需要关心。
 
-_FAST_COMMANDS = {
-    # 停止类
-    '停': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
-           'message': '好的，已停止'},
-    '停止': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
-             'message': '好的，已停止'},
-    '停一下': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
-              'message': '好的，已停止'},
-    '停下来': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
-              'message': '好的，已停止'},
-    # 复位类
-    '复位': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
-             'message': '好的，恢复初始状态'},
-    '回原位': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
-              'message': '好的，恢复初始状态'},
-    '回到初始状态': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
-                   'message': '好的，恢复初始状态'},
-    '恢复初始状态': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
-                   'message': '好的，恢复初始状态'},
-    # 固定动作
-    '夹爪开': {'step': {'order': 1, 'function': 'routine',
-                       'parameters': {'action': '夹爪开'}},
-              'message': '好的，打开夹爪'},
-    '夹爪关': {'step': {'order': 1, 'function': 'routine',
-                       'parameters': {'action': '夹爪关'}},
-              'message': '好的，关闭夹爪'},
-    '比个耶': {'step': {'order': 1, 'function': 'routine',
-                       'parameters': {'action': '比个耶'}},
-              'message': '好的，比个耶'},
-    '摇摇头': {'step': {'order': 1, 'function': 'routine',
-                       'parameters': {'action': '摇摇头'}},
-              'message': '好的，摇摇头'},
-    '点点头': {'step': {'order': 1, 'function': 'routine',
-                       'parameters': {'action': '点点头'}},
-              'message': '好的，点点头'},
-}
+回复格式：
+1. 首先输出一个提示性消息：
+{"message": "好的，我将执行您的指令"}
+2. 然后按顺序输出控制指令，每个指令一个JSON：
+{"step": {"order": 1, "function": "<功能>", "parameters": {<参数>}}}
 
+=== 支持的功能 ===
 
-def _match_fast_command(text):
-    """尝试匹配本地快速指令，返回 (step_dict, message) 或 None"""
-    clean = text.strip().replace(' ', '').replace('，', '').replace('。', '')
-    if clean in _FAST_COMMANDS:
-        entry = _FAST_COMMANDS[clean]
-        return entry['step'], entry['message']
-    return None
+【视觉分拣/码垛】(启动后自动运行，不需要额外参数)
+- 颜色分拣: "color_sorting", {"action": "enter"|"exit"}
+- 颜色码垛: "color_stack", {"action": "enter"|"exit"}
+- 标签分拣: "label_sorting", {"action": "enter"|"exit"}
+- 标签码垛: "label_stack", {"action": "enter"|"exit"}
+- 数字分拣: "num_sorting", {"action": "enter"|"exit"}
+- 数字码垛: "num_stack", {"action": "enter"|"exit"}
 
+【视觉追踪】(先启动追踪，再设置追踪目标)
+- 颜色追踪: "color_track", {"action": "enter"|"exit"|"track", "color": "red"|"green"|"blue"}
+- 标签追踪: "label_track", {"action": "enter"|"exit"|"track", "label": 1|2|3}
+- 数字追踪: "num_track", {"action": "enter"|"exit"|"track", "num": 1|2|3}
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  System Prompt (精简版: 保留功能定义，减少示例)
-# ═══════════════════════════════════════════════════════════════════════════════
+【其他视觉】
+- 颜色设置: "color_set", {"action": "enter"|"exit"}
+- 人脸追踪: "face_track", {"action": "enter"|"exit"}
 
-SYSTEM_PROMPT = """你是机械臂+视觉系统语音助手小星。将用户自然语言转为结构化JSON指令。
+【YOLO物体抓取】(YOLO智能识别+机械臂抓取)
+- yolo_pick: "yolo_pick", {"action": "pick", "shape": "<形状>", "color": "<颜色>"}
+  支持形状: 正方体、长方体、圆柱、球体、螺丝刀
+  支持颜色: 红色、绿色、蓝色（可选，不指定则按像素面积从大到小依次抓取该形状的所有物体）
 
-回复格式（严格遵守，不要输出解释）：
-1. 先输出: {"message": "简短回复"}
-2. 再输出指令（每个独立JSON）: {"step": {"order": 1, "function": "<功能>", "parameters": {<参数>}}}
+【饮品抓取】(导轨+YOLO+机械臂，语音控制抓取饮品)
+- drink_pick: "drink_pick", {"drink": "<饮品名>"}
+  支持饮品: 咖啡、冰红茶、果冻、牛奶、草莓酸奶
+  用户说"把咖啡拿给我"/"请把冰红茶递给我"/"帮我拿牛奶"等
 
-=== 功能列表 ===
+【垃圾分类】(YOLO识别+机械臂抓取+分类投放)
+- garbage_sorting: "garbage_sorting", {"garbage_type": "<垃圾类型>"}
+  支持的垃圾类型: 可回收垃圾、有害垃圾、厨余垃圾、其他垃圾
+  分类规则:
+    可回收垃圾: 塑料瓶、报纸
+    有害垃圾: 电池
+    厨余垃圾: 香蕉皮
+    其他垃圾: 卫生纸
+  用户可能说"丢掉/清理/扔掉/处理+物体名"，你需要判断该物体属于哪种垃圾。
 
-【视觉分拣/码垛】action: "enter"|"exit"
-  color_sorting / color_stack / label_sorting / label_stack / num_sorting / num_stack
+【机械臂控制】
+- 关节控制: "joint", {"id": 1-6, "angle": 角度}
+- 固定动作: "routine", {"action": "夹爪开"|"夹爪关"|"恢复初始状态"|"比个耶"|"摇摇头"|"点点头"}
+- 复位: "home", {}
+- 停止: "stop", {}
+- 舵机控制: "servo", {"action": "enter"|"exit"}
 
-【视觉追踪】action: "enter"|"exit"|"track"
-  color_track: +color("red"|"green"|"blue")
-  label_track: +label(1|2|3)
-  num_track: +num(1|2|3)
+当前机械臂为5+1 dof：1号左右，2/3/4号前后，5号夹爪旋转，6号夹爪开合，范围[-90,90]度。
 
-【其他视觉】action: "enter"|"exit"
-  color_set / face_track
+示例：
+用户: "帮我把红色的挑出来"
+{"message": "好的，我来分拣红色"}
+{"step": {"order": 1, "function": "color_sorting", "parameters": {"action": "enter"}}}
 
-【YOLO抓取】yolo_pick: {"action":"pick", "shape":"<形状>", "color":"<颜色>(可选)"}
-  形状: 正方体/长方体/圆柱/球体/螺丝刀
-  颜色: 红色/绿色/蓝色
+用户: "开启颜色追踪，追踪蓝色"
+{"message": "好的，开启颜色追踪蓝色"}
+{"step": {"order": 1, "function": "color_track", "parameters": {"action": "enter"}}}
+{"step": {"order": 2, "function": "color_track", "parameters": {"action": "track", "color": "blue"}}}
 
-【饮品抓取】drink_pick: {"drink":"<饮品名>"}
-  咖啡/冰红茶/果冻/牛奶/草莓酸奶
+用户: "停"
+{"message": "好的，已停止"}
+{"step": {"order": 1, "function": "stop", "parameters": {}}}
 
-【垃圾分类】garbage_sorting: {"garbage_type":"<类型>"}
-  可回收垃圾(塑料瓶/报纸) / 有害垃圾(电池) / 厨余垃圾(香蕉皮) / 其他垃圾(卫生纸)
+用户: "帮我拿红色长方体"
+{"message": "好的，我来拿红色长方体"}
+{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "长方体", "color": "红色"}}}
 
-【机械臂】
-  joint: {"id":1-6, "angle":角度}
-  routine: {"action":"夹爪开"|"夹爪关"|"恢复初始状态"|"比个耶"|"摇摇头"|"点点头"}
-  home: {} / stop: {} / servo: {"action":"enter"|"exit"}
+用户: "拿螺丝刀"
+{"message": "好的，我来拿螺丝刀"}
+{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "螺丝刀"}}}
 
-机械臂5+1dof: 1号左右, 2/3/4号前后, 5号夹爪旋转, 6号夹爪开合, 范围[-90,90]度。
+用户: "请抓取红色正方体"
+{"message": "好的，我来抓取红色正方体"}
+{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "正方体", "color": "红色"}}}
 
-规则: "开始/开启/启动"→enter, "结束/关闭/停止/退出"→exit, 闲聊只输出message不输出step。
+用户: "帮我夹取那个长方体"
+{"message": "好的，我来夹取长方体"}
+{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "长方体"}}}
+
+用户: "把圆柱体拿给我"
+{"message": "好的，我来拿圆柱体"}
+{"step": {"order": 1, "function": "yolo_pick", "parameters": {"action": "pick", "shape": "圆柱体"}}}
+
+用户: "把咖啡拿给我"
+{"message": "好的，我来拿咖啡"}
+{"step": {"order": 1, "function": "drink_pick", "parameters": {"drink": "咖啡"}}}
+
+用户: "请把冰红茶递给我"
+{"message": "好的，我来拿冰红茶"}
+{"step": {"order": 1, "function": "drink_pick", "parameters": {"drink": "冰红茶"}}}
+
+用户: "帮我拿牛奶"
+{"message": "好的，我来拿牛奶"}
+{"step": {"order": 1, "function": "drink_pick", "parameters": {"drink": "牛奶"}}}
+
+用户: "把可回收垃圾丢掉"
+{"message": "让我来清理可回收垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "可回收垃圾"}}}
+
+用户: "丢掉香蕉皮"
+{"message": "香蕉皮是厨余垃圾，要扔进厨余垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "厨余垃圾"}}}
+
+用户: "清理电池"
+{"message": "电池是有害垃圾，要扔进有害垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "有害垃圾"}}}
+
+用户: "把卫生纸扔掉"
+{"message": "卫生纸是其他垃圾，要扔进其他垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "其他垃圾"}}}
+
+用户: "处理一下塑料瓶"
+{"message": "塑料瓶是可回收垃圾，要扔进可回收垃圾桶"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "可回收垃圾"}}}
+
+用户: "有害垃圾丢掉"
+{"message": "让我来清理有害垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "有害垃圾"}}}
+
+用户: "把有害垃圾扔掉"
+{"message": "让我来清理有害垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "有害垃圾"}}}
+
+用户: "把厨余垃圾清理掉"
+{"message": "让我来清理厨余垃圾"}
+{"step": {"order": 1, "function": "garbage_sorting", "parameters": {"garbage_type": "厨余垃圾"}}}
+
+用户: "今天天气怎么样"
+{"message": "我专注于机械臂控制，无法查询天气。"}
+
+规则：
+- 涉及机械臂/视觉控制的指令：必须同时输出 message 和 step
+- 闲聊或无关问题：只输出 message，不输出 step
+- "开始/开启/启动" → action: "enter"
+- "结束/关闭/停止/退出" → action: "exit"
+不要输出任何解释或说明，每个JSON对象必须独立且完整，一次一个。
 """
 
 
@@ -147,7 +195,7 @@ class IntentParserNode(Node):
         self.declare_parameter('api_key', '')
         self.declare_parameter('base_url',
                                'https://dashscope.aliyuncs.com/compatible-mode/v1')
-        self.declare_parameter('model', 'qwen-flash')
+        self.declare_parameter('model', 'qwen-plus')
         self.declare_parameter('max_history', 10)
 
         api_key = self.get_parameter('api_key').value
@@ -216,7 +264,7 @@ class IntentParserNode(Node):
         self.get_logger().info('💤 已沉睡')
 
     def _reset_timeout(self):
-        """重置超时计时器"""
+        """重置15秒超时计时器"""
         with self._timer_lock:
             if self._timeout_timer:
                 self._timeout_timer.cancel()
@@ -268,18 +316,7 @@ class IntentParserNode(Node):
         # 重置超时计时器
         self._reset_timeout()
 
-        # ── 快速指令通道 (不走LLM) ──
-        fast = _match_fast_command(text)
-        if fast is not None:
-            step, message = fast
-            self.get_logger().info(f'⚡ 快速指令: {text}')
-            self._speak(message)
-            cmd_msg = String()
-            cmd_msg.data = json.dumps(step, ensure_ascii=False)
-            self.pub_intent.publish(cmd_msg)
-            return
-
-        # ── 正常处理：传给LLM ──
+        # 正常处理：传给LLM
         threading.Thread(
             target=self._parse_async, args=(text,), daemon=True).start()
 
@@ -313,7 +350,6 @@ class IntentParserNode(Node):
                 buffer += content
                 assistant_reply += content
 
-                # message 一提取到就立刻给 TTS
                 if not message_text:
                     idx = buffer.find('"message"')
                     if idx != -1:
@@ -328,7 +364,8 @@ class IntentParserNode(Node):
 
                 buffer = self._extract_steps(buffer)
 
-            # 循环结束后，对剩余buffer再提取一次
+            # 循环结束后，对剩余buffer再提取一次（最后的step可能还在buffer里）
+            self.get_logger().info(f'[_parse] 流式结束, 最终buffer({len(buffer)}字节): {buffer!r}')
             self._extract_steps(buffer)
 
             if assistant_reply:
@@ -359,6 +396,7 @@ class IntentParserNode(Node):
                         end = i
                         break
             if end == -1:
+                # 有 `{` 但没有匹配的 `}`，JSON 不完整，保留给下次调用
                 break
             json_str = buffer[start:end + 1]
             try:

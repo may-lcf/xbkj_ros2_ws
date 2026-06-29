@@ -1,13 +1,12 @@
 """语音识别节点 - 阿里云 Paraformer-realtime-v2 流式 ASR
 
-基于 voice_ws 验证通过的方案，使用 dashscope SDK。
 音频采集: arecord 48kHz -> 降采样 16kHz -> 云端流式识别。
+优化: 回调直接发布(消除100ms轮询延迟)。
 """
 
 import os
 import subprocess
 import threading
-import queue
 import time
 
 import numpy as np
@@ -21,9 +20,9 @@ from dashscope.audio.asr import Recognition, RecognitionCallback
 
 class ASRCallback(RecognitionCallback):
 
-    def __init__(self, result_queue, logger=None):
+    def __init__(self, publisher, logger=None):
         super().__init__()
-        self.result_queue = result_queue
+        self.publisher = publisher
         self.logger = logger
 
     def on_event(self, result):
@@ -36,7 +35,11 @@ class ASRCallback(RecognitionCallback):
             if self.logger:
                 self.logger.info(f'ASR: text="{text}", is_end={is_end}')
             if is_end and text:
-                self.result_queue.put(text)
+                msg = String()
+                msg.data = text
+                self.publisher.publish(msg)
+                if self.logger:
+                    self.logger.info(f'✅ 识别结果: {text}')
 
     def on_error(self, result):
         if self.logger:
@@ -70,11 +73,9 @@ class VoiceRecognitionNode(Node):
         self.record_rate = self.get_parameter('record_rate').value
         self.asr_rate = self.get_parameter('asr_rate').value
 
-        self.result_queue = queue.Queue()
-        self.callback = ASRCallback(self.result_queue, self.get_logger())
-
+        # 直接发布，不经过 queue/timer (消除 100ms 轮询延迟)
         self.publisher_ = self.create_publisher(String, 'voice_text', 10)
-        self.timer = self.create_timer(0.1, self._poll_result)
+        self.callback = ASRCallback(self.publisher_, self.get_logger())
 
         self._running = True
         self._thread = threading.Thread(target=self._listen_loop, daemon=True)
@@ -86,7 +87,7 @@ class VoiceRecognitionNode(Node):
     def _listen_loop(self):
         RECORD_CHUNK = 9600
         chunk_bytes = RECORD_CHUNK * 2  # 16bit = 2 bytes/sample
-        resample_ratio = self.record_rate // self.asr_rate
+        resample_ratio = self.record_rate // self.asr_rate  # 3
 
         while self._running:
             proc = None
@@ -149,14 +150,6 @@ class VoiceRecognitionNode(Node):
                         proc.wait(timeout=2)
                     except Exception:
                         proc.kill()
-
-    def _poll_result(self):
-        while not self.result_queue.empty():
-            text = self.result_queue.get_nowait()
-            msg = String()
-            msg.data = text
-            self.publisher_.publish(msg)
-            self.get_logger().info(f'✅ 识别结果: {text}')
 
     def destroy_node(self):
         self._running = False
