@@ -9,7 +9,7 @@ voice_recognition_node:
     asr_rate: 16000
     api_key: "sk-dde3560e94834b3fb16602e38ee34a74"
     # VAD灵敏度: 0=最宽松(多传) 1 2 3=最严格(少传)
-    vad_aggressiveness: 2
+    vad_aggressiveness: 1
 
 intent_parser_node:
   ros__parameters:
