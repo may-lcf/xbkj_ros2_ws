@@ -5,10 +5,13 @@ conveyor_garbage_sort.py — 传送带垃圾分类节点
 工作流:
   1. 启动后机械臂移到观察位置
   2. 等待指令（CLI输入或语音话题）
-  3. 启动传送带，YOLO检测垃圾
-  4. 垃圾到达画面中心 → 停止传送带
-  5. 等待稳定3.5秒 → 深度定位 → 抓取 → 移到对应垃圾桶 → 投放
-  6. 回观察位置，等待下一次指令
+  3. 循环执行（直至画面无垃圾）:
+     a. 启动传送带，YOLO检测垃圾
+     b. 垃圾到达画面中心 → 停止传送带
+     c. 等待稳定3.5秒 → 深度定位 → 抓取画面中像素最大的垃圾 → 移到对应垃圾桶 → 投放
+     d. 回观察位置稳定4秒，检查是否还有垃圾
+  4. 画面无垃圾时，再启动传送带确认一次（等10秒）
+  5. 确认无垃圾后等待下一次指令
 
 前提: yolo_detect_node.py 必须在运行（提供 /yolo/detections 话题）
 
@@ -173,15 +176,18 @@ class ConveyorGarbageSort(Node):
         )
         self.get_logger().info('传送带停止')
 
-    def _find_target_by_category(self, category):
-        """在视野中查找指定分类的垃圾（不要求在画面中心）"""
-        labels = GARBAGE_CONFIG.get(category, {}).get('labels', [])
+    def _find_leftmost_garbage(self):
+        """在视野中找最靠左的已知垃圾"""
         with self._det_lock:
             dets = list(self.latest_detections)
+        best, best_x = None, float('inf')
         for d in dets:
-            if d.get('shape', '') in labels:
-                return d
-        return None
+            if d.get('shape', '') not in LABEL_TO_CATEGORY:
+                continue
+            x = d.get('pixel', [9999])[0]
+            if x < best_x:
+                best, best_x = d, x
+        return best
 
     def _check_center_target(self):
         """检查YOLO检测结果中，是否有垃圾出现在画面中心区域"""
@@ -299,121 +305,149 @@ class ConveyorGarbageSort(Node):
         threading.Thread(target=self._execute_loop, daemon=True).start()
 
     def _execute_loop(self):
-        """一次完整的垃圾分类循环：启动传送带 → 检测 → 抓取分拣 → 回观察位"""
+        """循环垃圾分类：传送带→检测→抓取分拣→回观察位→重复，直到无垃圾"""
         self.active = True
+        round_count = 0
         try:
             if not setup_uart(115200):
                 self._publish_status('error', '串口初始化失败')
                 return
 
-            # ── 1. 观察位置就位 ──
+            # ── 观察位置就位 ──
             self._publish_status('ready', '移到观察位置...')
             kinematics_move(OBS_X, OBS_Y, OBS_Z, 1500, alpha_hint=ALPHA_OBS)
             time.sleep(1.5)
 
-            # ── 2. 启动传送带 ──
-            self._conveyor_start()
-            self._publish_status('conveyor', '传送带启动，等待垃圾...')
+            while True:
+                round_count += 1
+                self._publish_status('round', f'第{round_count}轮分拣')
 
-            # ── 3. 等待垃圾到达画面中心（多帧确认）──
-            det = None
-            confirm = 0
-            for _ in range(300):  # 最多等30秒
-                time.sleep(0.1)
-                found = self._check_center_target()
-                if found:
-                    confirm += 1
-                    if confirm >= CONFIRM_FRAMES:
-                        det = found
-                        break
-                else:
-                    confirm = 0
+                # ── 启动传送带 ──
+                self._conveyor_start()
+                self._publish_status('conveyor', '传送带启动，等待垃圾...')
 
-            # ── 4. 停止传送带 ──
-            self._conveyor_stop()
-            if det is None:
-                self._speak('未检测到垃圾')
-                self._publish_status('not_found', '未检测到垃圾')
-                kinematics_move(OBS_X, OBS_Y, OBS_Z, 1500, alpha_hint=ALPHA_OBS)
-                return
+                # ── 等待垃圾到达画面中心（多帧确认）──
+                det = None
+                confirm = 0
+                for _ in range(150):  # 最多等15秒
+                    time.sleep(0.1)
+                    found = self._check_center_target()
+                    if found:
+                        confirm += 1
+                        if confirm >= CONFIRM_FRAMES:
+                            det = found
+                            break
+                    else:
+                        confirm = 0
 
-            label = det.get('shape', '')
-            category = LABEL_TO_CATEGORY.get(label, '')
-            label_cn = LABEL_CN.get(label, label)
-            self._publish_status('found', f'检测到 {label_cn}（{category}）')
+                # ── 停止传送带 ──
+                self._conveyor_stop()
+                if det is None:
+                    self._speak('未检测到垃圾')
+                    self._publish_status('not_found', '未检测到垃圾')
+                    break
 
-            # ── 5. 等待传送带稳定后重新定位 ──
-            time.sleep(3.5)
+                label = det.get('shape', '')
+                category = LABEL_TO_CATEGORY.get(label, '')
+                label_cn = LABEL_CN.get(label, label)
+                self._publish_status('found', f'检测到 {label_cn}（{category}）')
 
-            # ── 6. 重新检测目标（用最新数据，而非停传送带前的旧数据）──
-            det = self._find_target_by_category(category)
-            if det is None:
-                self._speak('目标丢失')
-                self._publish_status('lost', '稳定后未重新检测到目标')
-                kinematics_move(OBS_X, OBS_Y, OBS_Z, 1500, alpha_hint=ALPHA_OBS)
-                return
-            label = det.get('shape', '')
-            category = LABEL_TO_CATEGORY.get(label, '')
-            label_cn = LABEL_CN.get(label, label)
-            self.get_logger().info(f'重新检测到: {label_cn} ({category})')
+                # ── 等待传送带稳定后重新定位 ──
+                time.sleep(3.5)
 
-            # ── 7. 深度定位 ──
-            world_xyz = self._compute_world_xyz(det)
-            if world_xyz is None:
-                self._speak('无法定位垃圾位置')
-                self._publish_status('error', '无法计算3D坐标')
-                kinematics_move(OBS_X, OBS_Y, OBS_Z, 1500, alpha_hint=ALPHA_OBS)
-                return
-            tx, ty, tz = world_xyz[0] + OFFSET_X, world_xyz[1] + OFFSET_Y, world_xyz[2] + OFFSET_Z
-            self.get_logger().info(f"[OFFSET] X={OFFSET_X} Y={OFFSET_Y} Z={OFFSET_Z} 原始=({world_xyz[0]:.0f},{world_xyz[1]:.0f},{world_xyz[2]:.0f})mm 偏移后=({tx:.0f},{ty:.0f},{tz:.0f})mm")
-            self.get_logger().info(f'世界坐标: ({tx:.0f}, {ty:.0f}, {tz:.0f})mm')
+                # ── 重新检测：找画面中像素最大的垃圾 ──
+                det = self._find_leftmost_garbage()
+                if det is None:
+                    self._speak('目标丢失')
+                    self._publish_status('lost', '稳定后未重新检测到目标')
+                    continue
+                label = det.get('shape', '')
+                category = LABEL_TO_CATEGORY.get(label, '')
+                label_cn = LABEL_CN.get(label, label)
+                self.get_logger().info(f'重新检测到: {label_cn} ({category})')
 
-            # ── 7. 飞到目标上方 ──
-            self._publish_status('picking', f'移动到 {label_cn} 上方...')
-            hover_z = max(int(tz) + 80, 60)
-            if not kinematics_move(int(tx), int(ty), hover_z, 1500, alpha_hint=ALPHA_GRASP):
-                self._speak('目标超出工作空间')
-                self._publish_status('error', 'IK无解')
-                return
-            time.sleep(1.6)
+                # ── 深度定位 ──
+                world_xyz = self._compute_world_xyz(det)
+                if world_xyz is None:
+                    self._speak('无法定位垃圾位置')
+                    self._publish_status('error', '无法计算3D坐标')
+                    continue
+                tx, ty, tz = world_xyz[0] + OFFSET_X, world_xyz[1] + OFFSET_Y, world_xyz[2] + OFFSET_Z
+                self.get_logger().info(f"[OFFSET] X={OFFSET_X} Y={OFFSET_Y} Z={OFFSET_Z} 原始=({world_xyz[0]:.0f},{world_xyz[1]:.0f},{world_xyz[2]:.0f})mm 偏移后=({tx:.0f},{ty:.0f},{tz:.0f})mm")
+                self.get_logger().info(f'世界坐标: ({tx:.0f}, {ty:.0f}, {tz:.0f})mm')
 
-            # ── 8. 打开夹爪 ──
-            for _ in range(3):
-                uart_send_str('#005P1000T500!')
-                time.sleep(0.3)
+                # ── 飞到目标上方 ──
+                self._publish_status('picking', f'移动到 {label_cn} 上方...')
+                hover_z = max(int(tz) + 80, 60)
+                if not kinematics_move(int(tx), int(ty), hover_z, 1500, alpha_hint=ALPHA_GRASP):
+                    self._speak('目标超出工作空间')
+                    self._publish_status('error', 'IK无解')
+                    continue
+                time.sleep(1.6)
 
-            # ── 9. 下降抓取 ──
-            grab_z = max(int(tz) - 5, 5)
-            kinematics_move(int(tx), int(ty), grab_z, 1200, alpha_hint=ALPHA_GRASP)
-            time.sleep(1.3)
-
-            # ── 10. 关闭夹爪 ──
-            for _ in range(3):
-                uart_send_str('#005P1700T1000!')
-                time.sleep(0.4)
-
-            # ── 11. 抬升 ──
-            self._publish_status('picking', f'{label_cn} 抓取成功，抬升...')
-            kinematics_move(int(tx), int(ty), 150, 1000, alpha_hint=ALPHA_GRASP)
-            time.sleep(1)
-
-            # ── 12. 移到对应垃圾桶 ──
-            config = GARBAGE_CONFIG.get(category)
-            if config:
-                self._publish_status('placing', f'移到{category}桶...')
-                uart_send_str(config['bin_pwm'])
-                time.sleep(2.5)
-
-                # ── 13. 打开夹爪投放 ──
+                # ── 打开夹爪 ──
                 for _ in range(3):
                     uart_send_str('#005P1000T500!')
                     time.sleep(0.3)
 
-            # ── 14. 回观察位置 ──
-            kinematics_move(OBS_X, OBS_Y, OBS_Z, 1500, alpha_hint=ALPHA_OBS)
-            time.sleep(1)
+                # ── 下降抓取 ──
+                grab_z = max(int(tz) - 5, 5)
+                kinematics_move(int(tx), int(ty), grab_z, 1200, alpha_hint=ALPHA_GRASP)
+                time.sleep(1.3)
 
-            self._publish_status('done', f'{label_cn} 分拣完成（{category}）')
+                # ── 关闭夹爪 ──
+                for _ in range(3):
+                    uart_send_str('#005P1700T1000!')
+                    time.sleep(0.4)
+
+                # ── 抬升 ──
+                self._publish_status('picking', f'{label_cn} 抓取成功，抬升...')
+                kinematics_move(int(tx), int(ty), 150, 1000, alpha_hint=ALPHA_GRASP)
+                time.sleep(1)
+
+                # ── 移到对应垃圾桶 ──
+                config = GARBAGE_CONFIG.get(category)
+                if config:
+                    self._publish_status('placing', f'移到{category}桶...')
+                    uart_send_str(config['bin_pwm'])
+                    time.sleep(2.5)
+
+                    # ── 打开夹爪投放 ──
+                    for _ in range(3):
+                        uart_send_str('#005P1000T500!')
+                        time.sleep(0.3)
+
+                # ── 回观察位置 ──
+                kinematics_move(OBS_X, OBS_Y, OBS_Z, 1500, alpha_hint=ALPHA_OBS)
+                time.sleep(4)
+                self._publish_status('done', f'{label_cn} 分拣完成（{category}）')
+
+                # ── 检查是否还有垃圾 ──
+                if self._find_leftmost_garbage() is not None:
+                    continue  # 画面中还有垃圾，直接下一轮
+
+                # 画面无垃圾，再启动传送带确认一次
+                self._publish_status('recheck', '画面无垃圾，启动传送带再确认...')
+                self._conveyor_start()
+                recheck_det = None
+                recheck_confirm = 0
+                for _ in range(100):  # 最多等10秒
+                    time.sleep(0.1)
+                    found = self._find_leftmost_garbage()
+                    if found:
+                        recheck_confirm += 1
+                        if recheck_confirm >= CONFIRM_FRAMES:
+                            recheck_det = found
+                            break
+                    else:
+                        recheck_confirm = 0
+                self._conveyor_stop()
+                if recheck_det is None:
+                    self._publish_status('clear', '确认无垃圾，本轮结束')
+                    break
+                # 有垃圾，继续下一轮分拣
+
+            self._publish_status('idle', f'共完成{round_count}轮分拣，等待下一次指令')
 
         except Exception as e:
             self._publish_status('error', f'异常: {e}')
