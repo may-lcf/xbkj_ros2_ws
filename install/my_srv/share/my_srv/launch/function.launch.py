@@ -94,6 +94,10 @@ def generate_launch_description():
         Node(package='my_srv', executable='depth_num_track_node.py',
              name='depth_num_track_node', output='screen'),
 
+        # ── KCF/CSRT 视觉追踪节点 ──
+        Node(package='my_srv', executable='depth_kcf_track_node.py',
+             name='depth_kcf_track_node', output='screen'),
+
         # ── Web 视频服务器，端口9090 ──
         Node(package='web_video_server', executable='web_video_server',
              name='web_video_server', output='screen',

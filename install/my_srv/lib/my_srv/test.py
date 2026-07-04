@@ -8,6 +8,7 @@ from socketserver import ThreadingMixIn
 import time
 import numpy as np
 import socket
+import subprocess
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String, Int32
@@ -264,6 +265,22 @@ class CameraHTTPServerNode(Node):
                     html = self.get_html_content()
                     self.wfile.write(html.encode('utf-8'))
                 
+                elif self.path == '/ping':
+                    # 设备自动发现接口
+                    self.send_response(200)
+                    self.send_header('Content-type', 'application/json; charset=utf-8')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.send_header('X-Robot-User', 'webotpi')
+                    self.send_header('X-Robot-Model', 'WeBotPI-Arm')
+                    self.end_headers()
+                    import json
+                    response = json.dumps({
+                        "device": "WeBotPI",
+                        "user": "webotpi",
+                        "status": "online"
+                    })
+                    self.wfile.write(response.encode('utf-8'))
+
                 elif 'stream' in self.path:
                     # 视频流
                     self.send_response(200)
@@ -570,7 +587,53 @@ class CameraHTTPServerNode(Node):
                             'num_track 3':  (self.num_pub, String, '3'),
                         }
 
-                        if command_str in COMMAND_MAP:
+                        # 处理WiFi连接命令
+                        if command_str.startswith("connect_wifi"):
+                            import shlex
+                            try:
+                                parts = shlex.split(command_str)
+                            except:
+                                parts = command_str.split()
+
+                            if len(parts) >= 3:
+                                ssid = parts[1].strip('"')
+                                password = parts[2].strip('"')
+                                self.ros_node.get_logger().info(f"正在连接WiFi: {ssid}")
+                                def run_connect_wifi(ssid=ssid, password=password):
+                                    try:
+                                        result = subprocess.run(
+                                            ['/home/webotpi/connect_wifi.sh', ssid, password],
+                                            capture_output=True, text=True, timeout=30
+                                        )
+                                        self.ros_node.get_logger().info(f"WiFi连接结果: {result.stdout}")
+                                        if result.returncode != 0:
+                                            self.ros_node.get_logger().error(f"WiFi连接失败: {result.stderr}")
+                                    except Exception as e:
+                                        self.ros_node.get_logger().error(f"执行WiFi连接命令出错: {e}")
+                                threading.Thread(target=run_connect_wifi, daemon=True).start()
+                                response_msg = "connect_wifi: 命令已发送"
+                            else:
+                                response_msg = "connect_wifi: 参数错误，格式: connect_wifi SSID PASSWORD"
+
+                        # 处理开启热点命令
+                        elif command_str == "start_ap":
+                            self.ros_node.get_logger().info("正在开启热点...")
+                            def run_start_ap():
+                                try:
+                                    result = subprocess.run(
+                                        ['/home/webotpi/start_ap.sh'],
+                                        capture_output=True, text=True, timeout=15
+                                    )
+                                    self.ros_node.get_logger().info(f"热点开启结果: {result.stdout}")
+                                    if result.returncode != 0:
+                                        self.ros_node.get_logger().error(f"热点开启失败: {result.stderr}")
+                                except Exception as e:
+                                    self.ros_node.get_logger().error(f"执行热点命令出错: {e}")
+                            threading.Thread(target=run_start_ap, daemon=True).start()
+                            response_msg = "start_ap: 命令已发送"
+
+                        elif command_str in COMMAND_MAP:
+
                             base_name, action = COMMAND_MAP[command_str]
                             srv_name = self.ros_node.get_service_name(base_name, action)
                             client = self.ros_node.create_client(Trigger, srv_name)

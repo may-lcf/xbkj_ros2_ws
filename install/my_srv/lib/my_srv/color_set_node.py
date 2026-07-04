@@ -149,12 +149,15 @@ class ColorSetNode(Node):
                 self.blue_rect = None
                 self.green_rect = None
 
-                # 启动摄像头线程
-                if not self.camera_thread:
-                    self.camera_thread = threading.Thread(target=self.camera_processing_loop)
-                    self.camera_thread.daemon = True
-                    self.camera_thread.start()
-                    self.get_logger().info("摄像头处理线程已启动")
+                # 启动摄像头线程（确保旧线程已停止）
+                if self.camera_thread and self.camera_thread.is_alive():
+                    self.get_logger().warning("等待旧摄像头线程结束...")
+                    self.camera_thread.join(timeout=2.0)
+
+                self.camera_thread = threading.Thread(target=self.camera_processing_loop)
+                self.camera_thread.daemon = True
+                self.camera_thread.start()
+                self.get_logger().info("摄像头处理线程已启动")
             except Exception as e:
                 self.get_logger().error(f"硬件初始化失败：{str(e)}")
                 response.success = False
@@ -169,25 +172,30 @@ class ColorSetNode(Node):
         self.get_logger().info("✅✅ 收到Exit服务，停止色块阈值调节节点并关闭硬件！")
         if self.sorting_active:
             try:
-                # 停止分拣状态
+                # 1. 先设置停止标志，通知线程退出
                 self.sorting_active = False
-                
-                
-                # 关闭摄像头
+
+                # 2. 等待摄像头线程结束（必须在关闭摄像头之前！）
+                if self.camera_thread and self.camera_thread.is_alive():
+                    self.camera_thread.join(timeout=3.0)
+                    if self.camera_thread.is_alive():
+                        self.get_logger().warning("摄像头线程未能在3秒内结束")
+                    self.camera_thread = None
+
+                # 3. 线程结束后再关闭摄像头
                 if self.camera_open:
                     self.cap.release()
                     self.camera_open = False
-                    self.get_logger().info("摄像头已关闭")
+                    self.get_logger().info("摄像头资源已释放")
 
-                # 关闭串口
+                # 4. 关闭串口
                 if self.uart_open:
-                    close_uart() 
+                    close_uart()
                     self.uart_open = False
-                    self.get_logger().info("串口已关闭")
-                # 等待摄像头线程结束
-                if self.camera_thread and self.camera_thread.is_alive():
-                    self.camera_thread.join(timeout=2.0)
-                    self.camera_thread = None
+                    self.get_logger().info("串口资源已释放")
+
+                self.get_logger().info("✅ 所有硬件资源释放完成")
+
             except Exception as e:
                 self.get_logger().error(f"硬件关闭失败：{str(e)}")
                 response.success = False
@@ -199,22 +207,25 @@ class ColorSetNode(Node):
         return response
     
     def camera_processing_loop(self):
-        while self.running and self.sorting_active and self.camera_open:  
+        self.get_logger().info("摄像头处理线程开始运行")
+        while self.running and self.sorting_active and self.camera_open:
             try:
                 ret, frame = self.cap.read()
                 if not ret:
                     self.get_logger().error("无法读取摄像头帧！")
-                    return
-                    # 处理帧
+                    break
+                # 处理帧
                 self.process_frame(frame)
                 time.sleep(0.03)  # 约30fps
-                
+
             except Exception as e:
+                # 如果是因为摄像头被关闭导致的异常，安静退出
+                if not self.sorting_active or not self.camera_open:
+                    break
                 self.get_logger().error(f"摄像头处理失败: {str(e)}")
                 time.sleep(0.1)
-                
-            except Exception as e:
-                self.get_logger().error(f"摄像头处理失败: {str(e)}")
+
+        self.get_logger().info("摄像头处理线程已退出")
 
     def detect_color(self, mask):
         cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
