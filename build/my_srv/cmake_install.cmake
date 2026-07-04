@@ -416,6 +416,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     "/home/webotpi/ros2_ws/src/my_srv/scripts/label_sorting_node.py"
     "/home/webotpi/ros2_ws/src/my_srv/scripts/label_stack_node.py"
     "/home/webotpi/ros2_ws/src/my_srv/scripts/label_track_node.py"
+    "/home/webotpi/ros2_ws/src/my_srv/scripts/media_pipe_node.py"
     "/home/webotpi/ros2_ws/src/my_srv/scripts/motor6_control.py"
     "/home/webotpi/ros2_ws/src/my_srv/scripts/motor_control.py"
     "/home/webotpi/ros2_ws/src/my_srv/scripts/num_sorting_node.py"

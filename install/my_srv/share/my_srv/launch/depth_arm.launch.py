@@ -52,6 +52,12 @@ def generate_launch_description():
     enable_number = DeclareLaunchArgument(
         'enable_number', default_value='false',
         description='启动 depth_num_sorting_node 数字分拣')
+    enable_media_pipe = DeclareLaunchArgument(
+        'enable_media_pipe', default_value='false',
+        description='启动 media_pipe_node 多模式视觉识别')
+    media_pipe_mode = DeclareLaunchArgument(
+        'media_pipe_mode', default_value='fingertip_trace',
+        description='MediaPipe模式: face_contour | fingertip_trace | body_skeleton')
 
     ld = LaunchDescription([
         enable_camera,
@@ -62,6 +68,8 @@ def generate_launch_description():
         enable_gesture,
         enable_label,
         enable_number,
+        enable_media_pipe,
+        media_pipe_mode,
     ])
 
     # ── 相机驱动 ──────────────────────────────────────────────────────────────
@@ -136,6 +144,16 @@ def generate_launch_description():
         executable='hand_gesture_arm_depth.py',
         name='hand_gesture_arm_depth',
         output='screen',
+    ))
+
+    # ── MediaPipe 多模式视觉识别 ────────────────────────────────────────────
+
+    ld.add_action(Node(
+        package='my_srv',
+        executable='media_pipe_node.py',
+        name='media_pipe_node',
+        output='screen',
+        parameters=[{'mode': LaunchConfiguration('media_pipe_mode')}],
     ))
 
     return ld

@@ -127,8 +127,8 @@ class DepthKCFTrackNode(Node):
 
         # PID 目标: 640×480 中心
         self.TARGET_CX, self.TARGET_CY = 320, 240
-        self.pid_x = PIDController(kp=0.12, ki=0.001, kd=0.02)
-        self.pid_y = PIDController(kp=0.12, ki=0.001, kd=0.02)
+        self.pid_x = PIDController(kp=0.2, ki=0.001, kd=0.02)
+        self.pid_y = PIDController(kp=0.2, ki=0.001, kd=0.02)
 
         # 运行控制
         self.active = True
@@ -192,11 +192,11 @@ class DepthKCFTrackNode(Node):
         if algo in ('kcf', 'csrt'):
             self.algorithm = algo
             if algo == 'kcf':
-                self.pid_x = PIDController(kp=0.10, ki=0.001, kd=0.03)
-                self.pid_y = PIDController(kp=0.10, ki=0.001, kd=0.03)
+                self.pid_x = PIDController(kp=0.2, ki=0.001, kd=0.03)
+                self.pid_y = PIDController(kp=0.2, ki=0.001, kd=0.03)
             else:
-                self.pid_x = PIDController(kp=0.12, ki=0.001, kd=0.02)
-                self.pid_y = PIDController(kp=0.12, ki=0.001, kd=0.02)
+                self.pid_x = PIDController(kp=0.2, ki=0.001, kd=0.02)
+                self.pid_y = PIDController(kp=0.2, ki=0.001, kd=0.02)
             self.get_logger().info(f'[KCF] 切换算法: {algo.upper()}')
 
     # ══ 同步回调 ══════════════════════════════════════════════════════════════
