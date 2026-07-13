@@ -1,0 +1,99 @@
+[0.000000] (-) TimerEvent: {}
+[0.000216] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000507] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000713] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000735] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000753] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000775] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000796] (robot_integration) JobQueued: {'identifier': 'robot_integration', 'dependencies': OrderedDict()}
+[0.000993] (robot_integration) JobStarted: {'identifier': 'robot_integration'}
+[0.099550] (-) TimerEvent: {}
+[0.199778] (-) TimerEvent: {}
+[0.299980] (-) TimerEvent: {}
+[0.400522] (-) TimerEvent: {}
+[0.500734] (-) TimerEvent: {}
+[0.600950] (-) TimerEvent: {}
+[0.701172] (-) TimerEvent: {}
+[0.801395] (-) TimerEvent: {}
+[0.901685] (-) TimerEvent: {}
+[1.001985] (-) TimerEvent: {}
+[1.102208] (-) TimerEvent: {}
+[1.202418] (-) TimerEvent: {}
+[1.640921] (robot_integration) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/robot_integration', 'build', '--build-base', '/home/webotpi/ros2_ws/build/robot_integration/build', 'install', '--record', '/home/webotpi/ros2_ws/build/robot_integration/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/webotpi/ros2_ws/src/robot_integration', 'env': {'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 39810 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '33', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/robot_integration', 'SSH_CONNECTION': '192.168.0.111 39810 192.168.0.119 22', 'PYTHONPATH': '/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[1.642645] (-) TimerEvent: {}
+[1.742810] (-) TimerEvent: {}
+[1.843018] (-) TimerEvent: {}
+[1.943206] (-) TimerEvent: {}
+[2.036047] (robot_integration) StdoutLine: {'line': b'running egg_info\n'}
+[2.036645] (robot_integration) StdoutLine: {'line': b'creating ../../build/robot_integration/robot_integration.egg-info\n'}
+[2.043344] (-) TimerEvent: {}
+[2.068008] (robot_integration) StdoutLine: {'line': b'writing ../../build/robot_integration/robot_integration.egg-info/PKG-INFO\n'}
+[2.068550] (robot_integration) StdoutLine: {'line': b'writing dependency_links to ../../build/robot_integration/robot_integration.egg-info/dependency_links.txt\n'}
+[2.068942] (robot_integration) StdoutLine: {'line': b'writing entry points to ../../build/robot_integration/robot_integration.egg-info/entry_points.txt\n'}
+[2.069634] (robot_integration) StdoutLine: {'line': b'writing requirements to ../../build/robot_integration/robot_integration.egg-info/requires.txt\n'}
+[2.069966] (robot_integration) StdoutLine: {'line': b'writing top-level names to ../../build/robot_integration/robot_integration.egg-info/top_level.txt\n'}
+[2.070072] (robot_integration) StdoutLine: {'line': b"writing manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'\n"}
+[2.127132] (robot_integration) StdoutLine: {'line': b"reading manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'\n"}
+[2.128396] (robot_integration) StdoutLine: {'line': b"writing manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'\n"}
+[2.129694] (robot_integration) StdoutLine: {'line': b'running build\n'}
+[2.130250] (robot_integration) StdoutLine: {'line': b'running build_py\n'}
+[2.130562] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/build/robot_integration/build\n'}
+[2.130838] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/build/robot_integration/build/lib\n'}
+[2.130932] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.131017] (robot_integration) StdoutLine: {'line': b'copying robot_integration/coordinator_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.131223] (robot_integration) StdoutLine: {'line': b'copying robot_integration/arm_controller_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.131454] (robot_integration) StdoutLine: {'line': b'copying robot_integration/__init__.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.131643] (robot_integration) StdoutLine: {'line': b'copying robot_integration/edge_detect_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.131817] (robot_integration) StdoutLine: {'line': b'copying robot_integration/stm32_bridge_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.131992] (robot_integration) StdoutLine: {'line': b'copying robot_integration/balance_beam_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.132175] (robot_integration) StdoutLine: {'line': b'copying robot_integration/car_controller_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration\n'}
+[2.132498] (robot_integration) StdoutLine: {'line': b'running install\n'}
+[2.143385] (robot_integration) StdoutLine: {'line': b'running install_lib\n'}
+[2.143971] (-) TimerEvent: {}
+[2.172655] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.172996] (robot_integration) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/coordinator_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.173222] (robot_integration) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/arm_controller_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.175301] (robot_integration) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/__init__.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.175512] (robot_integration) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/edge_detect_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.175605] (robot_integration) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/stm32_bridge_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.175715] (robot_integration) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/balance_beam_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.175811] (robot_integration) StdoutLine: {'line': b'copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/car_controller_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration\n'}
+[2.175902] (robot_integration) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/coordinator_node.py to coordinator_node.cpython-312.pyc\n'}
+[2.178823] (robot_integration) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/arm_controller_node.py to arm_controller_node.cpython-312.pyc\n'}
+[2.181657] (robot_integration) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/__init__.py to __init__.cpython-312.pyc\n'}
+[2.181984] (robot_integration) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/edge_detect_node.py to edge_detect_node.cpython-312.pyc\n'}
+[2.186590] (robot_integration) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/stm32_bridge_node.py to stm32_bridge_node.cpython-312.pyc\n'}
+[2.190191] (robot_integration) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/balance_beam_node.py to balance_beam_node.cpython-312.pyc\n'}
+[2.194581] (robot_integration) StdoutLine: {'line': b'byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/car_controller_node.py to car_controller_node.cpython-312.pyc\n'}
+[2.197485] (robot_integration) StdoutLine: {'line': b'running install_data\n'}
+[2.197933] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index\n'}
+[2.198045] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index\n'}
+[2.198281] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages\n'}
+[2.198413] (robot_integration) StdoutLine: {'line': b'copying resource/robot_integration -> /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages\n'}
+[2.198508] (robot_integration) StdoutLine: {'line': b'copying package.xml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration\n'}
+[2.198691] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch\n'}
+[2.198877] (robot_integration) StdoutLine: {'line': b'copying launch/balance_beam.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch\n'}
+[2.199043] (robot_integration) StdoutLine: {'line': b'copying launch/edge_detect.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch\n'}
+[2.199146] (robot_integration) StdoutLine: {'line': b'copying launch/full_system.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch\n'}
+[2.199313] (robot_integration) StdoutLine: {'line': b'copying launch/car_only.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch\n'}
+[2.199505] (robot_integration) StdoutLine: {'line': b'creating /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config\n'}
+[2.200056] (robot_integration) StdoutLine: {'line': b'copying config/robot_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config\n'}
+[2.201301] (robot_integration) StdoutLine: {'line': b'copying config/edge_detect_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config\n'}
+[2.201403] (robot_integration) StdoutLine: {'line': b'copying config/balance_beam_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config\n'}
+[2.201487] (robot_integration) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.235537] (robot_integration) StdoutLine: {'line': b'Copying ../../build/robot_integration/robot_integration.egg-info to /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration-1.0.0-py3.12.egg-info\n'}
+[2.236914] (robot_integration) StdoutLine: {'line': b'running install_scripts\n'}
+[2.244046] (-) TimerEvent: {}
+[2.344247] (-) TimerEvent: {}
+[2.449210] (-) TimerEvent: {}
+[2.502343] (robot_integration) StdoutLine: {'line': b'Installing arm_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration\n'}
+[2.502697] (robot_integration) StdoutLine: {'line': b'Installing balance_beam_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration\n'}
+[2.502876] (robot_integration) StdoutLine: {'line': b'Installing car_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration\n'}
+[2.503080] (robot_integration) StdoutLine: {'line': b'Installing coordinator_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration\n'}
+[2.503249] (robot_integration) StdoutLine: {'line': b'Installing edge_detect_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration\n'}
+[2.503349] (robot_integration) StdoutLine: {'line': b'Installing stm32_bridge_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration\n'}
+[2.503791] (robot_integration) StdoutLine: {'line': b"writing list of installed files to '/home/webotpi/ros2_ws/build/robot_integration/install.log'\n"}
+[2.549323] (-) TimerEvent: {}
+[2.616105] (robot_integration) CommandEnded: {'returncode': 0}
+[2.629494] (robot_integration) JobEnded: {'identifier': 'robot_integration', 'rc': 0}
+[2.630280] (-) EventReactorShutdown: {}

@@ -201,9 +201,8 @@ class STM32BridgeNode(Node):
             # 构建控制消息
             message = f'[{self.output_speed_x:.0f},{self.output_speed_y:.0f},{self.output_gyro_z:.1f}]'
             
-            # 发送控制命令
-            if message != self.last_message or self.output_gyro_z != 0:
-                self.serial_port.write(message.encode('utf-8'))
+            # 发送控制命令（持续发送，STM32需要持续接收命令）
+            self.serial_port.write(message.encode('utf-8'))
             self.last_message = message
             
             time.sleep(0.01)

@@ -1,0 +1,36 @@
+running develop
+running egg_info
+creating robot_integration.egg-info
+writing robot_integration.egg-info/PKG-INFO
+writing dependency_links to robot_integration.egg-info/dependency_links.txt
+writing entry points to robot_integration.egg-info/entry_points.txt
+writing requirements to robot_integration.egg-info/requires.txt
+writing top-level names to robot_integration.egg-info/top_level.txt
+writing manifest file 'robot_integration.egg-info/SOURCES.txt'
+reading manifest file 'robot_integration.egg-info/SOURCES.txt'
+writing manifest file 'robot_integration.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot-integration.egg-link (link to .)
+Installing arm_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+Installing balance_beam_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+Installing car_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+Installing coordinator_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+Installing edge_detect_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+Installing stm32_bridge_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+
+Installed /home/webotpi/ros2_ws/build/robot_integration
+running symlink_data
+creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index
+creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index
+creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/resource/robot_integration -> /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/package.xml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration
+creating /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/balance_beam.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/edge_detect.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/full_system.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/car_only.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+creating /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/robot_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/edge_detect_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/balance_beam_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config

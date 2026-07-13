@@ -1,0 +1,25 @@
+[1.760s] Invoking command in '/home/webotpi/ros2_ws/build/robot_integration': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/webotpi/ros2_ws/build/robot_integration/build --no-deps symlink_data --force
+[2.205s] running develop
+[2.480s] running egg_info
+[2.505s] writing robot_integration.egg-info/PKG-INFO
+[2.508s] writing dependency_links to robot_integration.egg-info/dependency_links.txt
+[2.509s] writing entry points to robot_integration.egg-info/entry_points.txt
+[2.509s] writing requirements to robot_integration.egg-info/requires.txt
+[2.510s] writing top-level names to robot_integration.egg-info/top_level.txt
+[2.565s] reading manifest file 'robot_integration.egg-info/SOURCES.txt'
+[2.569s] writing manifest file 'robot_integration.egg-info/SOURCES.txt'
+[2.598s] running build_ext
+[2.601s] Creating /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot-integration.egg-link (link to .)
+[2.602s] Installing arm_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.602s] Installing balance_beam_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.602s] Installing car_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.603s] Installing coordinator_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.603s] Installing edge_detect_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.603s] Installing stm32_bridge_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.603s] 
+[2.603s] Installed /home/webotpi/ros2_ws/build/robot_integration
+[2.603s] running symlink_data
+[2.604s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/resource/robot_integration -> /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages
+[2.604s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/package.xml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration
+[2.604s] error: [Errno 2] No such file or directory: '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch/balance_beam.launch.py'
+[2.705s] Invoked command in '/home/webotpi/ros2_ws/build/robot_integration' returned '1': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/webotpi/ros2_ws/build/robot_integration/build --no-deps symlink_data --force

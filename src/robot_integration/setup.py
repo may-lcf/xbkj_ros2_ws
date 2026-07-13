@@ -29,6 +29,7 @@ setup(
             'arm_controller_node = robot_integration.arm_controller_node:main',
             'coordinator_node = robot_integration.coordinator_node:main',
             'edge_detect_node = robot_integration.edge_detect_node:main',
+            'balance_beam_node = robot_integration.balance_beam_node:main',
         ],
     },
 )
