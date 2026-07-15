@@ -37,7 +37,7 @@ class LineFollowNode(Node):
     def __init__(self):
         super().__init__('line_follow_node')
         self.state=STATE_IDLE; self.mission_active=False; self.lost_count=0
-        self._turn23_start=0.0; self._turn23_dur=1.3; self._turn23_ang=0.3; self._turn23_last=0.0; self._search_start=0.0; self._search_ang=0.20; self._search_max_dur=5.45
+        self._turn23_start=0.0; self._turn23_dur=1.3; self._turn23_ang=0.28; self._turn23_last=0.0; self._search_start=0.0; self._search_ang=0.20; self._search_max_dur=5.45
         self.latest_rgb=None; self.latest_depth=None
         self._frame_lock=threading.Lock()
         self.depth_ready=threading.Event(); self.rgb_ready=threading.Event()
