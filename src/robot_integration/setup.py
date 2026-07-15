@@ -14,6 +14,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
         (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+        (os.path.join('share', package_name, 'scripts'), glob('scripts/*.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -30,6 +31,7 @@ setup(
             'coordinator_node = robot_integration.coordinator_node:main',
             'edge_detect_node = robot_integration.edge_detect_node:main',
             'balance_beam_node = robot_integration.balance_beam_node:main',
+            'line_follow_node = robot_integration.line_follow_node:main',
         ],
     },
 )

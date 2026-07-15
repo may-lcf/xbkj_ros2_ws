@@ -55,15 +55,17 @@ class STM32BridgeNode(Node):
         self.serial_port = None
         self.serial_active = False
         self.last_serial_time = self.get_clock().now()
+        self._serial_lock = threading.Lock()  # 串口写入互斥锁
         try:
             self.serial_port = serial.Serial(port, baudrate, timeout=timeout)
             self.get_logger().info(f'串口已打开: {port} @ {baudrate}bps')
             # 发送初始化命令
-            self.serial_port.write('(init?'.encode('utf-8'))
+            self.serial_port.write('(init?\n'.encode('utf-8'))
         except Exception as e:
             self.get_logger().error(f'串口打开失败: {e}')
         
         # ========== 里程计数据 ==========
+        self._arm_sending = False  # 机械臂命令发送标志
         self.distance_x = 0.0
         self.distance_y = 0.0
         self.angle = 0.0
@@ -142,11 +144,20 @@ class STM32BridgeNode(Node):
         self.target_gyro_z = msg.angular.z
     
     def arm_command_callback(self, msg):
-        """机械臂命令回调 - 直接转发STM32指令"""
+        """机械臂命令回调 - 暂停小车控制，确保STM32收到"""
         if self.serial_port and self.serial_port.is_open:
-            cmd = msg.data
-            self.serial_port.write(cmd.encode('utf-8'))
-            self.get_logger().info(f'发送机械臂命令: {cmd}')
+            cmd = msg.data + '\n'
+            self._arm_sending = True  # 暂停小车控制循环
+            with self._serial_lock:
+                # 停车
+                self.serial_port.write(b'[0,0,0]\n')
+                time.sleep(0.05)
+                # 发送机械臂命令3次
+                for _ in range(3):
+                    self.serial_port.write(cmd.encode('utf-8'))
+                    time.sleep(0.05)
+            self._arm_sending = False  # 恢复小车控制循环
+            self.get_logger().info(f'发送机械臂命令: {cmd.strip()}')
     
     def arm_joint_callback(self, msg):
         """机械臂关节控制回调 - 转换为舵机指令"""
@@ -159,13 +170,19 @@ class STM32BridgeNode(Node):
                 pwm = int(1500 + pos * 1000 / (math.pi * 0.75))
                 pwm = max(500, min(2500, pwm))
                 cmd = f'#{i:03d}P{pwm:04d}T1000!'
-                self.serial_port.write(cmd.encode('utf-8'))
+                with self._serial_lock:
+                    self.serial_port.write((cmd + '\n').encode('utf-8'))
             self.get_logger().info(f'发送关节命令: {msg.name}')
     
     def car_control_loop(self):
         """小车控制循环 - 10ms周期"""
         while rclpy.ok() and self.running:
             if not self.serial_port or not self.serial_port.is_open:
+                time.sleep(0.01)
+                continue
+
+            # 机械臂命令发送时暂停小车控制
+            if self._arm_sending:
                 time.sleep(0.01)
                 continue
             
@@ -202,7 +219,8 @@ class STM32BridgeNode(Node):
             message = f'[{self.output_speed_x:.0f},{self.output_speed_y:.0f},{self.output_gyro_z:.1f}]'
             
             # 发送控制命令（持续发送，STM32需要持续接收命令）
-            self.serial_port.write(message.encode('utf-8'))
+            with self._serial_lock:
+                self.serial_port.write((message + '\n').encode('utf-8'))
             self.last_message = message
             
             time.sleep(0.01)
