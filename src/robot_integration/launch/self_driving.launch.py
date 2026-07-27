@@ -3,8 +3,9 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PythonExpression
+from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition
+
 
 def generate_launch_description():
     pkg_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,10 +14,8 @@ def generate_launch_description():
     serial_port_arg = DeclareLaunchArgument('serial_port', default_value='/dev/ttyUSB0')
     auto_start_arg = DeclareLaunchArgument('auto_start', default_value='false')
     enable_camera_arg = DeclareLaunchArgument('enable_camera', default_value='false')
-    line_mode_arg = DeclareLaunchArgument('line_mode', default_value='yellow')
 
-    line_follow_params = os.path.join(config_dir, 'line_follow_params.yaml')
-    line_follow_black_params = os.path.join(config_dir, 'line_follow_black_params.yaml')
+    self_driving_params = os.path.join(config_dir, 'self_driving_params.yaml')
 
     camera_launch = os.path.join(os.path.expanduser('~'), 'ros2_ws', 'src',
         'deptrum-ros-driver', 'launch_aurora930', 'launch', 'aurora930_launch.py')
@@ -33,29 +32,21 @@ def generate_launch_description():
         output='screen',
     )
 
-    yellow_node = Node(
-        package='robot_integration', executable='line_follow_node',
-        name='line_follow_node',
-        parameters=[line_follow_params, {'auto_start': LaunchConfiguration('auto_start')}],
+    self_driving_node = Node(
+        package='robot_integration', executable='self_driving_node',
+        name='self_driving_node',
+        parameters=[
+            self_driving_params,
+            {'auto_start': LaunchConfiguration('auto_start')},
+        ],
         output='screen',
-        condition=IfCondition(PythonExpression(["'", LaunchConfiguration('line_mode'), "' == 'yellow'"])),
-    )
-
-    black_node = Node(
-        package='robot_integration', executable='line_follow_node',
-        name='line_follow_node',
-        parameters=[line_follow_black_params, {'auto_start': LaunchConfiguration('auto_start')}],
-        output='screen',
-        condition=IfCondition(PythonExpression(["'", LaunchConfiguration('line_mode'), "' == 'black'"])),
     )
 
     ld = LaunchDescription()
     ld.add_action(serial_port_arg)
     ld.add_action(auto_start_arg)
     ld.add_action(enable_camera_arg)
-    ld.add_action(line_mode_arg)
     ld.add_action(camera_node)
     ld.add_action(stm32_bridge_node)
-    ld.add_action(TimerAction(period=2.0, actions=[yellow_node]))
-    ld.add_action(TimerAction(period=2.0, actions=[black_node]))
+    ld.add_action(TimerAction(period=5.0, actions=[self_driving_node]))
     return ld

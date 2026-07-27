@@ -32,6 +32,7 @@ setup(
             'edge_detect_node = robot_integration.edge_detect_node:main',
             'balance_beam_node = robot_integration.balance_beam_node:main',
             'line_follow_node = robot_integration.line_follow_node:main',
+            'self_driving_node = robot_integration.self_driving_node:main',
         ],
     },
 )
