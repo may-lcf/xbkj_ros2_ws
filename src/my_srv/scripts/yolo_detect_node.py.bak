@@ -183,36 +183,8 @@ class YoloDetectNode(Node):
         msg.data = json.dumps(detections, ensure_ascii=False)
         self.pub_det.publish(msg)
 
-        # 调试图像（自定义绘制：标注面积信息）
-        annotated = rgb.copy()
-        h_img, w_img = annotated.shape[:2]
-        total_area = h_img * w_img
-        for det in detections:
-            x1, y1, x2, y2 = det['bbox']
-            label = det['shape']
-            conf = det['confidence']
-            area = det['area']
-            area_pct = area / total_area * 100  # 面积占比(%)
-
-            # 边界框
-            cv2.rectangle(annotated, (x1, y1), (x2, y2), (0, 255, 0), 2)
-
-            # 标签文字：类别 置信度 面积 面积占比
-            text = f"{label} {conf:.2f} A:{area}px ({area_pct:.1f}%)"
-            (tw, th), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
-            cv2.rectangle(annotated, (x1, y1 - th - 6), (x1 + tw + 4, y1), (0, 255, 0), -1)
-            cv2.putText(annotated, text, (x1 + 2, y1 - 4),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
-
-            # 中心点
-            cx, cy = det['pixel']
-            cv2.circle(annotated, (cx, cy), 3, (0, 0, 255), -1)
-
-        # 顶部信息栏
-        info = f"Detected: {len(detections)} | Frame: {w_img}x{h_img}"
-        cv2.putText(annotated, info, (10, 25),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
-
+        # 调试图像
+        annotated = results[0].plot()
         self.pub_img.publish(self._to_imgmsg(annotated))
 
         return detections
@@ -230,21 +202,16 @@ def main(args=None):
     rclpy.init(args=args)
     node = YoloDetectNode()
     frame_count = 0
-    skip_frames = 2  # 每2帧推理1次
-    skip_counter = 0
-    last_dets = []
     try:
         while rclpy.ok():
             rclpy.spin_once(node, timeout_sec=0.1)
             if node.latest_rgb is None:
                 time.sleep(0.5)
                 continue
-            if skip_counter % skip_frames == 0:
-                last_dets = node.detect()
-            skip_counter += 1
+            dets = node.detect()
             frame_count += 1
             if frame_count % 30 == 0:
-                node.get_logger().info(f'已处理 {frame_count} 帧(推理{frame_count//skip_frames}次)，检测到 {len(last_dets)} 个物体')
+                node.get_logger().info(f'已处理 {frame_count} 帧，检测到 {len(dets)} 个物体')
             time.sleep(0.05)
     except KeyboardInterrupt:
         pass
