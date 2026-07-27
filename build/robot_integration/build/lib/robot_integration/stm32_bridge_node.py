@@ -9,11 +9,11 @@ STM32 统一通信桥接节点
 4. 订阅 /arm_command 控制机械臂
 5. 发布 TF 变换
 
-STM32 协议：
-- 发送: [x,y,z] 控制小车速度
-- 接收: (odom_x,odom_y,angle) 里程计反馈
-- 发送: #SSSPxxxxTxxxx! 控制舵机
-- 发送: $KMS:x,y,z,time! 机械臂运动学控制
+STM32 协议（V4.0 底盘）：
+- 速度指令: [vx,vy,omega] 浮点数(m/s, rad/s)
+- 查询里程计: $QUERY! -> ODOM:X=...,Y=...,YAW=...
+- 重置里程计: $RESET! -> ODOM reset OK
+- 舵机指令: #idPpulseTtime!
 """
 
 import rclpy
@@ -21,6 +21,7 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist, Quaternion, TransformStamped
 from nav_msgs.msg import Odometry
 from std_msgs.msg import String, Int32
+from std_srvs.srv import Trigger
 from sensor_msgs.msg import JointState
 from tf2_ros import TransformBroadcaster, StaticTransformBroadcaster
 from tf_transformations import quaternion_from_euler
@@ -59,8 +60,10 @@ class STM32BridgeNode(Node):
         try:
             self.serial_port = serial.Serial(port, baudrate, timeout=timeout)
             self.get_logger().info(f'串口已打开: {port} @ {baudrate}bps')
-            # 发送初始化命令
-            self.serial_port.write('(init?\n'.encode('utf-8'))
+            # 发送初始化命令(新底盘协议)
+            self.serial_port.write(b"$RESET!\n")
+            import time; time.sleep(0.1)
+            self.serial_port.write(b"$RESET!\n")
         except Exception as e:
             self.get_logger().error(f'串口打开失败: {e}')
         
@@ -103,9 +106,13 @@ class STM32BridgeNode(Node):
         # ========== ROS2 发布 ==========
         self.odom_pub = self.create_publisher(Odometry, '/odom', 10)
         self.arm_feedback_pub = self.create_publisher(String, '/arm_feedback', 10)
+
+        # ========== ROS2 服务 ==========
+        self.reset_odom_srv = self.create_service(
+            Trigger, '/reset_odometry', self._reset_odometry_cb)
         
         # ========== 定时器 ==========
-        self.odom_timer = self.create_timer(0.05, self.publish_odom)  # 20Hz
+        self.odom_timer = self.create_timer(0.5, self.publish_odom)  # 2Hz
         
         # ========== 线程 ==========
         self.running = True
@@ -186,38 +193,18 @@ class STM32BridgeNode(Node):
                 time.sleep(0.01)
                 continue
             
-            # 速度缩放和限幅
-            self.output_gyro_z = self.target_gyro_z * 30
-            self.output_speed_x = self.target_speed_x * 10
-            self.output_speed_y = self.target_speed_y * 10
-            
-            # X方向限幅
-            if self.output_speed_x > 0:
-                self.output_speed_x = max(2, min(5, self.output_speed_x))
-            elif self.output_speed_x < 0:
-                self.output_speed_x = max(-5, min(-2, self.output_speed_x))
-            else:
-                self.output_speed_x = 0
-            
-            # Y方向限幅
-            if self.output_speed_y > 0:
-                self.output_speed_y = max(2, min(5, self.output_speed_y))
-            elif self.output_speed_y < 0:
-                self.output_speed_y = max(-5, min(-2, self.output_speed_y))
-            else:
-                self.output_speed_y = 0
-            
-            # 旋转限幅
-            if self.output_gyro_z > 0:
-                self.output_gyro_z = max(0.1, min(15, self.output_gyro_z))
-            elif self.output_gyro_z < 0:
-                self.output_gyro_z = max(-15, min(-0.1, self.output_gyro_z))
-            else:
-                self.output_gyro_z = 0
+            # 速度缩放和限幅(新底盘直接接受m/s和rad/s浮点数,无需缩放)
+            self.output_gyro_z = self.target_gyro_z
+            self.output_speed_x = self.target_speed_x
+            self.output_speed_y = self.target_speed_y
+            # 速度限幅(新底盘直接接受m/s和rad/s浮点数)
+            self.output_speed_x = max(-1.0, min(1.0, self.output_speed_x))
+            self.output_speed_y = max(-1.0, min(1.0, self.output_speed_y))
+            self.output_gyro_z = max(-3.0, min(3.0, self.output_gyro_z))
+
             
             # 构建控制消息
-            message = f'[{self.output_speed_x:.0f},{self.output_speed_y:.0f},{self.output_gyro_z:.1f}]'
-            
+            message = f"[{self.output_speed_x:.3f},{self.output_speed_y:.3f},{self.output_gyro_z:.3f}]"
             # 发送控制命令（持续发送，STM32需要持续接收命令）
             with self._serial_lock:
                 self.serial_port.write((message + '\n').encode('utf-8'))
@@ -225,37 +212,66 @@ class STM32BridgeNode(Node):
             
             time.sleep(0.01)
     
+    def _reset_odometry_cb(self, request, response):
+        """重置里程计服务回调 — 同时清零STM32和Pi端"""
+        # 1. 清零 STM32 端
+        if self.serial_port and self.serial_port.is_open:
+            with self._serial_lock:
+                self.serial_port.write(b"$RESET!\n")
+        # 2. 清零 Pi 端
+        self.distance_x = 0.0
+        self.distance_y = 0.0
+        self.angle = 0.0
+        self.last_distance_x = 0.0
+        self.last_distance_y = 0.0
+        self.last_angle = 0.0
+        self.pos_x = 0.0
+        self.pos_y = 0.0
+        response.success = True
+        response.message = "里程计已重置(STM32+Pi)"
+        self.get_logger().info('[Odom] 里程计已重置')
+        return response
+
     def publish_odom(self):
-        """发布里程计数据"""
+        """主动查询并发布里程计(新底盘协议: $QUERY! -> ODOM:X=...,Y=...,YAW=...)"""
         if not self.serial_port or not self.serial_port.is_open:
             return
-        
-        # 读取串口数据
-        if self.serial_port.in_waiting > 0:
-            raw_data = self.serial_port.readline().decode('utf-8', errors='replace').strip()
-            if raw_data.startswith('(') and raw_data.endswith(')') and ',' in raw_data:
-                try:
-                    content = raw_data[1:-1]
-                    parts = content.split(',')
-                    if len(parts) == 3:
-                        self.distance_x = float(parts[0]) / 100
-                        self.distance_y = float(parts[1]) / 100
-                        self.angle = -float(parts[2]) * math.pi / 180
-                        self.serial_active = True
-                        self.last_serial_time = self.get_clock().now()
-                except Exception as e:
-                    self.get_logger().error(f'数据解析错误: {raw_data} - {e}')
-        
-        # 计算里程计
+
         current_time = self.get_clock().now()
         dt = (current_time - self.last_time).nanoseconds * 1e-9
-        
+
+        # 主动查询里程计
+        with self._serial_lock:
+            self.serial_port.timeout = 0.05  # 50ms for odom query
+            self.serial_port.reset_input_buffer()  # 清空回显
+            self.serial_port.write(b"$QUERY!\n")
+            try:
+                # 读取多行,跳过STM32回显(res: ...),找ODOM响应
+                for _ in range(5):
+                    response = self.serial_port.readline().decode("utf-8", errors="replace").strip()
+                    if response.startswith("ODOM:"):
+                        parts = response[5:].split(",")
+                        x_val = float(parts[0].split("=")[1])
+                        y_val = float(parts[1].split("=")[1])
+                        yaw_deg = float(parts[2].split("=")[1])
+                        self.distance_x = x_val
+                        self.distance_y = y_val
+                        self.angle = -yaw_deg * math.pi / 180.0
+                        self.serial_active = True
+                        self.last_serial_time = current_time
+                        break
+            except Exception:
+                pass
+            self.serial_port.timeout = 0.001  # restore timeout
+
+
+        # 计算里程计(增量积分到世界坐标)
         use_serial = (
             self.serial_port is not None and
             self.serial_active and
             (current_time - self.last_serial_time).nanoseconds * 1e-9 <= 0.5
         )
-        
+
         if use_serial:
             dx_inc = self.distance_x - self.last_distance_x
             dy_inc = self.distance_y - self.last_distance_y
@@ -263,27 +279,27 @@ class STM32BridgeNode(Node):
             self.v_z = (self.angle - self.last_angle) / dt if dt > 0 else 0.0
             self.pos_x += dx_inc * math.cos(self.angle) - dy_inc * math.sin(self.angle)
             self.pos_y += dx_inc * math.sin(self.angle) + dy_inc * math.cos(self.angle)
-        
+
         self.last_time = current_time
         self.last_angle = self.angle
         self.last_distance_x = self.distance_x
         self.last_distance_y = self.distance_y
-        
+
         # 发布里程计消息
         odom = Odometry()
         odom.header.stamp = current_time.to_msg()
         odom.header.frame_id = self.odom_frame_id
         odom.child_frame_id = self.base_frame_id
-        
+
         q = quaternion_from_euler(0, 0, self.angle)
         odom.pose.pose.position.x = float(self.pos_x)
         odom.pose.pose.position.y = float(self.pos_y)
         odom.pose.pose.orientation = Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
         odom.twist.twist.linear.x = float(self.v_x)
         odom.twist.twist.angular.z = float(self.v_z)
-        
+
         self.odom_pub.publish(odom)
-        
+
         # 发布TF变换
         if self.publish_tf:
             t = TransformStamped()
@@ -294,12 +310,12 @@ class STM32BridgeNode(Node):
             t.transform.translation.y = self.pos_y
             t.transform.rotation = Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
             self.tf_broadcaster.sendTransform(t)
-    
+
     def destroy_node(self):
         """节点销毁时清理资源"""
         self.running = False
         if self.serial_port and self.serial_port.is_open:
-            self.serial_port.write('!'.encode('utf-8'))
+            self.serial_port.write(b'[0.000,0.000,0.000]\n')  # 停车
             time.sleep(0.1)
             self.serial_port.close()
         super().destroy_node()

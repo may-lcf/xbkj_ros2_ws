@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-import time, threading, json, numpy as np, cv2
+import time, threading, json, math, numpy as np, cv2
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist
 from std_msgs.msg import String
+from nav_msgs.msg import Odometry
 from cv_bridge import CvBridge
 try:
     from message_filters import Subscriber as MfSub, ApproximateTimeSynchronizer
@@ -37,18 +38,25 @@ class LineFollowNode(Node):
     def __init__(self):
         super().__init__('line_follow_node')
         self.state=STATE_IDLE; self.mission_active=False; self.lost_count=0
-        self._turn23_start=0.0; self._turn23_dur=1.3; self._turn23_ang=0.28; self._turn23_last=0.0; self._search_start=0.0; self._search_ang=0.20; self._search_max_dur=5.45
+        self._turn23_start=0.0; self._turn23_dur=2.805; self._turn23_ang=-0.28; self._turn23_last=0.0; self._search_start=0.0; self._search_ang=0.20; self._search_max_dur=5.45
         self.latest_rgb=None; self.latest_depth=None
         self._frame_lock=threading.Lock()
         self.depth_ready=threading.Event(); self.rgb_ready=threading.Event()
         self.bridge=CvBridge()
+
+        # 里程计数据
+        self.odom_x=0.0; self.odom_y=0.0; self.odom_yaw=0.0
+        self._odom_sub=self.create_subscription(Odometry,'/odom',self._odom_cb,10)
+        self.create_timer(1.0,self._log_odom)  # 1Hz打印里程计
         self._declare_params()
         kp=self.get_parameter('pid_kp').value
         ki=self.get_parameter('pid_ki').value
         kd=self.get_parameter('pid_kd').value
         il=self.get_parameter('integral_limit').value
         self.pid=SimplePID(kp,ki,kd,il)
+        self._last_steer=0.0  # 上一次转向值(死区用)
         self.pid.target=self.get_parameter('line_target_error').value
+        self.is_black=(self.get_parameter('line_mode').value=='black')
         qos=QoSProfile(depth=1,reliability=ReliabilityPolicy.RELIABLE,history=HistoryPolicy.KEEP_LAST)
         if HAS_MESSAGE_FILTERS:
             rs=MfSub(self,Image,'/aurora/rgb/image_raw',qos)
@@ -64,6 +72,7 @@ class LineFollowNode(Node):
         self.arm_cmd_pub=self.create_publisher(String,'/arm_command',10)
         self.status_pub=self.create_publisher(String,'/line_follow/status',10)
         self.debug_pub=self.create_publisher(Image,'/line_follow/debug_image',10)
+
         self.create_timer(0.1,self._loop)
         self.get_logger().info('[LineFollow] started')
         if self.get_parameter('auto_start').value:
@@ -75,10 +84,10 @@ class LineFollowNode(Node):
                     ('hsv_v_min',200),('hsv_v_max',255),('ground_depth_min_mm',150),('ground_depth_max_mm',600),
                     ('roi_y_start',176),('roi_y_end',400),('roi_x_left',44),('roi_x_right',320),
                     ('morph_kernel_size',5),('morph_open_iter',2),('morph_close_iter',2),
-                    ('scan_rows',10),('min_line_pixels',5),('line_target_error',-0.55),
+                    ('scan_rows',10),('min_line_pixels',5),('line_target_error',-0.6),
                     ('pid_kp',0.12),('pid_ki',0.01),('pid_kd',0.08),('max_steering',0.50),
                     ('integral_limit',0.3),('move_speed',0.15),('max_lost_frames',30),
-                    ('publish_debug_image',True),('auto_start',False)]:
+                    ('publish_debug_image',True),('auto_start',False),('line_mode','yellow')]:
             self.declare_parameter(n,v)
 
     def _synced_cb(self,rm,dm):
@@ -110,6 +119,17 @@ class LineFollowNode(Node):
         if c=='start': self.start_mission()
         elif c=='stop': self.stop_mission()
         elif c=='reset': self.reset_state()
+
+    def _odom_cb(self,msg):
+        self.odom_x=msg.pose.pose.position.x
+        self.odom_y=msg.pose.pose.position.y
+        q=msg.pose.pose.orientation
+        siny=2.0*(q.w*q.z+q.x*q.y); cosy=1.0-2.0*(q.y*q.y+q.z*q.z)
+        self.odom_yaw=math.atan2(siny,cosy)*180.0/math.pi
+
+    def _log_odom(self):
+        if self.mission_active:
+            self.get_logger().info(f'[Odom] X={self.odom_x:.3f}m, Y={self.odom_y:.3f}m, YAW={self.odom_yaw:.1f}deg')
 
     def detect_line(self,rgb,depth):
         h,w=rgb.shape[:2]
@@ -182,27 +202,36 @@ class LineFollowNode(Node):
             if el<self._turn23_dur:
                 cmd.linear.x=0.0; cmd.angular.z=self._turn23_ang
                 self.cmd_vel_pub.publish(cmd)
-                self.get_logger().info(f'[LineFollow] turning 22deg... {el:.1f}/{self._turn23_dur:.1f}s')
+                self.get_logger().info(f'[LineFollow] turning -45deg... {el:.1f}/{self._turn23_dur:.1f}s')
                 return
             else:
-                self.get_logger().info('[LineFollow] 21deg done, resume')
+                self.get_logger().info('[LineFollow] -45deg done, resume')
                 self.state=STATE_FOLLOWING; self.pid.reset()
 
         if result['line_found']:
             self.lost_count=0
             err=result['lateral_error']
 
-            if err>-0.28 and time.time()-self._turn23_last>5.0:
-                self.get_logger().warn(f'[LineFollow] err={err:+.3f}>-0.28, fixed 22deg R turn')
+            if not self.is_black and err>-0.27 and time.time()-self._turn23_last>5.0:
+                self.get_logger().warn(f'[LineFollow] err={err:+.3f}<0.27 fixed -26deg L turn')
                 self._turn23_start=time.time(); self._turn23_last=time.time(); self.state=STATE_TURNING_23
                 cmd.linear.x=0.0; cmd.angular.z=self._turn23_ang
                 self.cmd_vel_pub.publish(cmd); return
 
-            st=self.pid.compute(err); st=-st; st=max(-ms,min(ms,st))
+            if self.is_black and abs(err) <= 0.007:
+                st=self._last_steer  # 死区内保持上次方向
+            else:
+                st=self.pid.compute(err); st=max(-ms,min(ms,st))
+            self._last_steer=st
             cmd.linear.x=bs; cmd.angular.z=st
-            if -0.6<=err<=-0.5: s='straight'
-            elif err>-0.5: s='R->L'
-            else: s='L->R'
+            if self.is_black:
+                if -0.040<=err<=0.010: s='straight'
+                elif err>0.010: s='R'
+                else: s='L'
+            else:
+                if -0.65<=err<=-0.55: s='straight'
+                elif err>-0.55: s='L'
+                else: s='R'
             self.get_logger().info(f'[LineFollow] err={err:+.3f} tgt={self.pid.target:+.3f} st={st:+.3f} spd={bs:.2f} ln={result["line_ratio"]:.1%} [{s}]')
         else:
             self.lost_count+=1
@@ -216,6 +245,10 @@ class LineFollowNode(Node):
     def start_mission(self):
         if self.mission_active: return
         self.get_logger().info('[LineFollow] starting mission')
+        mode="black" if self.is_black else "yellow"
+        self.get_logger().info(
+            f'[LineFollow] mode={mode} PID: '
+            f'Kp={self.pid.kp:.3f} Ki={self.pid.ki:.3f} Kd={self.pid.kd:.3f}')
         self.mission_active=True; self.state=STATE_INIT_ARM; self.lost_count=0; self.pid.reset()
         self.cmd_vel_pub.publish(Twist())
         def arm():

@@ -1,0 +1,71 @@
+self_driving_node:
+  ros__parameters:
+    auto_start: false
+    publish_debug_image: true
+
+    # ── 状态A 黄线参数 ──
+    yellow_hsv_h_min: 0
+    yellow_hsv_h_max: 88
+    yellow_hsv_s_min: 61
+    yellow_hsv_s_max: 255
+    yellow_hsv_v_min: 173
+    yellow_hsv_v_max: 255
+    yellow_line_target_error: -0.60
+    yellow_pid_kp: 0.70
+    yellow_pid_ki: 0.00
+    yellow_pid_kd: 0.15
+    yellow_move_speed: 0.17
+    yellow_roi_y_start: 176
+    yellow_roi_y_end: 400
+    yellow_roi_x_left: 44
+    yellow_roi_x_right: 320
+
+    # ── 状态B 黑线参数 ──
+    black_hsv_h_min: 0
+    black_hsv_h_max: 180
+    black_hsv_s_min: 0
+    black_hsv_s_max: 102
+    black_hsv_v_min: 19
+    black_hsv_v_max: 255
+    black_line_target_error: -0.015
+    black_pid_kp: 0.80
+    black_pid_ki: 0.00
+    black_pid_kd: 0.20
+    black_move_speed: 0.12
+    black_roi_y_start: 248
+    black_roi_y_end: 400
+    black_roi_x_left: 110
+    black_roi_x_right: 530
+
+    # ── 深度过滤 ──
+    ground_depth_min_mm: 150
+    ground_depth_max_mm: 600
+
+    # ── 形态学 ──
+    morph_kernel_size: 5
+    morph_open_iter: 2
+    morph_close_iter: 2
+
+    # ── 扫描 ──
+    scan_rows: 10
+    min_line_pixels: 5
+
+    # ── PID公共 ──
+    max_steering: 0.50
+    integral_limit: 0.3
+
+    # ── 丢失处理 ──
+    max_lost_frames: 30
+
+    # ── 交通标志参数 ──
+    yellow_turn_confirm_frames: 6
+    black_turn_confirm_frames: 8
+    turn_angular_z: 0.28
+    turn_duration: 2.992
+    odom_threshold: 1.3
+    red_area_threshold: 4.2
+    green_area_threshold: 7.6
+    stop_area_min: 2.1
+    stop_area_max: 5.0
+    stop_move_duration: 2.5
+    turn_window_duration: 2.0
