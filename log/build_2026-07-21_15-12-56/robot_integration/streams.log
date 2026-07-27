@@ -1,0 +1,35 @@
+[1.373s] Invoking command in '/home/webotpi/ros2_ws/src/robot_integration': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data
+[1.782s] running egg_info
+[1.811s] writing ../../build/robot_integration/robot_integration.egg-info/PKG-INFO
+[1.811s] writing dependency_links to ../../build/robot_integration/robot_integration.egg-info/dependency_links.txt
+[1.817s] writing entry points to ../../build/robot_integration/robot_integration.egg-info/entry_points.txt
+[1.818s] writing requirements to ../../build/robot_integration/robot_integration.egg-info/requires.txt
+[1.819s] writing top-level names to ../../build/robot_integration/robot_integration.egg-info/top_level.txt
+[1.884s] reading manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'
+[1.885s] writing manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'
+[1.885s] running build
+[1.885s] running build_py
+[1.886s] copying robot_integration/stm32_bridge_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.886s] running install
+[1.896s] running install_lib
+[1.925s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/stm32_bridge_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.926s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/stm32_bridge_node.py to stm32_bridge_node.cpython-312.pyc
+[1.929s]   File "/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/stm32_bridge_node.py", line 237
+[1.929s]     raw_data = self.serial_port.readline().decode("utf-8", errors="replace").replace("
+[1.929s]                                                                                      ^
+[1.930s] SyntaxError: unterminated string literal (detected at line 237)
+[1.930s] 
+[1.930s] running install_data
+[1.930s] running install_egg_info
+[1.963s] removing '/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration-1.0.0-py3.12.egg-info' (and everything under it)
+[1.963s] Copying ../../build/robot_integration/robot_integration.egg-info to /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration-1.0.0-py3.12.egg-info
+[1.965s] running install_scripts
+[2.170s] Installing arm_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.170s] Installing balance_beam_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.176s] Installing car_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.179s] Installing coordinator_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.180s] Installing edge_detect_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.180s] Installing line_follow_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.181s] Installing stm32_bridge_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.183s] writing list of installed files to '/home/webotpi/ros2_ws/build/robot_integration/install.log'
+[2.277s] Invoked command in '/home/webotpi/ros2_ws/src/robot_integration' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data

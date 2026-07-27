@@ -1,0 +1,5 @@
+  File "/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/stm32_bridge_node.py", line 237
+    raw_data = self.serial_port.readline().decode("utf-8", errors="replace").replace("
+                                                                                     ^
+SyntaxError: unterminated string literal (detected at line 237)
+

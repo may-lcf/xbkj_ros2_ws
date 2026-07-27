@@ -1,0 +1,70 @@
+[0.000000] (-) TimerEvent: {}
+[0.000083] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000116] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000136] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000153] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000168] (-) JobUnselected: {'identifier': 'robot_integration'}
+[0.000185] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000203] (rplidar_ros) JobQueued: {'identifier': 'rplidar_ros', 'dependencies': OrderedDict()}
+[0.000627] (rplidar_ros) JobStarted: {'identifier': 'rplidar_ros'}
+[0.012565] (rplidar_ros) JobProgress: {'identifier': 'rplidar_ros', 'progress': 'cmake'}
+[0.013730] (rplidar_ros) JobProgress: {'identifier': 'rplidar_ros', 'progress': 'build'}
+[0.014551] (rplidar_ros) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/rplidar_ros', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/rplidar_ros', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 50718 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '80', 'PATH': '/opt/ros/jazzy/bin:/home/webotpi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/rplidar_ros', 'SSH_CONNECTION': '192.168.0.111 50718 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.099721] (-) TimerEvent: {}
+[0.123350] (rplidar_ros) StdoutLine: {'line': b'[  5%] Built target rplidar_client\n'}
+[0.151576] (rplidar_ros) StdoutLine: {'line': b'[ 52%] Built target rplidar_node\n'}
+[0.167212] (rplidar_ros) StdoutLine: {'line': b'[100%] Built target rplidar_composition\n'}
+[0.186919] (rplidar_ros) CommandEnded: {'returncode': 0}
+[0.187653] (rplidar_ros) JobProgress: {'identifier': 'rplidar_ros', 'progress': 'install'}
+[0.199823] (-) TimerEvent: {}
+[0.203715] (rplidar_ros) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/rplidar_ros'], 'cwd': '/home/webotpi/ros2_ws/build/rplidar_ros', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 50718 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '80', 'PATH': '/opt/ros/jazzy/bin:/home/webotpi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/rplidar_ros', 'SSH_CONNECTION': '192.168.0.111 50718 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.216534] (rplidar_ros) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.217108] (rplidar_ros) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.217866] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_a1_launch.py\n'}
+[0.218005] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_a2m12_launch.py\n'}
+[0.218137] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_a2m7_launch.py\n'}
+[0.218263] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_a2m8_launch.py\n'}
+[0.218388] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_a3_launch.py\n'}
+[0.218515] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_c1_launch.py\n'}
+[0.218642] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_s1_launch.py\n'}
+[0.218789] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_s1_tcp_launch.py\n'}
+[0.218963] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_s2_launch.py\n'}
+[0.219154] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_s2e_launch.py\n'}
+[0.219318] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_s3_launch.py\n'}
+[0.219441] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/rplidar_t1_launch.py\n'}
+[0.219595] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_a1_launch.py\n'}
+[0.219741] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_a2m12_launch.py\n'}
+[0.219833] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_a2m7_launch.py\n'}
+[0.219971] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_a2m8_launch.py\n'}
+[0.220051] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_a3_launch.py\n'}
+[0.220178] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_c1_launch.py\n'}
+[0.220318] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_s1_launch.py\n'}
+[0.220467] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_s1_tcp_launch.py\n'}
+[0.220545] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_s2_launch.py\n'}
+[0.220683] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_s2e_launch.py\n'}
+[0.220829] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_s3_launch.py\n'}
+[0.220995] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/launch/view_rplidar_t1_launch.py\n'}
+[0.221313] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/rviz/rplidar_ros.rviz\n'}
+[0.221652] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/lib/rplidar_ros/rplidar_node\n'}
+[0.221904] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/lib/rplidar_ros/rplidar_composition\n'}
+[0.222113] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/lib/rplidar_ros/rplidar_client\n'}
+[0.222293] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/ament_index/resource_index/package_run_dependencies/rplidar_ros\n'}
+[0.222493] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/ament_index/resource_index/parent_prefix_path/rplidar_ros\n'}
+[0.222772] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/environment/ament_prefix_path.sh\n'}
+[0.222965] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/environment/ament_prefix_path.dsv\n'}
+[0.223151] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/environment/path.sh\n'}
+[0.223327] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/environment/path.dsv\n'}
+[0.223505] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/local_setup.bash\n'}
+[0.223678] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/local_setup.sh\n'}
+[0.223935] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/local_setup.zsh\n'}
+[0.224122] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/local_setup.dsv\n'}
+[0.224263] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.dsv\n'}
+[0.241978] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/ament_index/resource_index/packages/rplidar_ros\n'}
+[0.242270] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.242398] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.242516] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/cmake/rplidar_rosConfig.cmake\n'}
+[0.242694] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/cmake/rplidar_rosConfig-version.cmake\n'}
+[0.242883] (rplidar_ros) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.xml\n'}
+[0.245415] (rplidar_ros) CommandEnded: {'returncode': 0}
+[0.280277] (rplidar_ros) JobEnded: {'identifier': 'rplidar_ros', 'rc': 0}
+[0.281281] (-) EventReactorShutdown: {}

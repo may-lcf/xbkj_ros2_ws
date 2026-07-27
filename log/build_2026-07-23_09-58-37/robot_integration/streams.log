@@ -1,0 +1,76 @@
+[1.048s] Invoking command in '/home/webotpi/ros2_ws/src/robot_integration': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data
+[1.339s] running egg_info
+[1.340s] creating ../../build/robot_integration/robot_integration.egg-info
+[1.355s] writing ../../build/robot_integration/robot_integration.egg-info/PKG-INFO
+[1.355s] writing dependency_links to ../../build/robot_integration/robot_integration.egg-info/dependency_links.txt
+[1.357s] writing entry points to ../../build/robot_integration/robot_integration.egg-info/entry_points.txt
+[1.357s] writing requirements to ../../build/robot_integration/robot_integration.egg-info/requires.txt
+[1.357s] writing top-level names to ../../build/robot_integration/robot_integration.egg-info/top_level.txt
+[1.357s] writing manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'
+[1.392s] reading manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'
+[1.394s] writing manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'
+[1.395s] running build
+[1.395s] running build_py
+[1.395s] creating /home/webotpi/ros2_ws/build/robot_integration/build
+[1.395s] creating /home/webotpi/ros2_ws/build/robot_integration/build/lib
+[1.395s] creating /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.396s] copying robot_integration/coordinator_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.401s] copying robot_integration/line_follow_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.401s] copying robot_integration/arm_controller_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.401s] copying robot_integration/__init__.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.402s] copying robot_integration/edge_detect_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.402s] copying robot_integration/stm32_bridge_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.403s] copying robot_integration/balance_beam_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.404s] copying robot_integration/car_controller_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.405s] running install
+[1.417s] running install_lib
+[1.434s] creating /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.434s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/coordinator_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.436s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/line_follow_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.436s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/arm_controller_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.436s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/__init__.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.436s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/edge_detect_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.436s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/stm32_bridge_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.436s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/balance_beam_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.436s] copying /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration/car_controller_node.py -> /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration
+[1.437s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/coordinator_node.py to coordinator_node.cpython-312.pyc
+[1.439s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/line_follow_node.py to line_follow_node.cpython-312.pyc
+[1.446s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/arm_controller_node.py to arm_controller_node.cpython-312.pyc
+[1.448s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/__init__.py to __init__.cpython-312.pyc
+[1.449s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/edge_detect_node.py to edge_detect_node.cpython-312.pyc
+[1.453s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/stm32_bridge_node.py to stm32_bridge_node.cpython-312.pyc
+[1.457s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/balance_beam_node.py to balance_beam_node.cpython-312.pyc
+[1.461s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/car_controller_node.py to car_controller_node.cpython-312.pyc
+[1.463s] running install_data
+[1.464s] creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index
+[1.464s] creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index
+[1.464s] creating /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages
+[1.464s] copying resource/robot_integration -> /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages
+[1.464s] copying package.xml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration
+[1.464s] creating /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.464s] copying launch/balance_beam.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.470s] copying launch/edge_detect.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.471s] copying launch/full_system.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.472s] copying launch/line_follow.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.472s] copying launch/car_only.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.473s] creating /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.474s] copying config/robot_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.475s] copying config/edge_detect_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.476s] copying config/line_follow_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.476s] copying config/line_follow_black_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.476s] copying config/balance_beam_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.477s] creating /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/scripts
+[1.477s] copying scripts/hsv_calibrate.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/scripts
+[1.478s] copying scripts/test_bridge_detection.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/scripts
+[1.479s] running install_egg_info
+[1.499s] Copying ../../build/robot_integration/robot_integration.egg-info to /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration-1.0.0-py3.12.egg-info
+[1.500s] running install_scripts
+[1.631s] Installing arm_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.631s] Installing balance_beam_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.633s] Installing car_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.633s] Installing coordinator_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.633s] Installing edge_detect_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.633s] Installing line_follow_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.633s] Installing stm32_bridge_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.633s] writing list of installed files to '/home/webotpi/ros2_ws/build/robot_integration/install.log'
+[1.722s] Invoked command in '/home/webotpi/ros2_ws/src/robot_integration' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data

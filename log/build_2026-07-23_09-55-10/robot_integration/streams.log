@@ -1,0 +1,37 @@
+[1.092s] Invoking command in '/home/webotpi/ros2_ws/build/robot_integration': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/webotpi/ros2_ws/build/robot_integration/build --no-deps symlink_data --force
+[1.494s] running develop
+[1.684s] running egg_info
+[1.705s] writing robot_integration.egg-info/PKG-INFO
+[1.705s] writing dependency_links to robot_integration.egg-info/dependency_links.txt
+[1.712s] writing entry points to robot_integration.egg-info/entry_points.txt
+[1.712s] writing requirements to robot_integration.egg-info/requires.txt
+[1.713s] writing top-level names to robot_integration.egg-info/top_level.txt
+[1.751s] reading manifest file 'robot_integration.egg-info/SOURCES.txt'
+[1.752s] writing manifest file 'robot_integration.egg-info/SOURCES.txt'
+[1.779s] running build_ext
+[1.779s] Creating /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot-integration.egg-link (link to .)
+[1.780s] Installing arm_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.780s] Installing balance_beam_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.780s] Installing car_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.781s] Installing coordinator_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.781s] Installing edge_detect_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.781s] Installing line_follow_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.781s] Installing stm32_bridge_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[1.782s] 
+[1.782s] Installed /home/webotpi/ros2_ws/build/robot_integration
+[1.782s] running symlink_data
+[1.782s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/resource/robot_integration -> /home/webotpi/ros2_ws/install/robot_integration/share/ament_index/resource_index/packages
+[1.782s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/package.xml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration
+[1.782s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/balance_beam.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.783s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/edge_detect.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.783s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/full_system.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.783s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/line_follow.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.783s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/launch/car_only.launch.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/launch
+[1.784s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/robot_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.784s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/edge_detect_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.784s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/line_follow_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.784s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/line_follow_black_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.784s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/config/balance_beam_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.784s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/scripts/hsv_calibrate.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/scripts
+[1.785s] symbolically linking /home/webotpi/ros2_ws/build/robot_integration/scripts/test_bridge_detection.py -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/scripts
+[1.882s] Invoked command in '/home/webotpi/ros2_ws/build/robot_integration' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/webotpi/ros2_ws/build/robot_integration/build --no-deps symlink_data --force

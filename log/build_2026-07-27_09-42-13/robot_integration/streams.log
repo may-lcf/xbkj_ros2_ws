@@ -1,0 +1,31 @@
+[1.357s] Invoking command in '/home/webotpi/ros2_ws/src/robot_integration': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data
+[1.763s] running egg_info
+[1.789s] writing ../../build/robot_integration/robot_integration.egg-info/PKG-INFO
+[1.789s] writing dependency_links to ../../build/robot_integration/robot_integration.egg-info/dependency_links.txt
+[1.796s] writing entry points to ../../build/robot_integration/robot_integration.egg-info/entry_points.txt
+[1.796s] writing requirements to ../../build/robot_integration/robot_integration.egg-info/requires.txt
+[1.797s] writing top-level names to ../../build/robot_integration/robot_integration.egg-info/top_level.txt
+[1.860s] reading manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'
+[1.861s] writing manifest file '../../build/robot_integration/robot_integration.egg-info/SOURCES.txt'
+[1.861s] running build
+[1.862s] running build_py
+[1.862s] copying robot_integration/self_driving_node.py -> /home/webotpi/ros2_ws/build/robot_integration/build/lib/robot_integration
+[1.863s] running install
+[1.872s] running install_lib
+[1.905s] byte-compiling /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration/self_driving_node.py to self_driving_node.cpython-312.pyc
+[1.916s] running install_data
+[1.917s] copying config/self_driving_params.yaml -> /home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/config
+[1.917s] running install_egg_info
+[1.947s] removing '/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration-1.0.0-py3.12.egg-info' (and everything under it)
+[1.947s] Copying ../../build/robot_integration/robot_integration.egg-info to /home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages/robot_integration-1.0.0-py3.12.egg-info
+[1.948s] running install_scripts
+[2.150s] Installing arm_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.150s] Installing balance_beam_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.158s] Installing car_controller_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.159s] Installing coordinator_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.159s] Installing edge_detect_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.160s] Installing line_follow_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.162s] Installing self_driving_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.163s] Installing stm32_bridge_node script to /home/webotpi/ros2_ws/install/robot_integration/lib/robot_integration
+[2.165s] writing list of installed files to '/home/webotpi/ros2_ws/build/robot_integration/install.log'
+[2.266s] Invoked command in '/home/webotpi/ros2_ws/src/robot_integration' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data
