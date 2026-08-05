@@ -1,0 +1,20 @@
+[0.012s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[0.033s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[10.505s] Traceback (most recent call last):
+[10.506s]   File "/opt/ros/jazzy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>
+[10.506s]     from ament_package.templates import get_environment_hook_template_path
+[10.507s] ModuleNotFoundError: No module named 'ament_package'
+[10.601s] CMake Error at /opt/ros/jazzy/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):
+[10.601s]   execute_process(/usr/bin/python3
+[10.602s]   /opt/ros/jazzy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py
+[10.602s]   /home/webotpi/ros2_ws/build/pi5_robot_description/ament_cmake_package_templates/templates.cmake)
+[10.602s]   returned error code 1
+[10.602s] Call Stack (most recent call first):
+[10.602s]   /opt/ros/jazzy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)
+[10.602s]   /opt/ros/jazzy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)
+[10.602s]   /opt/ros/jazzy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)
+[10.602s]   CMakeLists.txt:4 (find_package)
+[10.602s] 
+[10.602s] 
+[10.603s] -- Configuring incomplete, errors occurred!
+[10.614s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '1': /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description

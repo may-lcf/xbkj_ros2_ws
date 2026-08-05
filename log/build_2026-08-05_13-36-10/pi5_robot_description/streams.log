@@ -1,0 +1,32 @@
+[0.016s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[0.725s] -- The C compiler identification is GNU 13.3.0
+[1.403s] -- The CXX compiler identification is GNU 13.3.0
+[1.467s] -- Detecting C compiler ABI info
+[1.725s] -- Detecting C compiler ABI info - done
+[1.741s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.748s] -- Detecting C compile features
+[1.749s] -- Detecting C compile features - done
+[1.778s] -- Detecting CXX compiler ABI info
+[2.058s] -- Detecting CXX compiler ABI info - done
+[2.076s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.076s] -- Detecting CXX compile features
+[2.077s] -- Detecting CXX compile features - done
+[2.094s] CMake Error at CMakeLists.txt:4 (find_package):
+[2.094s]   By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project
+[2.094s]   has asked CMake to find a package configuration file provided by
+[2.095s]   "ament_cmake", but CMake did not find one.
+[2.095s] 
+[2.095s]   Could not find a package configuration file provided by "ament_cmake" with
+[2.095s]   any of the following names:
+[2.095s] 
+[2.095s]     ament_cmakeConfig.cmake
+[2.095s]     ament_cmake-config.cmake
+[2.095s] 
+[2.095s]   Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set
+[2.095s]   "ament_cmake_DIR" to a directory containing one of the above files.  If
+[2.095s]   "ament_cmake" provides a separate development package or SDK, be sure it
+[2.095s]   has been installed.
+[2.096s] 
+[2.096s] 
+[2.096s] -- Configuring incomplete, errors occurred!
+[2.103s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '1': /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description

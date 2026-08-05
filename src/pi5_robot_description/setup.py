@@ -29,6 +29,7 @@ setup(
             'odom_only_node = pi5_robot_description.odom_only_node:main',
             'cmd_vel_bridge_node = pi5_robot_description.cmd_vel_bridge_node:main',
             'goal_pose_bridge = pi5_robot_description.goal_pose_bridge:main',
+            'reactive_avoidance_node = pi5_robot_description.reactive_avoidance_node:main',
         ],
     },
 )

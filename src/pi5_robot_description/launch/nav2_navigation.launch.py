@@ -109,6 +109,22 @@ def generate_launch_description():
         parameters=[os.path.join(pi5_robot_desc_pkg, "config", "collision_monitor_params.yaml")],
     )
 
+
+    # 3.6 反应式激光避障 (参考 src_25.12.29 app_lidar_controller.py mode 1)
+    #     订阅 /cmd_vel_safety + /scan, 检测到前方障碍时自动转向避开
+#     reactive_avoidance_node = Node(
+#          package="pi5_robot_description",
+#          executable="reactive_avoidance_node.py",
+#          name="reactive_avoidance_node",
+#          output="screen",
+#          parameters=[{
+#              "obstacle_threshold": 0.35,
+#              "scan_half_angle": 45.0,
+#              "avoid_speed": 0.06,
+#              "avoid_turn_speed": 0.35,
+#          }],
+#      )
+
     # ========== Nav2 节点 (LifecycleNode) ==========
 
     # Map Server
@@ -163,6 +179,7 @@ def generate_launch_description():
         output='screen',
         parameters=[params_file],
         namespace='',
+        remappings=[('/cmd_vel', 'unsmoothed_cmd_vel')],
     )
 
     # BT Navigator
@@ -245,6 +262,7 @@ def generate_launch_description():
             waypoint_follower_node,
             velocity_smoother_node,
             collision_monitor_node,    # Collision Monitor 随 Nav2 一起启动
+            # reactive_avoidance_node removed
             # Lifecycle Manager 最后启动，负责激活所有节点
             TimerAction(period=2.0, actions=[lifecycle_manager_node]),
         ]),

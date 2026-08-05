@@ -165,6 +165,7 @@ def generate_launch_description():
     behavior_server_node = LifecycleNode(
         package="nav2_behaviors", executable="behavior_server", name="behavior_server",
         output="screen", parameters=[params_file],
+        remappings=[("/cmd_vel", "unsmoothed_cmd_vel")],
     )
 
     bt_navigator_node = LifecycleNode(

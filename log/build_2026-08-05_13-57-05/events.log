@@ -1,0 +1,138 @@
+[0.000000] (-) TimerEvent: {}
+[0.000133] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000283] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000306] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000550] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000579] (-) JobUnselected: {'identifier': 'robot_integration'}
+[0.000714] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000732] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000885] (pi5_robot_description) JobQueued: {'identifier': 'pi5_robot_description', 'dependencies': OrderedDict()}
+[0.000907] (pi5_robot_description) JobStarted: {'identifier': 'pi5_robot_description'}
+[0.010480] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'cmake'}
+[0.011641] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '/home/webotpi/ros2_ws/src/pi5_robot_description', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 39440 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi/ros2_ws/src/pi5_robot_description/launch', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '44', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 39440 192.168.0.119 22', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1'}), 'shell': False}
+[0.033318] (pi5_robot_description) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.099699] (-) TimerEvent: {}
+[0.199948] (-) TimerEvent: {}
+[0.300190] (-) TimerEvent: {}
+[0.400447] (-) TimerEvent: {}
+[0.500709] (-) TimerEvent: {}
+[0.600972] (-) TimerEvent: {}
+[0.701278] (-) TimerEvent: {}
+[0.801502] (-) TimerEvent: {}
+[0.901731] (-) TimerEvent: {}
+[1.001949] (-) TimerEvent: {}
+[1.102161] (-) TimerEvent: {}
+[1.202381] (-) TimerEvent: {}
+[1.302598] (-) TimerEvent: {}
+[1.402954] (-) TimerEvent: {}
+[1.503750] (-) TimerEvent: {}
+[1.604704] (-) TimerEvent: {}
+[1.705683] (-) TimerEvent: {}
+[1.806650] (-) TimerEvent: {}
+[1.907548] (-) TimerEvent: {}
+[2.008329] (-) TimerEvent: {}
+[2.109051] (-) TimerEvent: {}
+[2.209962] (-) TimerEvent: {}
+[2.310665] (-) TimerEvent: {}
+[2.411361] (-) TimerEvent: {}
+[2.512027] (-) TimerEvent: {}
+[2.612772] (-) TimerEvent: {}
+[2.713420] (-) TimerEvent: {}
+[2.814165] (-) TimerEvent: {}
+[2.915141] (-) TimerEvent: {}
+[3.015930] (-) TimerEvent: {}
+[3.116778] (-) TimerEvent: {}
+[3.217667] (-) TimerEvent: {}
+[3.318257] (-) TimerEvent: {}
+[3.418742] (-) TimerEvent: {}
+[3.519311] (-) TimerEvent: {}
+[3.619989] (-) TimerEvent: {}
+[3.720746] (-) TimerEvent: {}
+[3.821123] (-) TimerEvent: {}
+[3.921806] (-) TimerEvent: {}
+[4.022792] (-) TimerEvent: {}
+[4.123505] (-) TimerEvent: {}
+[4.224233] (-) TimerEvent: {}
+[4.325138] (-) TimerEvent: {}
+[4.425853] (-) TimerEvent: {}
+[4.526647] (-) TimerEvent: {}
+[4.627344] (-) TimerEvent: {}
+[4.728150] (-) TimerEvent: {}
+[4.828971] (-) TimerEvent: {}
+[4.929796] (-) TimerEvent: {}
+[5.030390] (-) TimerEvent: {}
+[5.130876] (-) TimerEvent: {}
+[5.231481] (-) TimerEvent: {}
+[5.333944] (-) TimerEvent: {}
+[5.434946] (-) TimerEvent: {}
+[5.535664] (-) TimerEvent: {}
+[5.636301] (-) TimerEvent: {}
+[5.737137] (-) TimerEvent: {}
+[5.838170] (-) TimerEvent: {}
+[5.939010] (-) TimerEvent: {}
+[6.039823] (-) TimerEvent: {}
+[6.140509] (-) TimerEvent: {}
+[6.240988] (-) TimerEvent: {}
+[6.341497] (-) TimerEvent: {}
+[6.442263] (-) TimerEvent: {}
+[6.542919] (-) TimerEvent: {}
+[6.643718] (-) TimerEvent: {}
+[6.744469] (-) TimerEvent: {}
+[6.845156] (-) TimerEvent: {}
+[6.945760] (-) TimerEvent: {}
+[7.046533] (-) TimerEvent: {}
+[7.147473] (-) TimerEvent: {}
+[7.248366] (-) TimerEvent: {}
+[7.349282] (-) TimerEvent: {}
+[7.450110] (-) TimerEvent: {}
+[7.550953] (-) TimerEvent: {}
+[7.651447] (-) TimerEvent: {}
+[7.752076] (-) TimerEvent: {}
+[7.852733] (-) TimerEvent: {}
+[7.953266] (-) TimerEvent: {}
+[8.054076] (-) TimerEvent: {}
+[8.154782] (-) TimerEvent: {}
+[8.255413] (-) TimerEvent: {}
+[8.356031] (-) TimerEvent: {}
+[8.456654] (-) TimerEvent: {}
+[8.557146] (-) TimerEvent: {}
+[8.657513] (-) TimerEvent: {}
+[8.758114] (-) TimerEvent: {}
+[8.858823] (-) TimerEvent: {}
+[8.959478] (-) TimerEvent: {}
+[9.060295] (-) TimerEvent: {}
+[9.160989] (-) TimerEvent: {}
+[9.261510] (-) TimerEvent: {}
+[9.362318] (-) TimerEvent: {}
+[9.463077] (-) TimerEvent: {}
+[9.563684] (-) TimerEvent: {}
+[9.664454] (-) TimerEvent: {}
+[9.765463] (-) TimerEvent: {}
+[9.866279] (-) TimerEvent: {}
+[9.966944] (-) TimerEvent: {}
+[10.067489] (-) TimerEvent: {}
+[10.168126] (-) TimerEvent: {}
+[10.268963] (-) TimerEvent: {}
+[10.369447] (-) TimerEvent: {}
+[10.469965] (-) TimerEvent: {}
+[10.505116] (pi5_robot_description) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[10.506061] (pi5_robot_description) StderrLine: {'line': b'  File "/opt/ros/jazzy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>\n'}
+[10.506676] (pi5_robot_description) StderrLine: {'line': b'    from ament_package.templates import get_environment_hook_template_path\n'}
+[10.507232] (pi5_robot_description) StderrLine: {'line': b"ModuleNotFoundError: No module named 'ament_package'\n"}
+[10.570069] (-) TimerEvent: {}
+[10.601756] (pi5_robot_description) StderrLine: {'line': b'CMake Error at /opt/ros/jazzy/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):\n'}
+[10.602249] (pi5_robot_description) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[10.602439] (pi5_robot_description) StderrLine: {'line': b'  /opt/ros/jazzy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py\n'}
+[10.602551] (pi5_robot_description) StderrLine: {'line': b'  /home/webotpi/ros2_ws/build/pi5_robot_description/ament_cmake_package_templates/templates.cmake)\n'}
+[10.602681] (pi5_robot_description) StderrLine: {'line': b'  returned error code 1\n'}
+[10.602781] (pi5_robot_description) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[10.602883] (pi5_robot_description) StderrLine: {'line': b'  /opt/ros/jazzy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)\n'}
+[10.602973] (pi5_robot_description) StderrLine: {'line': b'  /opt/ros/jazzy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)\n'}
+[10.603063] (pi5_robot_description) StderrLine: {'line': b'  /opt/ros/jazzy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)\n'}
+[10.603151] (pi5_robot_description) StderrLine: {'line': b'  CMakeLists.txt:4 (find_package)\n'}
+[10.603239] (pi5_robot_description) StderrLine: {'line': b'\n'}
+[10.603327] (pi5_robot_description) StderrLine: {'line': b'\n'}
+[10.603412] (pi5_robot_description) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[10.614071] (pi5_robot_description) CommandEnded: {'returncode': 1}
+[10.634261] (pi5_robot_description) JobEnded: {'identifier': 'pi5_robot_description', 'rc': 1}
+[10.644969] (-) EventReactorShutdown: {}

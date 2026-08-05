@@ -1,0 +1,66 @@
+[0.000000] (-) TimerEvent: {}
+[0.000187] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000225] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000246] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000263] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000280] (-) JobUnselected: {'identifier': 'robot_integration'}
+[0.000297] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000312] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000331] (pi5_robot_description) JobQueued: {'identifier': 'pi5_robot_description', 'dependencies': OrderedDict()}
+[0.000870] (pi5_robot_description) JobStarted: {'identifier': 'pi5_robot_description'}
+[0.014749] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'cmake'}
+[0.015639] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '/home/webotpi/ros2_ws/src/pi5_robot_description', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 43056 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '21', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 43056 192.168.0.119 22', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1'}), 'shell': False}
+[0.099610] (-) TimerEvent: {}
+[0.199998] (-) TimerEvent: {}
+[0.300347] (-) TimerEvent: {}
+[0.400685] (-) TimerEvent: {}
+[0.500965] (-) TimerEvent: {}
+[0.601226] (-) TimerEvent: {}
+[0.703551] (-) TimerEvent: {}
+[0.725549] (pi5_robot_description) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.805949] (-) TimerEvent: {}
+[0.906224] (-) TimerEvent: {}
+[1.006804] (-) TimerEvent: {}
+[1.108305] (-) TimerEvent: {}
+[1.210000] (-) TimerEvent: {}
+[1.310665] (-) TimerEvent: {}
+[1.403415] (pi5_robot_description) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[1.410864] (-) TimerEvent: {}
+[1.467791] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.511032] (-) TimerEvent: {}
+[1.611429] (-) TimerEvent: {}
+[1.711811] (-) TimerEvent: {}
+[1.725538] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.741522] (pi5_robot_description) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.748645] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.749617] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.778953] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.812079] (-) TimerEvent: {}
+[1.912508] (-) TimerEvent: {}
+[2.012908] (-) TimerEvent: {}
+[2.057824] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.076156] (pi5_robot_description) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.076606] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.077285] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.094528] (pi5_robot_description) StderrLine: {'line': b'CMake Error at CMakeLists.txt:4 (find_package):\n'}
+[2.095085] (pi5_robot_description) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[2.095255] (pi5_robot_description) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[2.095344] (pi5_robot_description) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[2.095425] (pi5_robot_description) StderrLine: {'line': b'\n'}
+[2.095502] (pi5_robot_description) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[2.095578] (pi5_robot_description) StderrLine: {'line': b'  any of the following names:\n'}
+[2.095653] (pi5_robot_description) StderrLine: {'line': b'\n'}
+[2.095764] (pi5_robot_description) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[2.095855] (pi5_robot_description) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[2.095932] (pi5_robot_description) StderrLine: {'line': b'\n'}
+[2.096011] (pi5_robot_description) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[2.096090] (pi5_robot_description) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[2.096170] (pi5_robot_description) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[2.096256] (pi5_robot_description) StderrLine: {'line': b'  has been installed.\n'}
+[2.096333] (pi5_robot_description) StderrLine: {'line': b'\n'}
+[2.096410] (pi5_robot_description) StderrLine: {'line': b'\n'}
+[2.096482] (pi5_robot_description) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[2.103910] (pi5_robot_description) CommandEnded: {'returncode': 1}
+[2.113817] (-) TimerEvent: {}
+[2.158015] (pi5_robot_description) JobEnded: {'identifier': 'pi5_robot_description', 'rc': 1}
+[2.168824] (-) EventReactorShutdown: {}
