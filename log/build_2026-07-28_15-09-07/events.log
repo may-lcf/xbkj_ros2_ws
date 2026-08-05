@@ -1,0 +1,85 @@
+[0.000000] (-) TimerEvent: {}
+[0.000090] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000123] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000143] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000160] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000175] (-) JobUnselected: {'identifier': 'robot_integration'}
+[0.000191] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000206] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000223] (pi5_robot_description) JobQueued: {'identifier': 'pi5_robot_description', 'dependencies': OrderedDict()}
+[0.000679] (pi5_robot_description) JobStarted: {'identifier': 'pi5_robot_description'}
+[0.023523] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'cmake'}
+[0.024267] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '/home/webotpi/ros2_ws/src/pi5_robot_description', '-DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 42870 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '17', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 42870 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.099628] (-) TimerEvent: {}
+[0.199807] (-) TimerEvent: {}
+[0.299994] (-) TimerEvent: {}
+[0.400221] (-) TimerEvent: {}
+[0.500471] (-) TimerEvent: {}
+[0.600692] (-) TimerEvent: {}
+[0.607595] (pi5_robot_description) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.700810] (-) TimerEvent: {}
+[0.801036] (-) TimerEvent: {}
+[0.901222] (-) TimerEvent: {}
+[0.981053] (pi5_robot_description) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[1.001350] (-) TimerEvent: {}
+[1.032134] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.101499] (-) TimerEvent: {}
+[1.201732] (-) TimerEvent: {}
+[1.238595] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.253461] (pi5_robot_description) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.259682] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.260573] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.283613] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.301852] (-) TimerEvent: {}
+[1.402075] (-) TimerEvent: {}
+[1.466206] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.482224] (pi5_robot_description) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.482635] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.483401] (pi5_robot_description) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.494626] (pi5_robot_description) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[1.502133] (-) TimerEvent: {}
+[1.602280] (-) TimerEvent: {}
+[1.702493] (-) TimerEvent: {}
+[1.717118] (pi5_robot_description) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[1.802614] (-) TimerEvent: {}
+[1.902787] (-) TimerEvent: {}
+[2.002939] (-) TimerEvent: {}
+[2.103098] (-) TimerEvent: {}
+[2.104469] (pi5_robot_description) StdoutLine: {'line': b'-- Configuring done (2.0s)\n'}
+[2.109383] (pi5_robot_description) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[2.112014] (pi5_robot_description) StdoutLine: {'line': b'-- Build files have been written to: /home/webotpi/ros2_ws/build/pi5_robot_description\n'}
+[2.120631] (pi5_robot_description) CommandEnded: {'returncode': 0}
+[2.121215] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'build'}
+[2.121990] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/pi5_robot_description', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 42870 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '17', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 42870 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[2.188037] (pi5_robot_description) CommandEnded: {'returncode': 0}
+[2.188812] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'install'}
+[2.203192] (-) TimerEvent: {}
+[2.204925] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/pi5_robot_description'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 42870 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '17', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 42870 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[2.218961] (pi5_robot_description) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[2.219275] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf\n'}
+[2.219390] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro\n'}
+[2.219578] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch\n'}
+[2.219736] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/view_robot.launch.py\n'}
+[2.219899] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config\n'}
+[2.219992] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/view_robot.rviz\n'}
+[2.220146] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/scripts\n'}
+[2.220238] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/scripts/verify_urdf.sh\n'}
+[2.220469] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/verify_urdf.sh\n'}
+[2.220823] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/package_run_dependencies/pi5_robot_description\n'}
+[2.221068] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/parent_prefix_path/pi5_robot_description\n'}
+[2.221325] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.sh\n'}
+[2.221522] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.dsv\n'}
+[2.221709] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.sh\n'}
+[2.221895] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.dsv\n'}
+[2.222079] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.bash\n'}
+[2.222274] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.sh\n'}
+[2.222480] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.zsh\n'}
+[2.222664] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.dsv\n'}
+[2.222830] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.dsv\n'}
+[2.223043] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/packages/pi5_robot_description\n'}
+[2.223273] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig.cmake\n'}
+[2.223405] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig-version.cmake\n'}
+[2.223564] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.xml\n'}
+[2.226087] (pi5_robot_description) CommandEnded: {'returncode': 0}
+[2.268690] (pi5_robot_description) JobEnded: {'identifier': 'pi5_robot_description', 'rc': 0}
+[2.269359] (-) EventReactorShutdown: {}

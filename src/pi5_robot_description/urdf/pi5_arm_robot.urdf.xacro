@@ -1,0 +1,593 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pi5_arm_robot">
+
+    <!-- ======================================== -->
+    <!--          属性定义 (Properties)           -->
+    <!-- ======================================== -->
+    <!-- 注意: pi 已经是xacro内置常量，不需要定义 -->
+
+    <!-- 车身尺寸 -->
+    <xacro:property name="chassis_length" value="0.268"/>  <!-- 长 26.8cm -->
+    <xacro:property name="chassis_width" value="0.143"/>   <!-- 宽 14.3cm -->
+    <xacro:property name="chassis_height" value="0.09"/>   <!-- 高 9cm -->
+
+    <!-- 底盘高度 -->
+    <xacro:property name="底盘_height" value="0.03"/>      <!-- 底盘高 3cm -->
+
+    <!-- 轮子尺寸 -->
+    <xacro:property name="wheel_radius" value="0.04"/>     <!-- 直径 8cm -->
+    <xacro:property name="wheel_thickness" value="0.04"/>  <!-- 厚 4cm -->
+
+    <!-- 轮距 -->
+    <xacro:property name="wheel_separation_front_rear" value="0.173"/>  <!-- 前后轮距 17.3cm -->
+    <xacro:property name="wheel_separation_left_right" value="0.213"/>  <!-- 左右轮距中心 21.3cm -->
+
+    <!-- 雷达尺寸 -->
+    <xacro:property name="lidar_radius" value="0.025"/>    <!-- 直径 5cm -->
+    <xacro:property name="lidar_height" value="0.053"/>    <!-- 高 5.3cm -->
+
+    <!-- 安装位置 -->
+    <xacro:property name="arm_mount_x" value="-0.05"/>     <!-- 机械臂 x: -5cm -->
+    <xacro:property name="arm_mount_y" value="0.0"/>       <!-- 机械臂 y: 0 -->
+    <xacro:property name="lidar_mount_x" value="0.109"/>   <!-- 雷达 x: 10.9cm -->
+    <xacro:property name="lidar_mount_y" value="0.0"/>     <!-- 雷达 y: 0 -->
+
+    <!-- 计算高度 -->
+    <xacro:property name="chassis_bottom_z" value="${wheel_radius}"/>  <!-- 车身底部高度: 轮子半径 -->
+    <xacro:property name="chassis_center_z" value="${chassis_bottom_z + chassis_height/2}"/>  <!-- 车身中心高度 -->
+    <xacro:property name="chassis_top_z" value="${chassis_bottom_z + chassis_height}"/>  <!-- 车身顶部高度 -->
+
+    <!-- ======================================== -->
+    <!--            base_footprint                -->
+    <!-- ======================================== -->
+    <link name="base_footprint">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <!-- ======================================== -->
+    <!--           底盘框架 (Chassis Frame)        -->
+    <!-- ======================================== -->
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 ${chassis_center_z}" rpy="0 0 0"/>
+            <mass value="2.0"/>  <!-- 估计重量 -->
+            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 ${chassis_center_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0.1 0.1 0.8 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${chassis_center_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.043" rpy="0 0 0"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--           麦克纳姆轮 (Mecanum Wheels)     -->
+    <!-- ======================================== -->
+
+    <!-- 左前轮 -->
+    <link name="wheel_left_front">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_front_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left_front"/>
+        <origin xyz="${wheel_separation_front_rear/2} ${wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- 右前轮 -->
+    <link name="wheel_right_front">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_right_front_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right_front"/>
+        <origin xyz="${wheel_separation_front_rear/2} ${-wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- 左后轮 -->
+    <link name="wheel_left_rear">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_rear_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left_rear"/>
+        <origin xyz="${-wheel_separation_front_rear/2} ${wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- 右后轮 -->
+    <link name="wheel_right_rear">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_right_rear_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right_rear"/>
+        <origin xyz="${-wheel_separation_front_rear/2} ${-wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--              激光雷达 (Lidar)             -->
+    <!-- ======================================== -->
+    <link name="laser">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="laser"/>
+        <origin xyz="${lidar_mount_x} ${lidar_mount_y} ${chassis_top_z + lidar_height/2}" rpy="0 0 -1.5708"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--          深度相机 (Depth Camera)          -->
+    <!-- ======================================== -->
+    <link name="depth_camera_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.03 0.06 0.03"/>
+            </geometry>
+            <material name="green">
+                <color rgba="0.1 0.8 0.1 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="depth_camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="depth_camera_link"/>
+        <origin xyz="0.13 0 ${chassis_top_z + 0.015}" rpy="0 0 0"/>
+    </joint>
+
+    <!-- 深度相机光学帧 -->
+    <link name="depth_camera_optical_frame"/>
+
+    <joint name="depth_camera_optical_joint" type="fixed">
+        <parent link="depth_camera_link"/>
+        <child link="depth_camera_optical_frame"/>
+        <origin xyz="0 0 0" rpy="-${pi/2} 0 -${pi/2}"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--           机械臂 (Robot Arm)             -->
+    <!-- ======================================== -->
+    <!-- 机械臂基座 -->
+    <link name="arm_base_link">
+        <inertial>
+            <origin xyz="0.0417426996293165 -7.29999161461214E-06 0.0232617647145068" rpy="0 0 0"/>
+            <mass value="0.167600218987263"/>
+            <inertia ixx="0.000170109576718085" ixy="9.27172085550787E-08" ixz="8.08876664863785E-08"
+                     iyy="0.000503047516832065" iyz="7.31061634801191E-11" izz="0.00066289794030803"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/base_link.STL"/>
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/base_link.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_base_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="arm_base_link"/>
+        <origin xyz="${arm_mount_x} ${arm_mount_y} ${chassis_top_z}" rpy="0 0 0"/>
+    </joint>
+
+    <!-- 机械臂关节1 -->
+    <link name="arm_Link1">
+        <inertial>
+            <origin xyz="2.85081714319667E-05 -7.26597141996882E-05 0.0375880210535652" rpy="0 0 0"/>
+            <mass value="0.0472708446206768"/>
+            <inertia ixx="1.42899873231321E-05" ixy="-3.80862595053858E-10" ixz="1.47357680726945E-10"
+                     iyy="9.98008202373821E-06" iyz="2.92196870370922E-08" izz="1.51627815292555E-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link1.STL"/>
+            </geometry>
+            <material name="arm_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link1.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint1" type="revolute">
+        <parent link="arm_base_link"/>
+        <child link="arm_Link1"/>
+        <origin xyz="0.068962 -1.139E-05 0.045531" rpy="0 0 -0.0076411"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.356" upper="2.356" effort="1.96" velocity="3.14"/>
+    </joint>
+
+    <!-- 机械臂关节2 -->
+    <link name="arm_Link2">
+        <inertial>
+            <origin xyz="0.00034043 0.054676 -0.025608" rpy="0 0 0"/>
+            <mass value="0.030045"/>
+            <inertia ixx="1.2695E-05" ixy="2.838E-21" ixz="4.725E-08"
+                     iyy="1.0118E-05" iyz="-5.7821E-20" izz="6.2847E-06"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link2.STL"/>
+            </geometry>
+            <material name="arm_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link2.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint2" type="revolute">
+        <parent link="arm_Link1"/>
+        <child link="arm_Link2"/>
+        <origin xyz="-0.00011279 -0.026 0.056901" rpy="1.5708 0 0.0073705"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.356" upper="2.356" effort="1.96" velocity="3.14"/>
+    </joint>
+
+    <!-- 机械臂关节3 -->
+    <link name="arm_Link3">
+        <inertial>
+            <origin xyz="-0.000657065427946233 -0.042643809401381 0.0256637042193835" rpy="0 0 0"/>
+            <mass value="0.0739909022179004"/>
+            <inertia ixx="2.36623299956725E-05" ixy="-2.94696985981565E-10" ixz="-6.7884022517138E-08"
+                     iyy="1.42532080529756E-05" iyz="3.57917208191137E-12" izz="1.4452747347607E-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link3.STL"/>
+            </geometry>
+            <material name="arm_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link3.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint3" type="revolute">
+        <parent link="arm_Link2"/>
+        <child link="arm_Link3"/>
+        <origin xyz="0.00031096 0.10527 2.3657E-05" rpy="-3.1416 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.356" upper="2.356" effort="1.96" velocity="3.14"/>
+    </joint>
+
+    <!-- 机械臂关节4 -->
+    <link name="arm_Link4">
+        <inertial>
+            <origin xyz="0.00766772759539958 0.0441546667664653 -0.0261590753503844" rpy="0 0 0"/>
+            <mass value="0.0388631280642024"/>
+            <inertia ixx="1.05560737950975E-05" ixy="-4.16342276938739E-07" ixz="9.98243216492311E-08"
+                     iyy="7.47273370295859E-06" iyz="1.81218365058279E-09" izz="1.25756405279556E-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link4.STL"/>
+            </geometry>
+            <material name="arm_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link4.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint4" type="revolute">
+        <parent link="arm_Link3"/>
+        <child link="arm_Link4"/>
+        <origin xyz="-0.00022558 -0.086162 0" rpy="3.1416 0.0073705 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.356" upper="2.356" effort="1.96" velocity="3.14"/>
+    </joint>
+
+    <!-- 机械臂关节5 -->
+    <link name="arm_Link5">
+        <inertial>
+            <origin xyz="0.018357358200408 -0.00318653218058081 0.0237788601078666" rpy="0 0 0"/>
+            <mass value="0.038304972195411"/>
+            <inertia ixx="6.75125982854594E-06" ixy="-5.14578594788055E-08" ixz="8.66307648149404E-11"
+                     iyy="5.79968708868269E-06" iyz="2.70576242429705E-10" izz="9.47916745039287E-06"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link5.STL"/>
+            </geometry>
+            <material name="arm_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link5.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint5" type="revolute">
+        <parent link="arm_Link4"/>
+        <child link="arm_Link5"/>
+        <origin xyz="-0.0020798 0.072064 -0.02625" rpy="-1.5708 0 0.031052"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.356" upper="2.356" effort="1.96" velocity="3.14"/>
+    </joint>
+
+    <!-- 机械臂关节6 -->
+    <link name="arm_Link6">
+        <inertial>
+            <origin xyz="-0.00950248492719304 0.0248078453550578 0.00137262459435718" rpy="0 0 0"/>
+            <mass value="0.00602817523350776"/>
+            <inertia ixx="9.2645700456613E-07" ixy="-1.87347092744597E-08" ixz="3.0988727067383E-16"
+                     iyy="2.93961829601886E-07" iyz="1.9259774026021E-16" izz="1.1817660066179E-06"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link6.STL"/>
+            </geometry>
+            <material name="arm_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link6.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint6" type="revolute">
+        <parent link="arm_Link5"/>
+        <child link="arm_Link6"/>
+        <origin xyz="-0.0035712 -0.013868 0.025" rpy="1.5708 0 1.6018"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.356" upper="2.356" effort="1.96" velocity="3.14"/>
+    </joint>
+
+    <!-- 机械臂关节7 -->
+    <link name="arm_Link7">
+        <inertial>
+            <origin xyz="0.0104904089775282 -0.0267320592563205 -0.00791737019658241" rpy="0 0 0"/>
+            <mass value="0.00559425809728707"/>
+            <inertia ixx="9.14554565161861E-07" ixy="-1.57954906071394E-08" ixz="-7.40167920710313E-09"
+                     iyy="2.80954545984128E-07" iyz="-4.90636224171077E-10" izz="1.15261340349345E-06"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link7.STL"/>
+            </geometry>
+            <material name="arm_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/lcf/armrobot_ws/src/panda_description/meshes/Link7.STL"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint7" type="revolute">
+        <parent link="arm_Link5"/>
+        <child link="arm_Link7"/>
+        <origin xyz="-0.011422 0.013402 0.025" rpy="-1.5708 0 1.5708"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.356" upper="2.356" effort="1.96" velocity="3.14"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--           ROS2 Control                   -->
+    <!-- ======================================== -->
+    <ros2_control name="pi5_arm_robot" type="system">
+        <hardware>
+            <plugin>mock_components/GenericSystem</plugin>
+        </hardware>
+
+        <!-- 麦克纳姆轮关节 -->
+        <joint name="wheel_left_front_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="wheel_right_front_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="wheel_left_rear_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="wheel_right_rear_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <!-- 机械臂关节 -->
+        <joint name="arm_joint1">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint2">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint3">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint4">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint5">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint6">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint7">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+
+</robot>

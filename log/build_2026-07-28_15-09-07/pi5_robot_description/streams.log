@@ -1,0 +1,48 @@
+[0.024s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[0.607s] -- The C compiler identification is GNU 13.3.0
+[0.981s] -- The CXX compiler identification is GNU 13.3.0
+[1.032s] -- Detecting C compiler ABI info
+[1.238s] -- Detecting C compiler ABI info - done
+[1.253s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.259s] -- Detecting C compile features
+[1.260s] -- Detecting C compile features - done
+[1.283s] -- Detecting CXX compiler ABI info
+[1.466s] -- Detecting CXX compiler ABI info - done
+[1.482s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.482s] -- Detecting CXX compile features
+[1.483s] -- Detecting CXX compile features - done
+[1.494s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.717s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[2.104s] -- Configuring done (2.0s)
+[2.109s] -- Generating done (0.0s)
+[2.111s] -- Build files have been written to: /home/webotpi/ros2_ws/build/pi5_robot_description
+[2.120s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[2.122s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/pi5_robot_description -- -j4 -l4
+[2.188s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/pi5_robot_description -- -j4 -l4
+[2.205s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/pi5_robot_description
+[2.218s] -- Install configuration: ""
+[2.219s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf
+[2.219s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro
+[2.219s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch
+[2.219s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/view_robot.launch.py
+[2.219s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config
+[2.219s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/view_robot.rviz
+[2.220s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/scripts
+[2.220s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/scripts/verify_urdf.sh
+[2.220s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/verify_urdf.sh
+[2.220s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/package_run_dependencies/pi5_robot_description
+[2.220s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/parent_prefix_path/pi5_robot_description
+[2.221s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.sh
+[2.221s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.dsv
+[2.221s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.sh
+[2.221s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.dsv
+[2.221s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.bash
+[2.222s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.sh
+[2.222s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.zsh
+[2.222s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.dsv
+[2.222s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.dsv
+[2.222s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/packages/pi5_robot_description
+[2.223s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig.cmake
+[2.223s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig-version.cmake
+[2.223s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.xml
+[2.226s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/pi5_robot_description

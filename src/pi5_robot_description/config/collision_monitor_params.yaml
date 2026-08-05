@@ -1,0 +1,74 @@
+# ============================================================
+# Nav2 Collision Monitor — 硬安全层配置
+#
+# 位置: controller → velocity_smoother → [collision_monitor] → cmd_vel_bridge → STM32
+# 原理: 独立监测传感器数据,障碍进入预设区域时执行 Stop/Slowdown/Limit
+# 传感器: 激光(/scan) + 深度相机点云(/aurora/points2)
+# ============================================================
+
+collision_monitor:
+  ros__parameters:
+    base_frame_id: "base_footprint"
+    odom_frame_id: "odom"
+    cmd_vel_in_topic: "cmd_vel_smoothed"
+    cmd_vel_out_topic: "cmd_vel_safety"
+    state_topic: "collision_monitor_state"
+    transform_tolerance: 0.5
+    source_timeout: 5.0
+    base_shift_correction: True
+    stop_pub_timeout: 2.0
+
+    # ===== 三级防护多边形 =====
+    # 小车尺寸: 26.8cm x 14.3cm, robot_radius=0.18m
+    polygons: ["PolygonStop", "PolygonSlow", "PolygonLimit"]
+
+    # Stop区: 前方0.35m, 侧方0.25m — 障碍进入立即停止
+    PolygonStop:
+      type: "polygon"
+      points: "[[0.25, 0.18], [0.25, -0.18], [-0.10, -0.18], [-0.10, 0.18]]"
+      action_type: "stop"
+      min_points: 4
+      visualize: True
+      polygon_pub_topic: "polygon_stop"
+      enabled: True
+
+    # Slowdown区: 前方0.6m, 侧方0.35m — 障碍进入减速到30%
+    PolygonSlow:
+      type: "polygon"
+      points: "[[0.5, 0.28], [0.5, -0.28], [-0.2, -0.28], [-0.2, 0.28]]"
+      action_type: "slowdown"
+      min_points: 4
+      slowdown_ratio: 0.3
+      visualize: True
+      polygon_pub_topic: "polygon_slowdown"
+      enabled: True
+
+    # Limit区: 前方1.0m, 侧方0.5m — 障碍进入限速0.15m/s
+    PolygonLimit:
+      type: "polygon"
+      points: "[[0.8, 0.4], [0.8, -0.4], [-0.3, -0.4], [-0.3, 0.4]]"
+      action_type: "limit"
+      min_points: 4
+      linear_limit: 0.15
+      angular_limit: 0.5
+      visualize: True
+      polygon_pub_topic: "polygon_limit"
+      enabled: True
+
+    # ===== 双传感器观测源 =====
+    observation_sources: ["scan", "pointcloud"]
+
+    scan:
+      type: "scan"
+      topic: "scan"
+      min_height: 0.05
+      max_height: 0.5
+      enabled: True
+
+    pointcloud:
+      type: "pointcloud"
+      topic: "/aurora/points2"
+      min_height: 0.05
+      max_height: 1.0
+      use_global_height: False
+      enabled: False

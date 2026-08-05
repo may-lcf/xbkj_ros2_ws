@@ -212,7 +212,7 @@ class SelfDrivingNode(Node):
             ('turn_angular_z', 0.28),
             ('turn_duration', 2.992),
             ('odom_threshold', 1.3),
-            ('red_area_threshold', 4.2),
+            ('red_area_threshold', 3.5),
             ('stop_area_min', 2.1),
             ('stop_area_max', 5.0),
             ('stop_move_duration', 2.5),
