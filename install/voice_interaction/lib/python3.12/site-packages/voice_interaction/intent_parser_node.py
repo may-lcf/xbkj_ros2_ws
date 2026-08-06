@@ -88,6 +88,29 @@ _FAST_COMMANDS = {
     '点点头': {'step': {'order': 1, 'function': 'routine',
                        'parameters': {'action': '点点头'}},
               'message': '好的，点点头'},
+    # ── 导航快速指令 ──
+    '去A点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['A']}},
+              'message': '好的，去A点'},
+    '去B点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['B']}},
+              'message': '好的，去B点'},
+    '去C点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['C']}},
+              'message': '好的，去C点'},
+    '回原点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['原点']}},
+               'message': '好的，回原点'},
+    '记录A点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': 'A'}},
+                'message': '好的，记录当前位置为A点'},
+    '记录B点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': 'B'}},
+                'message': '好的，记录当前位置为B点'},
+    '记录C点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': 'C'}},
+                'message': '好的，记录当前位置为C点'},
+    '记录原点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '原点'}},
+                 'message': '好的，记录当前位置为原点'},
+    '列出目标点': {'step': {'order': 1, 'function': 'list_waypoints', 'parameters': {}},
+                  'message': '好的'},
+    '清空目标点': {'step': {'order': 1, 'function': 'clear_waypoints', 'parameters': {}},
+                  'message': '好的，已清空所有目标点'},
+    '停止导航': {'step': {'order': 1, 'function': 'stop_navigation', 'parameters': {}},
+                 'message': '好的，停止导航'},
     # 音色切换 (特殊标记，由 text_callback 单独处理)
     '切换音色': {'__voice_switch__': True},
     '换一个声音': {'__voice_switch__': True},
@@ -146,6 +169,18 @@ SYSTEM_PROMPT = """你是机械臂+视觉系统语音助手小星。将用户自
   home: {} / stop: {} / servo: {"action":"enter"|"exit"}
 
 机械臂5+1dof: 1号左右, 2/3/4号前后, 5号夹爪旋转, 6号夹爪开合, 范围[-90,90]度。
+
+
+【导航】
+  navigate: {"targets": ["A", "B", "C"]}  — 多点顺序导航，targets 为目标点名称列表
+    用户说"去A点" → targets=["A"]
+    说"先去A点再去B点" → targets=["A","B"]
+    说"先去B点再去A点再去C点最后回到原点" → targets=["B","A","C","原点"]
+    注意："原点"是有效目标点名称，"回到原点"必须作为navigate的最后一个target，不要用home
+  save_waypoint: {"name": "A"}  — 记录当前位置为命名目标点
+  clear_waypoints: {}  — 清空所有命名目标点
+  list_waypoints: {}  — 列出所有已记录的目标点
+  stop_navigation: {}  — 停止当前导航
 
 规则: "开始/开启/启动"→enter, "结束/关闭/停止/退出"→exit, 闲聊只输出message不输出step。
 """

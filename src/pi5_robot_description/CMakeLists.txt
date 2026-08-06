@@ -16,8 +16,11 @@ install(PROGRAMS
   pi5_robot_description/odom_only_node.py
   pi5_robot_description/cmd_vel_bridge_node.py
   pi5_robot_description/goal_pose_bridge.py
+  pi5_robot_description/waypoint_navigator.py
+  pi5_robot_description/nav_executor_node.py
   scripts/save_map.sh
   scripts/verify_urdf.sh
+  scripts/waypoint_control.sh
   DESTINATION lib/${PROJECT_NAME}
 )
 
