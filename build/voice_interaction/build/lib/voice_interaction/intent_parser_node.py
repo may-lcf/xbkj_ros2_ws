@@ -89,20 +89,20 @@ _FAST_COMMANDS = {
                        'parameters': {'action': '点点头'}},
               'message': '好的，点点头'},
     # ── 导航快速指令 ──
-    '去A点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['A']}},
-              'message': '好的，去A点'},
-    '去B点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['B']}},
-              'message': '好的，去B点'},
-    '去C点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['C']}},
-              'message': '好的，去C点'},
+    '去水果区': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['水果区']}},
+              'message': '好的，去水果区看看'},
+    '去饮品区': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['饮品区']}},
+              'message': '好的，去饮品区看看'},
+    '去足球区': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['足球区']}},
+              'message': '好的，去足球区看看'},
     '回原点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['原点']}},
                'message': '好的，回原点'},
-    '记录A点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': 'A'}},
-                'message': '好的，记录当前位置为A点'},
-    '记录B点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': 'B'}},
-                'message': '好的，记录当前位置为B点'},
-    '记录C点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': 'C'}},
-                'message': '好的，记录当前位置为C点'},
+    '记录水果区': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '水果区'}},
+                'message': '好的，记录当前位置为水果区'},
+    '记录饮品区': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '饮品区'}},
+                'message': '好的，记录当前位置为饮品区'},
+    '记录足球区': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '足球区'}},
+                'message': '好的，记录当前位置为足球区'},
     '记录原点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '原点'}},
                  'message': '好的，记录当前位置为原点'},
     '列出目标点': {'step': {'order': 1, 'function': 'list_waypoints', 'parameters': {}},
@@ -171,15 +171,19 @@ SYSTEM_PROMPT = """你是机械臂+视觉系统语音助手小星。将用户自
 机械臂5+1dof: 1号左右, 2/3/4号前后, 5号夹爪旋转, 6号夹爪开合, 范围[-90,90]度。
 
 
-【导航】
-  navigate: {"targets": ["A", "B", "C"]}  — 多点顺序导航，targets 为目标点名称列表
-    用户说"去A点" → targets=["A"]
-    说"先去A点再去B点" → targets=["A","B"]
-    说"先去B点再去A点再去C点最后回到原点" → targets=["B","A","C","原点"]
-    注意："原点"是有效目标点名称，"回到原点"必须作为navigate的最后一个target，不要用home
-  save_waypoint: {"name": "A"}  — 记录当前位置为命名目标点
-  clear_waypoints: {}  — 清空所有命名目标点
-  list_waypoints: {}  — 列出所有已记录的目标点
+【导航】⚠️ 重要：多个目的地必须合并为一条navigate指令，绝对不能拆成多条！
+  navigate: {"targets": ["水果区", "饮品区", "足球区"]}  — 多点顺序导航，targets 为区域名称列表
+    可用区域: 水果区、饮品区、足球区、原点
+    ✅ 正确示例:
+    用户说"去水果区看看" → 只输出1个step: {"step":{"order":1,"function":"navigate","parameters":{"targets":["水果区"]}}
+    用户说"先去水果区再去饮品区" → 只输出1个step: {"step":{"order":1,"function":"navigate","parameters":{"targets":["水果区","饮品区"]}}
+    用户说"先去足球区再去饮品区再去水果区" → 只输出1个step: {"step":{"order":1,"function":"navigate","parameters":{"targets":["足球区","饮品区","水果区"]}}
+    ❌ 错误示例（绝对不允许）:
+    用户说"先去A再去B再去C" → 输出3个step分别navigate A、B、C ← 这是错的！
+    注意："原点"是有效目标点，"回到原点"必须作为navigate的最后一个target
+  save_waypoint: {"name": "水果区"}  — 记录当前位置为命名区域
+  clear_waypoints: {}  — 清空所有命名区域
+  list_waypoints: {}  — 列出所有已记录的区域
   stop_navigation: {}  — 停止当前导航
 
 规则: "开始/开启/启动"→enter, "结束/关闭/停止/退出"→exit, 闲聊只输出message不输出step。
@@ -413,6 +417,8 @@ class IntentParserNode(Node):
             self.get_logger().error(f'LLM调用失败: {e}')
 
     def _extract_steps(self, buffer):
+        # 收集所有 step
+        raw_steps = []
         while True:
             start = buffer.find('{')
             if start == -1:
@@ -433,16 +439,59 @@ class IntentParserNode(Node):
             try:
                 obj = json.loads(json_str)
                 if 'step' in obj:
-                    step = obj['step']
-                    cmd_msg = String()
-                    cmd_msg.data = json.dumps(step, ensure_ascii=False)
-                    self.pub_intent.publish(cmd_msg)
-                    self.get_logger().info(f'发布指令: {cmd_msg.data}')
+                    raw_steps.append(obj['step'])
             except json.JSONDecodeError:
                 pass
             buffer = buffer[end + 1:]
 
+        # 合并连续的 navigate 指令
+        merged = self._merge_navigate_steps(raw_steps)
+
+        # 发布
+        for step in merged:
+            cmd_msg = String()
+            cmd_msg.data = json.dumps(step, ensure_ascii=False)
+            self.pub_intent.publish(cmd_msg)
+            self.get_logger().info(f'发布指令: {cmd_msg.data}')
+
         return buffer
+
+    @staticmethod
+    def _merge_navigate_steps(steps):
+        """将连续的 navigate 指令合并为一条，targets 拼接"""
+        if not steps:
+            return steps
+
+        merged = []
+        nav_targets = []
+
+        for step in steps:
+            func = step.get('function', '')
+            params = step.get('parameters', {})
+            if func == 'navigate' and 'targets' in params:
+                # 累积 navigate 目标
+                nav_targets.extend(params['targets'])
+            else:
+                # 非 navigate 指令：先 flush 累积的 navigate，再处理当前
+                if nav_targets:
+                    merged.append({
+                        'order': len(merged) + 1,
+                        'function': 'navigate',
+                        'parameters': {'targets': nav_targets}
+                    })
+                    nav_targets = []
+                step['order'] = len(merged) + 1
+                merged.append(step)
+
+        # flush 最后累积的 navigate
+        if nav_targets:
+            merged.append({
+                'order': len(merged) + 1,
+                'function': 'navigate',
+                'parameters': {'targets': nav_targets}
+            })
+
+        return merged
 
 
 def main(args=None):

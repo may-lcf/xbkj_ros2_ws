@@ -1,1 +1,0 @@
-/home/webotpi/ros2_ws/src/my_launch_pkg/launch/nav2.launch.py
