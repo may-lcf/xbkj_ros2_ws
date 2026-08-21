@@ -1,0 +1,572 @@
+[0.000000] (-) TimerEvent: {}
+[0.000254] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000447] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000711] (-) JobUnselected: {'identifier': 'pi5_robot_description'}
+[0.000732] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000750] (-) JobUnselected: {'identifier': 'robot_integration'}
+[0.000767] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000783] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000802] (deptrum-ros-driver-aurora930) JobQueued: {'identifier': 'deptrum-ros-driver-aurora930', 'dependencies': OrderedDict()}
+[0.000824] (deptrum-ros-driver-aurora930) JobStarted: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.019083] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'cmake'}
+[0.020065] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '/home/webotpi/ros2_ws/src/deptrum-ros-driver', '-DSTREAM_SDK_TYPE=AURORA930', '-DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 37858 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/webotpi/ros2_ws/install/my_srv/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi/ros2_ws', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/webotpi/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '13', 'PATH': '/home/webotpi/.local/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/webotpi/fastdds_config.xml', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '42', 'AMENT_PREFIX_PATH': '/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/robot_integration:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/pi5_robot_description:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 37858 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/webotpi/OpenCV', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/pi5_robot_description:/home/webotpi/ros2_ws/install/my_srv:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/robot_integration:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy'}), 'shell': False}
+[0.048345] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.099652] (-) TimerEvent: {}
+[0.199981] (-) TimerEvent: {}
+[0.300321] (-) TimerEvent: {}
+[0.400703] (-) TimerEvent: {}
+[0.406804] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.447983] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.463510] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.480020] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.499192] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.500762] (-) TimerEvent: {}
+[0.581307] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.583424] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.600863] (-) TimerEvent: {}
+[0.687467] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.700956] (-) TimerEvent: {}
+[0.771368] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- STREAM_SDK_TYPE: AURORA930\n'}
+[0.771654] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- SYSTEM_PLATFORM: -\n'}
+[0.794160] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[0.801029] (-) TimerEvent: {}
+[0.840332] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[0.901153] (-) TimerEvent: {}
+[0.940495] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)\n'}
+[0.992157] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found OpenCV: /usr (found version "4.6.0") found components: core highgui imgproc videoio \n'}
+[1.001238] (-) TimerEvent: {}
+[1.004557] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)\n'}
+[1.020124] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[1.101386] (-) TimerEvent: {}
+[1.201728] (-) TimerEvent: {}
+[1.302113] (-) TimerEvent: {}
+[1.398238] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[1.402167] (-) TimerEvent: {}
+[1.450677] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[1.453557] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[1.453760] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.463854] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found angles: 1.16.1 (/opt/ros/jazzy/share/angles/cmake)\n'}
+[1.467534] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- GLog library status:\n'}
+[1.467684] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include\n'}
+[1.467780] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/lib-static\n'}
+[1.467861] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     libraries: glog\n'}
+[1.468699] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- GFlags library status:\n'}
+[1.468802] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include\n'}
+[1.468885] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/lib-static\n'}
+[1.468965] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     libraries: gflags\n'}
+[1.477629] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[1.502285] (-) TimerEvent: {}
+[1.602685] (-) TimerEvent: {}
+[1.703227] (-) TimerEvent: {}
+[1.775487] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at subscribe_node/CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[1.775810] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  Compatibility with CMake < 3.5 will be removed from a future version of\n'}
+[1.775930] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  CMake.\n'}
+[1.776022] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.776109] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  Update the VERSION argument <min> value or use a ...<max> suffix to tell\n'}
+[1.776193] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  CMake that the project does not need compatibility with older versions.\n'}
+[1.776277] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.776359] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\x1b[0m\n'}
+[1.803324] (-) TimerEvent: {}
+[1.877130] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem \n'}
+[1.895922] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.903408] (-) TimerEvent: {}
+[1.925449] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.926101] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/webotpi/ros2_ws/src/deptrum-ros-driver/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/deptrum-stream-aurora900-linux-aarch64-v1.1.19-18.04/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include\n'}
+[1.926224] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.961123] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.961408] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.971673] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.971833] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[1.980795] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.985440] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[2.003485] (-) TimerEvent: {}
+[2.009205] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.009400] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.019305] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.025145] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configuring done (2.0s)\n'}
+[2.103648] (-) TimerEvent: {}
+[2.125903] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[2.138533] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Build files have been written to: /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930\n'}
+[2.164166] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[2.165148] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'build'}
+[2.166072] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 37858 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/webotpi/ros2_ws/install/my_srv/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi/ros2_ws', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/webotpi/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '13', 'PATH': '/home/webotpi/.local/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/webotpi/fastdds_config.xml', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '42', 'AMENT_PREFIX_PATH': '/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/robot_integration:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/pi5_robot_description:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 37858 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/webotpi/OpenCV', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/pi5_robot_description:/home/webotpi/ros2_ws/install/my_srv:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/robot_integration:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy'}), 'shell': False}
+[2.203766] (-) TimerEvent: {}
+[2.278718] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/ros2_node.cc.o\x1b[0m\n'}
+[2.279186] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object subscribe_node/CMakeFiles/sub_node.dir/src/sub_node.cc.o\x1b[0m\n'}
+[2.279320] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object subscribe_node/CMakeFiles/sub_node_ci.dir/src/sub_node_ci.cc.o\x1b[0m\n'}
+[2.279576] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/ros2_device.cc.o\x1b[0m\n'}
+[2.304883] (-) TimerEvent: {}
+[2.405258] (-) TimerEvent: {}
+[2.505629] (-) TimerEvent: {}
+[2.606132] (-) TimerEvent: {}
+[2.706907] (-) TimerEvent: {}
+[2.807246] (-) TimerEvent: {}
+[2.910479] (-) TimerEvent: {}
+[3.010962] (-) TimerEvent: {}
+[3.111467] (-) TimerEvent: {}
+[3.211826] (-) TimerEvent: {}
+[3.312195] (-) TimerEvent: {}
+[3.412902] (-) TimerEvent: {}
+[3.513361] (-) TimerEvent: {}
+[3.613741] (-) TimerEvent: {}
+[3.714151] (-) TimerEvent: {}
+[3.814482] (-) TimerEvent: {}
+[3.914932] (-) TimerEvent: {}
+[4.015433] (-) TimerEvent: {}
+[4.116176] (-) TimerEvent: {}
+[4.219704] (-) TimerEvent: {}
+[4.321057] (-) TimerEvent: {}
+[4.369781] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20\x1b[m\x1b[K,\n'}
+[4.370241] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_device.cc:5\x1b[m\x1b[K:\n'}
+[4.370422] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K#warning POINT_CLOUD_DEPRECATION_MESSAGE [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp\x07-Wcpp\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.370636] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'   47 | #    \x1b[01;35m\x1b[Kwarning\x1b[m\x1b[K POINT_CLOUD_DEPRECATION_MESSAGE\n'}
+[4.370767] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[4.370892] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20\x1b[m\x1b[K,\n'}
+[4.371003] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_node.cc:6\x1b[m\x1b[K:\n'}
+[4.371119] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K#warning POINT_CLOUD_DEPRECATION_MESSAGE [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp\x07-Wcpp\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.371249] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'   47 | #    \x1b[01;35m\x1b[Kwarning\x1b[m\x1b[K POINT_CLOUD_DEPRECATION_MESSAGE\n'}
+[4.371363] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[4.421050] (-) TimerEvent: {}
+[4.521619] (-) TimerEvent: {}
+[4.623574] (-) TimerEvent: {}
+[4.724351] (-) TimerEvent: {}
+[4.826541] (-) TimerEvent: {}
+[4.927457] (-) TimerEvent: {}
+[5.031355] (-) TimerEvent: {}
+[5.134792] (-) TimerEvent: {}
+[5.235534] (-) TimerEvent: {}
+[5.336422] (-) TimerEvent: {}
+[5.438591] (-) TimerEvent: {}
+[5.539105] (-) TimerEvent: {}
+[5.639941] (-) TimerEvent: {}
+[5.741768] (-) TimerEvent: {}
+[5.843747] (-) TimerEvent: {}
+[5.946548] (-) TimerEvent: {}
+[6.047089] (-) TimerEvent: {}
+[6.147780] (-) TimerEvent: {}
+[6.249865] (-) TimerEvent: {}
+[6.352797] (-) TimerEvent: {}
+[6.453453] (-) TimerEvent: {}
+[6.554046] (-) TimerEvent: {}
+[6.654536] (-) TimerEvent: {}
+[6.756622] (-) TimerEvent: {}
+[6.857513] (-) TimerEvent: {}
+[6.959827] (-) TimerEvent: {}
+[7.060477] (-) TimerEvent: {}
+[7.160983] (-) TimerEvent: {}
+[7.262789] (-) TimerEvent: {}
+[7.363425] (-) TimerEvent: {}
+[7.466528] (-) TimerEvent: {}
+[7.567006] (-) TimerEvent: {}
+[7.667516] (-) TimerEvent: {}
+[7.768042] (-) TimerEvent: {}
+[7.868536] (-) TimerEvent: {}
+[7.970509] (-) TimerEvent: {}
+[8.070973] (-) TimerEvent: {}
+[8.171451] (-) TimerEvent: {}
+[8.271901] (-) TimerEvent: {}
+[8.374501] (-) TimerEvent: {}
+[8.474936] (-) TimerEvent: {}
+[8.575493] (-) TimerEvent: {}
+[8.675976] (-) TimerEvent: {}
+[8.776494] (-) TimerEvent: {}
+[8.879539] (-) TimerEvent: {}
+[8.980059] (-) TimerEvent: {}
+[9.080521] (-) TimerEvent: {}
+[9.181000] (-) TimerEvent: {}
+[9.281447] (-) TimerEvent: {}
+[9.381886] (-) TimerEvent: {}
+[9.484499] (-) TimerEvent: {}
+[9.584958] (-) TimerEvent: {}
+[9.685445] (-) TimerEvent: {}
+[9.785893] (-) TimerEvent: {}
+[9.886319] (-) TimerEvent: {}
+[9.988503] (-) TimerEvent: {}
+[10.089093] (-) TimerEvent: {}
+[10.189617] (-) TimerEvent: {}
+[10.290089] (-) TimerEvent: {}
+[10.393500] (-) TimerEvent: {}
+[10.493951] (-) TimerEvent: {}
+[10.594467] (-) TimerEvent: {}
+[10.694927] (-) TimerEvent: {}
+[10.795409] (-) TimerEvent: {}
+[10.895939] (-) TimerEvent: {}
+[10.996462] (-) TimerEvent: {}
+[11.098493] (-) TimerEvent: {}
+[11.198956] (-) TimerEvent: {}
+[11.299450] (-) TimerEvent: {}
+[11.399934] (-) TimerEvent: {}
+[11.503502] (-) TimerEvent: {}
+[11.603955] (-) TimerEvent: {}
+[11.704418] (-) TimerEvent: {}
+[11.804867] (-) TimerEvent: {}
+[11.905326] (-) TimerEvent: {}
+[12.005783] (-) TimerEvent: {}
+[12.106512] (-) TimerEvent: {}
+[12.207629] (-) TimerEvent: {}
+[12.309804] (-) TimerEvent: {}
+[12.410745] (-) TimerEvent: {}
+[12.514796] (-) TimerEvent: {}
+[12.615504] (-) TimerEvent: {}
+[12.715989] (-) TimerEvent: {}
+[12.816463] (-) TimerEvent: {}
+[12.918505] (-) TimerEvent: {}
+[13.018967] (-) TimerEvent: {}
+[13.119710] (-) TimerEvent: {}
+[13.221815] (-) TimerEvent: {}
+[13.324828] (-) TimerEvent: {}
+[13.425412] (-) TimerEvent: {}
+[13.526111] (-) TimerEvent: {}
+[13.628787] (-) TimerEvent: {}
+[13.729275] (-) TimerEvent: {}
+[13.829864] (-) TimerEvent: {}
+[13.932543] (-) TimerEvent: {}
+[14.033057] (-) TimerEvent: {}
+[14.133539] (-) TimerEvent: {}
+[14.234014] (-) TimerEvent: {}
+[14.334482] (-) TimerEvent: {}
+[14.436502] (-) TimerEvent: {}
+[14.536993] (-) TimerEvent: {}
+[14.637509] (-) TimerEvent: {}
+[14.737948] (-) TimerEvent: {}
+[14.839811] (-) TimerEvent: {}
+[14.943529] (-) TimerEvent: {}
+[15.044008] (-) TimerEvent: {}
+[15.144460] (-) TimerEvent: {}
+[15.245022] (-) TimerEvent: {}
+[15.345473] (-) TimerEvent: {}
+[15.445939] (-) TimerEvent: {}
+[15.548510] (-) TimerEvent: {}
+[15.649038] (-) TimerEvent: {}
+[15.749820] (-) TimerEvent: {}
+[15.851721] (-) TimerEvent: {}
+[15.954512] (-) TimerEvent: {}
+[16.055040] (-) TimerEvent: {}
+[16.155678] (-) TimerEvent: {}
+[16.258529] (-) TimerEvent: {}
+[16.359003] (-) TimerEvent: {}
+[16.459503] (-) TimerEvent: {}
+[16.560026] (-) TimerEvent: {}
+[16.660572] (-) TimerEvent: {}
+[16.763753] (-) TimerEvent: {}
+[16.864319] (-) TimerEvent: {}
+[16.964891] (-) TimerEvent: {}
+[17.065323] (-) TimerEvent: {}
+[17.165813] (-) TimerEvent: {}
+[17.266268] (-) TimerEvent: {}
+[17.368505] (-) TimerEvent: {}
+[17.468992] (-) TimerEvent: {}
+[17.569496] (-) TimerEvent: {}
+[17.670010] (-) TimerEvent: {}
+[17.771497] (-) TimerEvent: {}
+[17.871934] (-) TimerEvent: {}
+[17.972379] (-) TimerEvent: {}
+[18.072847] (-) TimerEvent: {}
+[18.176199] (-) TimerEvent: {}
+[18.277996] (-) TimerEvent: {}
+[18.380724] (-) TimerEvent: {}
+[18.481184] (-) TimerEvent: {}
+[18.582204] (-) TimerEvent: {}
+[18.627608] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/aurora900_ros2_device.cc.o\x1b[0m\n'}
+[18.682343] (-) TimerEvent: {}
+[18.782829] (-) TimerEvent: {}
+[18.885729] (-) TimerEvent: {}
+[18.986363] (-) TimerEvent: {}
+[19.087072] (-) TimerEvent: {}
+[19.188773] (-) TimerEvent: {}
+[19.289507] (-) TimerEvent: {}
+[19.392814] (-) TimerEvent: {}
+[19.493690] (-) TimerEvent: {}
+[19.595768] (-) TimerEvent: {}
+[19.697772] (-) TimerEvent: {}
+[19.702723] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20\x1b[m\x1b[K,\n'}
+[19.703276] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/aurora900_ros2_device.h:4\x1b[m\x1b[K,\n'}
+[19.703479] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/webotpi/ros2_ws/src/deptrum-ros-driver/src/aurora900_ros2_device.cc:2\x1b[m\x1b[K:\n'}
+[19.703608] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K#warning POINT_CLOUD_DEPRECATION_MESSAGE [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp\x07-Wcpp\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[19.703762] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'   47 | #    \x1b[01;35m\x1b[Kwarning\x1b[m\x1b[K POINT_CLOUD_DEPRECATION_MESSAGE\n'}
+[19.703876] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[19.799510] (-) TimerEvent: {}
+[19.900006] (-) TimerEvent: {}
+[20.002512] (-) TimerEvent: {}
+[20.102992] (-) TimerEvent: {}
+[20.203703] (-) TimerEvent: {}
+[20.306734] (-) TimerEvent: {}
+[20.407453] (-) TimerEvent: {}
+[20.508164] (-) TimerEvent: {}
+[20.608905] (-) TimerEvent: {}
+[20.711706] (-) TimerEvent: {}
+[20.812845] (-) TimerEvent: {}
+[20.917013] (-) TimerEvent: {}
+[21.018770] (-) TimerEvent: {}
+[21.120782] (-) TimerEvent: {}
+[21.221520] (-) TimerEvent: {}
+[21.322217] (-) TimerEvent: {}
+[21.423704] (-) TimerEvent: {}
+[21.524488] (-) TimerEvent: {}
+[21.627750] (-) TimerEvent: {}
+[21.728511] (-) TimerEvent: {}
+[21.829276] (-) TimerEvent: {}
+[21.932603] (-) TimerEvent: {}
+[22.033471] (-) TimerEvent: {}
+[22.134061] (-) TimerEvent: {}
+[22.234726] (-) TimerEvent: {}
+[22.336842] (-) TimerEvent: {}
+[22.437627] (-) TimerEvent: {}
+[22.539569] (-) TimerEvent: {}
+[22.569743] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/aurora930_node.dir/src/camera_parameters.cc.o\x1b[0m\n'}
+[22.639684] (-) TimerEvent: {}
+[22.742741] (-) TimerEvent: {}
+[22.843275] (-) TimerEvent: {}
+[22.943921] (-) TimerEvent: {}
+[23.044652] (-) TimerEvent: {}
+[23.147145] (-) TimerEvent: {}
+[23.247661] (-) TimerEvent: {}
+[23.348417] (-) TimerEvent: {}
+[23.451468] (-) TimerEvent: {}
+[23.552064] (-) TimerEvent: {}
+[23.652739] (-) TimerEvent: {}
+[23.756778] (-) TimerEvent: {}
+[23.857421] (-) TimerEvent: {}
+[23.957959] (-) TimerEvent: {}
+[24.059643] (-) TimerEvent: {}
+[24.160125] (-) TimerEvent: {}
+[24.261809] (-) TimerEvent: {}
+[24.362420] (-) TimerEvent: {}
+[24.465831] (-) TimerEvent: {}
+[24.566310] (-) TimerEvent: {}
+[24.666795] (-) TimerEvent: {}
+[24.767251] (-) TimerEvent: {}
+[24.867730] (-) TimerEvent: {}
+[24.968208] (-) TimerEvent: {}
+[25.070510] (-) TimerEvent: {}
+[25.170998] (-) TimerEvent: {}
+[25.271577] (-) TimerEvent: {}
+[25.372055] (-) TimerEvent: {}
+[25.473446] (-) TimerEvent: {}
+[25.576500] (-) TimerEvent: {}
+[25.676955] (-) TimerEvent: {}
+[25.777421] (-) TimerEvent: {}
+[25.877874] (-) TimerEvent: {}
+[25.978330] (-) TimerEvent: {}
+[26.078789] (-) TimerEvent: {}
+[26.180504] (-) TimerEvent: {}
+[26.280953] (-) TimerEvent: {}
+[26.381410] (-) TimerEvent: {}
+[26.484500] (-) TimerEvent: {}
+[26.584994] (-) TimerEvent: {}
+[26.685488] (-) TimerEvent: {}
+[26.785940] (-) TimerEvent: {}
+[26.886462] (-) TimerEvent: {}
+[26.987023] (-) TimerEvent: {}
+[27.089517] (-) TimerEvent: {}
+[27.190018] (-) TimerEvent: {}
+[27.290511] (-) TimerEvent: {}
+[27.393511] (-) TimerEvent: {}
+[27.493957] (-) TimerEvent: {}
+[27.594447] (-) TimerEvent: {}
+[27.694945] (-) TimerEvent: {}
+[27.795422] (-) TimerEvent: {}
+[27.895885] (-) TimerEvent: {}
+[27.998516] (-) TimerEvent: {}
+[28.098978] (-) TimerEvent: {}
+[28.199486] (-) TimerEvent: {}
+[28.300020] (-) TimerEvent: {}
+[28.400789] (-) TimerEvent: {}
+[28.503765] (-) TimerEvent: {}
+[28.604453] (-) TimerEvent: {}
+[28.704965] (-) TimerEvent: {}
+[28.808501] (-) TimerEvent: {}
+[28.909064] (-) TimerEvent: {}
+[29.009655] (-) TimerEvent: {}
+[29.110121] (-) TimerEvent: {}
+[29.210647] (-) TimerEvent: {}
+[29.313517] (-) TimerEvent: {}
+[29.413987] (-) TimerEvent: {}
+[29.514487] (-) TimerEvent: {}
+[29.615034] (-) TimerEvent: {}
+[29.715509] (-) TimerEvent: {}
+[29.817736] (-) TimerEvent: {}
+[29.918233] (-) TimerEvent: {}
+[30.021759] (-) TimerEvent: {}
+[30.122214] (-) TimerEvent: {}
+[30.222666] (-) TimerEvent: {}
+[30.323139] (-) TimerEvent: {}
+[30.423683] (-) TimerEvent: {}
+[30.526500] (-) TimerEvent: {}
+[30.626984] (-) TimerEvent: {}
+[30.727450] (-) TimerEvent: {}
+[30.827916] (-) TimerEvent: {}
+[30.928426] (-) TimerEvent: {}
+[31.028871] (-) TimerEvent: {}
+[31.131501] (-) TimerEvent: {}
+[31.231954] (-) TimerEvent: {}
+[31.332480] (-) TimerEvent: {}
+[31.433181] (-) TimerEvent: {}
+[31.534796] (-) TimerEvent: {}
+[31.635501] (-) TimerEvent: {}
+[31.737505] (-) TimerEvent: {}
+[31.837941] (-) TimerEvent: {}
+[31.938420] (-) TimerEvent: {}
+[32.040503] (-) TimerEvent: {}
+[32.140949] (-) TimerEvent: {}
+[32.241412] (-) TimerEvent: {}
+[32.341866] (-) TimerEvent: {}
+[32.442294] (-) TimerEvent: {}
+[32.542736] (-) TimerEvent: {}
+[32.643090] (-) TimerEvent: {}
+[32.743446] (-) TimerEvent: {}
+[32.843842] (-) TimerEvent: {}
+[32.944344] (-) TimerEvent: {}
+[33.044708] (-) TimerEvent: {}
+[33.145124] (-) TimerEvent: {}
+[33.245482] (-) TimerEvent: {}
+[33.345896] (-) TimerEvent: {}
+[33.446255] (-) TimerEvent: {}
+[33.546724] (-) TimerEvent: {}
+[33.647161] (-) TimerEvent: {}
+[33.747562] (-) TimerEvent: {}
+[33.848175] (-) TimerEvent: {}
+[33.948764] (-) TimerEvent: {}
+[34.049271] (-) TimerEvent: {}
+[34.149837] (-) TimerEvent: {}
+[34.250356] (-) TimerEvent: {}
+[34.350919] (-) TimerEvent: {}
+[34.451701] (-) TimerEvent: {}
+[34.555386] (-) TimerEvent: {}
+[34.656072] (-) TimerEvent: {}
+[34.756903] (-) TimerEvent: {}
+[34.857736] (-) TimerEvent: {}
+[34.961047] (-) TimerEvent: {}
+[35.067487] (-) TimerEvent: {}
+[35.167913] (-) TimerEvent: {}
+[35.262719] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 77%] \x1b[32m\x1b[1mLinking CXX executable sub_node\x1b[0m\n'}
+[35.268114] (-) TimerEvent: {}
+[35.368892] (-) TimerEvent: {}
+[35.471964] (-) TimerEvent: {}
+[35.576165] (-) TimerEvent: {}
+[35.677526] (-) TimerEvent: {}
+[35.778058] (-) TimerEvent: {}
+[35.881511] (-) TimerEvent: {}
+[35.900215] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 88%] \x1b[32m\x1b[1mLinking CXX executable sub_node_ci\x1b[0m\n'}
+[35.981868] (-) TimerEvent: {}
+[36.091653] (-) TimerEvent: {}
+[36.197635] (-) TimerEvent: {}
+[36.303974] (-) TimerEvent: {}
+[36.407735] (-) TimerEvent: {}
+[36.515699] (-) TimerEvent: {}
+[36.619726] (-) TimerEvent: {}
+[36.729130] (-) TimerEvent: {}
+[36.832888] (-) TimerEvent: {}
+[36.945497] (-) TimerEvent: {}
+[37.049795] (-) TimerEvent: {}
+[37.157344] (-) TimerEvent: {}
+[37.259595] (-) TimerEvent: {}
+[37.364248] (-) TimerEvent: {}
+[37.466761] (-) TimerEvent: {}
+[37.569161] (-) TimerEvent: {}
+[37.674804] (-) TimerEvent: {}
+[37.780347] (-) TimerEvent: {}
+[37.881543] (-) TimerEvent: {}
+[37.982722] (-) TimerEvent: {}
+[38.083270] (-) TimerEvent: {}
+[38.184198] (-) TimerEvent: {}
+[38.284778] (-) TimerEvent: {}
+[38.385733] (-) TimerEvent: {}
+[38.486505] (-) TimerEvent: {}
+[38.587714] (-) TimerEvent: {}
+[38.688597] (-) TimerEvent: {}
+[38.789341] (-) TimerEvent: {}
+[38.890135] (-) TimerEvent: {}
+[38.990825] (-) TimerEvent: {}
+[39.003236] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 88%] Built target sub_node\n'}
+[39.090946] (-) TimerEvent: {}
+[39.127849] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 88%] Built target sub_node_ci\n'}
+[39.191061] (-) TimerEvent: {}
+[39.291411] (-) TimerEvent: {}
+[39.391739] (-) TimerEvent: {}
+[39.492151] (-) TimerEvent: {}
+[39.592788] (-) TimerEvent: {}
+[39.693103] (-) TimerEvent: {}
+[39.793464] (-) TimerEvent: {}
+[39.893816] (-) TimerEvent: {}
+[39.994167] (-) TimerEvent: {}
+[40.094549] (-) TimerEvent: {}
+[40.194958] (-) TimerEvent: {}
+[40.295444] (-) TimerEvent: {}
+[40.395937] (-) TimerEvent: {}
+[40.496696] (-) TimerEvent: {}
+[40.597190] (-) TimerEvent: {}
+[40.697581] (-) TimerEvent: {}
+[40.757355] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable aurora930_node\x1b[0m\n'}
+[40.798733] (-) TimerEvent: {}
+[40.899571] (-) TimerEvent: {}
+[41.000181] (-) TimerEvent: {}
+[41.101294] (-) TimerEvent: {}
+[41.202041] (-) TimerEvent: {}
+[41.303224] (-) TimerEvent: {}
+[41.404107] (-) TimerEvent: {}
+[41.504889] (-) TimerEvent: {}
+[41.605580] (-) TimerEvent: {}
+[41.706370] (-) TimerEvent: {}
+[41.807247] (-) TimerEvent: {}
+[41.908151] (-) TimerEvent: {}
+[42.008816] (-) TimerEvent: {}
+[42.109623] (-) TimerEvent: {}
+[42.210153] (-) TimerEvent: {}
+[42.310867] (-) TimerEvent: {}
+[42.411269] (-) TimerEvent: {}
+[42.511689] (-) TimerEvent: {}
+[42.612097] (-) TimerEvent: {}
+[42.712538] (-) TimerEvent: {}
+[42.813063] (-) TimerEvent: {}
+[42.913461] (-) TimerEvent: {}
+[43.013840] (-) TimerEvent: {}
+[43.104768] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[100%] Built target aurora930_node\n'}
+[43.113949] (-) TimerEvent: {}
+[43.129917] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[43.130706] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'install'}
+[43.150499] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 37858 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/webotpi/ros2_ws/install/my_srv/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi/ros2_ws', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/webotpi/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '13', 'PATH': '/home/webotpi/.local/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'FASTRTPS_DEFAULT_PROFILES_FILE': '/home/webotpi/fastdds_config.xml', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '42', 'AMENT_PREFIX_PATH': '/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/robot_integration:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/pi5_robot_description:/home/webotpi/ros2_ws/install/my_srv:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 37858 192.168.0.119 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages:/home/webotpi/OpenCV', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/webotpi/ros2_ws/install/rplidar_ros:/home/webotpi/ros2_ws/install/pi5_robot_description:/home/webotpi/ros2_ws/install/my_srv:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/webotpi/ros2_ws/install/voice_interaction:/home/webotpi/ros2_ws/install/robot_integration:/home/webotpi/ros2_ws/install/py_pkg:/home/webotpi/ros2_ws/install/my_launch_pkg:/opt/ros/jazzy'}), 'shell': False}
+[43.167678] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[43.173620] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.sh\n'}
+[43.173913] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.dsv\n'}
+[43.174228] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node\n'}
+[43.182319] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node" to ""\n'}
+[43.182573] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node\n'}
+[43.197164] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node" to ""\n'}
+[43.197466] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node\n'}
+[43.197778] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node_ci\n'}
+[43.212386] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node_ci" to ""\n'}
+[43.212599] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/99-deptrum-libusb.rules\n'}
+[43.214001] (-) TimerEvent: {}
+[43.218569] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/libdeptrum_stream_aurora900.so.1.1.19\n'}
+[43.314160] (-) TimerEvent: {}
+[43.414548] (-) TimerEvent: {}
+[43.466492] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch\n'}
+[43.466863] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/viewer930_launch.py\n'}
+[43.467180] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_multi_launch.py\n'}
+[43.467710] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/__pycache__\n'}
+[43.467883] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/sub_node_ci_aurora930_launch.py\n'}
+[43.468431] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_launch.py\n'}
+[43.471081] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/usage_aurora930.md\n'}
+[43.471568] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/RELEASE_AURORA930.md\n'}
+[43.472246] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/rviz/aurora930-ros2.rviz\n'}
+[43.473109] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/package_run_dependencies/deptrum-ros-driver-aurora930\n'}
+[43.473451] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/parent_prefix_path/deptrum-ros-driver-aurora930\n'}
+[43.473690] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.sh\n'}
+[43.473924] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.dsv\n'}
+[43.474159] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.sh\n'}
+[43.474395] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.dsv\n'}
+[43.474622] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.bash\n'}
+[43.474841] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.sh\n'}
+[43.475076] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.zsh\n'}
+[43.475297] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.dsv\n'}
+[43.475523] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.dsv\n'}
+[43.475834] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/packages/deptrum-ros-driver-aurora930\n'}
+[43.476103] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[43.476339] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config.cmake\n'}
+[43.476533] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config-version.cmake\n'}
+[43.476757] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.xml\n'}
+[43.480782] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[43.514885] (-) TimerEvent: {}
+[43.520311] (deptrum-ros-driver-aurora930) JobEnded: {'identifier': 'deptrum-ros-driver-aurora930', 'rc': 0}
+[43.521491] (-) EventReactorShutdown: {}

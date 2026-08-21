@@ -153,7 +153,7 @@ controller_server:
     goal_checker:
       plugin: nav2_controller::SimpleGoalChecker
       stateful: true
-      xy_goal_tolerance: 0.2
+      xy_goal_tolerance: 0.12
       yaw_goal_tolerance: 0.15
     controller_plugins:
     - FollowPath
@@ -161,7 +161,7 @@ controller_server:
       plugin: nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController
       desired_linear_vel: 0.2
       max_linear_vel: 0.3
-      min_linear_vel: 0.02
+      min_linear_vel: 0.05
       lookahead_dist: 0.4
       min_lookahead_dist: 0.3
       max_lookahead_dist: 1.2
@@ -176,7 +176,7 @@ controller_server:
       use_rotate_to_heading: true
       rotate_to_heading_min_angle: 0.4
       max_angular_accel: 2.5
-      goal_dist_tol: 0.1
+      goal_dist_tol: 0.12
       costmap_topic: local_costmap/costmap_raw
 
 planner_server:

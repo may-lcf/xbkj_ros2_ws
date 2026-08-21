@@ -1,0 +1,462 @@
+"""意图解析节点 - 通义千问 qwen-flash 解析自然语言为结构化指令
+
+订阅 voice_text (ASR结果)，发布 voice_command (JSON动作) 和 speak_text (TTS文本)。
+支持多轮对话上下文记忆。
+LLM 流式输出：message 提取后立刻给 TTS (并行)，step 提取后给执行器。
+
+唤醒机制：
+  - 沉睡状态：只听唤醒词，其他语音忽略
+  - 唤醒状态：正常处理指令，25秒无指令自动回到沉睡
+  - 说"退下"手动回到沉睡
+
+优化：
+  - 常用指令本地快速通道 (不走LLM)
+  - 精简 system prompt (减少 token 传输)
+"""
+
+import os
+import json
+import threading
+import time
+
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+from openai import OpenAI
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  唤醒词配置（可自定义修改）
+# ═══════════════════════════════════════════════════════════════════════════════
+
+WAKE_WORDS = ['小星小星', '小心小心', '小新小新']
+DISMISS_WORD = '退下'
+TIMEOUT_SEC = 25.0
+
+WAKE_REPLY = '我在'
+DISMISS_REPLY = '小星退下了，有需要再唤醒我'
+
+# 音色切换列表 (循环切换)
+VOICE_CYCLE = ['Cherry', 'Ethan', 'Serena', 'Chelsie']
+VOICE_NAMES = {'Cherry': '樱桃', 'Ethan': '伊森', 'Serena': '瑟琳娜', 'Chelsie': '切尔西'}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  状态
+# ═══════════════════════════════════════════════════════════════════════════════
+
+STATE_SLEEP = 0
+STATE_AWAKE = 1
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  本地快速指令表 (命中后直接执行，不经过 LLM)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+_FAST_COMMANDS = {
+    # 停止类
+    '停': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
+           'message': '好的，已停止'},
+    '停止': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
+             'message': '好的，已停止'},
+    '停一下': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
+              'message': '好的，已停止'},
+    '停下来': {'step': {'order': 1, 'function': 'stop', 'parameters': {}},
+              'message': '好的，已停止'},
+    # 复位类
+    '复位': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
+             'message': '好的，恢复初始状态'},
+    '回原位': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
+              'message': '好的，恢复初始状态'},
+    '回到初始状态': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
+                   'message': '好的，恢复初始状态'},
+    '恢复初始状态': {'step': {'order': 1, 'function': 'home', 'parameters': {}},
+                   'message': '好的，恢复初始状态'},
+    # 固定动作
+    '夹爪开': {'step': {'order': 1, 'function': 'routine',
+                       'parameters': {'action': '夹爪开'}},
+              'message': '好的，打开夹爪'},
+    '夹爪关': {'step': {'order': 1, 'function': 'routine',
+                       'parameters': {'action': '夹爪关'}},
+              'message': '好的，关闭夹爪'},
+    '比个耶': {'step': {'order': 1, 'function': 'routine',
+                       'parameters': {'action': '比个耶'}},
+              'message': '好的，比个耶'},
+    '摇摇头': {'step': {'order': 1, 'function': 'routine',
+                       'parameters': {'action': '摇摇头'}},
+              'message': '好的，摇摇头'},
+    '点点头': {'step': {'order': 1, 'function': 'routine',
+                       'parameters': {'action': '点点头'}},
+              'message': '好的，点点头'},
+    # ── 导航快速指令 ──
+    '去水果区': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['水果区']}},
+              'message': '好的，去水果区看看'},
+    '去饮品区': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['饮品区']}},
+              'message': '好的，去饮品区看看'},
+    '去足球区': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['足球区']}},
+              'message': '好的，去足球区看看'},
+    '回原点': {'step': {'order': 1, 'function': 'navigate', 'parameters': {'targets': ['原点']}},
+               'message': '好的，回原点'},
+    '记录水果区': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '水果区'}},
+                'message': '好的，记录当前位置为水果区'},
+    '记录饮品区': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '饮品区'}},
+                'message': '好的，记录当前位置为饮品区'},
+    '记录足球区': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '足球区'}},
+                'message': '好的，记录当前位置为足球区'},
+    '记录原点': {'step': {'order': 1, 'function': 'save_waypoint', 'parameters': {'name': '原点'}},
+                 'message': '好的，记录当前位置为原点'},
+    '列出目标点': {'step': {'order': 1, 'function': 'list_waypoints', 'parameters': {}},
+                  'message': '好的'},
+    '清空目标点': {'step': {'order': 1, 'function': 'clear_waypoints', 'parameters': {}},
+                  'message': '好的，已清空所有目标点'},
+    '停止导航': {'step': {'order': 1, 'function': 'stop_navigation', 'parameters': {}},
+                 'message': '好的，停止导航'},
+    # 音色切换 (特殊标记，由 text_callback 单独处理)
+    '切换音色': {'__voice_switch__': True},
+    '换一个声音': {'__voice_switch__': True},
+    '换个音色': {'__voice_switch__': True},
+}
+
+
+def _match_fast_command(text):
+    """尝试匹配本地快速指令，返回 (step, message) 或特殊标记 dict 或 None"""
+    clean = text.strip().replace(' ', '').replace('，', '').replace('。', '')
+    if clean in _FAST_COMMANDS:
+        entry = _FAST_COMMANDS[clean]
+        # 特殊指令 (如音色切换) 直接返回 dict
+        if '__voice_switch__' in entry:
+            return entry
+        return entry['step'], entry['message']
+    return None
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  System Prompt (精简版: 保留功能定义，减少示例)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+SYSTEM_PROMPT = """你是机械臂+视觉系统语音助手小星。将用户自然语言转为结构化JSON指令。
+
+回复格式（严格遵守，不要输出解释）：
+1. 先输出: {"message": "简短回复"}
+2. 再输出指令（每个独立JSON）: {"step": {"order": 1, "function": "<功能>", "parameters": {<参数>}}}
+
+=== 功能列表 ===
+
+【视觉分拣/码垛】action: "enter"|"exit"
+  color_sorting / color_stack / label_sorting / label_stack / num_sorting / num_stack
+
+【视觉追踪】action: "enter"|"exit"|"track"
+  color_track: +color("red"|"green"|"blue")
+  label_track: +label(1|2|3)
+  num_track: +num(1|2|3)
+
+【其他视觉】action: "enter"|"exit"
+  color_set / face_track
+
+【YOLO抓取】yolo_pick: {"action":"pick", "shape":"<形状>", "color":"<颜色>(可选)"}
+  形状: 正方体/长方体/圆柱/球体/螺丝刀
+  颜色: 红色/绿色/蓝色
+
+【饮品抓取】drink_pick: {"drink":"<饮品名>"}
+  咖啡/冰红茶/果冻/牛奶/草莓酸奶
+
+【垃圾分类】garbage_sorting: {"garbage_type":"<类型>"}
+  可回收垃圾(塑料瓶/报纸) / 有害垃圾(电池) / 厨余垃圾(香蕉皮) / 其他垃圾(卫生纸)
+
+【机械臂】
+  joint: {"id":1-6, "angle":角度}
+  routine: {"action":"夹爪开"|"夹爪关"|"恢复初始状态"|"比个耶"|"摇摇头"|"点点头"}
+  home: {} / stop: {} / servo: {"action":"enter"|"exit"}
+
+机械臂5+1dof: 1号左右, 2/3/4号前后, 5号夹爪旋转, 6号夹爪开合, 范围[-90,90]度。
+
+
+【导航】
+  navigate: {"targets": ["水果区", "饮品区", "足球区"]}  — 多点顺序导航，targets 为区域名称列表
+    可用区域: 水果区、饮品区、足球区、原点
+    用户说"去水果区看看" → targets=["水果区"]
+    说"先去水果区再去饮品区" → targets=["水果区","饮品区"]
+    说"去水果区再去饮品区再去足球区最后回原点" → targets=["水果区","饮品区","足球区","原点"]
+    注意："原点"是有效目标点，"回到原点"必须作为navigate的最后一个target
+  save_waypoint: {"name": "水果区"}  — 记录当前位置为命名区域
+  clear_waypoints: {}  — 清空所有命名区域
+  list_waypoints: {}  — 列出所有已记录的区域
+  stop_navigation: {}  — 停止当前导航
+
+规则: "开始/开启/启动"→enter, "结束/关闭/停止/退出"→exit, 闲聊只输出message不输出step。
+"""
+
+
+class IntentParserNode(Node):
+
+    def __init__(self):
+        super().__init__('intent_parser_node')
+        self.declare_parameter('api_key', '')
+        self.declare_parameter('base_url',
+                               'https://dashscope.aliyuncs.com/compatible-mode/v1')
+        self.declare_parameter('model', 'qwen-flash')
+        self.declare_parameter('max_history', 10)
+
+        api_key = self.get_parameter('api_key').value
+        if not api_key:
+            api_key = os.environ.get('DASHSCOPE_API_KEY', '')
+        if not api_key:
+            self.get_logger().error('未设置 api_key')
+            return
+
+        base_url = self.get_parameter('base_url').value
+        self.model = self.get_parameter('model').value
+        self.max_history = self.get_parameter('max_history').value
+
+        self.client = OpenAI(base_url=base_url, api_key=api_key)
+
+        # 对话上下文
+        self.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+        self._history_lock = threading.Lock()
+
+        # ── 唤醒状态机 ──
+        self.state = STATE_SLEEP
+        self._timer_lock = threading.Lock()
+        self._timeout_timer = None
+
+        self.sub_text = self.create_subscription(
+            String, 'voice_text', self.text_callback, 10)
+        self.pub_intent = self.create_publisher(String, 'voice_command', 10)
+        self.pub_speak = self.create_publisher(String, 'speak_text', 10)
+        self.pub_voice_switch = self.create_publisher(String, 'voice_switch', 10)
+
+        # 当前音色索引 (与 voice_params.yaml 中的默认音色一致)
+        self._voice_idx = 0
+
+        self.get_logger().info(
+            f'意图解析节点已启动 (模型: {self.model}, 状态: 沉睡)')
+
+    # ══════════════════════════════════════════════════════════════════════════
+    #  唤醒词检测
+    # ══════════════════════════════════════════════════════════════════════════
+
+    def _is_wake_word(self, text):
+        """检查文本是否包含唤醒词"""
+        clean = text.replace(' ', '').replace('，', '').replace('。', '')
+        for w in WAKE_WORDS:
+            if w in clean:
+                return True
+        return False
+
+    def _is_dismiss(self, text):
+        """检查是否为退下指令"""
+        clean = text.replace(' ', '').replace('，', '').replace('。', '')
+        return DISMISS_WORD in clean
+
+    # ══════════════════════════════════════════════════════════════════════════
+    #  状态切换
+    # ══════════════════════════════════════════════════════════════════════════
+
+    def _enter_awake(self):
+        """进入唤醒状态"""
+        self.state = STATE_AWAKE
+        self._speak(WAKE_REPLY)
+        self._reset_timeout()
+        self.get_logger().info('🔔 已唤醒')
+
+    def _enter_sleep(self):
+        """进入沉睡状态"""
+        self.state = STATE_SLEEP
+        self._cancel_timeout()
+        self._speak(DISMISS_REPLY)
+        self.get_logger().info('💤 已沉睡')
+
+    def _reset_timeout(self):
+        """重置超时计时器"""
+        with self._timer_lock:
+            if self._timeout_timer:
+                self._timeout_timer.cancel()
+            self._timeout_timer = threading.Timer(
+                TIMEOUT_SEC, self._on_timeout)
+            self._timeout_timer.daemon = True
+            self._timeout_timer.start()
+
+    def _cancel_timeout(self):
+        """取消超时计时器"""
+        with self._timer_lock:
+            if self._timeout_timer:
+                self._timeout_timer.cancel()
+                self._timeout_timer = None
+
+    def _on_timeout(self):
+        """超时回调：自动回到沉睡"""
+        self.get_logger().info(f'⏰ {TIMEOUT_SEC}秒无指令，自动沉睡')
+        self._enter_sleep()
+
+    def _speak(self, text):
+        """发送TTS"""
+        msg = String()
+        msg.data = text
+        self.pub_speak.publish(msg)
+
+    def _handle_voice_switch(self):
+        """切换音色: 循环 VOICE_CYCLE，通知 TTS 节点并播报"""
+        self._voice_idx = (self._voice_idx + 1) % len(VOICE_CYCLE)
+        new_voice = VOICE_CYCLE[self._voice_idx]
+        name = VOICE_NAMES.get(new_voice, new_voice)
+
+        # 先通知 TTS 节点切换音色
+        switch_msg = String()
+        switch_msg.data = new_voice
+        self.pub_voice_switch.publish(switch_msg)
+
+        self.get_logger().info(f'🎤 切换音色: {new_voice} ({name})')
+        # 播报新音色名 (此时 TTS 已切换)
+        self._speak(f'已切换为{name}')
+
+    # ══════════════════════════════════════════════════════════════════════════
+    #  语音文本回调
+    # ══════════════════════════════════════════════════════════════════════════
+
+    def text_callback(self, msg):
+        text = msg.data
+        self.get_logger().info(f'收到文本: {text}')
+
+        # ── 沉睡状态 ──
+        if self.state == STATE_SLEEP:
+            if self._is_wake_word(text):
+                self._enter_awake()
+            else:
+                self.get_logger().info('💤 沉睡中，忽略')
+            return
+
+        # ── 唤醒状态 ──
+        # 检查退下指令
+        if self._is_dismiss(text):
+            self._enter_sleep()
+            return
+
+        # 重置超时计时器
+        self._reset_timeout()
+
+        # ── 快速指令通道 (不走LLM) ──
+        fast = _match_fast_command(text)
+        if fast is not None:
+            # 特殊处理: 音色切换
+            if isinstance(fast, dict) and fast.get('__voice_switch__'):
+                self._handle_voice_switch()
+                return
+            step, message = fast
+            self.get_logger().info(f'⚡ 快速指令: {text}')
+            self._speak(message)
+            cmd_msg = String()
+            cmd_msg.data = json.dumps(step, ensure_ascii=False)
+            self.pub_intent.publish(cmd_msg)
+            return
+
+        # ── 正常处理：传给LLM ──
+        threading.Thread(
+            target=self._parse_async, args=(text,), daemon=True).start()
+
+    # ══════════════════════════════════════════════════════════════════════════
+    #  LLM 解析
+    # ══════════════════════════════════════════════════════════════════════════
+
+    def _parse_async(self, text):
+        try:
+            with self._history_lock:
+                messages = list(self.messages)
+                messages.append({"role": "user", "content": text})
+
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                stream=True,
+            )
+
+            buffer = ""
+            message_text = ""
+            assistant_reply = ""
+
+            for chunk in response:
+                if not hasattr(chunk, 'choices') or not chunk.choices:
+                    continue
+                delta = chunk.choices[0].delta
+                content = getattr(delta, 'content', None)
+                if not content:
+                    continue
+                buffer += content
+                assistant_reply += content
+
+                # message 一提取到就立刻给 TTS
+                if not message_text:
+                    idx = buffer.find('"message"')
+                    if idx != -1:
+                        q1 = buffer.find('"', idx + 9)
+                        q2 = buffer.find('"', q1 + 1)
+                        if q1 != -1 and q2 != -1:
+                            message_text = buffer[q1 + 1:q2]
+                            self.get_logger().info(f'LLM回复: {message_text}')
+                            speak_msg = String()
+                            speak_msg.data = message_text
+                            self.pub_speak.publish(speak_msg)
+
+                buffer = self._extract_steps(buffer)
+
+            # 循环结束后，对剩余buffer再提取一次
+            self._extract_steps(buffer)
+
+            if assistant_reply:
+                self.get_logger().info(f'LLM完整回复: {assistant_reply}')
+                with self._history_lock:
+                    self.messages.append({"role": "user", "content": text})
+                    self.messages.append({"role": "assistant", "content": assistant_reply})
+                    max_msgs = 1 + self.max_history * 2
+                    if len(self.messages) > max_msgs:
+                        self.messages = [self.messages[0]] + self.messages[-(max_msgs - 1):]
+
+        except Exception as e:
+            self.get_logger().error(f'LLM调用失败: {e}')
+
+    def _extract_steps(self, buffer):
+        while True:
+            start = buffer.find('{')
+            if start == -1:
+                break
+            depth = 0
+            end = -1
+            for i in range(start, len(buffer)):
+                if buffer[i] == '{':
+                    depth += 1
+                elif buffer[i] == '}':
+                    depth -= 1
+                    if depth == 0:
+                        end = i
+                        break
+            if end == -1:
+                break
+            json_str = buffer[start:end + 1]
+            try:
+                obj = json.loads(json_str)
+                if 'step' in obj:
+                    step = obj['step']
+                    cmd_msg = String()
+                    cmd_msg.data = json.dumps(step, ensure_ascii=False)
+                    self.pub_intent.publish(cmd_msg)
+                    self.get_logger().info(f'发布指令: {cmd_msg.data}')
+            except json.JSONDecodeError:
+                pass
+            buffer = buffer[end + 1:]
+
+        return buffer
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = IntentParserNode()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()

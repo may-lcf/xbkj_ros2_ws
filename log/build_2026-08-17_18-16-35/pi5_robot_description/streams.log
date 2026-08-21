@@ -1,0 +1,122 @@
+[0.591s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[0.865s] -- The C compiler identification is GNU 13.3.0
+[1.175s] -- The CXX compiler identification is GNU 13.3.0
+[1.231s] -- Detecting C compiler ABI info
+[1.596s] -- Detecting C compiler ABI info - done
+[1.618s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.621s] -- Detecting C compile features
+[1.623s] -- Detecting C compile features - done
+[1.648s] -- Detecting CXX compiler ABI info
+[2.077s] -- Detecting CXX compiler ABI info - done
+[2.108s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.111s] -- Detecting CXX compile features
+[2.112s] -- Detecting CXX compile features - done
+[2.119s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[2.618s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[3.306s] -- Configuring done (2.7s)
+[3.310s] -- Generating done (0.0s)
+[3.314s] -- Build files have been written to: /home/webotpi/ros2_ws/build/pi5_robot_description
+[3.332s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[3.333s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/pi5_robot_description -- -j4 -l4
+[3.444s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/pi5_robot_description -- -j4 -l4
+[3.492s] Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/pi5_robot_description
+[3.520s] -- Install configuration: ""
+[3.520s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf
+[3.520s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak2
+[3.521s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak
+[3.521s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf
+[3.521s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro.bak
+[3.521s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak_mirror
+[3.521s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_car.urdf.xacro
+[3.521s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak_20260817_110004
+[3.522s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro
+[3.522s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch
+[3.522s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/nav2_navigation.launch.py
+[3.522s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/__pycache__
+[3.522s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/__pycache__/rtabmap_3d_mapping.launch.cpython-312.pyc
+[3.523s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/nav2_navigation_with_depth.launch.py
+[3.523s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/voice_navigation.launch.py
+[3.523s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/view_robot.launch.py
+[3.524s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/slam_mapping.launch.py
+[3.524s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_3d_mapping.launch.py
+[3.525s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/multi_waypoint_navigation.launch.py
+[3.525s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_3d_mapping.launch.py.bak_20260817_110004
+[3.526s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_3d_mapping.launch.py.bak
+[3.526s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_3d_mapping.launch.py.bak2
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/rtabmap.rviz
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/view_robot.rviz
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml.bak2
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/slam_toolbox_mapping.yaml
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/waypoint_nav.rviz
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/collision_monitor_params.yaml
+[3.531s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/named_waypoints.yaml
+[3.532s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/arm_horizontal.yaml
+[3.532s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/collision_monitor_params_backup.yaml
+[3.532s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2.rviz
+[3.532s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params_rpp_backup.yaml
+[3.532s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml.bak
+[3.532s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes
+[3.533s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link5.STL
+[3.534s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/lbw.STL
+[3.543s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link3.STL
+[3.548s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link1.STL
+[3.548s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link6.STL
+[3.549s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link4.STL
+[3.552s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link2.STL
+[3.553s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link8_r.STL
+[3.556s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/base_link.STL
+[3.564s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/lfw.STL
+[3.575s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/rbw.STL
+[3.580s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link8_r.STL
+[3.583s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link9_l.STL
+[3.585s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link7_r.STL
+[3.588s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link5.STL
+[3.588s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link4.STL
+[3.588s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link6_r.STL
+[3.588s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link7.STL
+[3.591s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link11_l.STL
+[3.592s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link3.STL
+[3.594s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link2.STL
+[3.597s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link2.STL
+[3.597s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link9_l.STL
+[3.597s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link4.STL
+[3.600s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link3.STL
+[3.602s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link1.STL
+[3.603s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link11_l.STL
+[3.604s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link5.STL
+[3.607s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/rfw.STL
+[3.620s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link10_l.STL
+[3.699s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link7_r.STL
+[3.699s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link10_l.STL
+[3.699s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_base_link.STL
+[3.699s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link1.STL
+[3.700s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link6_r.STL
+[3.700s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/odom_only_node.py
+[3.700s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/cmd_vel_bridge_node.py
+[3.700s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/goal_pose_bridge.py
+[3.700s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/waypoint_navigator.py
+[3.700s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/nav_executor_node.py
+[3.701s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/yolo_zone_detect_node.py
+[3.701s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/arm_fixed_pose_node.py
+[3.701s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/depth_convert_node.py
+[3.701s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/save_map.sh
+[3.701s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/verify_urdf.sh
+[3.701s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/waypoint_control.sh
+[3.702s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/package_run_dependencies/pi5_robot_description
+[3.702s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/parent_prefix_path/pi5_robot_description
+[3.702s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.sh
+[3.702s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.dsv
+[3.702s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.sh
+[3.702s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.dsv
+[3.702s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.bash
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.sh
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.zsh
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.dsv
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.dsv
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/packages/pi5_robot_description
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig.cmake
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig-version.cmake
+[3.703s] -- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.xml
+[3.706s] Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/pi5_robot_description

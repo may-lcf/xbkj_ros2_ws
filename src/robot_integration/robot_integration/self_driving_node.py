@@ -1,24 +1,53 @@
 #!/usr/bin/env python3
 """
 self_driving_node.py — 深度学习自动驾驶节点
+============================================
 
-双模式巡线状态机 + YOLO交通标志识别
-- 状态A: 巡黄线（HSV黄色阈值 + PID）
-- 状态B: 巡黑线（HSV黑色阈值 + PID）
-- 交通标志: 左转/右转/红灯/绿灯
-- 状态转换: A→B（右转标志+完成右转）, B→A（转向计数/里程计阈值）
+功能概述:
+  双模式巡线状态机 + YOLO交通标志识别的自动驾驶节点。
+  通过HSV颜色分割检测地面引导线，结合YOLO识别交通标志实现自主导航。
+  相机为眼在手上配置（深度相机安装在机械臂夹爪）。
 
-订阅:
-  /aurora/rgb/image_raw   — 相机图像
-  /aurora/depth/image_raw — 深度图像
-  /odom                   — 里程计
-  /yolo/detections        — YOLO检测结果(JSON)
-  /self_driving/control   — 外部控制指令
+巡线双模式:
+  状态A (YELLOW): 巡黄线 — HSV黄色阈值 + PID转向，右转标志触发切换到状态B
+  状态B (BLACK):  巡黑线 — HSV黑色阈值 + PID转向，满足条件自动切回状态A
 
-发布:
-  /cmd_vel                — 速度指令
-  /self_driving/status    — 状态(JSON)
-  /self_driving/debug_image — 调试图像
+状态转换逻辑:
+  A→B: YOLO检测到右转标志(连续N帧确认) → 执行固定角度右转 → 重置里程计 → 切换黑线模式
+  B→A(条件一): 交通标志转向计数 ≥ 2 → 切回黄线模式
+  B→A(条件二): 交通标志转向计数 = 1 且 odom_x ≥ 1.3m → 切回黄线模式
+  B→A判断窗口: 交通标志转向后开启2秒窗口，窗口内持续检测转换条件
+
+YOLO交通标志处理:
+  红灯: 面积占比 > 3.5% → 立即停车(任何状态生效)，红灯消失/绿灯亮起自动恢复
+  绿灯: 面积占比 > 7.6% → 解除红灯停车，恢复行驶
+  右转/左转: 连续帧确认(黄线6帧/黑线8帧) → 执行固定角度转向(约45°)
+  停车标志: 面积在2.1%~5.0%范围内 → 横移2秒后停止任务
+
+特殊转向:
+  黄线阈值转向: 巡黄线时err > -0.27且冷却>5秒，触发固定角度右转修正(非交通标志)
+  交通标志转向: 左转/右转标志确认后执行，转向后计入turn_count并开启2秒窗口
+
+其他功能:
+  机械臂初始化: 启动时移到观察姿态，等待深度/RGB就绪后开始巡线
+  里程计监控: 实时打印X/Y/YAW，A→B切换时重置
+  丢线保护: 连续丢线超过阈值自动停车
+  调试可视化: 发布带标注的调试图像(掩码、ROI、线点、模式、误差、转向计数等)
+
+ROS2接口:
+  订阅: /aurora/rgb/image_raw   — 相机图像
+        /aurora/depth/image_raw — 深度图像
+        /odom                   — 里程计
+        /yolo/detections        — YOLO检测结果(JSON)
+        /self_driving/control   — 外部控制指令(start/stop/reset)
+  发布: /cmd_vel                — 速度指令
+        /arm_command            — 机械臂串口命令
+        /self_driving/status    — 状态(JSON: state/line_mode/found/err/tgt/lr/lost/turn_count/odom_x/stopped_by_red)
+        /self_driving/debug_image — 调试图像
+  服务: /reset_odometry         — 里程计重置(A→B时调用)
+
+参数: 通过ROS2 parameter配置，黄线/黑线各有独立HSV、PID、ROI、速度参数
+状态机: IDLE → INIT_ARM → FOLLOWING / TURNING / PARKING → STOPPED
 """
 
 import math

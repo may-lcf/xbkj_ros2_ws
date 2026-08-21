@@ -1,0 +1,752 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pi5_arm_car">
+
+    <!-- ======================================== -->
+    <!--          属性定义 (Properties)           -->
+    <!-- ======================================== -->
+
+    <!-- 车身尺寸 -->
+    <xacro:property name="chassis_length" value="0.268"/>
+    <xacro:property name="chassis_width" value="0.143"/>
+    <xacro:property name="chassis_height" value="0.09"/>
+
+    <!-- 轮子尺寸 -->
+    <xacro:property name="wheel_radius" value="0.04"/>
+    <xacro:property name="wheel_thickness" value="0.04"/>
+
+    <!-- 轮距 -->
+    <xacro:property name="wheel_separation_front_rear" value="0.173"/>
+    <xacro:property name="wheel_separation_left_right" value="0.213"/>
+
+    <!-- 雷达尺寸 -->
+    <xacro:property name="lidar_radius" value="0.025"/>
+    <xacro:property name="lidar_height" value="0.053"/>
+
+    <!-- 安装位置 -->
+    <xacro:property name="arm_mount_x" value="-0.05"/>
+    <xacro:property name="arm_mount_y" value="0.0"/>
+    <xacro:property name="lidar_mount_x" value="0.109"/>
+    <xacro:property name="lidar_mount_y" value="0.0"/>
+
+    <!-- 计算高度 -->
+    <xacro:property name="chassis_bottom_z" value="${wheel_radius}"/>
+    <xacro:property name="chassis_center_z" value="${chassis_bottom_z + chassis_height/2}"/>
+    <xacro:property name="chassis_top_z" value="${chassis_bottom_z + chassis_height}"/>
+
+    <!-- ======================================== -->
+    <!--            base_footprint                -->
+    <!-- ======================================== -->
+    <link name="base_footprint">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <!-- ======================================== -->
+    <!--           底盘框架 (Chassis Frame)        -->
+    <!-- ======================================== -->
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 ${chassis_center_z}" rpy="0 0 0"/>
+            <mass value="2.0"/>
+            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 ${chassis_center_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0.1 0.1 0.8 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 ${chassis_center_z}" rpy="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.043" rpy="0 0 0"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--           麦克纳姆轮 (Mecanum Wheels)     -->
+    <!-- ======================================== -->
+
+    <!-- 左前轮 -->
+    <link name="wheel_left_front">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_front_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left_front"/>
+        <origin xyz="${wheel_separation_front_rear/2} ${wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- 右前轮 -->
+    <link name="wheel_right_front">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_right_front_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right_front"/>
+        <origin xyz="${wheel_separation_front_rear/2} ${-wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- 左后轮 -->
+    <link name="wheel_left_rear">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_rear_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left_rear"/>
+        <origin xyz="${-wheel_separation_front_rear/2} ${wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- 右后轮 -->
+    <link name="wheel_right_rear">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <material name="dark_grey">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_right_rear_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right_rear"/>
+        <origin xyz="${-wheel_separation_front_rear/2} ${-wheel_separation_left_right/2} ${wheel_radius}" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--              激光雷达 (Lidar)             -->
+    <!-- ======================================== -->
+    <link name="laser">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="laser"/>
+        <origin xyz="${lidar_mount_x} ${lidar_mount_y} ${chassis_top_z + lidar_height/2}" rpy="0 0 -1.5708"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--          深度相机 (Depth Camera)          -->
+    <!-- ======================================== -->
+    <link name="depth_camera_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.03 0.06 0.03"/>
+            </geometry>
+            <material name="green">
+                <color rgba="0.1 0.8 0.1 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="depth_camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="depth_camera_link"/>
+        <origin xyz="0.13 0 ${chassis_top_z + 0.015}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="depth_camera_optical_frame"/>
+
+    <joint name="depth_camera_optical_joint" type="fixed">
+        <parent link="depth_camera_link"/>
+        <child link="depth_camera_optical_frame"/>
+        <origin xyz="0 0 0" rpy="-${pi/2} 0 -${pi/2}"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--     机械臂基座 (from local arm_car.urdf)  -->
+    <!-- ======================================== -->
+    <!-- 原名: base_link, 现重命名为 arm_base_link 避免与底盘冲突 -->
+    <link name="arm_base_link">
+        <inertial>
+            <origin
+                xyz="0.00759386197431342 -1.60818081698655E-08 -0.0613385852600769"
+                rpy="0 0 0" />
+            <mass value="2.24934693844902" />
+            <inertia
+                ixx="0.000959170031237064"
+                ixy="-2.66565872909367E-10"
+                ixz="8.08919655194909E-08"
+                iyy="0.00123899039630618"
+                iyz="9.11524934277028E-11"
+                izz="0.00182953578031719" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_base_link.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_base_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="arm_base_link"/>
+        <origin xyz="${arm_mount_x} ${arm_mount_y} ${chassis_top_z}" rpy="0 0 0"/>
+    </joint>
+
+    <!-- ======================================== -->
+    <!--     机械臂关节1 (link1 → arm_Link1)       -->
+    <!-- ======================================== -->
+    <link name="arm_Link1">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0" />
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link1.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link1.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint1" type="revolute">
+        <origin xyz="0.030002 0 0.061" rpy="0 0 0" />
+        <parent link="arm_base_link" />
+        <child link="arm_Link1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-2.5" upper="2.5" effort="1.96" velocity="3.14" />
+    </joint>
+
+    <!-- ======================================== -->
+    <!--     机械臂关节2 (link2 → arm_Link2)       -->
+    <!-- ======================================== -->
+    <link name="arm_Link2">
+        <inertial>
+            <origin xyz="0.00015064 0.046235 -0.025445" rpy="0 0 0" />
+            <mass value="0.02373" />
+            <inertia ixx="8.1431E-06" ixy="1.4394E-21" ixz="-1.8827E-21"
+                     iyy="6.3574E-06" iyz="-5.0402E-20" izz="4.754E-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link2.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link2.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint2" type="revolute">
+        <origin xyz="-0.00030442 -0.025998 0.052401" rpy="1.5708 0 -0.0073705" />
+        <parent link="arm_Link1" />
+        <child link="arm_Link2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.7" upper="1.7" effort="1.96" velocity="3.14" />
+    </joint>
+
+    <!-- ======================================== -->
+    <!--     机械臂关节3 (link3 → arm_Link3)       -->
+    <!-- ======================================== -->
+    <link name="arm_Link3">
+        <inertial>
+            <origin xyz="-0.000846198773647021 -0.0426438100499727 0.0256581432648642" rpy="0 0 0" />
+            <mass value="0.0739910116221332" />
+            <inertia ixx="2.36628775695945E-05" ixy="-2.95266860477663E-10" ixz="-8.76799121000706E-16"
+                     iyy="1.42532367935571E-05" iyz="1.40758212397431E-12" izz="1.44522741548222E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link3.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link3.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint3" type="revolute">
+        <origin xyz="0.00031113 0.10527 2.1364E-05" rpy="3.1416 0 0" />
+        <parent link="arm_Link2" />
+        <child link="arm_Link3" />
+        <axis xyz="0 0 1" />
+        <limit lower="-2.5" upper="2.5" effort="1.96" velocity="3.14" />
+    </joint>
+
+    <!-- ======================================== -->
+    <!--     机械臂关节4 (link4 → arm_Link4)       -->
+    <!-- ======================================== -->
+    <link name="arm_Link4">
+        <inertial>
+            <origin xyz="0.00118251946167684 0.0459939005091535 -0.0263028627041846" rpy="0 0 0" />
+            <mass value="0.0465954575037121" />
+            <inertia ixx="1.22289034434654E-05" ixy="-2.35694408212891E-07" ixz="9.86781380371103E-08"
+                     iyy="1.04329117561629E-05" iyz="2.15494079326588E-09" izz="1.44283421403718E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link4.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link4.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint4" type="revolute">
+        <origin xyz="-0.00022559 -0.086162 0" rpy="-3.1416 0 0" />
+        <parent link="arm_Link3" />
+        <child link="arm_Link4" />
+        <axis xyz="0 0 1" />
+        <limit lower="-2.5" upper="2.5" effort="1.96" velocity="3.14" />
+    </joint>
+
+    <!-- ======================================== -->
+    <!--     机械臂关节5 (link5 → arm_Link5)       -->
+    <!-- ======================================== -->
+    <link name="arm_Link5">
+        <inertial>
+            <origin xyz="0.0182700077944121 -0.00308018445869763 0.0237844714273773" rpy="0 0 0" />
+            <mass value="0.0384816371083352" />
+            <inertia ixx="6.75172578039357E-06" ixy="-5.14855511160552E-08" ixz="8.28543119969111E-11"
+                     iyy="5.80090716659153E-06" iyz="2.69315322816852E-10" izz="9.48040244004794E-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link5.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link5.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint5" type="revolute">
+        <origin xyz="-0.0020798 0.072064 -0.02625" rpy="-1.5708 0 0.031052" />
+        <parent link="arm_Link4" />
+        <child link="arm_Link5" />
+        <axis xyz="0 0 1" />
+        <limit lower="-2.5" upper="2.5" effort="1.96" velocity="3.14" />
+    </joint>
+
+    <!-- ======================================== -->
+    <!--  夹爪右指1 (link6_r → arm_Link6_r)        -->
+    <!-- ======================================== -->
+    <link name="arm_Link6_r">
+        <inertial>
+            <origin xyz="-0.00225277630224294 0.00431568735406512 -0.00108958454489374" rpy="0 0 0" />
+            <mass value="0.00272937769015016" />
+            <inertia ixx="2.56904566805748E-07" ixy="1.13894594728558E-07" ixz="5.65175871853217E-09"
+                     iyy="1.64590046981668E-07" iyz="-5.25218498588233E-09" izz="4.1666631643561E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link6_r.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link6_r.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint6_r" type="revolute">
+        <origin xyz="-0.0030667 -0.014003 0.025156" rpy="1.5708 -0.23309 1.5708" />
+        <parent link="arm_Link5" />
+        <child link="arm_Link6_r" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1" upper="1" effort="1.96" velocity="3.14" />
+    </joint>
+
+    <!-- 夹爪右指2 (link7_r → arm_Link7_r) -->
+    <link name="arm_Link7_r">
+        <inertial>
+            <origin xyz="0.00627969909175661 -0.0209128000248698 -0.00697447876082605" rpy="0 0 0" />
+            <mass value="0.00309763757394028" />
+            <inertia ixx="7.21936337985926E-07" ixy="1.41281539456659E-07" ixz="-3.38997917133575E-16"
+                     iyy="6.93112713175571E-08" iyz="9.01211914596464E-17" izz="7.64323746538838E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link7_r.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link7_r.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint7_r" type="revolute">
+        <origin xyz="-0.015628 0.025458 -0.0037472" rpy="-3.1416 0.031052 -0.23309" />
+        <parent link="arm_Link6_r" />
+        <child link="arm_Link7_r" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1" upper="1" effort="1.96" velocity="3.14" />
+        <mimic joint="arm_joint6_r" multiplier="1" offset="0" />
+    </joint>
+
+    <!-- 夹爪右指支撑 (link8_r → arm_Link8_r) -->
+    <link name="arm_Link8_r">
+        <inertial>
+            <origin xyz="-0.00838739408990995 0.0136712753448239 0.00458501836359205" rpy="0 0 0" />
+            <mass value="0.000743480445208501" />
+            <inertia ixx="4.61046126375624E-08" ixy="2.31440681398751E-08" ixz="4.10199739723215E-10"
+                     iyy="2.32543238906776E-08" iyz="-9.21362358516884E-10" izz="5.41640750174382E-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link8_r.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link8_r.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint8_r" type="revolute">
+        <origin xyz="-0.007772 -0.0042433 0.045" rpy="1.5708 -0.23309 1.5708" />
+        <parent link="arm_Link5" />
+        <child link="arm_Link8_r" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1" upper="1" effort="1.96" velocity="3.14" />
+        <mimic joint="arm_joint6_r" multiplier="1" offset="0" />
+    </joint>
+
+    <!-- 夹爪左指1 (link9_l → arm_Link9_l) -->
+    <link name="arm_Link9_l">
+        <inertial>
+            <origin xyz="0.00402796594496122 -0.0046736228704804 -0.00567194702285925" rpy="0 0 0" />
+            <mass value="0.00223915294191889" />
+            <inertia ixx="1.88268447257933E-07" ixy="1.25478469250389E-07" ixz="-1.51997596691856E-16"
+                     iyy="2.07523408531225E-07" iyz="1.6022272157422E-16" izz="3.87671871229786E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link9_l.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link9_l.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint9_l" type="revolute">
+        <origin xyz="-0.011422 0.013402 0.025" rpy="-1.5708 0 1.6018" />
+        <parent link="arm_Link5" />
+        <child link="arm_Link9_l" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1" upper="1" effort="1.96" velocity="3.14" />
+        <mimic joint="arm_joint6_r" multiplier="1" offset="0" />
+    </joint>
+
+    <!-- 夹爪左指2 (link10_l → arm_Link10_l) -->
+    <link name="arm_Link10_l">
+        <inertial>
+            <origin xyz="-0.0060601364343241 0.0209128000472325 0.00716608134569278" rpy="0 0 0" />
+            <mass value="0.0030976375735952" />
+            <inertia ixx="7.21977212463505E-07" ixy="1.41213491896946E-07" ixz="1.31535990033743E-09"
+                     iyy="6.93112542760682E-08" iyz="-4.38634574630765E-09" izz="7.64282889081829E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link10_l.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link10_l.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint10_l" type="revolute">
+        <origin xyz="0.021111 -0.021315 -0.0031" rpy="3.1416 0.031052 0" />
+        <parent link="arm_Link9_l" />
+        <child link="arm_Link10_l" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1" upper="1" effort="1.96" velocity="3.14" />
+        <mimic joint="arm_joint6_r" multiplier="1" offset="0" />
+    </joint>
+
+    <!-- 夹爪左指支撑 (link11_l → arm_Link11_l) -->
+    <link name="arm_Link11_l">
+        <inertial>
+            <origin xyz="0.00986422531863041 -0.00978579001132429 -0.00471126478496128" rpy="0 0 0" />
+            <mass value="0.000863402786049133" />
+            <inertia ixx="3.48677412905465E-08" ixy="2.58221530327634E-08" ixz="-4.92624428496181E-16"
+                     iyy="3.52800385482673E-08" iyz="1.43708113170567E-16" izz="5.48211554780308E-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link11_l.STL" />
+            </geometry>
+            <material name="arm_grey">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://pi5_robot_description/meshes/arm_Link11_l.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="arm_joint11_l" type="revolute">
+        <origin xyz="-0.0080204 0.0037528 0.045" rpy="-1.5708 0 1.6018" />
+        <parent link="arm_Link5" />
+        <child link="arm_Link11_l" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1" upper="1" effort="1.96" velocity="3.14" />
+        <mimic joint="arm_joint6_r" multiplier="1" offset="0" />
+    </joint>
+
+    <!-- ======================================== -->
+    <!--           ROS2 Control                   -->
+    <!-- ======================================== -->
+    <ros2_control name="pi5_arm_car" type="system">
+        <hardware>
+            <plugin>mock_components/GenericSystem</plugin>
+        </hardware>
+
+        <!-- 麦克纳姆轮关节 -->
+        <joint name="wheel_left_front_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="wheel_right_front_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="wheel_left_rear_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="wheel_right_rear_joint">
+            <command_interface name="velocity"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <!-- 机械臂关节 (位置控制) -->
+        <joint name="arm_joint1">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint2">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint3">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint4">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint5">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint6_r">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+
+</robot>

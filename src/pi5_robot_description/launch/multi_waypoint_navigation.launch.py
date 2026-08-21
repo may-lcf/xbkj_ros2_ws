@@ -1,11 +1,46 @@
 #!/usr/bin/env python3
 """
-多点导航 Launch 文件
+multi_waypoint_navigation.launch.py — 多点顺序导航 Launch
+======================================================
 
-基于 nav2_navigation.launch.py，增加 waypoint_navigator 节点。
-用户在 RViz 中用 "Publish Point" 工具标记目标点，然后发送 start 命令开始顺序导航。
+功能概述:
+  基于 Nav2 导航栈的多点顺序导航系统。在 nav2_navigation 基础上增加
+  waypoint_navigator 节点，用户通过 RViz 的 "Publish Point" 工具依次标记
+  目标点，然后发送 start 命令，机器人按顺序导航至每个目标点。
 
-用法：
+启动节点:
+  基础层:
+    - robot_state_publisher: 发布 URDF 静态 TF
+    - cmd_vel_bridge_node: 串口桥接(里程计查询 + 速度指令下发)
+    - rplidar_c1: RPLidar C1 激光雷达驱动
+    - rviz2: 可视化(默认开启，使用 waypoint_nav.rviz 配置)
+    - waypoint_navigator: 多点导航核心节点(RViz标记点 → 顺序Nav2导航)
+
+  Nav2 导航栈(延时3秒启动):
+    - map_server: 静态地图服务
+    - amcl: 自适应蒙特卡洛定位
+    - controller_server: 局部路径跟踪(DWB/MPPI)
+    - planner_server: 全局路径规划(NavFn/Smac)
+    - behavior_server: 机器人行为(旋转、后退、等待等)
+    - bt_navigator: 行为树导航状态机
+    - waypoint_follower: 航点跟踪器
+    - velocity_smoother: 速度平滑滤波
+    - collision_monitor: 硬安全层(独立于Nav2生命周期，监测/scan)
+    - lifecycle_manager: 统一管理所有Nav2 LifecycleNode
+
+数据流:
+  waypoint_navigator → /goal_pose → Nav2 bt_navigator → controller_server
+    → /unsmoothed_cmd_vel → velocity_smoother → /cmd_vel_smoothed
+    → collision_monitor → /cmd_vel_safety → cmd_vel_bridge_node → STM32
+
+参数:
+  map: 地图YAML路径(默认 map_01.yaml)
+  rviz: 是否启动RViz(默认true)
+  wait_time: 到达每个目标点后的等待时间(默认2.0秒)
+  max_retries: 每个目标点的最大重试次数(默认1)
+  auto_yaw: 到达后是否自动调整朝向(默认true)
+
+用法:
   ros2 launch pi5_robot_description multi_waypoint_navigation.launch.py
   ros2 launch pi5_robot_description multi_waypoint_navigation.launch.py rviz:=true
   ros2 launch pi5_robot_description multi_waypoint_navigation.launch.py wait_time:=3.0 max_retries:=2
@@ -25,7 +60,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node, LifecycleNode
 from lifecycle_msgs.msg import Transition
-import xacro
+# import xacro (not needed for plain URDF)
 
 
 def generate_launch_description():
@@ -44,9 +79,9 @@ def generate_launch_description():
     # ========== 基础节点 ==========
 
     # 1. Robot State Publisher
-    urdf_file = os.path.join(pi5_robot_desc_pkg, 'urdf', 'pi5_arm_robot.urdf.xacro')
-    robot_description_config = xacro.process_file(urdf_file)
-    robot_description = {'robot_description': robot_description_config.toxml()}
+    urdf_file = os.path.join(pi5_robot_desc_pkg, 'urdf', 'arm_car.urdf')
+    with open(urdf_file, 'r') as f:
+        robot_description = {'robot_description': f.read()}
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -74,6 +109,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(rplidar_ros_pkg, 'launch', 'rplidar_c1_launch.py')
         ),
+        launch_arguments={'frame_id': 'laser_link'}.items(),
     )
 
     # 4. RViz2 (默认开启，使用 waypoint_nav.rviz 配置)

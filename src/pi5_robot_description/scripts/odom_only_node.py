@@ -55,7 +55,7 @@ class OdomOnlyNode(Node):
         
         self.tf_broadcaster = TransformBroadcaster(self)
         self.static_tf_broadcaster = StaticTransformBroadcaster(self)
-        self._publish_static_tf()
+        # self._publish_static_tf()  # TF now in URDF
         
         self.odom_pub = self.create_publisher(Odometry, '/odom', 10)
         self.reset_odom_srv = self.create_service(Trigger, '/reset_odometry', self._reset_odometry_cb)

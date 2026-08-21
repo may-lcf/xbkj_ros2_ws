@@ -1,10 +1,42 @@
 #!/usr/bin/env python3
 """
-Slam Toolbox 建图 Launch 文件 (LifecycleNode 版本)
+slam_mapping.launch.py — Slam Toolbox 2D 建图 Launch (LifecycleNode 版)
+=====================================================================
 
-关键修复：
-  sync_slam_toolbox_node 是 lifecycle 节点，必须使用 LifecycleNode action
+功能概述:
+  使用 Slam Toolbox 进行2D激光建图。通过 odom_only_node 获取轮式里程计，
+  RPLidar C1 提供激光扫描，Slam Toolbox 实时构建2D占据栅格地图。
+  采用 LifecycleNode 管理，确保参数正确加载。
+
+启动节点:
+  传感器层:
+    - odom_only_node: 轮式里程计(只读模式，不写串口，仅发布/odom)
+    - robot_state_publisher: 发布 URDF 静态 TF
+    - rplidar_c1: RPLidar C1 激光雷达驱动(frame_id=laser_link)
+
+  建图核心:
+    - slam_toolbox: Slam Toolbox 同步建图节点(LifecycleNode)
+      - 订阅: /scan (激光), /odom (里程计), /tf, /tf_static
+      - 发布: /map, /map_metadata
+      - 自动生命周期管理: configure → activate
+
+关键修复:
+  sync_slam_toolbox_node 是 LifecycleNode，必须使用 LifecycleNode action
   并触发 configure → activate 生命周期转换，否则大部分参数不会被加载。
+
+与导航模式的区别:
+  - 使用 odom_only_node(只读) 而非 cmd_vel_bridge_node(双职责)
+  - 不启动 Nav2 导航栈、collision_monitor 等
+  - 仅建图，不导航
+
+参数:
+  use_sim_time: 使用仿真时间(默认false)
+  autostart: 自动启动生命周期(默认true)
+  use_lifecycle_manager: 使用外部生命周期管理器(默认false)
+
+用法:
+  ros2 launch pi5_robot_description slam_mapping.launch.py
+  ros2 launch pi5_robot_description slam_mapping.launch.py use_sim_time:=true
 """
 
 import os
@@ -64,11 +96,24 @@ def launch_setup(context):
         }],
     )
 
+    # 1.5 Robot State Publisher (URDF 静态 TF)
+    urdf_file = os.path.join(pi5_robot_desc_pkg, 'urdf', 'arm_car.urdf')
+    with open(urdf_file, 'r') as f:
+        robot_description = {'robot_description': f.read()}
+    robot_state_publisher = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen',
+        parameters=[robot_description],
+    )
+
     # 2. RPLidar C1
     rplidar_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(rplidar_ros_pkg, 'launch', 'rplidar_c1_launch.py')
         ),
+        launch_arguments={'frame_id': 'laser_link'}.items(),
     )
 
     # 3. Slam Toolbox — 使用 LifecycleNode（关键修复！）
@@ -126,6 +171,7 @@ def launch_setup(context):
         autostart_arg,
         use_lifecycle_manager_arg,
         odom_only_node,
+        robot_state_publisher,
         rplidar_launch,
         slam_toolbox_node,
         configure_event,

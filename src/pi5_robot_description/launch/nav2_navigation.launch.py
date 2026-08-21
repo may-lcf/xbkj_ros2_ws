@@ -1,17 +1,49 @@
 #!/usr/bin/env python3
 """
-Nav2 导航 Launch 文件 (精简版)
+nav2_navigation.launch.py — Nav2 导航 Launch (精简版)
+====================================================
 
-只启动导航必需的节点，避免启动不需要的组件：
-- 不启动: route_server, opennav_docking, smoother_server, odom_only_node, depth_camera
-- 启动: cmd_vel_bridge (双职责: 里程计+速度), collision_monitor (安全层), rplidar, map_server, amcl,
-        controller_server, planner_server, behavior_server,
-        bt_navigator, waypoint_follower, velocity_smoother
+功能概述:
+  启动 Nav2 导航栈的最小必要节点集，用于纯激光导航。
+  不启动深度相机、odom_only_node 等非必需组件，由 cmd_vel_bridge_node
+  同时负责里程计查询和速度指令下发(双职责)，避免串口冲突。
 
-注意：导航时不启动 odom_only_node，由 cmd_vel_bridge_node 同时负责里程计查询和速度指令。
-      odom_only_node 仅在建图模式下使用（真正只读，不写串口）。
+启动节点:
+  传感器层:
+    - robot_state_publisher: 发布 URDF 静态 TF
+    - cmd_vel_bridge_node: 串口桥接(里程计 + 速度，双职责)
+    - goal_pose_bridge: RViz 2D Goal Pose → /navigate_to_pose 桥接
+    - rplidar_c1: RPLidar C1 激光雷达驱动
+    - collision_monitor: 硬安全层(监测/scan，独立于Nav2生命周期)
+    - rviz2: 可视化(可选，使用 nav2.rviz 配置)
 
-用法：
+  Nav2 导航栈(延时3秒启动):
+    - map_server: 静态地图服务
+    - amcl: 自适应蒙特卡洛定位(粒子滤波)
+    - controller_server: 局部路径跟踪器
+    - planner_server: 全局路径规划器
+    - behavior_server: 机器人行为服务器(旋转、后退等)
+    - bt_navigator: 行为树导航状态机
+    - waypoint_follower: 航点跟踪器
+    - velocity_smoother: 速度平滑滤波
+    - lifecycle_manager: 统一管理所有 LifecycleNode 的激活
+
+数据流:
+  RViz/Nav2 → /goal_pose → bt_navigator → controller_server
+    → /unsmoothed_cmd_vel → velocity_smoother → /cmd_vel_smoothed
+    → collision_monitor → /cmd_vel_safety → cmd_vel_bridge_node → STM32
+
+设计说明:
+  - 导航时不启动 odom_only_node，由 cmd_vel_bridge_node 统一管理串口
+  - odom_only_node 仅在建图模式下使用(只读里程计，不写串口)
+  - collision_monitor 独立于 Nav2 生命周期，作为硬安全层
+
+参数:
+  map: 地图YAML路径(默认 map.yaml)
+  rviz: 是否启动RViz(默认false)
+  params_file: Nav2参数文件路径(nav2_params.yaml)
+
+用法:
   ros2 launch pi5_robot_description nav2_navigation.launch.py
   ros2 launch pi5_robot_description nav2_navigation.launch.py map:=/path/to/map.yaml
   ros2 launch pi5_robot_description nav2_navigation.launch.py rviz:=true
@@ -33,7 +65,7 @@ from launch_ros.actions import Node, LifecycleNode
 from launch_ros.event_handlers import OnStateTransition
 from launch_ros.events.lifecycle import ChangeState
 from lifecycle_msgs.msg import Transition
-import xacro
+# import xacro  # noqa: kept for compatibility (not needed for plain URDF)
 
 
 def generate_launch_description():
@@ -47,9 +79,9 @@ def generate_launch_description():
     use_rviz = LaunchConfiguration('rviz', default='false')
 
     # 1. Robot State Publisher — 发布 URDF 中的静态 TF
-    urdf_file = os.path.join(pi5_robot_desc_pkg, 'urdf', 'pi5_arm_robot.urdf.xacro')
-    robot_description_config = xacro.process_file(urdf_file)
-    robot_description = {'robot_description': robot_description_config.toxml()}
+    urdf_file = os.path.join(pi5_robot_desc_pkg, 'urdf', 'arm_car.urdf')
+    with open(urdf_file, 'r') as f:
+        robot_description = {'robot_description': f.read()}
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -86,6 +118,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(rplidar_ros_pkg, 'launch', 'rplidar_c1_launch.py')
         ),
+        launch_arguments={'frame_id': 'laser_link'}.items(),
     )
 
     # 4. RViz2 (可选)

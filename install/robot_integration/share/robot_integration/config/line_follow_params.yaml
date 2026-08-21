@@ -1,1 +1,54 @@
-/home/webotpi/ros2_ws/src/robot_integration/config/line_follow_params.yaml
+line_follow_node:
+  ros__parameters:
+    line_mode: yellow
+    # HSV 黄线阈值
+    hsv_h_min: 0
+    hsv_h_max: 88
+    hsv_s_min: 61
+    hsv_s_max: 255
+    hsv_v_min: 173
+    hsv_v_max: 255
+
+    # 深度地面过滤
+    ground_depth_min_mm: 150
+    ground_depth_max_mm: 600
+
+    # ROI
+    roi_y_start: 176
+    roi_y_end: 400
+    roi_x_left: 44
+    roi_x_right: 320
+
+    # 形态学
+    morph_kernel_size: 5
+    morph_open_iter: 2
+    morph_close_iter: 2
+
+    # 黄线跟踪src
+    scan_rows: 10
+    min_line_pixels: 5
+    # 目标误差：-0.65（范围-0.6~-0.7的中间值）
+    line_target_error: -0.60
+
+    # PID参数（自适应版）
+    # 基础P增益：0.15（正常行驶时平滑）
+    # I增益：0.00（消除稳态误差）
+    # D增益：0.15（增强前馈，提前响应变化）
+    # 自适应：误差>0.1时P增益自动增大到3倍
+    pid_kp: 0.70
+    pid_ki: 0.00
+    pid_kd: 0.15
+    max_steering: 0.50
+    integral_limit: 0.3
+
+    # 运动（自适应速度）
+    move_speed: 0.20      # 基础速度
+    min_speed: 0.06       # 弯道最低速度
+    slow_threshold: 0.10  # 触发减速的误差阈值
+
+    # 道路丢失
+    max_lost_frames: 30
+
+    # 调试
+    publish_debug_image: true
+    auto_start: false

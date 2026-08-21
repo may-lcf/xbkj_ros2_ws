@@ -1,0 +1,1 @@
+/home/webotpi/ros2_ws/src/pi5_robot_description/pi5_robot_description/nav_pick_place_node.py

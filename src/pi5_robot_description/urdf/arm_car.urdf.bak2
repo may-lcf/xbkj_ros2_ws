@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="arm_car">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00759386197431342 -1.60818081698655E-08 -0.0613385852600769"
+        rpy="0 0 0" />
+      <mass
+        value="2.24934693844902" />
+      <inertia
+        ixx="0.000959170031237064"
+        ixy="-2.66565872909367E-10"
+        ixz="8.08919655194909E-08"
+        iyy="0.00123899039630618"
+        iyz="9.11524934277028E-11"
+        izz="0.00182953578031719" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="lfw">
+    <inertial>
+      <origin
+        xyz="-3.66809811275237E-07 0.0153515560907876 2.31527231921158E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.149178036197559" />
+      <inertia
+        ixx="6.83939054609557E-05"
+        ixy="-4.26801936755136E-10"
+        ixz="-1.52198544985426E-09"
+        iyy="0.000109192443707379"
+        iyz="2.25443212622955E-10"
+        izz="6.83930923619236E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/lfw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/lfw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lfj"
+    type="continuous">
+    <origin
+      xyz="0.0885 0.091 -0.083"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lfw" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="lbw">
+    <inertial>
+      <origin
+        xyz="2.35969805750802E-07 0.0153513811089629 -3.48555722735899E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.149175041852939" />
+      <inertia
+        ixx="6.83915025795889E-05"
+        ixy="4.91820832920551E-10"
+        ixz="-2.94588237474748E-10"
+        iyy="0.000109187738802995"
+        iyz="-6.21546525634477E-10"
+        izz="6.83914587648714E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/lbw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/lbw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lbj"
+    type="continuous">
+    <origin
+      xyz="-0.0865 0.091 -0.083"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lbw" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="rbw">
+    <inertial>
+      <origin
+        xyz="-4.34459379972107E-07 -0.0153513817633611 9.45260151402616E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.14917506139308" />
+      <inertia
+        ixx="6.83916861725299E-05"
+        ixy="7.82747852831705E-10"
+        ixz="-2.1686035991914E-10"
+        iyy="0.000109187742667161"
+        iyz="-1.81158300426202E-10"
+        izz="6.8391285928065E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/rbw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/rbw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rbj"
+    type="continuous">
+    <origin
+      xyz="-0.0865 -0.091 -0.083"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rbw" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="rfw">
+    <inertial>
+      <origin
+        xyz="-1.61640428271437E-07 -0.0153515571887059 4.11877596834254E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.149178040834277" />
+      <inertia
+        ixx="6.83925029996859E-05"
+        ixy="1.18740199297749E-10"
+        ixz="-1.19604624980621E-09"
+        iyy="0.000109192439753589"
+        iyz="-4.83704324395177E-10"
+        izz="6.83944919670032E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/rfw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/rfw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rfj"
+    type="continuous">
+    <origin
+      xyz="0.0885 -0.091 -0.083"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rfw" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0.030002 0 0.061"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.5"
+      upper="2.5"
+      effort="1.96"
+      velocity="3.14" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0.00015064 0.046235 -0.025445"
+        rpy="0 0 0" />
+      <mass
+        value="0.02373" />
+      <inertia
+        ixx="8.1431E-06"
+        ixy="1.4394E-21"
+        ixz="-1.8827E-21"
+        iyy="6.3574E-06"
+        iyz="-5.0402E-20"
+        izz="4.754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="-0.00030442 -0.025998 0.052401"
+      rpy="1.5708 0 -0.0073705" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.7"
+      upper="1.7"
+      effort="1.96"
+      velocity="3.14" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="-0.000846198773647021 -0.0426438100499727 0.0256581432648642"
+        rpy="0 0 0" />
+      <mass
+        value="0.0739910116221332" />
+      <inertia
+        ixx="2.36628775695945E-05"
+        ixy="-2.95266860477663E-10"
+        ixz="-8.76799121000706E-16"
+        iyy="1.42532367935571E-05"
+        iyz="1.40758212397431E-12"
+        izz="1.44522741548222E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="revolute">
+    <origin
+      xyz="0.00031113 0.10527 2.1364E-05"
+      rpy="3.1416 0 0" />
+    <parent
+      link="link2" />
+    <child
+      link="link3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.5"
+      upper="2.5"
+      effort="1.96"
+      velocity="3.14" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="0.00118251946167684 0.0459939005091535 -0.0263028627041846"
+        rpy="0 0 0" />
+      <mass
+        value="0.0465954575037121" />
+      <inertia
+        ixx="1.22289034434654E-05"
+        ixy="-2.35694408212891E-07"
+        ixz="9.86781380371103E-08"
+        iyy="1.04329117561629E-05"
+        iyz="2.15494079326588E-09"
+        izz="1.44283421403718E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="-0.00022559 -0.086162 0"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.5"
+      upper="2.5"
+      effort="1.96"
+      velocity="3.14" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="0.0182700077944121 -0.00308018445869763 0.0237844714273773"
+        rpy="0 0 0" />
+      <mass
+        value="0.0384816371083352" />
+      <inertia
+        ixx="6.75172578039357E-06"
+        ixy="-5.14855511160552E-08"
+        ixz="8.28543119969111E-11"
+        iyy="5.80090716659153E-06"
+        iyz="2.69315322816852E-10"
+        izz="9.48040244004794E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="revolute">
+    <origin
+      xyz="-0.0020798 0.072064 -0.02625"
+      rpy="-1.5708 0 0.031052" />
+    <parent
+      link="link4" />
+    <child
+      link="link5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.5"
+      upper="2.5"
+      effort="1.96"
+      velocity="3.14" />
+  </joint>
+  <link
+    name="link6_r">
+    <inertial>
+      <origin
+        xyz="-0.00225277630224294 0.00431568735406512 -0.00108958454489374"
+        rpy="0 0 0" />
+      <mass
+        value="0.00272937769015016" />
+      <inertia
+        ixx="2.56904566805748E-07"
+        ixy="1.13894594728558E-07"
+        ixz="5.65175871853217E-09"
+        iyy="1.64590046981668E-07"
+        iyz="-5.25218498588233E-09"
+        izz="4.1666631643561E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link6_r.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link6_r.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6_r"
+    type="revolute">
+    <origin
+      xyz="-0.0030667 -0.014003 0.025156"
+      rpy="1.5708 -0.23309 1.5708" />
+    <parent
+      link="link5" />
+    <child
+      link="link6_r" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="1.96"
+      velocity="3.14" />
+  </joint>
+  <link
+    name="link7_r">
+    <inertial>
+      <origin
+        xyz="0.00627969909175661 -0.0209128000248698 -0.00697447876082605"
+        rpy="0 0 0" />
+      <mass
+        value="0.00309763757394028" />
+      <inertia
+        ixx="7.21936337985926E-07"
+        ixy="1.41281539456659E-07"
+        ixz="-3.38997917133575E-16"
+        iyy="6.93112713175571E-08"
+        iyz="9.01211914596464E-17"
+        izz="7.64323746538838E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link7_r.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link7_r.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint7_r"
+    type="revolute">
+    <origin
+      xyz="-0.015628 0.025458 -0.0037472"
+      rpy="-3.1416 0.031052 -0.23309" />
+    <parent
+      link="link6_r" />
+    <child
+      link="link7_r" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="1.96"
+      velocity="3.14" />
+    <mimic
+      joint="joint6_r"
+      multiplier="1"
+      offset="0" />
+  </joint>
+  <link
+    name="link8_r">
+    <inertial>
+      <origin
+        xyz="-0.00838739408990995 0.0136712753448239 0.00458501836359205"
+        rpy="0 0 0" />
+      <mass
+        value="0.000743480445208501" />
+      <inertia
+        ixx="4.61046126375624E-08"
+        ixy="2.31440681398751E-08"
+        ixz="4.10199739723215E-10"
+        iyy="2.32543238906776E-08"
+        iyz="-9.21362358516884E-10"
+        izz="5.41640750174382E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link8_r.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link8_r.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint8_r"
+    type="revolute">
+    <origin
+      xyz="-0.007772 -0.0042433 0.045"
+      rpy="1.5708 -0.23309 1.5708" />
+    <parent
+      link="link5" />
+    <child
+      link="link8_r" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="1.96"
+      velocity="3.14" />
+    <mimic
+      joint="joint6_r"
+      multiplier="1"
+      offset="0" />
+  </joint>
+  <link
+    name="link9_l">
+    <inertial>
+      <origin
+        xyz="0.00402796594496122 -0.0046736228704804 -0.00567194702285925"
+        rpy="0 0 0" />
+      <mass
+        value="0.00223915294191889" />
+      <inertia
+        ixx="1.88268447257933E-07"
+        ixy="1.25478469250389E-07"
+        ixz="-1.51997596691856E-16"
+        iyy="2.07523408531225E-07"
+        iyz="1.6022272157422E-16"
+        izz="3.87671871229786E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link9_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link9_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint9_l"
+    type="revolute">
+    <origin
+      xyz="-0.011422 0.013402 0.025"
+      rpy="-1.5708 0 1.6018" />
+    <parent
+      link="link5" />
+    <child
+      link="link9_l" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="1.96"
+      velocity="3.14" />
+    <mimic
+      joint="joint6_r"
+      multiplier="1"
+      offset="0" />
+  </joint>
+  <link
+    name="link10_l">
+    <inertial>
+      <origin
+        xyz="-0.0060601364343241 0.0209128000472325 0.00716608134569278"
+        rpy="0 0 0" />
+      <mass
+        value="0.0030976375735952" />
+      <inertia
+        ixx="7.21977212463505E-07"
+        ixy="1.41213491896946E-07"
+        ixz="1.31535990033743E-09"
+        iyy="6.93112542760682E-08"
+        iyz="-4.38634574630765E-09"
+        izz="7.64282889081829E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link10_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link10_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint10_l"
+    type="revolute">
+    <origin
+      xyz="0.021111 -0.021315 -0.0031"
+      rpy="3.1416 0.031052 0" />
+    <parent
+      link="link9_l" />
+    <child
+      link="link10_l" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="1.96"
+      velocity="3.14" />
+    <mimic
+      joint="joint6_r"
+      multiplier="1"
+      offset="0" />
+  </joint>
+  <link
+    name="link11_l">
+    <inertial>
+      <origin
+        xyz="0.00986422531863041 -0.00978579001132429 -0.00471126478496128"
+        rpy="0 0 0" />
+      <mass
+        value="0.000863402786049133" />
+      <inertia
+        ixx="3.48677412905465E-08"
+        ixy="2.58221530327634E-08"
+        ixz="-4.92624428496181E-16"
+        iyy="3.52800385482673E-08"
+        iyz="1.43708113170567E-16"
+        izz="5.48211554780308E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link11_l.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://pi5_robot_description/meshes/link11_l.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint11_l"
+    type="revolute">
+    <origin
+      xyz="-0.0080204 0.0037528 0.045"
+      rpy="-1.5708 0 1.6018" />
+    <parent
+      link="link5" />
+    <child
+      link="link11_l" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="1.96"
+      velocity="3.14" />
+    <mimic
+      joint="joint6_r"
+      multiplier="1"
+      offset="0" />
+  </joint>
+
+  <!-- ============================================ -->
+  <!--  base_footprint (Nav2 需要的虚拟根 link)      -->
+  <!-- ============================================ -->
+  <link name="base_footprint" />
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <origin xyz="0 0 0.043" rpy="0 0 0" />
+  </joint>
+
+  <!-- ============================================ -->
+  <!--  激光雷达 (Lidar)                             -->
+  <!-- ============================================ -->
+  <!-- Laser position measured from base_link: x=106.6mm y=0 z=20.75mm -->
+  <link name="laser_link" />
+
+  <joint name="laser_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="laser_link" />
+    <origin xyz="0.1066 0 0.02075" rpy="0 0 0" />
+  </joint>
+
+  <!-- ============================================ -->
+  <!--  深度相机 (Aurora 930)                        -->
+  <!-- ============================================ -->
+  <!-- Aurora 驱动发布 depth_camera_link (及 rgb_camera_link) -->
+  <!-- 眼在手上: 相机安装在机械臂末端 link5 -->
+  <link name="depth_camera_link" />
+
+  <!-- 深度相机安装在机械臂末端 link5 (眼在手上) -->
+  <!-- 偏移: x=-50mm(沿link5 x轴反方向), z=20mm(沿link5 z轴正方向) -->
+  <joint name="depth_camera_joint" type="fixed">
+    <parent link="link5" />
+    <child link="depth_camera_link" />
+    <origin xyz="-0.05 0 0.02" rpy="0 0 0" />
+  </joint>
+
+  <!-- Depth camera optical frame (ROS convention: X=right, Y=down, Z=forward) -->
+  <link name="depth_camera_optical_frame" />
+  <joint name="depth_camera_optical_joint" type="fixed">
+    <parent link="depth_camera_link" />
+    <child link="depth_camera_optical_frame" />
+    <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+  </joint>
+
+</robot>

@@ -1,4 +1,36 @@
 #!/usr/bin/env python3
+"""
+line_follow_node.py — 视觉巡线导航节点
+========================================
+
+功能概述:
+  基于Aurora 930深度相机的视觉巡线节点，支持黄色和黑色线两种模式，
+  通过HSV颜色分割+深度滤波检测地面引导线，PID闭环控制小车沿线行驶。
+
+主要功能:
+  1. 线检测: HSV阈值分割 + 深度过滤(剔除地面外物体) + 形态学去噪 +
+     多行扫描计算横向偏移误差(lateral_error)
+  2. PID转向: 基于横向误差的PID控制，带积分限幅、误差窗口平滑和死区
+  3. 里程计: 订阅/odom打印X/Y/YAW，用于运动轨迹监控
+  4. 机械臂初始化: 启动时发送观察姿态命令，等待深度/RGB就绪后开始巡线
+  5. 丢线处理: 连续丢线超过阈值自动停车
+  6. 特殊转向:
+     - 黄线模式: 偏移过大时触发固定角度(-45°)左转弯修正
+     - 搜索模式: 持续右转25°寻找丢失的线，找到后恢复巡线
+  7. 调试可视化: 发布带标注的调试图像(掩码、ROI、线点、误差等)
+
+ROS2接口:
+  订阅: /aurora/rgb/image_raw, /aurora/depth/image_raw (图像，可选同步)
+        /odom (里程计)
+        /line_follow/control (控制指令: start/stop/reset)
+  发布: /cmd_vel (底盘速度)
+        /arm_command (机械臂串口命令)
+        /line_follow/status (JSON状态: state/found/err/tgt/lr/lost)
+        /line_follow/debug_image (调试图像)
+
+参数: 通过ROS2 parameter配置HSV阈值、ROI、PID增益、速度、丢线阈值等
+状态机: IDLE → INIT_ARM → FOLLOWING / TURNING_23 / TURNING_SEARCH → STOPPED
+"""
 import time, threading, json, math, numpy as np, cv2
 import rclpy
 from rclpy.node import Node

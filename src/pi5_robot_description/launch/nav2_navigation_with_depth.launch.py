@@ -1,15 +1,48 @@
 #!/usr/bin/env python3
 """
-Nav2 导航 + 深度相机避障 Launch 文件 (增强版)
+nav2_navigation_with_depth.launch.py — Nav2 导航 + 深度相机避障 (增强版)
+=====================================================================
 
-比基础版多启动：
-- Aurora 930 深度相机 (点云用于3D障碍检测)
-- costmap 使用激光+点云双源融合
+功能概述:
+  在 nav2_navigation 基础上增加 Aurora 930 深度相机，实现激光+点云双源融合避障。
+  碰撞监测器同时使用 /scan 和 /aurora/points2 进行3D障碍检测，
+  比纯激光版拥有更强的近距离避障能力(如低矮障碍物、悬空物体)。
 
-完整数据流:
-  controller_server → unsmoothed_cmd_vel → velocity_smoother
-    → cmd_vel_smoothed → collision_monitor (监测/scan + /aurora/points2)
-    → cmd_vel_safety → cmd_vel_bridge_node → STM32
+启动节点:
+  传感器层(立即启动):
+    - robot_state_publisher: 发布 URDF 静态 TF
+    - cmd_vel_bridge_node: 串口桥接(订阅安全过滤后的速度)
+    - goal_pose_bridge: RViz 2D Goal Pose → /navigate_to_pose 桥接
+    - rplidar_c1: RPLidar C1 激光雷达驱动
+    - aurora930: Aurora 930 深度相机(点云 + 深度图)
+    - rviz2: 可视化(可选)
+
+  Nav2 导航栈(延时5秒启动，等待深度相机就绪):
+    - map_server: 静态地图服务
+    - amcl: 自适应蒙特卡洛定位
+    - controller_server: 局部路径跟踪器
+    - planner_server: 全局路径规划器
+    - behavior_server: 机器人行为服务器
+    - bt_navigator: 行为树导航状态机
+    - waypoint_follower: 航点跟踪器
+    - velocity_smoother: 速度平滑滤波
+    - collision_monitor: 碰撞监测(同时监测/scan + /aurora/points2)
+    - lifecycle_manager: 统一管理所有 LifecycleNode
+
+数据流:
+  controller_server → /unsmoothed_cmd_vel → velocity_smoother
+    → /cmd_vel_smoothed → collision_monitor (激光+点云双源)
+    → /cmd_vel_safety → cmd_vel_bridge_node → STM32
+
+与基础版区别:
+  - 增加 Aurora 930 深度相机驱动
+  - collision_monitor 同时监测激光和点云，避障更可靠
+  - Nav2 延时5秒(基础版3秒)，等待深度相机初始化
+
+参数:
+  map: 地图YAML路径(默认 map.yaml)
+  rviz: 是否启动RViz(默认false)
+  params_file: Nav2参数文件路径
 
 用法:
   ros2 launch pi5_robot_description nav2_navigation_with_depth.launch.py
@@ -30,7 +63,7 @@ from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node, LifecycleNode
-import xacro
+# import xacro (not needed for plain URDF)
 
 
 def generate_launch_description():
@@ -50,9 +83,7 @@ def generate_launch_description():
     # ==========================================
     # 1. Robot State Publisher
     # ==========================================
-    urdf_file = os.path.join(pi5_robot_desc_pkg, "urdf", "pi5_arm_robot.urdf.xacro")
-    robot_description_config = xacro.process_file(urdf_file)
-    robot_description = {"robot_description": robot_description_config.toxml()}
+    urdf_file = os.path.join(pi5_robot_desc_pkg, "urdf", "pi5_arm_car.urdf.xacro")
 
     robot_state_publisher = Node(
         package="robot_state_publisher",
@@ -94,6 +125,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(rplidar_ros_pkg, "launch", "rplidar_c1_launch.py")
         ),
+        launch_arguments={'frame_id': 'laser_link'}.items(),
     )
 
     # ==========================================
@@ -180,9 +212,7 @@ def generate_launch_description():
 
     velocity_smoother_node = LifecycleNode(
         package="nav2_velocity_smoother", executable="velocity_smoother",
-                "collision_monitor",
         name="velocity_smoother", output="screen", parameters=[params_file],
-                "collision_monitor",
         remappings=[("/cmd_vel", "unsmoothed_cmd_vel")],
     )
 

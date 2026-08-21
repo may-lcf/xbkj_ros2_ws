@@ -1,10 +1,45 @@
 #!/usr/bin/env python3
 """
-语音导航 Launch 文件
+voice_navigation.launch.py — 语音导航 Launch
+============================================
 
-集成 Nav2 导航栈 + 语音交互系统（ASR + LLM + TTS）+ 导航执行节点。
+功能概述:
+  集成 Nav2 导航 + 语音交互(ASR+LLM+TTS) + YOLO区域检测的语音导航系统。
+  用户通过语音发出导航指令(如 "去客厅")，LLM解析意图后调用Nav2导航，
+  同时支持语音控制机械臂、查询状态等交互。
 
-用法：
+启动节点:
+  Nav2 导航栈(与 nav2_navigation 一致):
+    - robot_state_publisher, cmd_vel_bridge, rplidar, goal_pose_bridge
+    - map_server, amcl, controller/planner/behavior server
+    - bt_navigator, waypoint_follower, velocity_smoother, collision_monitor
+    - lifecycle_manager
+    - rviz2: 可视化(默认开启，使用 waypoint_nav.rviz)
+
+  导航执行(立即启动):
+    - nav_executor_node: 导航执行节点(接收目标点名称 → Nav2导航)
+    - waypoint_recorder_node: 航点记录器(RViz标记 → named_waypoints.yaml)
+    - yolo_zone_detect_node: YOLO区域检测(视觉区域识别)
+
+  语音交互(立即启动，可通过use_voice禁用):
+    - voice_recognition_node: 语音识别(ASR，麦克风 → 文本)
+    - intent_parser_node: 意图解析(LLM，文本 → 结构化指令)
+    - voice_synthesis_node: 语音合成(TTS，文本 → 语音播放)
+    - arm_executor_node: 机械臂语音控制(解析臂控指令并执行)
+
+数据流:
+  麦克风 → voice_recognition → /voice_text → intent_parser
+    → /nav_intent → nav_executor → Nav2 /goal_pose → 导航
+    → /arm_intent → arm_executor → /arm_command → 机械臂
+  intent_parser → /tts_text → voice_synthesis → 扬声器
+
+参数:
+  map: 地图YAML路径(默认 map_01.yaml)
+  rviz: 是否启动RViz(默认true)
+  use_voice: 是否启动语音节点(默认true，false时仅导航)
+  waypoints_file: 命名航点文件(named_waypoints.yaml)
+
+用法:
   ros2 launch pi5_robot_description voice_navigation.launch.py
   ros2 launch pi5_robot_description voice_navigation.launch.py map:=/path/to/map.yaml
   ros2 launch pi5_robot_description voice_navigation.launch.py use_voice:=false  # 不启动语音
@@ -24,7 +59,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node, LifecycleNode
 from lifecycle_msgs.msg import Transition
-import xacro
+# import xacro (not needed for plain URDF)
 
 
 def generate_launch_description():
@@ -42,9 +77,9 @@ def generate_launch_description():
 
     # ========== Nav2 基础节点 ==========
 
-    urdf_file = os.path.join(pi5_robot_desc_pkg, 'urdf', 'pi5_arm_robot.urdf.xacro')
-    robot_description_config = xacro.process_file(urdf_file)
-    robot_description = {'robot_description': robot_description_config.toxml()}
+    urdf_file = os.path.join(pi5_robot_desc_pkg, 'urdf', 'arm_car.urdf')
+    with open(urdf_file, 'r') as f:
+        robot_description = {'robot_description': f.read()}
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -70,6 +105,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(rplidar_ros_pkg, 'launch', 'rplidar_c1_launch.py')
         ),
+        launch_arguments={'frame_id': 'laser_link'}.items(),
     )
 
     rviz_node = Node(
@@ -155,6 +191,15 @@ def generate_launch_description():
             'max_retries': 1,
         }],
     )
+    waypoint_recorder_node = Node(
+        package="pi5_robot_description",
+        executable="waypoint_recorder_node.py",
+        name="waypoint_recorder_node",
+        output="screen",
+        parameters=[{
+            "waypoints_file": waypoints_file,
+        }],
+    )
 
     # ========== 语音交互节点 ==========
 
@@ -192,6 +237,14 @@ def generate_launch_description():
         condition=IfCondition(use_voice),
     )
 
+    # ========== YOLO 区域检测节点（需在 yolo_env 中运行） ==========
+    yolo_zone_detect_node = Node(
+        package='pi5_robot_description',
+        executable='yolo_zone_detect_node.py',
+        name='yolo_zone_detect_node',
+        output='screen',
+    )
+
     return LaunchDescription([
         DeclareLaunchArgument('use_sim_time', default_value='false'),
         DeclareLaunchArgument('map', default_value=map_yaml),
@@ -208,6 +261,8 @@ def generate_launch_description():
         rplidar_launch,
         rviz_node,
         nav_executor_node,
+        waypoint_recorder_node,
+        yolo_zone_detect_node,
 
         # 语音节点（立即启动）
         voice_recognition_node,

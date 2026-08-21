@@ -1,1 +1,30 @@
-/home/webotpi/ros2_ws/src/robot_integration/config/line_follow_black_params.yaml
+line_follow_node:
+  ros__parameters:
+    line_mode: black
+    hsv_h_min: 0
+    hsv_h_max: 180
+    hsv_s_min: 0
+    hsv_s_max: 102
+    hsv_v_min: 19
+    hsv_v_max: 255
+    ground_depth_min_mm: 150
+    ground_depth_max_mm: 600
+    roi_y_start: 248
+    roi_y_end: 400
+    roi_x_left: 110
+    roi_x_right: 530
+    morph_kernel_size: 5
+    morph_open_iter: 2
+    morph_close_iter: 2
+    scan_rows: 10
+    min_line_pixels: 5
+    line_target_error: -0.015
+    pid_kp: 0.80
+    pid_ki: 0.00
+    pid_kd: 0.20
+    max_steering: 0.50
+    integral_limit: 0.3
+    move_speed: 0.12
+    max_lost_frames: 30
+    publish_debug_image: true
+    auto_start: false

@@ -1,0 +1,554 @@
+[0.172s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.172s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0xffff92922a20>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff92ad7560>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff92ad7560>>)
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.247s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/webotpi/ros2_ws'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.290s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.291s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.291s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.291s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.291s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.291s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extensions ['ignore', 'ignore_ament_install']
+[0.292s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extension 'ignore'
+[0.293s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extension 'ignore_ament_install'
+[0.293s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extensions ['colcon_pkg']
+[0.293s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extension 'colcon_pkg'
+[0.293s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extensions ['colcon_meta']
+[0.293s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extension 'colcon_meta'
+[0.293s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extensions ['ros']
+[0.293s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver) by extension 'ros'
+[0.297s] DEBUG:colcon.colcon_core.package_identification:Package 'src/deptrum-ros-driver' with type 'ros.ament_cmake' and name 'deptrum-ros-driver-aurora930'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extensions ['ignore', 'ignore_ament_install']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'ignore'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'ignore_ament_install'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extensions ['colcon_pkg']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'colcon_pkg'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extensions ['colcon_meta']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'colcon_meta'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extensions ['ros']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'ros'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extensions ['cmake', 'python']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'cmake'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'python'
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extensions ['python_setup_py']
+[0.297s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930) by extension 'python_setup_py'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extensions ['ignore', 'ignore_ament_install']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'ignore'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'ignore_ament_install'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extensions ['colcon_pkg']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'colcon_pkg'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extensions ['colcon_meta']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'colcon_meta'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extensions ['ros']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'ros'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extensions ['cmake', 'python']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'cmake'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'python'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extensions ['python_setup_py']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/deptrum-ros-driver-aurora930/rviz) by extension 'python_setup_py'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extension 'ignore'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extension 'ignore_ament_install'
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extensions ['colcon_pkg']
+[0.298s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extension 'colcon_pkg'
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extensions ['colcon_meta']
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extension 'colcon_meta'
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extensions ['ros']
+[0.299s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_launch_pkg) by extension 'ros'
+[0.300s] DEBUG:colcon.colcon_core.package_identification:Package 'src/my_launch_pkg' with type 'ros.ament_python' and name 'my_launch_pkg'
+[0.300s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extensions ['ignore', 'ignore_ament_install']
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extension 'ignore'
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extension 'ignore_ament_install'
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extensions ['colcon_pkg']
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extension 'colcon_pkg'
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extensions ['colcon_meta']
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extension 'colcon_meta'
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extensions ['ros']
+[0.301s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_srv) by extension 'ros'
+[0.302s] DEBUG:colcon.colcon_core.package_identification:Package 'src/my_srv' with type 'ros.ament_cmake' and name 'my_srv'
+[0.302s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.302s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extension 'ignore'
+[0.302s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extension 'ignore_ament_install'
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extensions ['colcon_pkg']
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extension 'colcon_pkg'
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extensions ['colcon_meta']
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extension 'colcon_meta'
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extensions ['ros']
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(src/pi5_robot_description) by extension 'ros'
+[0.303s] DEBUG:colcon.colcon_core.package_identification:Package 'src/pi5_robot_description' with type 'ros.ament_cmake' and name 'pi5_robot_description'
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extension 'ignore'
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extension 'ignore_ament_install'
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extensions ['colcon_pkg']
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extension 'colcon_pkg'
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extensions ['colcon_meta']
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extension 'colcon_meta'
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extensions ['ros']
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pkg) by extension 'ros'
+[0.305s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_pkg' with type 'ros.ament_python' and name 'py_pkg'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extensions ['ignore', 'ignore_ament_install']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extension 'ignore'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extension 'ignore_ament_install'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extensions ['colcon_pkg']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extension 'colcon_pkg'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extensions ['colcon_meta']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extension 'colcon_meta'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extensions ['ros']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_integration) by extension 'ros'
+[0.306s] DEBUG:colcon.colcon_core.package_identification:Package 'src/robot_integration' with type 'ros.ament_python' and name 'robot_integration'
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extension 'ignore'
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extension 'ignore_ament_install'
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extensions ['colcon_pkg']
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extension 'colcon_pkg'
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extensions ['colcon_meta']
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extension 'colcon_meta'
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extensions ['ros']
+[0.307s] Level 1:colcon.colcon_core.package_identification:_identify(src/rplidar_ros) by extension 'ros'
+[0.307s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rplidar_ros' with type 'ros.ament_cmake' and name 'rplidar_ros'
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extensions ['ignore', 'ignore_ament_install']
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extension 'ignore'
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extension 'ignore_ament_install'
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extensions ['colcon_pkg']
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extension 'colcon_pkg'
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extensions ['colcon_meta']
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extension 'colcon_meta'
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extensions ['ros']
+[0.308s] Level 1:colcon.colcon_core.package_identification:_identify(src/voice_interaction) by extension 'ros'
+[0.309s] DEBUG:colcon.colcon_core.package_identification:Package 'src/voice_interaction' with type 'ros.ament_python' and name 'voice_interaction'
+[0.309s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.309s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.309s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.309s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.309s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.340s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.340s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.345s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 417 installed packages in /opt/ros/jazzy
+[0.348s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'cmake_args' from command line to 'None'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'cmake_target' from command line to 'None'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'cmake_clean_cache' from command line to 'False'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'cmake_clean_first' from command line to 'False'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'cmake_force_configure' from command line to 'False'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'ament_cmake_args' from command line to 'None'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'catkin_cmake_args' from command line to 'None'
+[0.440s] Level 5:colcon.colcon_core.verb:set package 'deptrum-ros-driver-aurora930' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.440s] DEBUG:colcon.colcon_core.verb:Building package 'deptrum-ros-driver-aurora930' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/deptrum-ros-driver', 'symlink_install': False, 'test_result_base': None}
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'cmake_args' from command line to 'None'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'cmake_target' from command line to 'None'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[0.441s] Level 5:colcon.colcon_core.verb:set package 'my_launch_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.441s] DEBUG:colcon.colcon_core.verb:Building package 'my_launch_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/my_launch_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/my_launch_pkg', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/my_launch_pkg', 'symlink_install': False, 'test_result_base': None}
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'cmake_args' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'cmake_target' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'cmake_clean_cache' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'cmake_clean_first' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'cmake_force_configure' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'ament_cmake_args' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'catkin_cmake_args' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'my_srv' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.442s] DEBUG:colcon.colcon_core.verb:Building package 'my_srv' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/my_srv', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/my_srv', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/my_srv', 'symlink_install': False, 'test_result_base': None}
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'cmake_args' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'cmake_target' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.442s] Level 5:colcon.colcon_core.verb:set package 'pi5_robot_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.442s] DEBUG:colcon.colcon_core.verb:Building package 'pi5_robot_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/pi5_robot_description', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/pi5_robot_description', 'symlink_install': False, 'test_result_base': None}
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'cmake_args' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'cmake_target' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'py_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.443s] DEBUG:colcon.colcon_core.verb:Building package 'py_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/py_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/py_pkg', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/py_pkg', 'symlink_install': False, 'test_result_base': None}
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'cmake_args' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'cmake_target' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'cmake_clean_cache' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'cmake_clean_first' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'cmake_force_configure' from command line to 'False'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'ament_cmake_args' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'catkin_cmake_args' from command line to 'None'
+[0.443s] Level 5:colcon.colcon_core.verb:set package 'robot_integration' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.443s] DEBUG:colcon.colcon_core.verb:Building package 'robot_integration' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/robot_integration', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/robot_integration', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/robot_integration', 'symlink_install': False, 'test_result_base': None}
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'cmake_args' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'cmake_target' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'cmake_clean_cache' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'cmake_clean_first' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'cmake_force_configure' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'ament_cmake_args' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'catkin_cmake_args' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'rplidar_ros' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.444s] DEBUG:colcon.colcon_core.verb:Building package 'rplidar_ros' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/rplidar_ros', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/rplidar_ros', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/rplidar_ros', 'symlink_install': False, 'test_result_base': None}
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'cmake_args' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'cmake_target' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'cmake_clean_cache' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'cmake_clean_first' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'cmake_force_configure' from command line to 'False'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'ament_cmake_args' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'catkin_cmake_args' from command line to 'None'
+[0.444s] Level 5:colcon.colcon_core.verb:set package 'voice_interaction' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.445s] DEBUG:colcon.colcon_core.verb:Building package 'voice_interaction' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/webotpi/ros2_ws/build/voice_interaction', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/webotpi/ros2_ws/install/voice_interaction', 'merge_install': False, 'path': '/home/webotpi/ros2_ws/src/voice_interaction', 'symlink_install': False, 'test_result_base': None}
+[0.445s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.446s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.446s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/webotpi/ros2_ws/src/deptrum-ros-driver' with build type 'ament_cmake'
+[0.447s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/webotpi/ros2_ws/src/deptrum-ros-driver'
+[0.449s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.449s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.449s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.454s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/webotpi/ros2_ws/src/my_launch_pkg' with build type 'ament_python'
+[0.454s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_launch_pkg', 'ament_prefix_path')
+[0.454s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/hook/ament_prefix_path.ps1'
+[0.456s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/hook/ament_prefix_path.dsv'
+[0.456s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/hook/ament_prefix_path.sh'
+[0.457s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.457s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.461s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/webotpi/ros2_ws/src/my_srv' with build type 'ament_cmake'
+[0.462s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/webotpi/ros2_ws/src/my_srv'
+[0.462s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.462s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.469s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/webotpi/ros2_ws/src/pi5_robot_description' with build type 'ament_cmake'
+[0.469s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/webotpi/ros2_ws/src/pi5_robot_description'
+[0.469s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.469s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.479s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/deptrum-ros-driver -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930
+[1.043s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/webotpi/ros2_ws/src/my_launch_pkg'
+[1.043s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.043s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.054s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/my_srv -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/my_srv
+[1.061s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[3.802s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/pi5_robot_description -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/pi5_robot_description
+[3.802s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/pi5_robot_description -- -j4 -l4
+[3.913s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/pi5_robot_description -- -j4 -l4
+[3.962s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/pi5_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/pi5_robot_description
+[4.175s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pi5_robot_description)
+[4.177s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/pi5_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/pi5_robot_description
+[4.180s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description' for CMake module files
+[4.181s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description' for CMake config files
+[4.251s] Level 1:colcon.colcon_core.shell:create_environment_hook('pi5_robot_description', 'cmake_prefix_path')
+[4.252s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/hook/cmake_prefix_path.ps1'
+[4.253s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/hook/cmake_prefix_path.dsv'
+[4.253s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/hook/cmake_prefix_path.sh'
+[4.254s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/lib'
+[4.255s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/bin'
+[4.255s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/lib/pkgconfig/pi5_robot_description.pc'
+[4.256s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/lib/python3.12/site-packages'
+[4.256s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/bin'
+[4.257s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.ps1'
+[4.259s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.dsv'
+[4.259s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.sh'
+[4.260s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.bash'
+[4.261s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.zsh'
+[4.262s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/pi5_robot_description/share/colcon-core/packages/pi5_robot_description)
+[4.263s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pi5_robot_description)
+[4.263s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description' for CMake module files
+[4.264s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description' for CMake config files
+[4.265s] Level 1:colcon.colcon_core.shell:create_environment_hook('pi5_robot_description', 'cmake_prefix_path')
+[4.265s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/hook/cmake_prefix_path.ps1'
+[4.265s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/hook/cmake_prefix_path.dsv'
+[4.266s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/hook/cmake_prefix_path.sh'
+[4.267s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/lib'
+[4.267s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/bin'
+[4.267s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/lib/pkgconfig/pi5_robot_description.pc'
+[4.267s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/lib/python3.12/site-packages'
+[4.267s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/pi5_robot_description/bin'
+[4.268s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.ps1'
+[4.269s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.dsv'
+[4.277s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.sh'
+[4.277s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.bash'
+[4.278s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.zsh'
+[4.278s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/pi5_robot_description/share/colcon-core/packages/pi5_robot_description)
+[4.279s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/webotpi/ros2_ws/src/py_pkg' with build type 'ament_python'
+[4.279s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pkg', 'ament_prefix_path')
+[4.279s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/hook/ament_prefix_path.ps1'
+[4.280s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/hook/ament_prefix_path.dsv'
+[4.281s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/hook/ament_prefix_path.sh'
+[4.282s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.282s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.029s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/webotpi/ros2_ws/src/py_pkg'
+[5.030s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[5.030s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.039s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/src/my_launch_pkg': PYTHONPATH=/home/webotpi/ros2_ws/build/my_launch_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_launch_pkg build --build-base /home/webotpi/ros2_ws/build/my_launch_pkg/build install --record /home/webotpi/ros2_ws/build/my_launch_pkg/install.log --single-version-externally-managed install_data
+[6.316s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/src/py_pkg': PYTHONPATH=/home/webotpi/ros2_ws/build/py_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pkg build --build-base /home/webotpi/ros2_ws/build/py_pkg/build install --record /home/webotpi/ros2_ws/build/py_pkg/install.log --single-version-externally-managed install_data
+[6.938s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_launch_pkg' for CMake module files
+[6.938s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_launch_pkg' for CMake config files
+[6.940s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/src/my_launch_pkg' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/my_launch_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_launch_pkg build --build-base /home/webotpi/ros2_ws/build/my_launch_pkg/build install --record /home/webotpi/ros2_ws/build/my_launch_pkg/install.log --single-version-externally-managed install_data
+[6.940s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_launch_pkg/lib'
+[6.940s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_launch_pkg/bin'
+[6.940s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_launch_pkg/lib/pkgconfig/my_launch_pkg.pc'
+[6.941s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_launch_pkg/lib/python3.12/site-packages'
+[6.941s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_launch_pkg', 'pythonpath')
+[6.941s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/hook/pythonpath.ps1'
+[6.942s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/hook/pythonpath.dsv'
+[6.943s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/hook/pythonpath.sh'
+[6.944s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_launch_pkg/bin'
+[6.944s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_launch_pkg)
+[6.945s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/package.ps1'
+[6.946s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/package.dsv'
+[6.947s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/package.sh'
+[6.948s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/package.bash'
+[6.949s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_launch_pkg/share/my_launch_pkg/package.zsh'
+[6.951s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/my_launch_pkg/share/colcon-core/packages/my_launch_pkg)
+[6.952s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/webotpi/ros2_ws/src/robot_integration' with build type 'ament_python'
+[6.953s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_integration', 'ament_prefix_path')
+[6.953s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/hook/ament_prefix_path.ps1'
+[6.954s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/hook/ament_prefix_path.dsv'
+[6.955s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/hook/ament_prefix_path.sh'
+[6.956s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[6.957s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.631s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/webotpi/ros2_ws/src/robot_integration'
+[7.632s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[7.632s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.871s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/py_pkg' for CMake module files
+[7.872s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/src/py_pkg' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/py_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pkg build --build-base /home/webotpi/ros2_ws/build/py_pkg/build install --record /home/webotpi/ros2_ws/build/py_pkg/install.log --single-version-externally-managed install_data
+[7.873s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/py_pkg' for CMake config files
+[7.873s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/py_pkg/lib'
+[7.874s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/py_pkg/bin'
+[7.874s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/py_pkg/lib/pkgconfig/py_pkg.pc'
+[7.874s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/py_pkg/lib/python3.12/site-packages'
+[7.874s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pkg', 'pythonpath')
+[7.875s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/hook/pythonpath.ps1'
+[7.876s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/hook/pythonpath.dsv'
+[7.877s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/hook/pythonpath.sh'
+[7.878s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/py_pkg/bin'
+[7.878s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(py_pkg)
+[7.879s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/package.ps1'
+[7.880s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/package.dsv'
+[7.881s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/package.sh'
+[7.882s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/package.bash'
+[7.883s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/py_pkg/share/py_pkg/package.zsh'
+[7.885s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/py_pkg/share/colcon-core/packages/py_pkg)
+[7.886s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/webotpi/ros2_ws/src/rplidar_ros' with build type 'ament_cmake'
+[7.886s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/webotpi/ros2_ws/src/rplidar_ros'
+[7.886s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[7.886s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.901s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/rplidar_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/rplidar_ros -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/rplidar_ros
+[9.672s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/src/robot_integration': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data
+[11.471s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/robot_integration' for CMake module files
+[11.472s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/src/robot_integration' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/robot_integration/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_integration build --build-base /home/webotpi/ros2_ws/build/robot_integration/build install --record /home/webotpi/ros2_ws/build/robot_integration/install.log --single-version-externally-managed install_data
+[11.473s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/robot_integration' for CMake config files
+[11.474s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/robot_integration/lib'
+[11.474s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/robot_integration/bin'
+[11.474s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/robot_integration/lib/pkgconfig/robot_integration.pc'
+[11.474s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/robot_integration/lib/python3.12/site-packages'
+[11.475s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_integration', 'pythonpath')
+[11.475s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/hook/pythonpath.ps1'
+[11.476s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/hook/pythonpath.dsv'
+[11.477s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/hook/pythonpath.sh'
+[11.478s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/robot_integration/bin'
+[11.478s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(robot_integration)
+[11.478s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/package.ps1'
+[11.479s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/package.dsv'
+[11.480s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/package.sh'
+[11.481s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/package.bash'
+[11.481s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/robot_integration/share/robot_integration/package.zsh'
+[11.482s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/robot_integration/share/colcon-core/packages/robot_integration)
+[11.482s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/webotpi/ros2_ws/src/voice_interaction' with build type 'ament_python'
+[11.483s] Level 1:colcon.colcon_core.shell:create_environment_hook('voice_interaction', 'ament_prefix_path')
+[11.483s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/hook/ament_prefix_path.ps1'
+[11.484s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/hook/ament_prefix_path.dsv'
+[11.485s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/hook/ament_prefix_path.sh'
+[11.487s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[11.487s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[15.112s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/webotpi/ros2_ws/src/voice_interaction'
+[15.113s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[15.113s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[15.121s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/rplidar_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/rplidar_ros -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/rplidar_ros
+[15.122s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/rplidar_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/rplidar_ros -- -j4 -l4
+[16.328s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/src/voice_interaction': PYTHONPATH=/home/webotpi/ros2_ws/build/voice_interaction/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/voice_interaction build --build-base /home/webotpi/ros2_ws/build/voice_interaction/build install --record /home/webotpi/ros2_ws/build/voice_interaction/install.log --single-version-externally-managed install_data
+[17.607s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/my_srv -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/my_srv
+[17.614s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/my_srv -- -j4 -l4
+[18.142s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/voice_interaction' for CMake module files
+[18.147s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/src/voice_interaction' returned '0': PYTHONPATH=/home/webotpi/ros2_ws/build/voice_interaction/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/voice_interaction build --build-base /home/webotpi/ros2_ws/build/voice_interaction/build install --record /home/webotpi/ros2_ws/build/voice_interaction/install.log --single-version-externally-managed install_data
+[18.154s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/voice_interaction' for CMake config files
+[18.155s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/voice_interaction/lib'
+[18.163s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/voice_interaction/bin'
+[18.169s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/voice_interaction/lib/pkgconfig/voice_interaction.pc'
+[18.176s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/voice_interaction/lib/python3.12/site-packages'
+[18.176s] Level 1:colcon.colcon_core.shell:create_environment_hook('voice_interaction', 'pythonpath')
+[18.177s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/hook/pythonpath.ps1'
+[18.192s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/hook/pythonpath.dsv'
+[18.194s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/hook/pythonpath.sh'
+[18.204s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/voice_interaction/bin'
+[18.204s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(voice_interaction)
+[18.205s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/package.ps1'
+[18.210s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/package.dsv'
+[18.217s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/package.sh'
+[18.226s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/package.bash'
+[18.241s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/voice_interaction/share/voice_interaction/package.zsh'
+[18.262s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/voice_interaction/share/colcon-core/packages/voice_interaction)
+[34.948s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/my_srv -- -j4 -l4
+[34.951s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/my_srv': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/my_srv
+[35.655s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_srv)
+[35.655s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/my_srv' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/my_srv
+[35.656s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv' for CMake module files
+[35.658s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv' for CMake config files
+[35.659s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_srv', 'cmake_prefix_path')
+[35.661s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/cmake_prefix_path.ps1'
+[35.663s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/cmake_prefix_path.dsv'
+[35.664s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/cmake_prefix_path.sh'
+[35.665s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/lib'
+[35.665s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_srv', 'ld_library_path_lib')
+[35.666s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/ld_library_path_lib.ps1'
+[35.668s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/ld_library_path_lib.dsv'
+[35.669s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/ld_library_path_lib.sh'
+[35.671s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/bin'
+[35.671s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/lib/pkgconfig/my_srv.pc'
+[35.672s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages'
+[35.672s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_srv', 'pythonpath')
+[35.673s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/pythonpath.ps1'
+[35.674s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/pythonpath.dsv'
+[35.675s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/pythonpath.sh'
+[35.676s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/bin'
+[35.677s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.ps1'
+[35.679s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.dsv'
+[35.680s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.sh'
+[35.681s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.bash'
+[35.682s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.zsh'
+[35.682s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/my_srv/share/colcon-core/packages/my_srv)
+[35.684s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_srv)
+[35.684s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv' for CMake module files
+[35.686s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv' for CMake config files
+[35.687s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_srv', 'cmake_prefix_path')
+[35.688s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/cmake_prefix_path.ps1'
+[35.689s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/cmake_prefix_path.dsv'
+[35.689s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/cmake_prefix_path.sh'
+[35.691s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/lib'
+[35.691s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_srv', 'ld_library_path_lib')
+[35.692s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/ld_library_path_lib.ps1'
+[35.693s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/ld_library_path_lib.dsv'
+[35.694s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/ld_library_path_lib.sh'
+[35.695s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/bin'
+[35.695s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/lib/pkgconfig/my_srv.pc'
+[35.695s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/lib/python3.12/site-packages'
+[35.695s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_srv', 'pythonpath')
+[35.696s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/pythonpath.ps1'
+[35.697s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/pythonpath.dsv'
+[35.698s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/hook/pythonpath.sh'
+[35.718s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/my_srv/bin'
+[35.719s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.ps1'
+[35.738s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.dsv'
+[35.743s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.sh'
+[35.748s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.bash'
+[35.749s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/my_srv/share/my_srv/package.zsh'
+[35.756s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/my_srv/share/colcon-core/packages/my_srv)
+[59.545s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/rplidar_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/webotpi/ros2_ws/build/rplidar_ros -- -j4 -l4
+[59.547s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/webotpi/ros2_ws/build/rplidar_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/rplidar_ros
+[59.623s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rplidar_ros)
+[59.624s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros' for CMake module files
+[59.624s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/rplidar_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/webotpi/ros2_ws/build/rplidar_ros
+[59.625s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros' for CMake config files
+[59.625s] Level 1:colcon.colcon_core.shell:create_environment_hook('rplidar_ros', 'cmake_prefix_path')
+[59.625s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/hook/cmake_prefix_path.ps1'
+[59.626s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/hook/cmake_prefix_path.dsv'
+[59.626s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/hook/cmake_prefix_path.sh'
+[59.627s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/lib'
+[59.627s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/bin'
+[59.627s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/lib/pkgconfig/rplidar_ros.pc'
+[59.627s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/lib/python3.12/site-packages'
+[59.628s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/bin'
+[59.628s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.ps1'
+[59.629s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.dsv'
+[59.629s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.sh'
+[59.630s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.bash'
+[59.630s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.zsh'
+[59.631s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/rplidar_ros/share/colcon-core/packages/rplidar_ros)
+[59.631s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rplidar_ros)
+[59.632s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros' for CMake module files
+[59.632s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros' for CMake config files
+[59.633s] Level 1:colcon.colcon_core.shell:create_environment_hook('rplidar_ros', 'cmake_prefix_path')
+[59.634s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/hook/cmake_prefix_path.ps1'
+[59.636s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/hook/cmake_prefix_path.dsv'
+[59.637s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/hook/cmake_prefix_path.sh'
+[59.638s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/lib'
+[59.638s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/bin'
+[59.638s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/lib/pkgconfig/rplidar_ros.pc'
+[59.638s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/lib/python3.12/site-packages'
+[59.639s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/rplidar_ros/bin'
+[59.639s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.ps1'
+[59.640s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.dsv'
+[59.641s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.sh'
+[59.642s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.bash'
+[59.643s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/rplidar_ros/share/rplidar_ros/package.zsh'
+[59.644s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/rplidar_ros/share/colcon-core/packages/rplidar_ros)
+[139.791s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/webotpi/ros2_ws/src/deptrum-ros-driver -DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930
+[139.819s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(deptrum-ros-driver-aurora930)
+[139.820s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930' for CMake module files
+[139.821s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930' for CMake config files
+[139.822s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/bin'
+[139.822s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/pkgconfig/deptrum-ros-driver-aurora930.pc'
+[139.823s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/python3.12/site-packages'
+[139.824s] Level 1:colcon.colcon_core.environment:checking '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/bin'
+[139.826s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.ps1'
+[139.831s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.dsv'
+[139.831s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.sh'
+[139.832s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.bash'
+[139.833s] INFO:colcon.colcon_core.shell:Creating package script '/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.zsh'
+[139.833s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/colcon-core/packages/deptrum-ros-driver-aurora930)
+[139.844s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[139.844s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[139.844s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '1'
+[139.844s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[139.845s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[139.845s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/webotpi/ros2_ws/install/local_setup.ps1'
+[139.846s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/webotpi/ros2_ws/install/_local_setup_util_ps1.py'
+[139.848s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/webotpi/ros2_ws/install/setup.ps1'
+[139.850s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/webotpi/ros2_ws/install/local_setup.sh'
+[139.850s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/webotpi/ros2_ws/install/_local_setup_util_sh.py'
+[139.851s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/webotpi/ros2_ws/install/setup.sh'
+[139.853s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/webotpi/ros2_ws/install/local_setup.bash'
+[139.889s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/webotpi/ros2_ws/install/setup.bash'
+[139.890s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/webotpi/ros2_ws/install/local_setup.zsh'
+[139.891s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/webotpi/ros2_ws/install/setup.zsh'

@@ -1,0 +1,717 @@
+[0.000000] (-) TimerEvent: {}
+[0.000154] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000189] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000208] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000225] (-) JobUnselected: {'identifier': 'robot_integration'}
+[0.000241] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.000256] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.000274] (deptrum-ros-driver-aurora930) JobQueued: {'identifier': 'deptrum-ros-driver-aurora930', 'dependencies': OrderedDict()}
+[0.000295] (pi5_robot_description) JobQueued: {'identifier': 'pi5_robot_description', 'dependencies': OrderedDict()}
+[0.000739] (deptrum-ros-driver-aurora930) JobStarted: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.009311] (pi5_robot_description) JobStarted: {'identifier': 'pi5_robot_description'}
+[0.023673] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'cmake'}
+[0.027661] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '/home/webotpi/ros2_ws/src/deptrum-ros-driver', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 51476 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '80', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 51476 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.030215] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'cmake'}
+[0.031051] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'build'}
+[0.031834] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/pi5_robot_description', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 51476 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '80', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 51476 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.066591] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.100704] (-) TimerEvent: {}
+[0.124397] (pi5_robot_description) CommandEnded: {'returncode': 0}
+[0.125202] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'install'}
+[0.148208] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/pi5_robot_description'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 51476 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '80', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 51476 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.168428] (pi5_robot_description) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.168959] (pi5_robot_description) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.169406] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf\n'}
+[0.169720] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak\n'}
+[0.169986] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak2\n'}
+[0.170116] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak_20260817_110004\n'}
+[0.170211] (pi5_robot_description) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/arm_car.urdf.bak_mirror\n'}
+[0.192838] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_car.urdf.xacro\n'}
+[0.193255] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro\n'}
+[0.193466] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro.bak\n'}
+[0.193707] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/multi_waypoint_navigation.launch.py\n'}
+[0.193875] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/nav2_navigation.launch.py\n'}
+[0.194020] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/nav2_navigation_with_depth.launch.py\n'}
+[0.194134] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_3d_mapping.launch.py\n'}
+[0.194311] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_3d_mapping.launch.py.bak\n'}
+[0.194468] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_3d_mapping.launch.py.bak_20260817_110004\n'}
+[0.194586] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/slam_mapping.launch.py\n'}
+[0.194675] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/view_robot.launch.py\n'}
+[0.194757] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/voice_navigation.launch.py\n'}
+[0.194930] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/arm_horizontal.yaml\n'}
+[0.195127] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/collision_monitor_params.yaml\n'}
+[0.195223] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/collision_monitor_params_backup.yaml\n'}
+[0.195368] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/named_waypoints.yaml\n'}
+[0.195519] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2.rviz\n'}
+[0.195682] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml\n'}
+[0.195909] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml.bak\n'}
+[0.196041] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml.bak2\n'}
+[0.196204] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params_rpp_backup.yaml\n'}
+[0.196404] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/slam_toolbox_mapping.yaml\n'}
+[0.196594] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/view_robot.rviz\n'}
+[0.196713] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/waypoint_nav.rviz\n'}
+[0.197295] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link1.STL\n'}
+[0.197503] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link2.STL\n'}
+[0.197715] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link3.STL\n'}
+[0.198716] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link4.STL\n'}
+[0.198961] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link5.STL\n'}
+[0.199068] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link6.STL\n'}
+[0.199163] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link7.STL\n'}
+[0.199254] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link1.STL\n'}
+[0.199343] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link10_l.STL\n'}
+[0.199432] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link11_l.STL\n'}
+[0.199724] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link2.STL\n'}
+[0.199890] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link3.STL\n'}
+[0.199987] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link4.STL\n'}
+[0.200071] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link5.STL\n'}
+[0.200147] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link6_r.STL\n'}
+[0.200246] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link7_r.STL\n'}
+[0.200322] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link8_r.STL\n'}
+[0.200561] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link9_l.STL\n'}
+[0.200821] (-) TimerEvent: {}
+[0.200843] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_base_link.STL\n'}
+[0.200947] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/base_link.STL\n'}
+[0.201050] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/lbw.STL\n'}
+[0.201149] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/lfw.STL\n'}
+[0.201246] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link1.STL\n'}
+[0.201339] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link10_l.STL\n'}
+[0.201564] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link11_l.STL\n'}
+[0.201882] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link2.STL\n'}
+[0.201983] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link3.STL\n'}
+[0.202073] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link4.STL\n'}
+[0.202169] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link5.STL\n'}
+[0.202247] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link6_r.STL\n'}
+[0.202322] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link7_r.STL\n'}
+[0.202529] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link8_r.STL\n'}
+[0.202679] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/link9_l.STL\n'}
+[0.202774] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/rbw.STL\n'}
+[0.202860] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/rfw.STL\n'}
+[0.203052] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/odom_only_node.py\n'}
+[0.203142] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/cmd_vel_bridge_node.py\n'}
+[0.203338] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/goal_pose_bridge.py\n'}
+[0.203524] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/waypoint_navigator.py\n'}
+[0.205679] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/nav_executor_node.py\n'}
+[0.205879] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/yolo_zone_detect_node.py\n'}
+[0.206049] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/arm_fixed_pose_node.py\n'}
+[0.206199] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/save_map.sh\n'}
+[0.206313] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/verify_urdf.sh\n'}
+[0.206407] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/waypoint_control.sh\n'}
+[0.206687] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/package_run_dependencies/pi5_robot_description\n'}
+[0.206918] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/parent_prefix_path/pi5_robot_description\n'}
+[0.207001] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.sh\n'}
+[0.207099] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.dsv\n'}
+[0.207178] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.sh\n'}
+[0.207343] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.dsv\n'}
+[0.207470] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.bash\n'}
+[0.207687] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.sh\n'}
+[0.207784] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.zsh\n'}
+[0.207941] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.dsv\n'}
+[0.208107] (pi5_robot_description) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.dsv\n'}
+[0.229459] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/packages/pi5_robot_description\n'}
+[0.233453] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig.cmake\n'}
+[0.233808] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig-version.cmake\n'}
+[0.234235] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.xml\n'}
+[0.239936] (pi5_robot_description) CommandEnded: {'returncode': 0}
+[0.288860] (pi5_robot_description) JobEnded: {'identifier': 'pi5_robot_description', 'rc': 0}
+[0.300938] (-) TimerEvent: {}
+[0.401142] (-) TimerEvent: {}
+[0.464794] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.490050] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.501248] (-) TimerEvent: {}
+[0.565908] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.587723] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.601349] (-) TimerEvent: {}
+[0.616148] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.650184] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.701464] (-) TimerEvent: {}
+[0.801682] (-) TimerEvent: {}
+[0.814689] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.822566] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.902743] (-) TimerEvent: {}
+[0.982232] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.002754] (-) TimerEvent: {}
+[1.102952] (-) TimerEvent: {}
+[1.133434] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- STREAM_SDK_TYPE: AURORA930\n'}
+[1.134484] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- SYSTEM_PLATFORM: -\n'}
+[1.140437] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[1.171687] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[1.203066] (-) TimerEvent: {}
+[1.259900] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)\n'}
+[1.303190] (-) TimerEvent: {}
+[1.304968] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)\n'}
+[1.315138] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[1.403305] (-) TimerEvent: {}
+[1.503526] (-) TimerEvent: {}
+[1.577146] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[1.593660] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[1.596506] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.600093] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found angles: 1.16.1 (/opt/ros/jazzy/share/angles/cmake)\n'}
+[1.603592] (-) TimerEvent: {}
+[1.604230] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- GLog library status:\n'}
+[1.604387] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include\n'}
+[1.604513] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/lib-static\n'}
+[1.604661] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     libraries: glog\n'}
+[1.605156] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- GFlags library status:\n'}
+[1.605278] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     include path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include\n'}
+[1.605386] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     library path: /home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/lib-static\n'}
+[1.605494] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'--     libraries: gflags\n'}
+[1.606088] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[1.703725] (-) TimerEvent: {}
+[1.803991] (-) TimerEvent: {}
+[1.816931] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'CMake Deprecation Warning at subscribe_node/CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[1.817333] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  Compatibility with CMake < 3.5 will be removed from a future version of\n'}
+[1.817463] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  CMake.\n'}
+[1.817597] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.817701] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  Update the VERSION argument <min> value or use a ...<max> suffix to tell\n'}
+[1.817807] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'  CMake that the project does not need compatibility with older versions.\n'}
+[1.817974] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.818079] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'\n'}
+[1.884429] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.904092] (-) TimerEvent: {}
+[1.911854] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.912459] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/webotpi/ros2_ws/src/deptrum-ros-driver/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/deptrum-stream-aurora900-linux-aarch64-v1.1.19-18.04/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/glog-0.4.0/include;/home/webotpi/ros2_ws/src/deptrum-ros-driver/ext/gflags-2.2.2/include\n'}
+[1.912600] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.943445] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.943729] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.952807] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.952935] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[1.963284] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.967277] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.992396] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.992722] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.001817] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.004181] (-) TimerEvent: {}
+[2.009002] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Configuring done (2.0s)\n'}
+[2.104328] (-) TimerEvent: {}
+[2.111354] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[2.139316] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Build files have been written to: /home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930\n'}
+[2.165257] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[2.166023] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'build'}
+[2.166554] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 51476 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '80', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 51476 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[2.205860] (-) TimerEvent: {}
+[2.306286] (-) TimerEvent: {}
+[2.406554] (-) TimerEvent: {}
+[2.462078] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 11%] Building CXX object CMakeFiles/aurora930_node.dir/src/ros2_node.cc.o\n'}
+[2.464394] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 22%] Building CXX object CMakeFiles/aurora930_node.dir/src/ros2_device.cc.o\n'}
+[2.495745] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 33%] Building CXX object subscribe_node/CMakeFiles/sub_node_ci.dir/src/sub_node_ci.cc.o\n'}
+[2.503994] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 44%] Building CXX object subscribe_node/CMakeFiles/sub_node.dir/src/sub_node.cc.o\n'}
+[2.506662] (-) TimerEvent: {}
+[2.606889] (-) TimerEvent: {}
+[2.707217] (-) TimerEvent: {}
+[2.807612] (-) TimerEvent: {}
+[2.908057] (-) TimerEvent: {}
+[3.010762] (-) TimerEvent: {}
+[3.111440] (-) TimerEvent: {}
+[3.211671] (-) TimerEvent: {}
+[3.312063] (-) TimerEvent: {}
+[3.412624] (-) TimerEvent: {}
+[3.512835] (-) TimerEvent: {}
+[3.613414] (-) TimerEvent: {}
+[3.713881] (-) TimerEvent: {}
+[3.814885] (-) TimerEvent: {}
+[3.915267] (-) TimerEvent: {}
+[4.016612] (-) TimerEvent: {}
+[4.116911] (-) TimerEvent: {}
+[4.217164] (-) TimerEvent: {}
+[4.255409] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,\n'}
+[4.255679] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_node.cc:6:\n'}
+[4.255790] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]\n'}
+[4.255869] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'   47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE\n'}
+[4.255990] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'      |      ^~~~~~~\n'}
+[4.256205] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,\n'}
+[4.256306] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/ros2_device.cc:5:\n'}
+[4.256382] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]\n'}
+[4.256457] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'   47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE\n'}
+[4.256554] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'      |      ^~~~~~~\n'}
+[4.317339] (-) TimerEvent: {}
+[4.417640] (-) TimerEvent: {}
+[4.517851] (-) TimerEvent: {}
+[4.618062] (-) TimerEvent: {}
+[4.726624] (-) TimerEvent: {}
+[4.828587] (-) TimerEvent: {}
+[4.928832] (-) TimerEvent: {}
+[5.029094] (-) TimerEvent: {}
+[5.129394] (-) TimerEvent: {}
+[5.229707] (-) TimerEvent: {}
+[5.329968] (-) TimerEvent: {}
+[5.430238] (-) TimerEvent: {}
+[5.533601] (-) TimerEvent: {}
+[5.636730] (-) TimerEvent: {}
+[5.737295] (-) TimerEvent: {}
+[5.837759] (-) TimerEvent: {}
+[5.938035] (-) TimerEvent: {}
+[6.038302] (-) TimerEvent: {}
+[6.138619] (-) TimerEvent: {}
+[6.239042] (-) TimerEvent: {}
+[6.342608] (-) TimerEvent: {}
+[6.442941] (-) TimerEvent: {}
+[6.545613] (-) TimerEvent: {}
+[6.645973] (-) TimerEvent: {}
+[6.747841] (-) TimerEvent: {}
+[6.848117] (-) TimerEvent: {}
+[6.948393] (-) TimerEvent: {}
+[7.048703] (-) TimerEvent: {}
+[7.149081] (-) TimerEvent: {}
+[7.249475] (-) TimerEvent: {}
+[7.349751] (-) TimerEvent: {}
+[7.455805] (-) TimerEvent: {}
+[7.557635] (-) TimerEvent: {}
+[7.657916] (-) TimerEvent: {}
+[7.758193] (-) TimerEvent: {}
+[7.858456] (-) TimerEvent: {}
+[7.961609] (-) TimerEvent: {}
+[8.061980] (-) TimerEvent: {}
+[8.162359] (-) TimerEvent: {}
+[8.262593] (-) TimerEvent: {}
+[8.362914] (-) TimerEvent: {}
+[8.463208] (-) TimerEvent: {}
+[8.564625] (-) TimerEvent: {}
+[8.664905] (-) TimerEvent: {}
+[8.765298] (-) TimerEvent: {}
+[8.865571] (-) TimerEvent: {}
+[8.965819] (-) TimerEvent: {}
+[9.068684] (-) TimerEvent: {}
+[9.170358] (-) TimerEvent: {}
+[9.270592] (-) TimerEvent: {}
+[9.370884] (-) TimerEvent: {}
+[9.471342] (-) TimerEvent: {}
+[9.571614] (-) TimerEvent: {}
+[9.671884] (-) TimerEvent: {}
+[9.772140] (-) TimerEvent: {}
+[9.875220] (-) TimerEvent: {}
+[9.976582] (-) TimerEvent: {}
+[10.078621] (-) TimerEvent: {}
+[10.178926] (-) TimerEvent: {}
+[10.279613] (-) TimerEvent: {}
+[10.379864] (-) TimerEvent: {}
+[10.482570] (-) TimerEvent: {}
+[10.584312] (-) TimerEvent: {}
+[10.687583] (-) TimerEvent: {}
+[10.788030] (-) TimerEvent: {}
+[10.888465] (-) TimerEvent: {}
+[10.989975] (-) TimerEvent: {}
+[11.090251] (-) TimerEvent: {}
+[11.190554] (-) TimerEvent: {}
+[11.290847] (-) TimerEvent: {}
+[11.391101] (-) TimerEvent: {}
+[11.491365] (-) TimerEvent: {}
+[11.591585] (-) TimerEvent: {}
+[11.691818] (-) TimerEvent: {}
+[11.792077] (-) TimerEvent: {}
+[11.893590] (-) TimerEvent: {}
+[11.993849] (-) TimerEvent: {}
+[12.094127] (-) TimerEvent: {}
+[12.194407] (-) TimerEvent: {}
+[12.294708] (-) TimerEvent: {}
+[12.395835] (-) TimerEvent: {}
+[12.497518] (-) TimerEvent: {}
+[12.597808] (-) TimerEvent: {}
+[12.698066] (-) TimerEvent: {}
+[12.798416] (-) TimerEvent: {}
+[12.901615] (-) TimerEvent: {}
+[13.001893] (-) TimerEvent: {}
+[13.102143] (-) TimerEvent: {}
+[13.202405] (-) TimerEvent: {}
+[13.302689] (-) TimerEvent: {}
+[13.402964] (-) TimerEvent: {}
+[13.503223] (-) TimerEvent: {}
+[13.603473] (-) TimerEvent: {}
+[13.703916] (-) TimerEvent: {}
+[13.804216] (-) TimerEvent: {}
+[13.904536] (-) TimerEvent: {}
+[14.004799] (-) TimerEvent: {}
+[14.105346] (-) TimerEvent: {}
+[14.206538] (-) TimerEvent: {}
+[14.306804] (-) TimerEvent: {}
+[14.407171] (-) TimerEvent: {}
+[14.507632] (-) TimerEvent: {}
+[14.609214] (-) TimerEvent: {}
+[14.709481] (-) TimerEvent: {}
+[14.810288] (-) TimerEvent: {}
+[14.910597] (-) TimerEvent: {}
+[15.010837] (-) TimerEvent: {}
+[15.111602] (-) TimerEvent: {}
+[15.211865] (-) TimerEvent: {}
+[15.312920] (-) TimerEvent: {}
+[15.413182] (-) TimerEvent: {}
+[15.513466] (-) TimerEvent: {}
+[15.617496] (-) TimerEvent: {}
+[15.718791] (-) TimerEvent: {}
+[15.820916] (-) TimerEvent: {}
+[15.921534] (-) TimerEvent: {}
+[16.021918] (-) TimerEvent: {}
+[16.123605] (-) TimerEvent: {}
+[16.223911] (-) TimerEvent: {}
+[16.324169] (-) TimerEvent: {}
+[16.424425] (-) TimerEvent: {}
+[16.524704] (-) TimerEvent: {}
+[16.627612] (-) TimerEvent: {}
+[16.729137] (-) TimerEvent: {}
+[16.830345] (-) TimerEvent: {}
+[16.930609] (-) TimerEvent: {}
+[17.030891] (-) TimerEvent: {}
+[17.131169] (-) TimerEvent: {}
+[17.231445] (-) TimerEvent: {}
+[17.331716] (-) TimerEvent: {}
+[17.432005] (-) TimerEvent: {}
+[17.532343] (-) TimerEvent: {}
+[17.632608] (-) TimerEvent: {}
+[17.735600] (-) TimerEvent: {}
+[17.836065] (-) TimerEvent: {}
+[17.937641] (-) TimerEvent: {}
+[18.039870] (-) TimerEvent: {}
+[18.140687] (-) TimerEvent: {}
+[18.241580] (-) TimerEvent: {}
+[18.341842] (-) TimerEvent: {}
+[18.442114] (-) TimerEvent: {}
+[18.542871] (-) TimerEvent: {}
+[18.646176] (-) TimerEvent: {}
+[18.747676] (-) TimerEvent: {}
+[18.848075] (-) TimerEvent: {}
+[18.948352] (-) TimerEvent: {}
+[19.048920] (-) TimerEvent: {}
+[19.153613] (-) TimerEvent: {}
+[19.256621] (-) TimerEvent: {}
+[19.356901] (-) TimerEvent: {}
+[19.457169] (-) TimerEvent: {}
+[19.557431] (-) TimerEvent: {}
+[19.657753] (-) TimerEvent: {}
+[19.758009] (-) TimerEvent: {}
+[19.858331] (-) TimerEvent: {}
+[19.958671] (-) TimerEvent: {}
+[20.061757] (-) TimerEvent: {}
+[20.162256] (-) TimerEvent: {}
+[20.265681] (-) TimerEvent: {}
+[20.366031] (-) TimerEvent: {}
+[20.466286] (-) TimerEvent: {}
+[20.566598] (-) TimerEvent: {}
+[20.668758] (-) TimerEvent: {}
+[20.735906] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 55%] Building CXX object CMakeFiles/aurora930_node.dir/src/aurora900_ros2_device.cc.o\n'}
+[20.768907] (-) TimerEvent: {}
+[20.869171] (-) TimerEvent: {}
+[20.969475] (-) TimerEvent: {}
+[21.070005] (-) TimerEvent: {}
+[21.171606] (-) TimerEvent: {}
+[21.271864] (-) TimerEvent: {}
+[21.373121] (-) TimerEvent: {}
+[21.473414] (-) TimerEvent: {}
+[21.573699] (-) TimerEvent: {}
+[21.676592] (-) TimerEvent: {}
+[21.776847] (-) TimerEvent: {}
+[21.809540] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'In file included from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/ros2_device.h:20,\n'}
+[21.809828] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/include/deptrum_ros_driver/aurora900_ros2_device.h:4,\n'}
+[21.809996] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'                 from /home/webotpi/ros2_ws/src/deptrum-ros-driver/src/aurora900_ros2_device.cc:2:\n'}
+[21.810124] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/point_cloud_conversion.hpp:47:6: warning: #warning POINT_CLOUD_DEPRECATION_MESSAGE [-Wcpp]\n'}
+[21.810228] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'   47 | #    warning POINT_CLOUD_DEPRECATION_MESSAGE\n'}
+[21.810327] (deptrum-ros-driver-aurora930) StderrLine: {'line': b'      |      ^~~~~~~\n'}
+[21.877197] (-) TimerEvent: {}
+[21.980623] (-) TimerEvent: {}
+[22.080924] (-) TimerEvent: {}
+[22.181314] (-) TimerEvent: {}
+[22.281602] (-) TimerEvent: {}
+[22.381905] (-) TimerEvent: {}
+[22.482224] (-) TimerEvent: {}
+[22.582518] (-) TimerEvent: {}
+[22.682827] (-) TimerEvent: {}
+[22.783090] (-) TimerEvent: {}
+[22.883356] (-) TimerEvent: {}
+[22.983795] (-) TimerEvent: {}
+[23.086003] (-) TimerEvent: {}
+[23.186328] (-) TimerEvent: {}
+[23.286593] (-) TimerEvent: {}
+[23.386852] (-) TimerEvent: {}
+[23.487293] (-) TimerEvent: {}
+[23.588547] (-) TimerEvent: {}
+[23.689606] (-) TimerEvent: {}
+[23.790001] (-) TimerEvent: {}
+[23.890974] (-) TimerEvent: {}
+[23.991247] (-) TimerEvent: {}
+[24.091886] (-) TimerEvent: {}
+[24.193217] (-) TimerEvent: {}
+[24.293532] (-) TimerEvent: {}
+[24.393920] (-) TimerEvent: {}
+[24.495386] (-) TimerEvent: {}
+[24.595591] (-) TimerEvent: {}
+[24.695817] (-) TimerEvent: {}
+[24.796059] (-) TimerEvent: {}
+[24.896364] (-) TimerEvent: {}
+[24.997375] (-) TimerEvent: {}
+[25.097663] (-) TimerEvent: {}
+[25.197914] (-) TimerEvent: {}
+[25.298162] (-) TimerEvent: {}
+[25.400625] (-) TimerEvent: {}
+[25.500898] (-) TimerEvent: {}
+[25.601172] (-) TimerEvent: {}
+[25.701450] (-) TimerEvent: {}
+[25.801730] (-) TimerEvent: {}
+[25.901989] (-) TimerEvent: {}
+[25.989403] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 66%] Building CXX object CMakeFiles/aurora930_node.dir/src/camera_parameters.cc.o\n'}
+[26.002131] (-) TimerEvent: {}
+[26.102469] (-) TimerEvent: {}
+[26.202838] (-) TimerEvent: {}
+[26.303089] (-) TimerEvent: {}
+[26.404559] (-) TimerEvent: {}
+[26.504936] (-) TimerEvent: {}
+[26.607583] (-) TimerEvent: {}
+[26.707989] (-) TimerEvent: {}
+[26.808404] (-) TimerEvent: {}
+[26.908846] (-) TimerEvent: {}
+[27.009283] (-) TimerEvent: {}
+[27.109602] (-) TimerEvent: {}
+[27.209917] (-) TimerEvent: {}
+[27.310586] (-) TimerEvent: {}
+[27.411044] (-) TimerEvent: {}
+[27.512276] (-) TimerEvent: {}
+[27.612914] (-) TimerEvent: {}
+[27.713781] (-) TimerEvent: {}
+[27.815293] (-) TimerEvent: {}
+[27.915680] (-) TimerEvent: {}
+[28.015922] (-) TimerEvent: {}
+[28.118170] (-) TimerEvent: {}
+[28.218510] (-) TimerEvent: {}
+[28.318786] (-) TimerEvent: {}
+[28.419035] (-) TimerEvent: {}
+[28.519286] (-) TimerEvent: {}
+[28.619576] (-) TimerEvent: {}
+[28.719849] (-) TimerEvent: {}
+[28.820161] (-) TimerEvent: {}
+[28.920462] (-) TimerEvent: {}
+[29.020723] (-) TimerEvent: {}
+[29.121014] (-) TimerEvent: {}
+[29.222327] (-) TimerEvent: {}
+[29.322907] (-) TimerEvent: {}
+[29.437396] (-) TimerEvent: {}
+[29.544056] (-) TimerEvent: {}
+[29.644349] (-) TimerEvent: {}
+[29.744624] (-) TimerEvent: {}
+[29.844938] (-) TimerEvent: {}
+[29.946274] (-) TimerEvent: {}
+[30.046561] (-) TimerEvent: {}
+[30.146832] (-) TimerEvent: {}
+[30.247509] (-) TimerEvent: {}
+[30.352926] (-) TimerEvent: {}
+[30.453215] (-) TimerEvent: {}
+[30.553541] (-) TimerEvent: {}
+[30.653992] (-) TimerEvent: {}
+[30.754367] (-) TimerEvent: {}
+[30.854591] (-) TimerEvent: {}
+[30.955310] (-) TimerEvent: {}
+[31.055577] (-) TimerEvent: {}
+[31.155807] (-) TimerEvent: {}
+[31.257594] (-) TimerEvent: {}
+[31.357851] (-) TimerEvent: {}
+[31.458104] (-) TimerEvent: {}
+[31.558385] (-) TimerEvent: {}
+[31.658654] (-) TimerEvent: {}
+[31.758912] (-) TimerEvent: {}
+[31.859264] (-) TimerEvent: {}
+[31.961586] (-) TimerEvent: {}
+[32.061863] (-) TimerEvent: {}
+[32.162193] (-) TimerEvent: {}
+[32.263809] (-) TimerEvent: {}
+[32.364057] (-) TimerEvent: {}
+[32.464306] (-) TimerEvent: {}
+[32.564691] (-) TimerEvent: {}
+[32.669623] (-) TimerEvent: {}
+[32.769892] (-) TimerEvent: {}
+[32.871050] (-) TimerEvent: {}
+[32.972760] (-) TimerEvent: {}
+[33.073043] (-) TimerEvent: {}
+[33.173309] (-) TimerEvent: {}
+[33.273570] (-) TimerEvent: {}
+[33.375633] (-) TimerEvent: {}
+[33.475924] (-) TimerEvent: {}
+[33.576271] (-) TimerEvent: {}
+[33.676555] (-) TimerEvent: {}
+[33.780571] (-) TimerEvent: {}
+[33.883592] (-) TimerEvent: {}
+[33.983849] (-) TimerEvent: {}
+[34.084210] (-) TimerEvent: {}
+[34.186375] (-) TimerEvent: {}
+[34.286600] (-) TimerEvent: {}
+[34.386849] (-) TimerEvent: {}
+[34.487108] (-) TimerEvent: {}
+[34.587340] (-) TimerEvent: {}
+[34.687586] (-) TimerEvent: {}
+[34.787839] (-) TimerEvent: {}
+[34.888098] (-) TimerEvent: {}
+[34.993747] (-) TimerEvent: {}
+[35.094055] (-) TimerEvent: {}
+[35.195593] (-) TimerEvent: {}
+[35.295844] (-) TimerEvent: {}
+[35.396238] (-) TimerEvent: {}
+[35.496686] (-) TimerEvent: {}
+[35.596967] (-) TimerEvent: {}
+[35.702524] (-) TimerEvent: {}
+[35.802826] (-) TimerEvent: {}
+[35.903104] (-) TimerEvent: {}
+[36.003374] (-) TimerEvent: {}
+[36.109592] (-) TimerEvent: {}
+[36.209874] (-) TimerEvent: {}
+[36.310145] (-) TimerEvent: {}
+[36.410598] (-) TimerEvent: {}
+[36.510866] (-) TimerEvent: {}
+[36.611151] (-) TimerEvent: {}
+[36.713599] (-) TimerEvent: {}
+[36.813862] (-) TimerEvent: {}
+[36.914179] (-) TimerEvent: {}
+[37.014432] (-) TimerEvent: {}
+[37.114704] (-) TimerEvent: {}
+[37.219618] (-) TimerEvent: {}
+[37.319907] (-) TimerEvent: {}
+[37.420153] (-) TimerEvent: {}
+[37.520404] (-) TimerEvent: {}
+[37.620750] (-) TimerEvent: {}
+[37.722601] (-) TimerEvent: {}
+[37.822846] (-) TimerEvent: {}
+[37.923101] (-) TimerEvent: {}
+[38.023340] (-) TimerEvent: {}
+[38.123619] (-) TimerEvent: {}
+[38.226603] (-) TimerEvent: {}
+[38.326843] (-) TimerEvent: {}
+[38.427056] (-) TimerEvent: {}
+[38.527265] (-) TimerEvent: {}
+[38.627525] (-) TimerEvent: {}
+[38.727807] (-) TimerEvent: {}
+[38.828035] (-) TimerEvent: {}
+[38.928248] (-) TimerEvent: {}
+[39.028511] (-) TimerEvent: {}
+[39.128716] (-) TimerEvent: {}
+[39.228997] (-) TimerEvent: {}
+[39.329281] (-) TimerEvent: {}
+[39.431635] (-) TimerEvent: {}
+[39.532024] (-) TimerEvent: {}
+[39.638356] (-) TimerEvent: {}
+[39.740321] (-) TimerEvent: {}
+[39.840831] (-) TimerEvent: {}
+[39.941756] (-) TimerEvent: {}
+[40.042028] (-) TimerEvent: {}
+[40.142325] (-) TimerEvent: {}
+[40.242618] (-) TimerEvent: {}
+[40.342924] (-) TimerEvent: {}
+[40.443195] (-) TimerEvent: {}
+[40.548290] (-) TimerEvent: {}
+[40.648659] (-) TimerEvent: {}
+[40.749749] (-) TimerEvent: {}
+[40.850089] (-) TimerEvent: {}
+[40.950386] (-) TimerEvent: {}
+[41.050674] (-) TimerEvent: {}
+[41.152297] (-) TimerEvent: {}
+[41.165302] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 77%] Linking CXX executable sub_node\n'}
+[41.252733] (-) TimerEvent: {}
+[41.353265] (-) TimerEvent: {}
+[41.453821] (-) TimerEvent: {}
+[41.554261] (-) TimerEvent: {}
+[41.654544] (-) TimerEvent: {}
+[41.756858] (-) TimerEvent: {}
+[41.859702] (-) TimerEvent: {}
+[41.960308] (-) TimerEvent: {}
+[42.060591] (-) TimerEvent: {}
+[42.095731] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 88%] Linking CXX executable sub_node_ci\n'}
+[42.160938] (-) TimerEvent: {}
+[42.261571] (-) TimerEvent: {}
+[42.362077] (-) TimerEvent: {}
+[42.462659] (-) TimerEvent: {}
+[42.563884] (-) TimerEvent: {}
+[42.668844] (-) TimerEvent: {}
+[42.769757] (-) TimerEvent: {}
+[42.872639] (-) TimerEvent: {}
+[42.974782] (-) TimerEvent: {}
+[43.080367] (-) TimerEvent: {}
+[43.180909] (-) TimerEvent: {}
+[43.281302] (-) TimerEvent: {}
+[43.382028] (-) TimerEvent: {}
+[43.485647] (-) TimerEvent: {}
+[43.586254] (-) TimerEvent: {}
+[43.686688] (-) TimerEvent: {}
+[43.786992] (-) TimerEvent: {}
+[43.888722] (-) TimerEvent: {}
+[43.991280] (-) TimerEvent: {}
+[44.091577] (-) TimerEvent: {}
+[44.191893] (-) TimerEvent: {}
+[44.292250] (-) TimerEvent: {}
+[44.392897] (-) TimerEvent: {}
+[44.472419] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 88%] Built target sub_node\n'}
+[44.493195] (-) TimerEvent: {}
+[44.594063] (-) TimerEvent: {}
+[44.694299] (-) TimerEvent: {}
+[44.794564] (-) TimerEvent: {}
+[44.894785] (-) TimerEvent: {}
+[44.914247] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[ 88%] Built target sub_node_ci\n'}
+[44.994933] (-) TimerEvent: {}
+[45.095193] (-) TimerEvent: {}
+[45.195430] (-) TimerEvent: {}
+[45.295717] (-) TimerEvent: {}
+[45.396000] (-) TimerEvent: {}
+[45.496389] (-) TimerEvent: {}
+[45.597116] (-) TimerEvent: {}
+[45.697350] (-) TimerEvent: {}
+[45.722948] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[100%] Linking CXX executable aurora930_node\n'}
+[45.797478] (-) TimerEvent: {}
+[45.897803] (-) TimerEvent: {}
+[45.998144] (-) TimerEvent: {}
+[46.098611] (-) TimerEvent: {}
+[46.199064] (-) TimerEvent: {}
+[46.299352] (-) TimerEvent: {}
+[46.399889] (-) TimerEvent: {}
+[46.500507] (-) TimerEvent: {}
+[46.601005] (-) TimerEvent: {}
+[46.701467] (-) TimerEvent: {}
+[46.801903] (-) TimerEvent: {}
+[46.902198] (-) TimerEvent: {}
+[47.002525] (-) TimerEvent: {}
+[47.102903] (-) TimerEvent: {}
+[47.204921] (-) TimerEvent: {}
+[47.305731] (-) TimerEvent: {}
+[47.406244] (-) TimerEvent: {}
+[47.506617] (-) TimerEvent: {}
+[47.606844] (-) TimerEvent: {}
+[47.707083] (-) TimerEvent: {}
+[47.807304] (-) TimerEvent: {}
+[47.907534] (-) TimerEvent: {}
+[48.007756] (-) TimerEvent: {}
+[48.107994] (-) TimerEvent: {}
+[48.208208] (-) TimerEvent: {}
+[48.223375] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'[100%] Built target aurora930_node\n'}
+[48.248666] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[48.255301] (deptrum-ros-driver-aurora930) JobProgress: {'identifier': 'deptrum-ros-driver-aurora930', 'progress': 'install'}
+[48.256187] (deptrum-ros-driver-aurora930) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930'], 'cwd': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 51476 22', 'LC_TIME': 'zh_CN.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '80', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/webotpi/ros2_ws/build/deptrum-ros-driver-aurora930', 'SSH_CONNECTION': '192.168.0.111 51476 192.168.0.119 22', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[48.275354] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[48.276015] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[48.276356] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.sh\n'}
+[48.276610] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/library_path.dsv\n'}
+[48.276975] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node\n'}
+[48.283428] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node\n'}
+[48.283927] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/aurora930_node\n'}
+[48.284606] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/deptrum-ros-driver-aurora930/sub_node_ci\n'}
+[48.284909] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/99-deptrum-libusb.rules\n'}
+[48.285175] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/lib/libdeptrum_stream_aurora900.so.1.1.19\n'}
+[48.285406] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/usage_aurora930.md\n'}
+[48.285616] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/doc/RELEASE_AURORA930.md\n'}
+[48.285844] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/rviz/aurora930-ros2.rviz\n'}
+[48.286558] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/package_run_dependencies/deptrum-ros-driver-aurora930\n'}
+[48.289904] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/parent_prefix_path/deptrum-ros-driver-aurora930\n'}
+[48.290605] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.sh\n'}
+[48.290840] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/ament_prefix_path.dsv\n'}
+[48.290980] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.sh\n'}
+[48.291152] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/environment/path.dsv\n'}
+[48.291302] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.bash\n'}
+[48.291415] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.sh\n'}
+[48.291547] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.zsh\n'}
+[48.291677] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/local_setup.dsv\n'}
+[48.292183] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Symlinking: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.dsv\n'}
+[48.308337] (-) TimerEvent: {}
+[48.317938] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/ament_index/resource_index/packages/deptrum-ros-driver-aurora930\n'}
+[48.318568] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[48.318785] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config.cmake\n'}
+[48.319000] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/cmake/deptrum-ros-driver-aurora930Config-version.cmake\n'}
+[48.320876] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date symlink: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/package.xml\n'}
+[48.321274] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch\n'}
+[48.321395] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/viewer930_launch.py\n'}
+[48.321710] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_multi_launch.py\n'}
+[48.322083] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/__pycache__\n'}
+[48.323050] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/sub_node_ci_aurora930_launch.py\n'}
+[48.323225] (deptrum-ros-driver-aurora930) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/deptrum-ros-driver-aurora930/share/deptrum-ros-driver-aurora930/launch/aurora930_launch.py\n'}
+[48.323939] (deptrum-ros-driver-aurora930) CommandEnded: {'returncode': 0}
+[48.353041] (deptrum-ros-driver-aurora930) JobEnded: {'identifier': 'deptrum-ros-driver-aurora930', 'rc': 0}
+[48.354022] (-) EventReactorShutdown: {}

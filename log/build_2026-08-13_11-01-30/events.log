@@ -1,0 +1,95 @@
+[0.000000] (-) TimerEvent: {}
+[0.000154] (-) JobUnselected: {'identifier': 'deptrum-ros-driver-aurora930'}
+[0.000344] (-) JobUnselected: {'identifier': 'my_launch_pkg'}
+[0.000640] (-) JobUnselected: {'identifier': 'my_srv'}
+[0.000678] (-) JobUnselected: {'identifier': 'py_pkg'}
+[0.000845] (-) JobUnselected: {'identifier': 'robot_integration'}
+[0.000868] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.001031] (-) JobUnselected: {'identifier': 'voice_interaction'}
+[0.001086] (pi5_robot_description) JobQueued: {'identifier': 'pi5_robot_description', 'dependencies': OrderedDict()}
+[0.001184] (pi5_robot_description) JobStarted: {'identifier': 'pi5_robot_description'}
+[0.021668] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'cmake'}
+[0.023644] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'build'}
+[0.024623] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/webotpi/ros2_ws/build/pi5_robot_description', '--', '-j4', '-l4'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 60102 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '37', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 60102 192.168.0.119 22', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1'}), 'shell': False}
+[0.099671] (-) TimerEvent: {}
+[0.199898] (-) TimerEvent: {}
+[0.267664] (pi5_robot_description) CommandEnded: {'returncode': 0}
+[0.274474] (pi5_robot_description) JobProgress: {'identifier': 'pi5_robot_description', 'progress': 'install'}
+[0.292910] (pi5_robot_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/webotpi/ros2_ws/build/pi5_robot_description'], 'cwd': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'env': OrderedDict({'LANGUAGE': 'zh_CN:en', 'USER': 'webotpi', 'SSH_CLIENT': '192.168.0.111 60102 22', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'HOME': '/home/webotpi', 'OLDPWD': '/home/webotpi', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'LOGNAME': 'webotpi', '_': '/usr/bin/colcon', 'XDG_SESSION_CLASS': 'user', 'XDG_SESSION_ID': '37', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'PAPERSIZE': 'a4', 'LC_ADDRESS': 'zh_CN.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'zh_CN.UTF-8', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'PWD': '/home/webotpi/ros2_ws/build/pi5_robot_description', 'SSH_CONNECTION': '192.168.0.111 60102 192.168.0.119 22', 'LC_NUMERIC': 'zh_CN.UTF-8', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1'}), 'shell': False}
+[0.299991] (-) TimerEvent: {}
+[0.312749] (pi5_robot_description) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.313032] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf\n'}
+[0.313159] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro.bak\n'}
+[0.313542] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_car.urdf.xacro\n'}
+[0.313689] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/urdf/pi5_arm_robot.urdf.xacro\n'}
+[0.313785] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch\n'}
+[0.313867] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/nav2_navigation.launch.py\n'}
+[0.314462] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/nav2_navigation_with_depth.launch.py\n'}
+[0.314597] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/voice_navigation.launch.py\n'}
+[0.314713] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/rtabmap_mapping.launch.py\n'}
+[0.314802] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/view_robot.launch.py\n'}
+[0.314884] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/slam_mapping.launch.py\n'}
+[0.314966] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/launch/multi_waypoint_navigation.launch.py\n'}
+[0.315743] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config\n'}
+[0.315876] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/rtabmap.rviz\n'}
+[0.315964] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/view_robot.rviz\n'}
+[0.316047] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml\n'}
+[0.316127] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml.bak2\n'}
+[0.316206] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/slam_toolbox_mapping.yaml\n'}
+[0.316285] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/waypoint_nav.rviz\n'}
+[0.316382] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/collision_monitor_params.yaml\n'}
+[0.316474] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/named_waypoints.yaml\n'}
+[0.316676] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/collision_monitor_params_backup.yaml\n'}
+[0.316809] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2.rviz\n'}
+[0.316895] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params_rpp_backup.yaml\n'}
+[0.316977] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/config/nav2_params.yaml.bak\n'}
+[0.317079] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes\n'}
+[0.317160] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link5.STL\n'}
+[0.317243] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link3.STL\n'}
+[0.317339] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link1.STL\n'}
+[0.318366] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link6.STL\n'}
+[0.318516] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link2.STL\n'}
+[0.318627] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link8_r.STL\n'}
+[0.318953] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/base_link.STL\n'}
+[0.319162] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link9_l.STL\n'}
+[0.319438] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link7_r.STL\n'}
+[0.320251] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link5.STL\n'}
+[0.322327] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link4.STL\n'}
+[0.322500] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link7.STL\n'}
+[0.322609] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link11_l.STL\n'}
+[0.323167] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link3.STL\n'}
+[0.323427] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link2.STL\n'}
+[0.323900] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link4.STL\n'}
+[0.325386] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link10_l.STL\n'}
+[0.326236] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_base_link.STL\n'}
+[0.337390] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/Link1.STL\n'}
+[0.337635] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/meshes/arm_Link6_r.STL\n'}
+[0.337928] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/odom_only_node.py\n'}
+[0.338309] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/cmd_vel_bridge_node.py\n'}
+[0.338437] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/goal_pose_bridge.py\n'}
+[0.338665] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/waypoint_navigator.py\n'}
+[0.338903] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/nav_executor_node.py\n'}
+[0.338997] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/yolo_zone_detect_node.py\n'}
+[0.339088] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/save_map.sh\n'}
+[0.339178] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/save_rtabmap_map.sh\n'}
+[0.339270] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/verify_urdf.sh\n'}
+[0.339443] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/lib/pi5_robot_description/waypoint_control.sh\n'}
+[0.339530] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/package_run_dependencies/pi5_robot_description\n'}
+[0.339612] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/parent_prefix_path/pi5_robot_description\n'}
+[0.339712] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.sh\n'}
+[0.339799] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/ament_prefix_path.dsv\n'}
+[0.339897] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.sh\n'}
+[0.339983] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/environment/path.dsv\n'}
+[0.340064] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.bash\n'}
+[0.340144] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.sh\n'}
+[0.340222] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.zsh\n'}
+[0.340302] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/local_setup.dsv\n'}
+[0.340383] (pi5_robot_description) StdoutLine: {'line': b'-- Installing: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.dsv\n'}
+[0.340463] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/ament_index/resource_index/packages/pi5_robot_description\n'}
+[0.340543] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig.cmake\n'}
+[0.340648] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/cmake/pi5_robot_descriptionConfig-version.cmake\n'}
+[0.340748] (pi5_robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/webotpi/ros2_ws/install/pi5_robot_description/share/pi5_robot_description/package.xml\n'}
+[0.341765] (pi5_robot_description) CommandEnded: {'returncode': 0}
+[0.399957] (pi5_robot_description) JobEnded: {'identifier': 'pi5_robot_description', 'rc': 0}
+[0.400955] (-) TimerEvent: {}
+[0.401001] (-) EventReactorShutdown: {}
